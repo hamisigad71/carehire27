@@ -188,8 +188,8 @@ export default function InspectionReportDetailsPage() {
                 bg={tokens.accentGlow}
                 borderRadius="full"
                 display="flex"
-                align="center"
-                justify="center"
+                alignItems="center"
+                justifyContent="center"
                 mr={4}
               >
                 <Icon as={FiUser} color={tokens.accent} />

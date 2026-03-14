@@ -167,8 +167,8 @@ export default function SubscriptionPage() {
               bg={tokens.cardBg2}
               borderRadius="8px"
               display="flex"
-              align="center"
-              justify="center"
+              alignItems="center"
+              justifyContent="center"
               mr={3}
             >
               <Icon as={FiCreditCard} color={tokens.accent} />
