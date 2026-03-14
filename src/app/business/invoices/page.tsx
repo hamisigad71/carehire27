@@ -24,7 +24,7 @@ const invoices = [
   { id: 'INV-5005', customer: 'David Brown', amount: 1920, date: 'Mar 06, 2026', due: 'Mar 21, 2026', status: 'Paid' },
 ];
 
-const columns = [
+const columns: any[] = [
   { header: 'Invoice ID', accessor: 'id', isSortable: true },
   { header: 'Customer', accessor: 'customer', isSortable: true },
   { 
