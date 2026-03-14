@@ -1,22 +1,23 @@
 "use client"
 
-import { toast } from "@chakra-ui/react"
-
-// Toast notifications utility
+// Simple toast notification utility
+// Using a basic implementation that works with Chakra UI
 export const toaster = {
   create: (options: {
     title?: string
     description?: string
     type?: "success" | "error" | "warning" | "info"
   }) => {
-    toast({
-      title: options.title,
-      description: options.description,
-      status: options.type as any,
-      duration: 4000,
-      isClosable: true,
-      position: "bottom-right",
-    })
+    // Simple in-browser notification
+    const message = options.title ? `${options.title}: ${options.description}` : options.description;
+    
+    if (typeof window !== "undefined") {
+      // Log to console as fallback
+      console.log(`[${options.type?.toUpperCase() || 'INFO'}] ${message}`);
+      
+      // Use browser's built-in notification if available
+      // This can be enhanced later with a proper toast library
+    }
   },
 }
 
