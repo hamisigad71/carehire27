@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+  <!-- ID Card body -->
+  <rect x="30" y="50" width="140" height="100" rx="12" fill="rgba(59, 130, 246, 0.1)" stroke="currentColor" stroke-width="3"/>
+  
+  <!-- Profile icon area -->
+  <g transform="translate(60, 75)">
+    <!-- Head -->
+    <circle cx="0" cy="-8" r="12" fill="none" stroke="currentColor" stroke-width="2.5"/>
+    
+    <!-- Body/shoulders -->
+    <path d="M-20 10 Q-15 0 0 0 Q15 0 20 10 L15 25 Q0 30 -15 25 Z" fill="none" stroke="currentColor" stroke-width="2.5"/>
+  </g>
+  
+  <!-- Info lines -->
+  <line x1="100" y1="75" x2="150" y2="75" stroke="currentColor" stroke-width="2"/>
+  <line x1="100" y1="90" x2="150" y2="90" stroke="currentColor" stroke-width="2"/>
+  <line x1="100" y1="105" x2="135" y2="105" stroke="currentColor" stroke-width="2"/>
+  
+  <!-- Shield checkmark accent -->
+  <g transform="translate(155, 140)">
+    <circle cx="0" cy="0" r="8" fill="rgba(52, 211, 153, 0.2)" stroke="rgba(52, 211, 153, 0.8)" stroke-width="1.5"/>
+    <path d="M-3 0 L0 3 L4 -2" fill="none" stroke="rgba(52, 211, 153, 0.8)" stroke-width="2" stroke-linecap="round"/>
+  </g>
+</svg>

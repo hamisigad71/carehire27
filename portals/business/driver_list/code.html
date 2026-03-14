@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Driver Management - Car Hire App</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1c74e9",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#111821",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 bg-white dark:bg-background-dark border-b border-slate-200 dark:border-slate-800 px-4 py-3 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">menu</span>
+<h1 class="text-xl font-bold tracking-tight">Drivers</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800">
+<span class="material-symbols-outlined">filter_list</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center overflow-hidden border border-primary/30">
+<img alt="User Profile" data-alt="Small circular headshot of a manager profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgiOmJnyKz4ROS8hDXRfwETKPyJe7lJxnVvzgz0XBUDMRyetzR4JiDEfKhSNBA8QsGpH6YG7KTjHvSrZ1jXVIGDxsmhKlkquO13QbEZknXLZJ2EEZNpYArdmlnPE_vKBtRpIBQYfZ8IGHmfkUKNKFWL-W86WHTPAQFv-SmI7TxRJur7VHhiwRa0tAV6cil5HTHIrWFHRiEA6WAOYD9KbDFSxjtWqmJKblNzwDlDlN6z9tUm5EORhv_Xx9W1IwGuLTiozmlf1IT4Yss"/>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="pb-24">
+<!-- Search & Quick Filters -->
+<div class="p-4 space-y-4">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+<input class="w-full pl-10 pr-4 py-3 rounded-xl bg-white dark:bg-slate-800 border-none shadow-sm focus:ring-2 focus:ring-primary text-sm" placeholder="Search name, license or ID..." type="text"/>
+</div>
+<div class="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
+<button class="whitespace-nowrap px-4 py-1.5 rounded-full bg-primary text-white text-sm font-medium">All Drivers</button>
+<button class="whitespace-nowrap px-4 py-1.5 rounded-full bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-sm font-medium border border-slate-100 dark:border-slate-700">Available</button>
+<button class="whitespace-nowrap px-4 py-1.5 rounded-full bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-sm font-medium border border-slate-100 dark:border-slate-700">On Duty</button>
+<button class="whitespace-nowrap px-4 py-1.5 rounded-full bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-sm font-medium border border-slate-100 dark:border-slate-700">Off Duty</button>
+</div>
+</div>
+<!-- Driver List -->
+<div class="px-4 space-y-4">
+<!-- Driver Card 1 -->
+<div class="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-slate-100 dark:border-slate-700 flex items-center gap-4">
+<div class="relative">
+<div class="w-16 h-16 rounded-xl bg-slate-200 dark:bg-slate-700 overflow-hidden">
+<img alt="Driver" class="w-full h-full object-cover" data-alt="Professional headshot of a male driver smiling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpHMy3ubunkt1ABsWcizlXillIHldLPz8Oj--La_BizomTIO7r--Jc4N1VcaAYWBJfyFOEZd9aSIHE8cXNIsQXvu07LecX35oFiTyrpCJFLlVjsB6AHSTRR78Bu_iEzZYS6UsabBwYIffPwlppePRp4wZYQrQx-PurCC2_csIFVTGgs261rydes4Ke3kcdzQZ-v5VZ3tX2-56bi62R1thCzPPpWxCBotSdjSJ8oYk3DbQCno2r5Y6Bvmd6G0v1BKSrm2ntz3YnW20B"/>
+</div>
+<div class="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-green-500 border-2 border-white dark:border-slate-800"></div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between mb-0.5">
+<h3 class="font-bold text-slate-900 dark:text-white truncate">Robert Fox</h3>
+<span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400">Available</span>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-400 mb-2">License: NY-8829-01</p>
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-1 text-amber-500">
+<span class="material-symbols-outlined text-sm">star</span>
+<span class="text-xs font-semibold">4.8</span>
+</div>
+<div class="flex items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined text-sm">local_taxi</span>
+<span class="text-xs">SUV (Camry)</span>
+</div>
+</div>
+</div>
+<button class="p-2 text-slate-400 hover:text-primary">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<!-- Driver Card 2 -->
+<div class="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-slate-100 dark:border-slate-700 flex items-center gap-4">
+<div class="relative">
+<div class="w-16 h-16 rounded-xl bg-slate-200 dark:bg-slate-700 overflow-hidden">
+<img alt="Driver" class="w-full h-full object-cover" data-alt="Headshot of a middle-aged female driver" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqXWxchfHEAe3W3U7NopgURZZbpLprgKy3q-7KN7II9Jw2g4jA2oeV4UcMJgEoq8_O-C-a-M3rdgOW6op8bAvfxKb0_P_EA0ja1CbE7W-naQRtDL8MM5rmZiHvPrmacp1lNhGIebcYDXSgqrgzrjNae22D1tv82768IaMgtUYtd6SWZBZdbPLDhmRS-PaMvWyCbBjdbUhCs6iiOXqpTONT9Os4S6IuEja0VlaOxY6fYScOGTyrC8MVtoB-az7lT8L8Ra8-2WIW7Ge1"/>
+</div>
+<div class="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-primary border-2 border-white dark:border-slate-800"></div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between mb-0.5">
+<h3 class="font-bold text-slate-900 dark:text-white truncate">Jenny Wilson</h3>
+<span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-primary/10 text-primary dark:bg-primary/20 dark:text-primary">On Duty</span>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-400 mb-2">License: CA-7712-44</p>
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-1 text-amber-500">
+<span class="material-symbols-outlined text-sm">star</span>
+<span class="text-xs font-semibold">4.9</span>
+</div>
+<div class="flex items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined text-sm">local_taxi</span>
+<span class="text-xs">Sedan (Tesla)</span>
+</div>
+</div>
+</div>
+<button class="p-2 text-slate-400 hover:text-primary">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<!-- Driver Card 3 -->
+<div class="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-slate-100 dark:border-slate-700 flex items-center gap-4">
+<div class="relative opacity-60">
+<div class="w-16 h-16 rounded-xl bg-slate-200 dark:bg-slate-700 overflow-hidden">
+<img alt="Driver" class="w-full h-full object-cover" data-alt="Headshot of a male driver in a cap" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWhdL8cHISEyoMkoAUUBdF-F56Mf0rR7xoq3DFsU8LnlvCgSSRRFDhhRjVB0faTMQ9m8eFUaxy1W8fo6hh4is6QppvJo8M3Kh0E9LS8ShiPvSyxoe2uh7HXYiQ8m517habkJHBpO3RrBHKd1dCqesh0PIzXEE9UPfXcgU0wHZWmpMRewXUXeS4pw37nf-gjzN9zyWXrrGp7tRtwHFN0z8M4xH7DABXxQGlRfT76ealKdw7lne8owqIWQaZD9iA_bBcR_u2W6IZCTq0"/>
+</div>
+<div class="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-slate-400 border-2 border-white dark:border-slate-800"></div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between mb-0.5">
+<h3 class="font-bold text-slate-900 dark:text-white truncate">Arlene McCoy</h3>
+<span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-slate-100 text-slate-500 dark:bg-slate-700 dark:text-slate-400">Off Duty</span>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-400 mb-2">License: TX-9001-99</p>
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-1 text-amber-500">
+<span class="material-symbols-outlined text-sm">star</span>
+<span class="text-xs font-semibold">4.7</span>
+</div>
+<div class="flex items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined text-sm">local_taxi</span>
+<span class="text-xs">Minivan (Honda)</span>
+</div>
+</div>
+</div>
+<button class="p-2 text-slate-400 hover:text-primary">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<!-- Driver Card 4 -->
+<div class="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-slate-100 dark:border-slate-700 flex items-center gap-4">
+<div class="relative">
+<div class="w-16 h-16 rounded-xl bg-slate-200 dark:bg-slate-700 overflow-hidden">
+<img alt="Driver" class="w-full h-full object-cover" data-alt="Headshot of a younger male driver with glasses" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMpvOlG7Cj9I3cYtGnypCrNq78Ari7BR5G6f3socllnXg8UeJqpLfK39e_AhOzn2-dv7usgnrVw8ZSNDrqToZmx1Ln2GpzNIDZ88llGPH2nrDszbeRYNEmIhici4aJcyADYz2x_e1S8ZXEK2iXwHx4qFFqZOZXaoa7XlN_tub-YZ_nvH8X2mq2Y2rxMrFNsaX6NMLovEKtlfGjCGQUTZCRxEVI0zobRwfaAFxWN1xBla-TW4pifyu2RbL63EOwYBzF5DYUy8hRV1bM"/>
+</div>
+<div class="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-green-500 border-2 border-white dark:border-slate-800"></div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between mb-0.5">
+<h3 class="font-bold text-slate-900 dark:text-white truncate">Guy Hawkins</h3>
+<span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400">Available</span>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-400 mb-2">License: FL-1224-30</p>
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-1 text-amber-500">
+<span class="material-symbols-outlined text-sm">star</span>
+<span class="text-xs font-semibold">5.0</span>
+</div>
+<div class="flex items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined text-sm">local_taxi</span>
+<span class="text-xs">Luxury (Benz)</span>
+</div>
+</div>
+</div>
+<button class="p-2 text-slate-400 hover:text-primary">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+</main>
+<!-- Floating Action Button -->
+<button class="fixed bottom-24 right-6 w-14 h-14 rounded-full bg-primary text-white shadow-xl flex items-center justify-center hover:scale-105 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-3xl">person_add</span>
+</button>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 right-0 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 flex justify-around items-center px-4 pb-6 pt-3 shadow-[0_-4px_10px_rgba(0,0,0,0.05)]">
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-medium">Fleet</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">group</span>
+<span class="text-[10px] font-medium">Drivers</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="text-[10px] font-medium">Bookings</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-medium">Settings</span>
+</a>
+</nav>
+</body></html>

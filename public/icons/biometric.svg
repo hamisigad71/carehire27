@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Head -->
+  <ellipse cx="100" cy="75" rx="35" ry="45"/>
+  
+  <!-- Face -->
+  <circle cx="85" cy="60" r="4" fill="currentColor"/>
+  <circle cx="115" cy="60" r="4" fill="currentColor"/>
+  <path d="M90 85 Q100 95 110 85"/>
+  
+  <!-- Hair/Top -->
+  <path d="M70 45 Q70 30 100 20 Q130 30 130 45" fill="rgba(52, 211, 153, 0.15)"/>
+  
+  <!-- Biometric corner markers -->
+  <g stroke="currentColor" stroke-width="2.5">
+    <!-- Top-left -->
+    <line x1="30" y1="30" x2="50" y2="30"/>
+    <line x1="30" y1="30" x2="30" y2="50"/>
+    
+    <!-- Top-right -->
+    <line x1="170" y1="30" x2="150" y2="30"/>
+    <line x1="170" y1="30" x2="170" y2="50"/>
+    
+    <!-- Bottom-left -->
+    <line x1="30" y1="170" x2="50" y2="170"/>
+    <line x1="30" y1="170" x2="30" y2="150"/>
+    
+    <!-- Bottom-right -->
+    <line x1="170" y1="170" x2="150" y2="170"/>
+    <line x1="170" y1="170" x2="170" y2="150"/>
+  </g>
+</svg>

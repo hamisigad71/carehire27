@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary": "#1c74e9",
+                "background-light": "#f6f7f8",
+                "background-dark": "#111821",
+              },
+              fontFamily: {
+                "display": ["Inter"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+<title>Staff Management</title>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen flex flex-col">
+<header class="sticky top-0 z-10 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
+<div class="flex items-center p-4 justify-between max-w-2xl mx-auto w-full">
+<div class="flex items-center gap-3">
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors">
+<span class="material-symbols-outlined block">arrow_back</span>
+</button>
+<h1 class="text-xl font-bold tracking-tight">Staff Management</h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors">
+<span class="material-symbols-outlined block">search</span>
+</button>
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors">
+<span class="material-symbols-outlined block">more_vert</span>
+</button>
+</div>
+</div>
+<div class="max-w-2xl mx-auto w-full px-4">
+<div class="flex gap-8">
+<a class="flex flex-col items-center justify-center border-b-2 border-primary text-primary pb-3 pt-4 px-1" href="#">
+<p class="text-sm font-bold">All Staff</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-2 border-transparent text-slate-500 dark:text-slate-400 pb-3 pt-4 px-1" href="#">
+<p class="text-sm font-bold">Active</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-2 border-transparent text-slate-500 dark:text-slate-400 pb-3 pt-4 px-1" href="#">
+<p class="text-sm font-bold">Inactive</p>
+</a>
+</div>
+</div>
+</header>
+<main class="flex-1 max-w-2xl mx-auto w-full p-4 space-y-2">
+<div class="flex items-center gap-4 bg-white dark:bg-slate-900 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 justify-between">
+<div class="flex items-center gap-4">
+<div class="relative">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-14 w-14 border-2 border-white dark:border-slate-800" data-alt="Portrait of a smiling male staff manager" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB2rtNcB0tTSpFvmQhpcd0d1IzLjtbaUAGOKUmwt3odBHgK3XTZSgzfOODSO_iatBjyRzgFL3RCd7kGZq008-0D_UbISH8AfqqIRfXh1WEGnRGDsLsLEDiwcdan_LJxL4nuNolW0XfmYvRrmt8uGFfwC1mHEhFj3riHyHIeIWnDvjf1TUSou3GZVd8ZYaLeeheK5RZongfz7remV_pN3Ms_G0RiZoqQEuYjcJ7L2X24kI0YcBmOkrTutpKjs1d1P2ktXIwFNnSz2k2E");'></div>
+<div class="absolute bottom-0 right-0 size-4 rounded-full bg-green-500 border-2 border-white dark:border-slate-900"></div>
+</div>
+<div class="flex flex-col">
+<p class="text-slate-900 dark:text-white text-base font-semibold leading-tight">Alex Johnson</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm">Manager • ID: #4492</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="px-2.5 py-1 text-xs font-medium bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 rounded-full">Active</span>
+<span class="material-symbols-outlined text-slate-400 cursor-pointer">chevron_right</span>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-white dark:bg-slate-900 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 justify-between">
+<div class="flex items-center gap-4">
+<div class="relative">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-14 w-14 border-2 border-white dark:border-slate-800" data-alt="Portrait of a female professional staff member" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDJLyRR1cVbRbKA0LgERJJ1OSoUF5zPeoheMJQ7UEuLptfR3698mvseDAcbC4B_d5Rg3abJLP3VE4MkuSISxmoQLaYQuxcaATlIuXRkK8KT5bHoyYUzoA4kqsjPAkgOR0zXuSf0f181Wk1FtbB_9vnT0BZ8jA64xv2ag6W0hKawG4k-FcbtBxPU4YsSd3n90eCuynJhsxC6o57kU7oxdP2TbgD9Y18jaye4ZOJbJXW75mWFuWgPwwxH4wmCrfHATfk6DPAM3f3-PS3T");'></div>
+<div class="absolute bottom-0 right-0 size-4 rounded-full bg-green-500 border-2 border-white dark:border-slate-900"></div>
+</div>
+<div class="flex flex-col">
+<p class="text-slate-900 dark:text-white text-base font-semibold leading-tight">Sarah Smith</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm">Staff • ID: #4495</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="px-2.5 py-1 text-xs font-medium bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 rounded-full">Active</span>
+<span class="material-symbols-outlined text-slate-400 cursor-pointer">chevron_right</span>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-white dark:bg-slate-900 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 justify-between">
+<div class="flex items-center gap-4">
+<div class="relative">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-14 w-14 border-2 border-white dark:border-slate-800" data-alt="Portrait of a male driver staff member" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCtVk2sIxyd4xLgryEbsrs6h2WExVRoGS5TcLyJ-CfRibeXhiiOhyLgHLRg-8EtFWcKAt1S0sFfDY7GKUxR7tyJlpS79xoAF0vYHM2kc5ulgYO5V2zANltxTrrw43sgAtHrZGVrIJGHxVFzILx6RktdLf4nNZygNSsqWedmgWDCab4TGmOwTs4LKCXCLdUOJ7iyPpzOJlRSqIsto7zM5z9LRmq6fdETDVUp_2WG_xcgzPmA_P-6PXeOXz9pjtQGfJF1009DQP5nl8ga");'></div>
+<div class="absolute bottom-0 right-0 size-4 rounded-full bg-green-500 border-2 border-white dark:border-slate-900"></div>
+</div>
+<div class="flex flex-col">
+<p class="text-slate-900 dark:text-white text-base font-semibold leading-tight">Michael Chen</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm">Driver • ID: #4501</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="px-2.5 py-1 text-xs font-medium bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 rounded-full">Active</span>
+<span class="material-symbols-outlined text-slate-400 cursor-pointer">chevron_right</span>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-white dark:bg-slate-900 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 justify-between opacity-75">
+<div class="flex items-center gap-4">
+<div class="relative">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-14 w-14 border-2 border-white dark:border-slate-800 grayscale" data-alt="Portrait of an inactive female staff member" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBWD0EIJ7uCtBxnt16yZdOILYMDhZqVUzOQALk2uTp-JcUdtyS3fCkVJ_rEclQUmbIoxbuCl9Ma3h8ivXnj-WsKktoX4B1tYtwVML6D4TTeUDoiIYn_x2HV7j7ix_jXvKpvWirZCRox4FA63OgPLBe3LfZGM0KJkIGvcX8SD7_bNJLAx2COBvKKIyHv35NrDcH35N8GK1fFqOto6sA8pVstXRhCY6UmQztieRjn-YAHqXe0T2XpLCFU3ib6QUmfIHsdkE3MiGMaJ1Ic");'></div>
+<div class="absolute bottom-0 right-0 size-4 rounded-full bg-slate-300 border-2 border-white dark:border-slate-900"></div>
+</div>
+<div class="flex flex-col">
+<p class="text-slate-900 dark:text-white text-base font-semibold leading-tight">Elena Rodriguez</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm">Staff • ID: #4312</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="px-2.5 py-1 text-xs font-medium bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400 rounded-full">Inactive</span>
+<span class="material-symbols-outlined text-slate-400 cursor-pointer">chevron_right</span>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-white dark:bg-slate-900 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 justify-between">
+<div class="flex items-center gap-4">
+<div class="relative">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-14 w-14 border-2 border-white dark:border-slate-800" data-alt="Portrait of a female driver member" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDL6Qt7kTt11O_XV7UI2ptb5kZsv_ORf_jaHJt5tkt8fFbzSHgTUTPa8UGNrgRhFKEUvm5cUV-ysgKfeMoMBs47zRCXIsK5We2nugUGrsWZdvJ7pIoj0yyceGEvwOJ2Z6_vWp0AB69Hm013kt_m7E_vMip5aHkch2M-9_pv0wwAYK9GwPc1SasfDi7sfZ5ivCniPiSgTNrDAt3j9RuQ6dCryYriAjn9icc9yObGhAUoE6gfgUr85V5wrhf2mX_m1f5TNO7a9pjI7mt8");'></div>
+<div class="absolute bottom-0 right-0 size-4 rounded-full bg-green-500 border-2 border-white dark:border-slate-900"></div>
+</div>
+<div class="flex flex-col">
+<p class="text-slate-900 dark:text-white text-base font-semibold leading-tight">Jessica Miller</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm">Driver • ID: #4510</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="px-2.5 py-1 text-xs font-medium bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 rounded-full">Active</span>
+<span class="material-symbols-outlined text-slate-400 cursor-pointer">chevron_right</span>
+</div>
+</div>
+</main>
+<div class="fixed bottom-24 right-6">
+<button class="bg-primary text-white size-14 rounded-full shadow-lg flex items-center justify-center hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-2xl">person_add</span>
+</button>
+</div>
+<nav class="sticky bottom-0 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 pb-safe shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]">
+<div class="flex max-w-2xl mx-auto items-stretch h-16">
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-medium leading-none">Home</span>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">group</span>
+<span class="text-[10px] font-medium leading-none">Staff</span>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="text-[10px] font-medium leading-none">Schedule</span>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-medium leading-none">Settings</span>
+</a>
+</div>
+</nav>
+</body></html>

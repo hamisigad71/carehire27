@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1c74e9",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#111821",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
+<div class="relative flex h-auto min-h-screen w-full flex-col max-w-md mx-auto bg-background-light dark:bg-background-dark overflow-x-hidden">
+<!-- Top Bar -->
+<div class="flex items-center bg-white dark:bg-slate-900 p-4 pb-2 justify-between sticky top-0 z-10 border-b border-slate-200 dark:border-slate-800">
+<div class="text-slate-900 dark:text-slate-100 flex size-12 shrink-0 items-center cursor-pointer">
+<span class="material-symbols-outlined text-2xl">arrow_back</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Customer Profile</h2>
+<div class="flex w-12 items-center justify-end">
+<button class="flex cursor-pointer items-center justify-center rounded-lg h-12 bg-transparent text-primary gap-2 text-base font-bold p-0">
+<span class="material-symbols-outlined text-2xl">edit</span>
+</button>
+</div>
+</div>
+<!-- Hero / Profile Header -->
+<div class="flex p-6 bg-white dark:bg-slate-900">
+<div class="flex w-full flex-col gap-4 items-center">
+<div class="flex gap-4 flex-col items-center">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full border-4 border-primary/10 min-h-24 w-24" data-alt="Professional headshot of a male customer" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDV3A8oHOOyiTGH1IbeEY90vjjHKBaX1kkBYBjNX20o_s2CCPIDJyw9aZJ211xPmU76okwDwPIzZ-Lj4-HdlFQWTv8qfHT8t6wlFZPk1ecHJGZmEMaXMUb9pVAwvRxNJJ2KoGB-ut1UucSst7jVv0qitLI-o9K0LAGoFj_7AX32zui-38_iYriBFmmV9YU-Loj2PJvWqslR0JLpbO527fPIq8dP7cyxghyiYMxzQ48UAb0RjPX0whAjxmY9ygVVr8pPaOoI1O_C9Z55");'>
+</div>
+<div class="flex flex-col items-center justify-center">
+<p class="text-slate-900 dark:text-slate-100 text-2xl font-bold leading-tight tracking-[-0.015em] text-center">Marcus Richardson</p>
+<div class="flex items-center gap-2 mt-1">
+<span class="bg-primary/10 text-primary text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Gold Member</span>
+<span class="text-slate-500 dark:text-slate-400 text-sm">• Joined Jan 2023</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Contact Info Section -->
+<div class="px-4 py-4">
+<h3 class="text-slate-900 dark:text-slate-100 text-sm font-bold uppercase tracking-widest mb-3 opacity-60">Contact Information</h3>
+<div class="flex flex-col gap-1 bg-white dark:bg-slate-900 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-4 px-4 py-4 border-b border-slate-100 dark:border-slate-800">
+<div class="text-primary flex items-center justify-center rounded-lg bg-primary/10 shrink-0 size-10">
+<span class="material-symbols-outlined text-xl">call</span>
+</div>
+<div class="flex flex-col">
+<p class="text-slate-500 dark:text-slate-400 text-xs font-medium uppercase tracking-tighter">Phone Number</p>
+<p class="text-slate-900 dark:text-slate-100 text-base font-semibold">+1 (555) 342-9810</p>
+</div>
+</div>
+<div class="flex items-center gap-4 px-4 py-4 border-b border-slate-100 dark:border-slate-800">
+<div class="text-primary flex items-center justify-center rounded-lg bg-primary/10 shrink-0 size-10">
+<span class="material-symbols-outlined text-xl">mail</span>
+</div>
+<div class="flex flex-col">
+<p class="text-slate-500 dark:text-slate-400 text-xs font-medium uppercase tracking-tighter">Email Address</p>
+<p class="text-slate-900 dark:text-slate-100 text-base font-semibold">m.richardson@provider.com</p>
+</div>
+</div>
+<div class="flex items-center gap-4 px-4 py-4">
+<div class="text-primary flex items-center justify-center rounded-lg bg-primary/10 shrink-0 size-10">
+<span class="material-symbols-outlined text-xl">badge</span>
+</div>
+<div class="flex flex-col">
+<p class="text-slate-500 dark:text-slate-400 text-xs font-medium uppercase tracking-tighter">ID Number</p>
+<p class="text-slate-900 dark:text-slate-100 text-base font-semibold">DL-993201458</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Uploaded Documents -->
+<div class="px-4 py-4">
+<h3 class="text-slate-900 dark:text-slate-100 text-sm font-bold uppercase tracking-widest mb-3 opacity-60">Verified Documents</h3>
+<div class="grid grid-cols-2 gap-3">
+<div class="bg-white dark:bg-slate-900 p-3 rounded-xl border border-slate-200 dark:border-slate-800">
+<div class="h-24 w-full bg-slate-100 dark:bg-slate-800 rounded-lg mb-2 flex items-center justify-center overflow-hidden">
+<div class="w-full h-full bg-slate-200 dark:bg-slate-700 bg-cover" data-alt="Blurred image of an identification card document" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCttxm1GkKg0gjOH1IZ4ceXH9tDA69nT3BhLNf6NRn5sFv5JieX0uPEx4SRjxe_8VsH8Kcj3Xf9T4jgdM10rQn7IbFLIJphXHZCWR_i6cY4mMHUjrS3Z16aHx72twOTd6aQPyqdnQkR8oXBuWNiX8pFUlS0Qgdo59NcOzgprhfB1o17avqmtPXMiRBlZg69-jQm5muZIpE11XxridNBuJTbfKQZ_zU4tG14T3lS_KMqPLJgJuWBpPHXXgB1Og1h_efFB9AGb_e03Jf1')"></div>
+</div>
+<p class="text-slate-900 dark:text-slate-100 text-xs font-bold text-center">Driver's License</p>
+<p class="text-primary text-[10px] font-medium text-center flex items-center justify-center gap-1 mt-1">
+<span class="material-symbols-outlined text-xs">verified</span> Verified
+                    </p>
+</div>
+<div class="bg-white dark:bg-slate-900 p-3 rounded-xl border border-slate-200 dark:border-slate-800">
+<div class="h-24 w-full bg-slate-100 dark:bg-slate-800 rounded-lg mb-2 flex items-center justify-center overflow-hidden">
+<div class="w-full h-full bg-slate-200 dark:bg-slate-700 bg-cover" data-alt="Blurred image of a passport document page" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBOpB0BQbFjq0fRhGQpHdI0uSpfllb2QsdVjQtxgntaPL-gJ5T4g61rbE-uoQs_5bRDRFLZ61iDmnyR0D0Uf69m4Pk_bCz3f0hQo4DA_fpEWyA0ZidKdJU-HY10hvY3FNB1fWNUknvkSCU1i7I-vYcQ8uwdwv7GZnpr-Mo0ANornaqcTsx2yogAqwg2cBX8saFyCgOPamzt37OB_WH7KFHkR1T87Ux7nRo-OyuJXA0rwBmH0x8vvYGPVv_2l0FsPzVUJSZJFQkzvq2c')"></div>
+</div>
+<p class="text-slate-900 dark:text-slate-100 text-xs font-bold text-center">Passport / ID Card</p>
+<p class="text-primary text-[10px] font-medium text-center flex items-center justify-center gap-1 mt-1">
+<span class="material-symbols-outlined text-xs">verified</span> Verified
+                    </p>
+</div>
+</div>
+</div>
+<!-- Rental History -->
+<div class="px-4 py-4 mb-8">
+<div class="flex items-center justify-between mb-3">
+<h3 class="text-slate-900 dark:text-slate-100 text-sm font-bold uppercase tracking-widest opacity-60">Recent Bookings</h3>
+<p class="text-primary text-xs font-bold cursor-pointer">View All</p>
+</div>
+<div class="flex flex-col gap-3">
+<!-- Booking Card 1 -->
+<div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 flex items-center gap-4">
+<div class="size-16 rounded-lg bg-slate-100 dark:bg-slate-800 shrink-0 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Front view of a luxury black sedan car" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPUm9npflnPZX7VyDCeJ7_l5etjnip8IJNtLSeryryj30XCEdD87yOIE44nS9OkF3YXkndtZqB3ue-sno5T6uoj3DZTBveD588Uczi6vGKw_kHHW22rL-CA91RsthDG1bXmczjSNpRR7vELwucrt4qrDW-aAU6s6qwOEtUj8io5miRPryhk8Tgq5k0wM_QbSKzDxLGdMJ_nWzx2YnfrfZ9vCEu0L91YKA3AbkjLnhuyOMZr_c7NIlMUkySeWlaTmyU1rQ_WaKhoU1I"/>
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<h4 class="text-slate-900 dark:text-slate-100 text-sm font-bold">Tesla Model 3</h4>
+<span class="bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 text-[10px] font-bold px-1.5 py-0.5 rounded">Active</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-xs mt-0.5">Oct 12 - Oct 15, 2023</p>
+<div class="flex items-center justify-between mt-2">
+<p class="text-slate-900 dark:text-slate-100 text-xs font-medium">$425.00</p>
+<span class="material-symbols-outlined text-slate-400 text-lg">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- Booking Card 2 -->
+<div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 flex items-center gap-4 opacity-80">
+<div class="size-16 rounded-lg bg-slate-100 dark:bg-slate-800 shrink-0 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Side view of a white SUV car" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5GJ6pAWaZQh50IFt5-1oR_c__OTLfMBrtdVQyJrc3cgZb88qu6B3fbIAgQXlWDuNbel7pJ1XzCLLAkLs3c7c02tpKvFrAZdjn82Q_hzBPvqVAZ_f3pOvi7gyvVlSBtpk40pj9jEbYXBk57lcfIl1Jz8wSPc_h2ZZl8_iNEFzcRyIPv1QUh11BxxNaA1bQS45fMmA08Uad5j_pSyAIpMzKo3-MrqrSC6TocOy4csmKkn1e6WdNEQimPyCa29szyi00Dcj7_tsYAlZq"/>
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<h4 class="text-slate-900 dark:text-slate-100 text-sm font-bold">BMW X5</h4>
+<span class="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-[10px] font-bold px-1.5 py-0.5 rounded">Completed</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-xs mt-0.5">Sep 04 - Sep 07, 2023</p>
+<div class="flex items-center justify-between mt-2">
+<p class="text-slate-900 dark:text-slate-100 text-xs font-medium">$680.00</p>
+<span class="material-symbols-outlined text-slate-400 text-lg">chevron_right</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Button -->
+<div class="px-4 pb-10">
+<button class="w-full bg-primary text-white font-bold py-4 rounded-xl shadow-lg shadow-primary/20 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">add_circle</span>
+                New Reservation
+            </button>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Assign Driver - Car Hire Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1c74e9",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#111821",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
+<div class="relative flex h-auto min-h-screen w-full max-w-md mx-auto flex-col bg-background-light dark:bg-background-dark shadow-xl overflow-x-hidden">
+<!-- Header -->
+<div class="flex items-center bg-white dark:bg-slate-900 p-4 pb-2 justify-between border-b border-slate-200 dark:border-slate-800">
+<div class="text-slate-900 dark:text-slate-100 flex size-10 shrink-0 items-center justify-center cursor-pointer">
+<span class="material-symbols-outlined">arrow_back</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-tight flex-1 px-4">Assign Driver</h2>
+<div class="size-10"></div>
+</div>
+<!-- Booking Details Section -->
+<div class="p-4 space-y-4">
+<h3 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-tight">Booking Details</h3>
+<div class="flex items-stretch justify-between gap-4 rounded-xl bg-white dark:bg-slate-900 p-4 shadow-sm border border-slate-200 dark:border-slate-800">
+<div class="flex flex-[2_2_0px] flex-col justify-between gap-4">
+<div class="flex flex-col gap-1">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal">Tesla Model 3 Long Range</p>
+<p class="text-slate-900 dark:text-white text-base font-bold">Booking #8829</p>
+<p class="text-slate-600 dark:text-slate-300 text-sm font-medium">Customer: John Doe</p>
+</div>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center rounded-lg h-9 px-4 bg-primary/10 text-primary text-sm font-semibold hover:bg-primary/20 transition-colors">
+                        View Full Details
+                    </button>
+</div>
+<div class="w-32 h-24 bg-center bg-no-repeat bg-cover rounded-lg" data-alt="Modern white electric car front profile" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDG1r01ZjcGOI6iWbu0w-JDESr_YMEY0Z6LH2w-_AmK9dXwDB9-E4fB_gHtyhILeaIGehh0WafoVuKdRrVR5R1gKJ2rCoolpRDC5wnohY9Hoj5aQzuZTi3lefZ5j_kOIfEehWV7Ug1WAnMEfc-2k9bsJOjNUHc0BHPjAprAmODXtYHbidb5iaW-tutQt6PIqko7DfTImbqlO8J9-Nim6LFMLpLnxyRreYYJR-JK8VpeRSMW7nOCE2RMZ-zVnUR6LEbdd28GWp6ZfVVI");'>
+</div>
+</div>
+<!-- Schedule Info -->
+<div class="bg-white dark:bg-slate-900 rounded-xl p-4 border border-slate-200 dark:border-slate-800">
+<div class="flex justify-between items-center py-2 border-b border-slate-100 dark:border-slate-800">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg">calendar_today</span>
+<p class="text-slate-500 dark:text-slate-400 text-sm">Pickup</p>
+</div>
+<p class="text-slate-900 dark:text-slate-100 text-sm font-semibold">Oct 24, 10:00 AM</p>
+</div>
+<div class="flex justify-between items-center py-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg">event_repeat</span>
+<p class="text-slate-500 dark:text-slate-400 text-sm">Return</p>
+</div>
+<p class="text-slate-900 dark:text-slate-100 text-sm font-semibold">Oct 26, 04:00 PM</p>
+</div>
+</div>
+</div>
+<!-- Driver Selection Section -->
+<div class="p-4 flex flex-col flex-1 bg-white dark:bg-slate-900 rounded-t-3xl shadow-inner mt-4">
+<div class="flex justify-between items-center mb-4">
+<h3 class="text-slate-900 dark:text-slate-100 text-lg font-bold">Available Drivers</h3>
+<span class="text-primary text-xs font-bold px-2 py-1 bg-primary/10 rounded-full">12 Available</span>
+</div>
+<!-- Search Bar -->
+<div class="relative mb-6">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+<input class="w-full bg-slate-100 dark:bg-slate-800 border-none rounded-xl py-3 pl-10 pr-4 text-sm focus:ring-2 focus:ring-primary outline-none text-slate-900 dark:text-white" placeholder="Search driver name..." type="text"/>
+</div>
+<!-- Driver List -->
+<div class="space-y-3 pb-24">
+<!-- Driver Card 1 -->
+<label class="relative flex items-center p-4 rounded-xl border-2 border-primary bg-primary/5 cursor-pointer group">
+<input checked="" class="hidden" name="driver" type="radio"/>
+<div class="flex items-center gap-4 flex-1">
+<div class="relative">
+<img alt="" class="w-14 h-14 rounded-full object-cover" data-alt="Professional driver profile photo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgMtXQi1jCvzl9qO_C4alNUpGPSTfVwMbX80VGFrOIuQerFpYInhPS4fBXudpK2uBto1PwgER-AVhe9hIhsOsG0IRMCp9-elh81l4qTCW6nuiguZTxkY05VUx_U8KnDAgmsqRwwUlpWfkab-XXQqEQNkHc9oJ9mfaie_Zbkur4Wdbpl3EQVsB05in2XvSp-GIJpGdAejSpj1NwlUEP5wYxGVSYOdBxiI6XbSD-HulSM38xCrwC7OmJOjvy7cCh6p31WY_Wz8_cZxvt"/>
+<div class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white dark:border-slate-900 rounded-full"></div>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<h4 class="font-bold text-slate-900 dark:text-white">Michael Roberts</h4>
+<div class="flex items-center gap-1 text-amber-500">
+<span class="material-symbols-outlined text-base fill-current">star</span>
+<span class="text-sm font-bold">4.9</span>
+</div>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-400">ID: #DRV-9920 • 128 trips</p>
+</div>
+</div>
+<div class="ml-4 size-6 flex items-center justify-center rounded-full bg-primary text-white">
+<span class="material-symbols-outlined text-sm">check</span>
+</div>
+</label>
+<!-- Driver Card 2 -->
+<label class="relative flex items-center p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/50 cursor-pointer hover:border-slate-300 dark:hover:border-slate-700 transition-all">
+<input class="hidden" name="driver" type="radio"/>
+<div class="flex items-center gap-4 flex-1">
+<div class="relative">
+<img alt="" class="w-14 h-14 rounded-full object-cover" data-alt="Female professional chauffeur portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbRCFPVTyjSLBhLNUQtaDFXJZiPpsYqpzVRvbX9zAHozwfT4Omb4VgDnoS1T69XZvnN1Et7RCxYzhNV-bz79IRr8W3VBZZAqWFFgD6BG-zhYx3v-JVBfsGM31LO5TcXf7dWynsg1Tj29fBfSUwX5b0Ye7tmXnGaOPfleRZozbai2zyOQM2Im43V0_5SoLZXNZMdn8yvI9oTgBJzv9SG42qyMtBgoZ2NMo0xXeVakLcq3AyVcrUo7foZQ81ivxCYkzllSY031uRsDLz"/>
+<div class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white dark:border-slate-900 rounded-full"></div>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<h4 class="font-bold text-slate-900 dark:text-white">Sarah Jenkins</h4>
+<div class="flex items-center gap-1 text-amber-500">
+<span class="material-symbols-outlined text-base fill-current">star</span>
+<span class="text-sm font-bold">4.8</span>
+</div>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-400">ID: #DRV-8841 • 215 trips</p>
+</div>
+</div>
+<div class="ml-4 size-6 flex items-center justify-center rounded-full border border-slate-300 dark:border-slate-700"></div>
+</label>
+<!-- Driver Card 3 -->
+<label class="relative flex items-center p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/50 cursor-pointer hover:border-slate-300 dark:hover:border-slate-700 transition-all">
+<input class="hidden" name="driver" type="radio"/>
+<div class="flex items-center gap-4 flex-1">
+<div class="relative">
+<img alt="" class="w-14 h-14 rounded-full object-cover" data-alt="Male driver with friendly expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBi-U1eoPB1KLNGkAc1qFXW7OM2qN2aVchgHP2LODPgki12fhw1DbyBHWwEUN0NLaFoSCFjxHYAIBe2VTieyNv2jjIuYZ2BRMN8I7tESFmkw0HMJ6sewxzIrpv0skLl9R6Dgww3JfzBJkQapN-02JtXG_Hdjl6VtDUlgvtHrDQYcy-1_YxwH-DFLGTFjOhiQUVwwj38Ud6YGhC-jiPqRiF6dXrd5Wx2cYN2axhGtmSSZBYG1ESYs6g7A_96lW7Hq2uH6v3Luprkrmxh"/>
+<div class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white dark:border-slate-900 rounded-full"></div>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<h4 class="font-bold text-slate-900 dark:text-white">David Chen</h4>
+<div class="flex items-center gap-1 text-amber-500">
+<span class="material-symbols-outlined text-base fill-current">star</span>
+<span class="text-sm font-bold">4.9</span>
+</div>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-400">ID: #DRV-4412 • 94 trips</p>
+</div>
+</div>
+<div class="ml-4 size-6 flex items-center justify-center rounded-full border border-slate-300 dark:border-slate-700"></div>
+</label>
+</div>
+</div>
+<!-- Fixed Footer Action -->
+<div class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-md p-4 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-t border-slate-200 dark:border-slate-800">
+<button class="w-full bg-primary text-white font-bold py-4 rounded-xl shadow-lg shadow-primary/30 active:scale-95 transition-transform flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">how_to_reg</span>
+                Confirm Assignment
+            </button>
+</div>
+</div>
+</body></html>

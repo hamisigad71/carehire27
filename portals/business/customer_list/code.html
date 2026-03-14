@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Customer Management - Car Rental</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1c74e9",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#111821",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="flex flex-col h-screen max-w-md mx-auto bg-white dark:bg-slate-900 shadow-xl overflow-hidden relative">
+<!-- Header -->
+<div class="flex items-center bg-white dark:bg-slate-900 p-4 pb-2 justify-between border-b border-slate-100 dark:border-slate-800">
+<div class="text-slate-900 dark:text-slate-100 flex size-10 shrink-0 items-center justify-center">
+<span class="material-symbols-outlined">menu</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-tight flex-1 px-2 text-center">Customers</h2>
+<div class="flex w-10 items-center justify-end">
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-primary/10 text-primary">
+<span class="material-symbols-outlined">person_add</span>
+</button>
+</div>
+</div>
+<!-- Search & Filter Section -->
+<div class="bg-white dark:bg-slate-900">
+<div class="px-4 py-3">
+<label class="flex flex-col min-w-40 h-11 w-full">
+<div class="flex w-full flex-1 items-stretch rounded-xl h-full shadow-sm">
+<div class="text-slate-400 flex border-none bg-slate-100 dark:bg-slate-800 items-center justify-center pl-4 rounded-l-xl">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-r-xl text-slate-900 dark:text-slate-100 focus:outline-0 focus:ring-0 border-none bg-slate-100 dark:bg-slate-800 h-full placeholder:text-slate-400 px-3 text-sm font-normal" placeholder="Search by name or phone" value=""/>
+</div>
+</label>
+</div>
+<!-- Horizontal Filter Chips -->
+<div class="flex gap-2 px-4 pb-4 overflow-x-auto hide-scrollbar">
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-1 rounded-full bg-primary text-white px-4 text-xs font-semibold">
+                    All Customers
+                </button>
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 px-4 text-xs font-medium">
+                    Active
+                </button>
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 px-4 text-xs font-medium">
+                    VIP
+                </button>
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 px-4 text-xs font-medium">
+                    Corporate
+                </button>
+</div>
+</div>
+<!-- Scrollable Content -->
+<div class="flex-1 overflow-y-auto bg-background-light dark:bg-background-dark p-4 space-y-3">
+<!-- Customer Card 1 -->
+<div class="flex items-center gap-4 bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700/50">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-12 w-12 border-2 border-slate-50 dark:border-slate-700" data-alt="Professional headshot of a male customer" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBW_f07SQKakBwtqL8UjKrGljwP-miDW6sw4fP9NrrQ-gxRSaGv8StM1C_61_V_RULcoxgCFVIwkvuX7wL6QVDHq4TjxsPYWU83FtYEn3dCcfum3fxKClf97j27Bkrny6YNCZpXJPeIFG3RT5N19y-j-GvRWZSyBZN3vfTdOcW5sWtX_AZdYoHK0ZWDkkLlQSKPZX79tUYMoD_ANY9Ixkq9OADaTVWZUcjMo-axcRSnaf13U3uOQfvbhYRzBC6mi5j_QvCuOQpIRNfB");'></div>
+<div class="flex flex-col flex-1">
+<p class="text-slate-900 dark:text-slate-100 text-sm font-bold leading-tight">Marcus Thompson</p>
+<p class="text-slate-500 dark:text-slate-400 text-xs mt-0.5">+1 (555) 123-4567</p>
+</div>
+<div class="flex flex-col items-end">
+<p class="text-primary text-sm font-bold">14</p>
+<p class="text-slate-400 dark:text-slate-500 text-[10px] uppercase font-bold tracking-wider">Rentals</p>
+</div>
+</div>
+<!-- Customer Card 2 -->
+<div class="flex items-center gap-4 bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700/50">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-12 w-12 border-2 border-slate-50 dark:border-slate-700" data-alt="Professional headshot of a female customer" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC9YoOpr-vIahRMc8cp0-5ZXnlGopR1pU3lar4MxSWYEEYGp21VPkF3IO9u3f9hyRAJABuH4h28PyOLRZRqRDW9Vbf5h5eLbBzGodSU5_dcdt0uhe49-j2qMCxFWN4GcdQqfG51NdpM4VJFjO0cwfy6AfHbDxrVVomhg6neLPW9_36ZaIuD34maZc3RCGoX7aTGgAZhtbaagbtLw0que-_RjWo1WmCbhhIvfzim9iyqpsjQwGjfmP8SRtDV6WlXFJJanskwhyGxuCSk");'></div>
+<div class="flex flex-col flex-1">
+<div class="flex items-center gap-1.5">
+<p class="text-slate-900 dark:text-slate-100 text-sm font-bold leading-tight">Sarah Jenkins</p>
+<span class="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-xs mt-0.5">+1 (555) 987-6543</p>
+</div>
+<div class="flex flex-col items-end">
+<p class="text-primary text-sm font-bold">8</p>
+<p class="text-slate-400 dark:text-slate-500 text-[10px] uppercase font-bold tracking-wider">Rentals</p>
+</div>
+</div>
+<!-- Customer Card 3 -->
+<div class="flex items-center gap-4 bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700/50">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-12 w-12 border-2 border-slate-50 dark:border-slate-700" data-alt="Modern profile photo of a male customer" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCxn88wgiYNhwv5Lueh66pQnh0YKk3F92Yhr3-Oso3_NiR5wKIIjcotekWdovCuTLTAMa3nQkgoPhae83GdcflHIE4ZO05htDsmjuWSeYwL0kukNWOPi2twOPI8eExBY7N4Lbokvv80LH054Hvj3QGVaU3my00q2pREjX44sQK4Pi-2l4yGOjicac3_BK4aLa5rcwwS4ZOGwza4a-tRn-oGJ8HpRvc6WRQ9XcMY8VVcDwbd4i3e6gf4DL5zdGDmjrftlpSaUQIuEg9p");'></div>
+<div class="flex flex-col flex-1">
+<p class="text-slate-900 dark:text-slate-100 text-sm font-bold leading-tight">David Chen</p>
+<p class="text-slate-500 dark:text-slate-400 text-xs mt-0.5">+1 (555) 234-5678</p>
+</div>
+<div class="flex flex-col items-end">
+<p class="text-primary text-sm font-bold">22</p>
+<p class="text-slate-400 dark:text-slate-500 text-[10px] uppercase font-bold tracking-wider">Rentals</p>
+</div>
+</div>
+<!-- Customer Card 4 -->
+<div class="flex items-center gap-4 bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700/50">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-12 w-12 border-2 border-slate-50 dark:border-slate-700" data-alt="Professional profile of a female client" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCLyAi1RTJWRU8WxsqRqU2s3BFMutE4ATOoauYA1qkR2wVCeD84ShA0crcR8f6UOx71vDMBPwsBuZhqgaueDeD3_OuJ2aRZq75C0z8DlUz2XbDB7YIe-ducpUoL2sUjaLc97hozM-7oZoWxodbAo6JnngUPPABppJysLxWrFkny143eUYTY1ae4fU8xTVs_o1cG-ZLLbIHGKJ-rrUSTqXntCJWjaJn5OX7yciieATPZubr-1KPz7922-u6rnIB39vX0EH8UCVjXAym7");'></div>
+<div class="flex flex-col flex-1">
+<p class="text-slate-900 dark:text-slate-100 text-sm font-bold leading-tight">Elena Rodriguez</p>
+<p class="text-slate-500 dark:text-slate-400 text-xs mt-0.5">+1 (555) 876-5432</p>
+</div>
+<div class="flex flex-col items-end">
+<p class="text-primary text-sm font-bold">5</p>
+<p class="text-slate-400 dark:text-slate-500 text-[10px] uppercase font-bold tracking-wider">Rentals</p>
+</div>
+</div>
+<!-- Customer Card 5 -->
+<div class="flex items-center gap-4 bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700/50">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-12 w-12 border-2 border-slate-50 dark:border-slate-700" data-alt="Close up portrait of a customer" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDGYCcChvciTUil9VUUwIlzr25YdI2SsLNBVT4IddS0Bt6QXgsdJ5dGAfnlwx8Uhgj5nnBgphxMp9ncACsVuc8S9BhxBdvEOku006MTk4luMmMFsY0Zd9NUNceeoeBY7YlB8Ckg0bHJEkVwnNZLHErcwMJz3_v_aD_Ay51D5ns2_II6w2Y_3Jlk1TLvEE92RQePU5ao4LrfHwbuEO57siIT7Y7lyWqYa2HsWV7LKfJc1tMcKDcCeCOgfFCoyIrB8IlYA5Mo8r6qIB2G");'></div>
+<div class="flex flex-col flex-1">
+<p class="text-slate-900 dark:text-slate-100 text-sm font-bold leading-tight">Sophie Laurent</p>
+<p class="text-slate-500 dark:text-slate-400 text-xs mt-0.5">+33 6 12 34 56 78</p>
+</div>
+<div class="flex flex-col items-end">
+<p class="text-primary text-sm font-bold">11</p>
+<p class="text-slate-400 dark:text-slate-500 text-[10px] uppercase font-bold tracking-wider">Rentals</p>
+</div>
+</div>
+<!-- Customer Card 6 -->
+<div class="flex items-center gap-4 bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700/50">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-12 w-12 border-2 border-slate-50 dark:border-slate-700" data-alt="Business portrait of a male customer" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAz_wQLaDmkqxEWn1q4Ask184xkBSQnVzX8bSzXiD9oo4IIQ1t9qx6nw3IkyCYPtteR7JHsPrYP3h-LalF27ahcea0bmdOpHjX8xinjpk6zTjbowimXD_Q70eJJjU_QsAzopDrDCj3wUb4xhW74vnQgzdyffv82U7piVFDirDVYiiIVjE76biraSmhAy3ZeVb5-uXvx7CAFLMdjx94PN8N9jNveUepG0MzcR9R48nvjXG1u___H1jANeRjEBr4yjjYg9CdcKyG0liyZ");'></div>
+<div class="flex flex-col flex-1">
+<p class="text-slate-900 dark:text-slate-100 text-sm font-bold leading-tight">James Wilson</p>
+<p class="text-slate-500 dark:text-slate-400 text-xs mt-0.5">+1 (555) 456-7890</p>
+</div>
+<div class="flex flex-col items-end">
+<p class="text-primary text-sm font-bold">3</p>
+<p class="text-slate-400 dark:text-slate-500 text-[10px] uppercase font-bold tracking-wider">Rentals</p>
+</div>
+</div>
+</div>
+<!-- Bottom Navigation Bar -->
+<div class="flex gap-2 border-t border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 pb-6 pt-2">
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400 dark:text-slate-500" href="#">
+<span class="material-symbols-outlined">directions_car</span>
+<p class="text-[10px] font-semibold leading-normal tracking-wide">Fleet</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined fill-[1]">group</span>
+<p class="text-[10px] font-bold leading-normal tracking-wide">Customers</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400 dark:text-slate-500" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<p class="text-[10px] font-semibold leading-normal tracking-wide">Bookings</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400 dark:text-slate-500" href="#">
+<span class="material-symbols-outlined">settings</span>
+<p class="text-[10px] font-semibold leading-normal tracking-wide">Settings</p>
+</a>
+</div>
+</div>
+</body></html>

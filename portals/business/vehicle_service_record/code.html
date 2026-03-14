@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1c74e9",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#111821",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<title>Vehicle Service Record</title>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark overflow-x-hidden">
+<!-- Header -->
+<div class="flex items-center bg-white dark:bg-slate-900 p-4 sticky top-0 z-10 shadow-sm justify-between">
+<div class="text-slate-900 dark:text-slate-100 flex size-12 shrink-0 items-center cursor-pointer">
+<span class="material-symbols-outlined">arrow_back</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-tight flex-1">Service Record</h2>
+<div class="flex size-12 shrink-0 items-center justify-end">
+<span class="material-symbols-outlined">more_vert</span>
+</div>
+</div>
+<!-- Vehicle Summary -->
+<div class="flex p-4 @container">
+<div class="flex w-full flex-col gap-4 items-center bg-white dark:bg-slate-900 p-6 rounded-xl shadow-sm">
+<div class="flex gap-6 flex-col items-center">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full border-4 border-primary/10 w-32 h-32" data-alt="Front view of a silver sedan car" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCeuAp9qq5VU-X56Qw9Kw-GUyv_jLFro4ojYaNhUPYsSCat9Rw5VXfNIxnI_I5REKFmJ9wYHvjHAm7tYhvJVNYJkKdduymDJv5JJvADOBIIvqBBOr4imui9MwI2eIKxmLGYaxpq0BAyaz-4u13mCbJKx_Yu9ej0HVRRUQ9O9qMw0y8neDdNy4Yn4mkYechw2Rrtn9xU4guVghrK7du6mOtDryVh5GkoziPdt5NNBFtverjbhzxgHeinfCrzffN4ZVTSotOl-X2scDr4");'></div>
+<div class="flex flex-col items-center justify-center">
+<p class="text-slate-900 dark:text-slate-100 text-2xl font-bold leading-tight tracking-tight text-center">Toyota Camry 2024</p>
+<div class="flex items-center gap-2 mt-1">
+<span class="bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded text-xs font-mono font-bold tracking-widest border border-slate-200 dark:border-slate-700 uppercase">ABC-1234</span>
+<span class="text-slate-500 dark:text-slate-400 text-sm font-normal">• Silver Metallic</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Next Service Due Card -->
+<div class="px-4 @container">
+<div class="flex flex-col items-stretch justify-start rounded-xl @xl:flex-row @xl:items-start shadow-sm bg-white dark:bg-slate-900 overflow-hidden border border-primary/20">
+<div class="w-full @xl:w-1/3 bg-center bg-no-repeat aspect-video bg-cover" data-alt="Modern car engine under maintenance light" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDmG-Yr_nSykZLu18FaZG3BbrhjAyHo9dEFNTS2eBcv5dZVQ3Oon8RX89Mk5CzTKmwzFaLnhjST84YUaTH6FvZ6bjwQ_4HqNeb1TKvFYKCfEfh43uaMeuFKbjRl0aP-9_IccglW0-hJQvc5TUFT0eHRsW1KOUJp5-jeSGXMJOVWRcw2rSieg8pjRbwsgOeIZn-H0YglsTTkD9oRrTRZbp4b1USS2H3KWTNjeDGZbooojsaVFkHSFFhG3LKLr5tHMymkjm8vI1YPIL5u");'></div>
+<div class="flex w-full min-w-72 grow flex-col items-stretch justify-center gap-1 py-4 px-6">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-primary text-sm">event</span>
+<p class="text-primary text-xs font-bold leading-normal uppercase tracking-wider">Upcoming Maintenance</p>
+</div>
+<p class="text-slate-900 dark:text-slate-100 text-xl font-bold leading-tight tracking-tight">15,000 Mile Service</p>
+<div class="flex items-end gap-3 justify-between mt-1">
+<div class="flex flex-col gap-1">
+<p class="text-slate-600 dark:text-slate-400 text-sm font-normal leading-normal">Full synthetic oil change, filter, and multi-point inspection.</p>
+<p class="text-slate-900 dark:text-slate-100 text-sm font-semibold leading-normal mt-2">
+                                Due in <span class="text-primary">1,250 miles</span> or by <span class="text-primary">Oct 20, 2024</span>
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Maintenance Costs Section -->
+<div class="p-4">
+<div class="bg-white dark:bg-slate-900 rounded-xl p-6 shadow-sm border border-slate-100 dark:border-slate-800">
+<h3 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight mb-4">Maintenance Summary</h3>
+<div class="flex flex-wrap gap-8">
+<div class="flex flex-col gap-1 min-w-[150px]">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Total Expenses</p>
+<p class="text-slate-900 dark:text-slate-100 text-3xl font-bold leading-tight tracking-tight">$1,240.00</p>
+<div class="flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-green-500 text-sm">trending_up</span>
+<p class="text-green-600 dark:text-green-500 text-xs font-semibold">+5% vs last year</p>
+</div>
+</div>
+<div class="flex-1 min-w-[200px]">
+<div class="grid grid-cols-4 gap-4 items-end h-24">
+<div class="flex flex-col items-center gap-2 h-full justify-end">
+<div class="bg-primary/20 w-full rounded-t h-full border-t-2 border-primary"></div>
+<p class="text-slate-500 text-[10px] font-bold uppercase">Tires</p>
+</div>
+<div class="flex flex-col items-center gap-2 h-full justify-end">
+<div class="bg-primary/20 w-full rounded-t h-1/2 border-t-2 border-primary"></div>
+<p class="text-slate-500 text-[10px] font-bold uppercase">Oil</p>
+</div>
+<div class="flex flex-col items-center gap-2 h-full justify-end">
+<div class="bg-primary/20 w-full rounded-t h-[60%] border-t-2 border-primary"></div>
+<p class="text-slate-500 text-[10px] font-bold uppercase">Brakes</p>
+</div>
+<div class="flex flex-col items-center gap-2 h-full justify-end">
+<div class="bg-primary/20 w-full rounded-t h-[30%] border-t-2 border-primary"></div>
+<p class="text-slate-500 text-[10px] font-bold uppercase">Misc</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Service History -->
+<div class="px-4 pb-24">
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-slate-900 dark:text-slate-100 text-xl font-bold leading-tight tracking-tight">Service History</h2>
+<button class="text-primary text-sm font-semibold flex items-center gap-1">
+                    See All <span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+<div class="space-y-4">
+<!-- Record 1 -->
+<div class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="bg-primary/10 text-primary p-3 rounded-lg">
+<span class="material-symbols-outlined">tire_repair</span>
+</div>
+<div>
+<p class="text-slate-900 dark:text-slate-100 font-bold">Tire Rotation &amp; Balance</p>
+<div class="flex items-center gap-2 text-slate-500 dark:text-slate-400 text-xs mt-1">
+<span>Aug 12, 2024</span>
+<span>•</span>
+<span>Main Street Garage</span>
+</div>
+</div>
+</div>
+<div class="text-right">
+<p class="text-slate-900 dark:text-slate-100 font-bold">$85.00</p>
+<p class="text-slate-400 text-[10px] uppercase font-semibold">Labor Incl.</p>
+</div>
+</div>
+<!-- Record 2 -->
+<div class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="bg-primary/10 text-primary p-3 rounded-lg">
+<span class="material-symbols-outlined">oil_barrel</span>
+</div>
+<div>
+<p class="text-slate-900 dark:text-slate-100 font-bold">Full Synthetic Oil Change</p>
+<div class="flex items-center gap-2 text-slate-500 dark:text-slate-400 text-xs mt-1">
+<span>Jun 05, 2024</span>
+<span>•</span>
+<span>Toyota Dealership</span>
+</div>
+</div>
+</div>
+<div class="text-right">
+<p class="text-slate-900 dark:text-slate-100 font-bold">$120.00</p>
+<p class="text-slate-400 text-[10px] uppercase font-semibold">Parts &amp; Labor</p>
+</div>
+</div>
+<!-- Record 3 -->
+<div class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="bg-primary/10 text-primary p-3 rounded-lg">
+<span class="material-symbols-outlined">settings_input_component</span>
+</div>
+<div>
+<p class="text-slate-900 dark:text-slate-100 font-bold">Brake Pad Replacement</p>
+<div class="flex items-center gap-2 text-slate-500 dark:text-slate-400 text-xs mt-1">
+<span>Mar 22, 2024</span>
+<span>•</span>
+<span>Speedy Auto Care</span>
+</div>
+</div>
+</div>
+<div class="text-right">
+<p class="text-slate-900 dark:text-slate-100 font-bold">$450.00</p>
+<p class="text-slate-400 text-[10px] uppercase font-semibold">Front Axle</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Floating Action Button -->
+<div class="fixed bottom-6 right-6">
+<button class="bg-primary hover:bg-primary/90 text-white flex items-center gap-2 px-6 py-4 rounded-full shadow-lg transition-all active:scale-95">
+<span class="material-symbols-outlined">add</span>
+<span class="font-bold">Add New Record</span>
+</button>
+</div>
+</div>
+</body></html>

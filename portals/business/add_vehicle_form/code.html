@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Add New Vehicle - Car Hire Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1c74e9",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#111821",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="max-w-2xl mx-auto bg-white dark:bg-slate-900 min-h-screen shadow-sm pb-24">
+<header class="sticky top-0 z-10 flex items-center bg-white dark:bg-slate-900 p-4 border-b border-slate-200 dark:border-slate-800 justify-between">
+<div class="flex items-center gap-3">
+<button class="text-slate-900 dark:text-slate-100 p-1 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors">
+<span class="material-symbols-outlined block">arrow_back</span>
+</button>
+<h1 class="text-lg font-bold leading-tight tracking-tight">Add New Vehicle</h1>
+</div>
+<div class="size-6"></div>
+</header>
+<main class="p-4 space-y-8">
+<section>
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">add_a_photo</span>
+                    Photo Upload
+                </h2>
+<div class="flex flex-col">
+<div class="group relative flex flex-col items-center gap-4 rounded-xl border-2 border-dashed border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 px-6 py-12 transition-colors hover:border-primary/50">
+<div class="bg-primary/10 p-4 rounded-full text-primary">
+<span class="material-symbols-outlined text-4xl">cloud_upload</span>
+</div>
+<div class="flex flex-col items-center gap-1">
+<p class="text-slate-900 dark:text-slate-100 text-lg font-bold text-center">Upload Car Photos</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal text-center max-w-xs">Drag and drop or click to upload high-quality images of the vehicle front, side, and interior.</p>
+</div>
+<button class="mt-2 flex min-w-[140px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-6 bg-primary text-white text-sm font-bold transition-transform active:scale-95">
+                            Select Images
+                        </button>
+</div>
+</div>
+</section>
+<section>
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">info</span>
+                    Basic Info
+                </h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<label class="flex flex-col gap-2">
+<span class="text-slate-700 dark:text-slate-300 text-sm font-semibold">Car Model</span>
+<input class="w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:ring-2 focus:ring-primary focus:border-primary h-12 px-4 placeholder:text-slate-400" placeholder="e.g. Toyota Camry 2024" type="text"/>
+</label>
+<label class="flex flex-col gap-2">
+<span class="text-slate-700 dark:text-slate-300 text-sm font-semibold">License Plate Number</span>
+<input class="w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:ring-2 focus:ring-primary focus:border-primary h-12 px-4 placeholder:text-slate-400 uppercase" placeholder="ABC-1234" type="text"/>
+</label>
+<label class="flex flex-col gap-2 md:col-span-2">
+<span class="text-slate-700 dark:text-slate-300 text-sm font-semibold">Daily Rental Price</span>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500">$</span>
+<input class="w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:ring-2 focus:ring-primary focus:border-primary h-12 pl-8 pr-4 placeholder:text-slate-400" placeholder="0.00" type="number"/>
+</div>
+</label>
+</div>
+</section>
+<section>
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">settings</span>
+                    Specifications
+                </h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<label class="flex flex-col gap-2">
+<span class="text-slate-700 dark:text-slate-300 text-sm font-semibold">Vehicle Type</span>
+<div class="relative">
+<select class="appearance-none w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:ring-2 focus:ring-primary focus:border-primary h-12 px-4 pr-10">
+<option disabled="" selected="" value="">Select Type</option>
+<option value="sedan">Sedan</option>
+<option value="suv">SUV</option>
+<option value="hatchback">Hatchback</option>
+<option value="luxury">Luxury</option>
+<option value="van">Van/Minibus</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">expand_more</span>
+</div>
+</label>
+<label class="flex flex-col gap-2">
+<span class="text-slate-700 dark:text-slate-300 text-sm font-semibold">Fuel Type</span>
+<div class="relative">
+<select class="appearance-none w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:ring-2 focus:ring-primary focus:border-primary h-12 px-4 pr-10">
+<option disabled="" selected="" value="">Select Fuel</option>
+<option value="petrol">Petrol</option>
+<option value="diesel">Diesel</option>
+<option value="ev">Electric (EV)</option>
+<option value="hybrid">Hybrid</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">expand_more</span>
+</div>
+</label>
+</div>
+</section>
+<section>
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">analytics</span>
+                    Fleet Info
+                </h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<label class="flex flex-col gap-2">
+<span class="text-slate-700 dark:text-slate-300 text-sm font-semibold">Current Mileage (km)</span>
+<input class="w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:ring-2 focus:ring-primary focus:border-primary h-12 px-4 placeholder:text-slate-400" placeholder="e.g. 15400" type="number"/>
+</label>
+<label class="flex flex-col gap-2">
+<span class="text-slate-700 dark:text-slate-300 text-sm font-semibold">Insurance Expiry Date</span>
+<div class="relative">
+<input class="w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:ring-2 focus:ring-primary focus:border-primary h-12 px-4 text-slate-500 focus:text-slate-900 dark:focus:text-slate-100" type="date"/>
+</div>
+</label>
+</div>
+</section>
+</main>
+<footer class="fixed bottom-0 left-0 right-0 p-4 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 max-w-2xl mx-auto">
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 rounded-xl shadow-lg shadow-primary/20 transition-all active:scale-[0.98] flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">save</span>
+                Save Vehicle
+            </button>
+</footer>
+</div>
+</body></html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fleet Utilization Report</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1c74e9",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#111821",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined { font-size: 24px; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+<div class="relative flex h-screen w-full flex-col overflow-hidden max-w-md mx-auto bg-white dark:bg-background-dark shadow-2xl">
+<header class="flex items-center bg-white dark:bg-background-dark p-4 pb-2 justify-between border-b border-slate-200 dark:border-slate-800">
+<div class="text-slate-900 dark:text-slate-100 flex size-10 shrink-0 items-center justify-center cursor-pointer">
+<span class="material-symbols-outlined">arrow_back</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-tight flex-1 text-center">Fleet Utilization</h2>
+<div class="flex w-10 items-center justify-end">
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-transparent text-slate-900 dark:text-slate-100">
+<span class="material-symbols-outlined">download</span>
+</button>
+</div>
+</header>
+<div class="flex-1 overflow-y-auto pb-20">
+<div class="bg-white dark:bg-background-dark">
+<div class="flex border-b border-slate-200 dark:border-slate-800 px-4 gap-8">
+<a class="flex flex-col items-center justify-center border-b-[3px] border-transparent text-slate-500 dark:text-slate-400 pb-3 pt-4" href="#">
+<p class="text-sm font-bold">Daily</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-transparent text-slate-500 dark:text-slate-400 pb-3 pt-4" href="#">
+<p class="text-sm font-bold">Weekly</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-primary text-primary pb-3 pt-4" href="#">
+<p class="text-sm font-bold">Monthly</p>
+</a>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-3 p-4">
+<div class="col-span-2 flex flex-col gap-2 rounded-xl p-5 border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Avg Occupancy Rate</p>
+<div class="flex items-end justify-between">
+<p class="text-slate-900 dark:text-slate-100 text-3xl font-bold">78.4%</p>
+<span class="text-emerald-600 dark:text-emerald-400 text-sm font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">trending_up</span> +2.5%
+                        </span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full mt-2">
+<div class="bg-primary h-2 rounded-full" style="width: 78.4%"></div>
+</div>
+</div>
+<div class="flex flex-col gap-1 rounded-xl p-4 border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50">
+<p class="text-slate-500 dark:text-slate-400 text-xs font-medium uppercase tracking-wider">Mileage</p>
+<p class="text-slate-900 dark:text-slate-100 text-xl font-bold">124.5k</p>
+<p class="text-rose-600 dark:text-rose-400 text-xs font-medium">-1.2% vs LW</p>
+</div>
+<div class="flex flex-col gap-1 rounded-xl p-4 border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50">
+<p class="text-slate-500 dark:text-slate-400 text-xs font-medium uppercase tracking-wider">Active Fleet</p>
+<p class="text-slate-900 dark:text-slate-100 text-xl font-bold">92%</p>
+<p class="text-emerald-600 dark:text-emerald-400 text-xs font-medium">+0.8% vs LW</p>
+</div>
+</div>
+<div class="px-4 py-2">
+<h3 class="text-slate-900 dark:text-slate-100 text-lg font-bold mb-4">Utilization by Category</h3>
+<div class="flex flex-col gap-4 rounded-xl p-5 border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50">
+<div class="space-y-4">
+<div class="space-y-1">
+<div class="flex justify-between text-sm mb-1">
+<span class="font-medium text-slate-700 dark:text-slate-300">SUV</span>
+<span class="font-bold text-slate-900 dark:text-slate-100">88%</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-800 h-3 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 88%"></div>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between text-sm mb-1">
+<span class="font-medium text-slate-700 dark:text-slate-300">Sedan</span>
+<span class="font-bold text-slate-900 dark:text-slate-100">72%</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-800 h-3 rounded-full overflow-hidden">
+<div class="bg-primary/70 h-full rounded-full" style="width: 72%"></div>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between text-sm mb-1">
+<span class="font-medium text-slate-700 dark:text-slate-300">Luxury</span>
+<span class="font-bold text-slate-900 dark:text-slate-100">64%</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-800 h-3 rounded-full overflow-hidden">
+<div class="bg-primary/40 h-full rounded-full" style="width: 64%"></div>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between text-sm mb-1">
+<span class="font-medium text-slate-700 dark:text-slate-300">Compact</span>
+<span class="font-bold text-slate-900 dark:text-slate-100">82%</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-800 h-3 rounded-full overflow-hidden">
+<div class="bg-primary/80 h-full rounded-full" style="width: 82%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="px-4 py-4 mb-4">
+<h3 class="text-slate-900 dark:text-slate-100 text-lg font-bold mb-4">Most Rented Models</h3>
+<div class="flex flex-col gap-3">
+<div class="flex items-center gap-4 p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50">
+<div class="w-16 h-12 rounded-lg bg-slate-100 dark:bg-slate-800 overflow-hidden shrink-0">
+<img alt="Tesla Model Y" class="w-full h-full object-cover" data-alt="Modern electric SUV profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJTRfM-Wv6QuwENlBF7_TJQRzScOU4fB-MoEkYQeLb-KUi3q4Wy7sM_DJimF7-6r49r5TeENrg2CM2uKcUXxJ1c54Caz3GGE5BOaE34zp0VMXIB4Yfu2Iv8cEi0_EXGt3gAsaqWJFKTLoeCRBQipTtq7recNCOKtMveTFPPogBtleZ_2_hswOkzyH_X7A8YnpYbrBrshJ03n9PXloHfn2nJoLcHXPqanHKOYMLTBJA8X7aU86XBoihoaLMaj6rDvvzeGi8YT5Ne9bZ"/>
+</div>
+<div class="flex-1 min-w-0">
+<p class="font-bold text-slate-900 dark:text-slate-100 truncate">Tesla Model Y</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">SUV • 142 Bookings</p>
+</div>
+<div class="text-right">
+<p class="text-sm font-bold text-primary">High</p>
+<p class="text-[10px] text-slate-400 uppercase font-bold">Demand</p>
+</div>
+</div>
+<div class="flex items-center gap-4 p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50">
+<div class="w-16 h-12 rounded-lg bg-slate-100 dark:bg-slate-800 overflow-hidden shrink-0">
+<img alt="BMW 5 Series" class="w-full h-full object-cover" data-alt="Luxury sedan side view" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLHvamcQWcb4Wd5T1JutSRavVnHGHV4qTrhFL0F-L4krAchKOr9KmWLH7csMJ7T4qCSHCwLWF4G77AfdswuuX_r3n7VGLDdXXyThnXlRm2rBYMB9dy4ZUwLlhzOtCiHoEcO37JGIoU9wkBYQrgv-aydUaBcQOaEgyYmUPN0kYoCyKA0s5vm2JhZWphaP83Xg9QEg4P2R9R9TLRWcejJYqGzrSvnytucBpn1F_cfrvQsVQByyuk7oo1k36rVtH-qFsZwCg_4zpl8BZk"/>
+</div>
+<div class="flex-1 min-w-0">
+<p class="font-bold text-slate-900 dark:text-slate-100 truncate">BMW 5 Series</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">Luxury • 98 Bookings</p>
+</div>
+<div class="text-right">
+<p class="text-sm font-bold text-primary">Stable</p>
+<p class="text-[10px] text-slate-400 uppercase font-bold">Demand</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<nav class="absolute bottom-0 left-0 right-0 border-t border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md px-4 pb-4 pt-2">
+<div class="flex gap-2">
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-primary" href="#">
+<span class="material-symbols-outlined fill-1">dashboard</span>
+<p class="text-[10px] font-bold uppercase tracking-wider">Dashboard</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">directions_car</span>
+<p class="text-[10px] font-bold uppercase tracking-wider">Vehicles</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+<p class="text-[10px] font-bold uppercase tracking-wider">Bookings</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">group</span>
+<p class="text-[10px] font-bold uppercase tracking-wider">Customers</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">menu</span>
+<p class="text-[10px] font-bold uppercase tracking-wider">More</p>
+</a>
+</div>
+</nav>
+</div>
+</body></html>

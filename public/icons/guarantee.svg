@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Shield body -->
+  <path d="M100 20L40 50V100C40 140 100 170 100 170C100 170 160 140 160 100V50L100 20Z" fill="rgba(52, 211, 153, 0.1)" stroke="currentColor"/>
+  
+  <!-- Checkmark inside shield -->
+  <g transform="translate(100, 100)">
+    <circle cx="0" cy="0" r="35" fill="none" stroke="currentColor"/>
+    <path d="M-15 0 L-5 10 L15 -15" fill="none" stroke="currentColor" stroke-width="4"/>
+  </g>
+</svg>

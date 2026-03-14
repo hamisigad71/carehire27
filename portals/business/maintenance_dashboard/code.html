@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fleet Maintenance Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1c74e9",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#111821",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
+<div class="relative flex h-auto min-h-screen w-full flex-col max-w-md mx-auto bg-white dark:bg-slate-950 shadow-xl overflow-x-hidden">
+<!-- Header -->
+<div class="flex items-center bg-white dark:bg-slate-950 p-4 pb-2 justify-between sticky top-0 z-10 border-b border-slate-100 dark:border-slate-800">
+<div class="text-primary flex size-10 shrink-0 items-center justify-center">
+<span class="material-symbols-outlined text-3xl">home_repair_service</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-[-0.015em] flex-1 ml-3">Fleet Health</h2>
+<div class="flex gap-2">
+<button class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-400">notifications</span>
+</button>
+</div>
+</div>
+<!-- Search Bar -->
+<div class="px-4 py-4">
+<label class="flex flex-col min-w-40 h-12 w-full">
+<div class="flex w-full flex-1 items-stretch rounded-xl h-full shadow-sm">
+<div class="text-slate-400 flex border-none bg-slate-100 dark:bg-slate-800 items-center justify-center pl-4 rounded-l-xl">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-r-xl text-slate-900 dark:text-slate-100 focus:outline-0 focus:ring-2 focus:ring-primary/20 border-none bg-slate-100 dark:bg-slate-800 h-full placeholder:text-slate-400 px-4 pl-2 text-base font-normal leading-normal" placeholder="Search car model or plate..." value=""/>
+</div>
+</label>
+</div>
+<!-- Summary Cards -->
+<div class="flex flex-wrap gap-3 p-4">
+<div class="flex min-w-[130px] flex-1 flex-col gap-2 rounded-xl p-4 bg-primary/10 border border-primary/20">
+<p class="text-slate-600 dark:text-slate-400 text-xs font-medium uppercase tracking-wider">Need Service</p>
+<div class="flex items-end justify-between">
+<p class="text-slate-900 dark:text-slate-100 text-2xl font-bold">12</p>
+<span class="text-green-600 text-xs font-bold bg-green-100 px-1.5 py-0.5 rounded-full">+2%</span>
+</div>
+</div>
+<div class="flex min-w-[130px] flex-1 flex-col gap-2 rounded-xl p-4 bg-red-50 dark:bg-red-950/20 border border-red-100 dark:border-red-900/30">
+<p class="text-slate-600 dark:text-slate-400 text-xs font-medium uppercase tracking-wider">Overdue</p>
+<div class="flex items-end justify-between">
+<p class="text-slate-900 dark:text-slate-100 text-2xl font-bold">4</p>
+<span class="text-red-600 text-xs font-bold bg-red-100 px-1.5 py-0.5 rounded-full">-1%</span>
+</div>
+</div>
+<div class="flex min-w-[130px] flex-1 flex-col gap-2 rounded-xl p-4 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+<p class="text-slate-600 dark:text-slate-400 text-xs font-medium uppercase tracking-wider">Scheduled</p>
+<div class="flex items-end justify-between">
+<p class="text-slate-900 dark:text-slate-100 text-2xl font-bold">8</p>
+<span class="text-green-600 text-xs font-bold bg-green-100 px-1.5 py-0.5 rounded-full">+5%</span>
+</div>
+</div>
+</div>
+<!-- Requiring Attention -->
+<div class="flex items-center justify-between px-4 pt-4">
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold">Requires Attention</h2>
+<button class="text-primary text-sm font-semibold">View All</button>
+</div>
+<div class="flex flex-col gap-3 p-4">
+<!-- Item 1 -->
+<div class="flex items-center gap-4 p-3 bg-white dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm">
+<div class="size-14 rounded-lg bg-slate-200 dark:bg-slate-700 overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Silver modern sedan front view" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPBx-q4DqcJy89tOA0deDk0D5lTvS9Euy8_4v0XOTxV_TcbKvkAJp1brvTSZ6j7qC-T1V4KuHEKBCyVDqAiAGOpO7rI_tBSLcJNdck5mfkgU3fuv-YtkUzxDISMKQRzkCg-mnnLAuTmSxFaKkXfaDYte55PQOl0qJHK_zLV8Bd10BrD9lUZav0Q-JWN0veWFehvngSdFeJHZAzI_FBn423NdxRs9aZvj40sbc9xp-DdgKI0AooxOAHW5HkCUTfPW75B3tzTK-J4jVz"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-2">
+<p class="text-slate-900 dark:text-slate-100 font-bold truncate">Tesla Model 3</p>
+<span class="bg-red-100 text-red-700 text-[10px] font-bold px-2 py-0.5 rounded-full">OVERDUE</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-xs font-medium uppercase tracking-tighter">ABC-1234 • Brake Inspection</p>
+</div>
+<button class="text-slate-400">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+<!-- Item 2 -->
+<div class="flex items-center gap-4 p-3 bg-white dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm">
+<div class="size-14 rounded-lg bg-slate-200 dark:bg-slate-700 overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Blue luxury suv front view" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFY7R86rWS2BgQglbjQRpmPtJ33OG8i5lxNKjRdlM833R5GdWezLoU25Nj9oVTlwXo_w3E35x45Y9wHqShoR26lkkH9VjpXk1RcbrU4XPBvkoEm_H8IjROUL_U0iUlKf7HZRS8FVEQOZOTuUJjiRym26nWpXsx-2r0s5HIk8CqEfJbBOPQTBi7ULLRlSYcVTdknORaeLqBQ7XCggOitAuePXBwiuJGys2BI_zFaVupfCPCNwrig7f9WYW3JtP__OwJPtufig9v8iGN"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-2">
+<p class="text-slate-900 dark:text-slate-100 font-bold truncate">BMW X5</p>
+<span class="bg-primary/10 text-primary text-[10px] font-bold px-2 py-0.5 rounded-full">URGENT</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-xs font-medium uppercase tracking-tighter">XYZ-7890 • Oil Change</p>
+</div>
+<button class="text-slate-400">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+<!-- Item 3 -->
+<div class="flex items-center gap-4 p-3 bg-white dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm">
+<div class="size-14 rounded-lg bg-slate-200 dark:bg-slate-700 overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="White standard compact car" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAiWblFFPJtS2pQwqR3g0nEg2HaAaukqC4m-vSt7OT9poVIMIL4zsex7wQ-M4b4DFzNGhrfbxA_je0Yt9M3AvKCgFepp7qVU28NBy-t_Jv78Waqz71GopkRTZAYTQsMKhFIA-WC-a-pIiM0UJReSixj44DZ8ykRWs6XzwI_fI6zoAZpkoX2VxsjIp7eJWG1HrE7C9yDPLlAHUKvNj8W5DRkn429l_7TnaqI-n8ymfIoEfX98id7ai2y4vgJvDZqkJis7TLcEh2vW6Px"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-2">
+<p class="text-slate-900 dark:text-slate-100 font-bold truncate">Toyota Corolla</p>
+<span class="bg-amber-100 text-amber-700 text-[10px] font-bold px-2 py-0.5 rounded-full">DUE TODAY</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-xs font-medium uppercase tracking-tighter">COR-5566 • Tire Rotation</p>
+</div>
+<button class="text-slate-400">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Upcoming Schedule -->
+<div class="flex items-center justify-between px-4 pt-6">
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold">Upcoming Schedule</h2>
+</div>
+<div class="p-4 space-y-4 mb-20">
+<!-- Day 1 -->
+<div class="flex gap-4">
+<div class="flex flex-col items-center justify-center w-14 bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-800 py-2">
+<span class="text-xs font-bold text-slate-400 uppercase">Mon</span>
+<span class="text-lg font-bold text-primary">24</span>
+</div>
+<div class="flex-1 space-y-2">
+<div class="p-3 bg-white dark:bg-slate-900 rounded-xl border-l-4 border-l-primary border-y border-r border-slate-100 dark:border-slate-800 shadow-sm">
+<p class="text-xs text-slate-500 font-medium">09:00 AM</p>
+<p class="text-sm font-bold">Audi A4 - Annual Service</p>
+</div>
+<div class="p-3 bg-white dark:bg-slate-900 rounded-xl border-l-4 border-l-slate-300 dark:border-l-slate-700 border-y border-r border-slate-100 dark:border-slate-800 shadow-sm">
+<p class="text-xs text-slate-500 font-medium">02:30 PM</p>
+<p class="text-sm font-bold">Ford F-150 - Transmission Check</p>
+</div>
+</div>
+</div>
+<!-- Day 2 -->
+<div class="flex gap-4">
+<div class="flex flex-col items-center justify-center w-14 bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-800 py-2">
+<span class="text-xs font-bold text-slate-400 uppercase">Tue</span>
+<span class="text-lg font-bold text-slate-900 dark:text-slate-100">25</span>
+</div>
+<div class="flex-1 space-y-2">
+<div class="p-3 bg-white dark:bg-slate-900 rounded-xl border-l-4 border-l-primary border-y border-r border-slate-100 dark:border-slate-800 shadow-sm">
+<p class="text-xs text-slate-500 font-medium">11:00 AM</p>
+<p class="text-sm font-bold">Honda Civic - Safety Inspection</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom NavBar -->
+<div class="fixed bottom-0 left-0 right-0 max-w-md mx-auto z-20">
+<div class="flex gap-1 border-t border-slate-100 dark:border-slate-800 bg-white/95 dark:bg-slate-950/95 backdrop-blur-md px-2 pb-5 pt-3">
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<p class="text-[10px] font-semibold uppercase">Dashboard</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">directions_car</span>
+<p class="text-[10px] font-semibold uppercase">Vehicles</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+<p class="text-[10px] font-semibold uppercase">Bookings</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">group</span>
+<p class="text-[10px] font-semibold uppercase">Customers</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">grid_view</span>
+<p class="text-[10px] font-semibold uppercase">More</p>
+</a>
+</div>
+</div>
+</div>
+</body></html>

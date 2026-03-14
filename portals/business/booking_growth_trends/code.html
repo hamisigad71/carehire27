@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Booking Trends &amp; Growth</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1c74e9",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#111821",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .filled-icon { font-variation-settings: 'FILL' 1; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
+<div class="relative flex h-screen w-full flex-col overflow-hidden max-w-md mx-auto bg-white dark:bg-slate-900 shadow-xl">
+<!-- Header -->
+<div class="flex items-center bg-white dark:bg-slate-900 p-4 border-b border-slate-200 dark:border-slate-800 justify-between sticky top-0 z-10">
+<div class="text-slate-900 dark:text-slate-100 flex size-10 items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer">
+<span class="material-symbols-outlined">arrow_back</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-tight flex-1 text-center">Growth &amp; Trends</h2>
+<div class="flex w-10 items-center justify-end">
+<button class="flex items-center justify-center rounded-full size-10 bg-transparent text-slate-900 dark:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800">
+<span class="material-symbols-outlined">calendar_today</span>
+</button>
+</div>
+</div>
+<!-- Scrollable Content -->
+<div class="flex-1 overflow-y-auto">
+<!-- Tabs -->
+<div class="bg-white dark:bg-slate-900 sticky top-0 z-10">
+<div class="flex border-b border-slate-200 dark:border-slate-800 px-4 gap-8">
+<a class="flex flex-col items-center justify-center border-b-2 border-primary text-primary pb-3 pt-4" href="#">
+<p class="text-sm font-bold tracking-tight">Overview</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-2 border-transparent text-slate-500 dark:text-slate-400 pb-3 pt-4" href="#">
+<p class="text-sm font-medium tracking-tight">Revenue</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-2 border-transparent text-slate-500 dark:text-slate-400 pb-3 pt-4" href="#">
+<p class="text-sm font-medium tracking-tight">Growth</p>
+</a>
+</div>
+</div>
+<!-- Stats & Charts Section -->
+<div class="p-4 space-y-6">
+<!-- New Bookings Card -->
+<div class="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-5 shadow-sm">
+<div class="flex flex-col gap-1 mb-6">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">New Bookings per Week</p>
+<div class="flex items-baseline gap-2">
+<h3 class="text-slate-900 dark:text-slate-100 text-3xl font-bold tracking-tight">1,284</h3>
+<span class="text-emerald-600 dark:text-emerald-400 text-sm font-semibold flex items-center">
+<span class="material-symbols-outlined text-sm">trending_up</span> 12.5%
+                            </span>
+</div>
+</div>
+<div class="grid grid-cols-5 gap-3 items-end h-32 mb-2">
+<div class="bg-primary/10 dark:bg-primary/20 rounded-t-lg w-full" style="height: 45%;"></div>
+<div class="bg-primary/20 dark:bg-primary/30 rounded-t-lg w-full" style="height: 65%;"></div>
+<div class="bg-primary/40 dark:bg-primary/50 rounded-t-lg w-full" style="height: 85%;"></div>
+<div class="bg-primary rounded-t-lg w-full" style="height: 100%;"></div>
+<div class="bg-primary/20 dark:bg-primary/30 rounded-t-lg w-full" style="height: 35%;"></div>
+</div>
+<div class="grid grid-cols-5 gap-3 text-center">
+<p class="text-slate-400 dark:text-slate-500 text-[11px] font-bold">W1</p>
+<p class="text-slate-400 dark:text-slate-500 text-[11px] font-bold">W2</p>
+<p class="text-slate-400 dark:text-slate-500 text-[11px] font-bold">W3</p>
+<p class="text-slate-400 dark:text-slate-500 text-[11px] font-bold">W4</p>
+<p class="text-slate-400 dark:text-slate-500 text-[11px] font-bold">W5</p>
+</div>
+</div>
+<!-- Cumulative Growth Card -->
+<div class="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-5 shadow-sm">
+<div class="flex flex-col gap-1 mb-6">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Cumulative Customer Growth</p>
+<div class="flex items-baseline gap-2">
+<h3 class="text-slate-900 dark:text-slate-100 text-3xl font-bold tracking-tight">42,500</h3>
+<span class="text-emerald-600 dark:text-emerald-400 text-sm font-semibold flex items-center">
+<span class="material-symbols-outlined text-sm">trending_up</span> 8.2%
+                            </span>
+</div>
+</div>
+<div class="relative h-32 w-full mb-4">
+<svg class="w-full h-full overflow-visible" preserveaspectratio="none" viewbox="0 0 100 40">
+<defs>
+<lineargradient id="gradient" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#1c74e9" stop-opacity="0.2"></stop>
+<stop offset="100%" stop-color="#1c74e9" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<path d="M0,35 Q10,32 20,25 T40,20 T60,12 T80,8 T100,2 V40 H0 Z" fill="url(#gradient)"></path>
+<path d="M0,35 Q10,32 20,25 T40,20 T60,12 T80,8 T100,2" fill="none" stroke="#1c74e9" stroke-linecap="round" stroke-width="1.5"></path>
+</svg>
+</div>
+<div class="flex justify-between px-1">
+<p class="text-slate-400 dark:text-slate-500 text-[11px] font-bold">Jan</p>
+<p class="text-slate-400 dark:text-slate-500 text-[11px] font-bold">Feb</p>
+<p class="text-slate-400 dark:text-slate-500 text-[11px] font-bold">Mar</p>
+<p class="text-slate-400 dark:text-slate-500 text-[11px] font-bold">Apr</p>
+<p class="text-slate-400 dark:text-slate-500 text-[11px] font-bold">May</p>
+</div>
+</div>
+<!-- Top Customers Section -->
+<div>
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-slate-900 dark:text-slate-100 text-xl font-bold tracking-tight">Top Customers</h2>
+<button class="text-primary text-sm font-bold">View all</button>
+</div>
+<div class="space-y-3">
+<!-- Customer Row -->
+<div class="flex items-center gap-4 bg-white dark:bg-slate-800 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
+<div class="relative">
+<img alt="Profile of Sarah Jenkins" class="size-12 rounded-full object-cover" data-alt="Professional headshot of a female customer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuATlMSnrmKfR10B4ItgG2k4Y_-jAPEsBtZPmUDlrVkWqvChivpgB0nPlRU3vOCls-rsizPa4aeX-CA3fbih6JvKg4R_XECb4Xgon2yfVkitKH7IJOVXYjvQCsqydS-NtXLBVaEmitaVlA50vkYZz4o_Vj11TJlOs0XeXW3JSd4kkXnx5DY2GzG8mwXIMmnotHpva2-DeEPH4W2vvczEvO21jEGPRfPfzpYxPKC8yhFq6m2PS28UHnB_BgIhck-q_N6NmvFUXOT-PAfk"/>
+<div class="absolute -top-1 -right-1 bg-yellow-400 border-2 border-white dark:border-slate-800 rounded-full size-5 flex items-center justify-center">
+<span class="material-symbols-outlined text-[12px] text-white filled-icon">star</span>
+</div>
+</div>
+<div class="flex-1">
+<h4 class="text-slate-900 dark:text-slate-100 font-bold text-sm">Sarah Jenkins</h4>
+<p class="text-slate-500 dark:text-slate-400 text-xs">14 rentals • Silver Member</p>
+</div>
+<div class="text-right">
+<p class="text-slate-900 dark:text-slate-100 font-bold text-sm">$4,250</p>
+<p class="text-slate-400 dark:text-slate-500 text-[10px] font-bold uppercase tracking-wider">Revenue</p>
+</div>
+</div>
+<!-- Customer Row -->
+<div class="flex items-center gap-4 bg-white dark:bg-slate-800 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
+<div class="relative">
+<img alt="Profile of Michael Chen" class="size-12 rounded-full object-cover" data-alt="Professional headshot of a male customer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwtstpiLw61O1Y3-Zv7qwmXcj3-d7ivjBxXjTJLol2HTG8KdcTHbv0GZVMuO8PckTB8RsUH9BA8n8cTVhHnUIBzyCKYgPe2L1aEBfZ85PdskPx8qqEieb5UykMA-asEJIj8liQ7mGK35Vrp5PF5oi-aBnBZR9kZMwVVDZSFhC-AZgTSTxS7z6z7-P7ICMpkOm8MXDS9Y73MMLMIV-G9hcmQa00Ijf-tQfV9fdb7ZEioGEr4XFYyNEVzSGkugQUapResePgo_ItaPZv"/>
+</div>
+<div class="flex-1">
+<h4 class="text-slate-900 dark:text-slate-100 font-bold text-sm">Michael Chen</h4>
+<p class="text-slate-500 dark:text-slate-400 text-xs">12 rentals • Local Guide</p>
+</div>
+<div class="text-right">
+<p class="text-slate-900 dark:text-slate-100 font-bold text-sm">$3,890</p>
+<p class="text-slate-400 dark:text-slate-500 text-[10px] font-bold uppercase tracking-wider">Revenue</p>
+</div>
+</div>
+<!-- Customer Row -->
+<div class="flex items-center gap-4 bg-white dark:bg-slate-800 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
+<div class="relative">
+<img alt="Profile of Elena Rodriguez" class="size-12 rounded-full object-cover" data-alt="Professional headshot of a female business woman" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdIlGM03WyaQVvvsQoKsf4c5onT9jd7qM5smG8fC5QSQDQ24zVjKdV6QwoGFFepW6tNpX3GK2lDfgINSiNxY13SOtdiZncU9gDjwH8_pTW2wTc9y6p5KehTEnoOkso8Plk9fXQsJQSu3fG6NUpVLcChaQBpeKWw9f-yZE0e3Hy86tV0ywp-Xao0kCKRk00OTi40p0WNdhbnsts_eqCOICq1tkchEe_hQk1AxD60Jg9WBHog-X88QRIhMm6lox-J7xGfWUQqx6P4SfR"/>
+</div>
+<div class="flex-1">
+<h4 class="text-slate-900 dark:text-slate-100 font-bold text-sm">Elena Rodriguez</h4>
+<p class="text-slate-500 dark:text-slate-400 text-xs">9 rentals • Corporate</p>
+</div>
+<div class="text-right">
+<p class="text-slate-900 dark:text-slate-100 font-bold text-sm">$3,120</p>
+<p class="text-slate-400 dark:text-slate-500 text-[10px] font-bold uppercase tracking-wider">Revenue</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Spacer for bottom padding -->
+<div class="h-10"></div>
+</div>
+</div>
+<!-- Bottom Navigation -->
+<div class="flex gap-2 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 pb-6 pt-3 sticky bottom-0 z-10">
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined filled-icon">dashboard</span>
+<p class="text-[10px] font-bold leading-normal tracking-tight">Dashboard</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400 dark:text-slate-500" href="#">
+<span class="material-symbols-outlined">directions_car</span>
+<p class="text-[10px] font-medium leading-normal tracking-tight">Vehicles</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400 dark:text-slate-500" href="#">
+<span class="material-symbols-outlined">confirmation_number</span>
+<p class="text-[10px] font-medium leading-normal tracking-tight">Bookings</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400 dark:text-slate-500" href="#">
+<span class="material-symbols-outlined">group</span>
+<p class="text-[10px] font-medium leading-normal tracking-tight">Customers</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400 dark:text-slate-500" href="#">
+<span class="material-symbols-outlined">more_horiz</span>
+<p class="text-[10px] font-medium leading-normal tracking-tight">More</p>
+</a>
+</div>
+</div>
+</body></html>

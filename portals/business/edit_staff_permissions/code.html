@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1c74e9",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#111821",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<title>Staff Management</title>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen flex flex-col">
+<div class="flex-1 flex flex-col max-w-2xl mx-auto w-full bg-white dark:bg-slate-900 shadow-sm min-h-screen relative">
+<header class="sticky top-0 z-10 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
+<div class="flex items-center p-4 justify-between">
+<div class="flex items-center gap-3">
+<button class="flex items-center justify-center size-10 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-slate-700 dark:text-slate-300">arrow_back</span>
+</button>
+<h1 class="text-xl font-bold tracking-tight">Staff Accounts</h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex items-center justify-center size-10 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-slate-700 dark:text-slate-300">search</span>
+</button>
+<button class="flex items-center justify-center size-10 rounded-full bg-primary text-white shadow-md hover:bg-primary/90 transition-colors">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+<div class="px-4">
+<div class="flex gap-8 overflow-x-auto no-scrollbar">
+<a class="flex flex-col items-center justify-center border-b-2 border-primary text-primary pb-3 pt-2 shrink-0" href="#">
+<span class="text-sm font-bold">All Staff</span>
+</a>
+<a class="flex flex-col items-center justify-center border-b-2 border-transparent text-slate-500 dark:text-slate-400 pb-3 pt-2 shrink-0" href="#">
+<span class="text-sm font-medium">Active</span>
+</a>
+<a class="flex flex-col items-center justify-center border-b-2 border-transparent text-slate-500 dark:text-slate-400 pb-3 pt-2 shrink-0" href="#">
+<span class="text-sm font-medium">Inactive</span>
+</a>
+<a class="flex flex-col items-center justify-center border-b-2 border-transparent text-slate-500 dark:text-slate-400 pb-3 pt-2 shrink-0" href="#">
+<span class="text-sm font-medium">On Leave</span>
+</a>
+</div>
+</div>
+</header>
+<main class="flex-1 overflow-y-auto">
+<div class="p-4 space-y-1">
+<div class="flex items-center gap-4 bg-white dark:bg-slate-900 p-3 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors border border-transparent hover:border-slate-100 dark:hover:border-slate-700">
+<div class="relative">
+<div class="size-14 rounded-full bg-slate-200 dark:bg-slate-700 bg-cover bg-center border-2 border-white dark:border-slate-800" data-alt="Portrait of a smiling male manager" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAdR28DOZ8uD_hFkXF6qjQx-mx8icTqpZYLuPzfZU32Kts4wWHXm_LjZ35osqKCPACaMTw0sqWgnaqnr-AboFgTZqYZaYM7kgXceJK3pYrWecjJgwa0ROVAsFwd9q3KdxO9JYjRfLXl3o2oWXfXyRG_ru-0kvn9EgbiJOXuScPXGeyBHrpkzW-6gnneb9pTICqX5CFjlJucUJoPuDzdI6fyXxFXF1dbUb1Um58bnmuUz_ALv2wcT8Yv0qY8rKvHRX4IeRMp0GBFHFbA");'></div>
+<div class="absolute bottom-0 right-0 size-4 rounded-full bg-green-500 border-2 border-white dark:border-slate-900"></div>
+</div>
+<div class="flex-1 min-w-0"><p class="text-base font-semibold truncate">Alex Johnson</p>
+<div class="flex items-center gap-2">
+<p class="text-sm text-slate-500 dark:text-slate-400 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">stars</span> Manager
+    </p>
+<button class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-0.5 rounded-full hover:bg-primary/20 transition-colors">Edit Permissions</button>
+</div></div>
+<button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<div class="flex items-center gap-4 bg-white dark:bg-slate-900 p-3 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors border border-transparent hover:border-slate-100 dark:hover:border-slate-700">
+<div class="relative">
+<div class="size-14 rounded-full bg-slate-200 dark:bg-slate-700 bg-cover bg-center border-2 border-white dark:border-slate-800" data-alt="Portrait of a female staff member" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuATOplAb1dTxCceyn0l0eg8BgB1TuJdsyIXobQpLhvMI4lwAbNfLyT9C7IeNimSGACD4YBzdfRCvvf9Z3FXnCU2wMQEQTdE5CDp0loyQlHOFKxgnR4gxCTerKuU3Bg45QDv4bp9ZckIRQOIaQkbfA0oT4y2ngQAPyd_Z9KgFelW_MU9EVdEKipPAEPBXR_TIObh41rrL012yFhVOh_XxgPVfatvOWaf22NoIKmepW_d1KFBTREsPDcVynBzx5Kt3SMdSeVZXkOqAIw_");'></div>
+<div class="absolute bottom-0 right-0 size-4 rounded-full bg-green-500 border-2 border-white dark:border-slate-900"></div>
+</div>
+<div class="flex-1 min-w-0"><p class="text-base font-semibold truncate">Sarah Miller</p>
+<div class="flex items-center gap-2">
+<p class="text-sm text-slate-500 dark:text-slate-400 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">badge</span> Front Desk
+    </p>
+<button class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-0.5 rounded-full hover:bg-primary/20 transition-colors">Edit Permissions</button>
+</div></div>
+<button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<div class="flex items-center gap-4 bg-white dark:bg-slate-900 p-3 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors border border-transparent hover:border-slate-100 dark:hover:border-slate-700">
+<div class="relative">
+<div class="size-14 rounded-full bg-slate-200 dark:bg-slate-700 bg-cover bg-center border-2 border-white dark:border-slate-800 opacity-60" data-alt="Portrait of a male driver" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC2XvyJVBkoDnoZXZytxNcGGlmhkGkslReyWxcIpsJaIODx1B7Gtnn1DuGn9VE4vWBlMJRU3nbwxE7U-YFp676GXSgSI6WmvltJgkC5pLAeMJEg38vZ2l-24zEEngXWD_LO9mk_Dt-C11kqI2JKDp0bvwn4GMC2FcRN4m75MNBPDkT1SKc6RitG2zm9A8dgtOuovdVXQ7OwsDUuS9Ai5RwKznp8OLEiwUncBGIhWKRQn7G36neibveWN42K6_fDtP30fFYIm_vc_IZ4");'></div>
+<div class="absolute bottom-0 right-0 size-4 rounded-full bg-slate-400 border-2 border-white dark:border-slate-900"></div>
+</div>
+<div class="flex-1 min-w-0"><p class="text-base font-semibold truncate opacity-60">Michael Chen</p>
+<div class="flex items-center gap-2">
+<p class="text-sm text-slate-500 dark:text-slate-400 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">local_shipping</span> Driver
+    </p>
+<button class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-0.5 rounded-full hover:bg-primary/20 transition-colors">Edit Permissions</button>
+</div></div>
+<button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<div class="flex items-center gap-4 bg-white dark:bg-slate-900 p-3 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors border border-transparent hover:border-slate-100 dark:hover:border-slate-700">
+<div class="relative">
+<div class="size-14 rounded-full bg-slate-200 dark:bg-slate-700 bg-cover bg-center border-2 border-white dark:border-slate-800" data-alt="Portrait of a female delivery personnel" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBw_YQ8QGSJviEKYDGisTz1QDYN61_ApnR_QfypVjoB-CMyTd3yjbXnrugZzvQbogv8FZ53vxA1vykzQeUeg_vB15TDgsXy8qlzgVd0nQUDPbL3wB7VbdzRDoHuPumCI9JUgYTiKjYvI5praX3Ev-XOvKlWYiKGuBgVcNDvDxc7AxqCBLLDJXo3dYfx2bfZosX2qRVva6NpzkQmHZJXlH6v1hWqSclZ5_tKpmTBAU0cfgcn4Z7UZupAke19lbR4FkyoKSynv6A3zJgR");'></div>
+<div class="absolute bottom-0 right-0 size-4 rounded-full bg-green-500 border-2 border-white dark:border-slate-900"></div>
+</div>
+<div class="flex-1 min-w-0"><p class="text-base font-semibold truncate">Elena Rodriguez</p>
+<div class="flex items-center gap-2">
+<p class="text-sm text-slate-500 dark:text-slate-400 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">delivery_dining</span> Delivery
+    </p>
+<button class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-0.5 rounded-full hover:bg-primary/20 transition-colors">Edit Permissions</button>
+</div></div>
+<button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<div class="flex items-center gap-4 bg-white dark:bg-slate-900 p-3 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors border border-transparent hover:border-slate-100 dark:hover:border-slate-700">
+<div class="relative">
+<div class="size-14 rounded-full bg-slate-200 dark:bg-slate-700 bg-cover bg-center border-2 border-white dark:border-slate-800" data-alt="Portrait of a male staff member" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBBLeAmXknQfMiQqSvYcF6nK7z8cL8mQVdiyxip1BWkeFRQP9g2APrhMLSHOB1eMRZPmeLeQz-1D2NuRtrDT0ZaiZDcRerczjQq7ooKQ3ce8nLevwyvPX86U2MAsjfC_GH2eg5j8gT40Lmg27E6SRjapJBztkN1S12c84XVCZC0d30SuO2XbmVj0XOkZHMJIhGuKdrjbGQCyYIBCjqlgcLHFw6TWzQO-lhh7_Uxa8GToKbd7Re4Tr3U264__Cr5ykZnDUu--IdCPQ9j");'></div>
+<div class="absolute bottom-0 right-0 size-4 rounded-full bg-green-500 border-2 border-white dark:border-slate-900"></div>
+</div>
+<div class="flex-1 min-w-0"><p class="text-base font-semibold truncate">James Wilson</p>
+<div class="flex items-center gap-2">
+<p class="text-sm text-slate-500 dark:text-slate-400 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">inventory_2</span> Warehouse
+    </p>
+<button class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-0.5 rounded-full hover:bg-primary/20 transition-colors">Edit Permissions</button>
+</div></div>
+<button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+<div class="px-4 py-8">
+<button class="w-full flex items-center justify-center gap-2 py-4 px-6 bg-primary/10 text-primary font-bold rounded-xl border-2 border-dashed border-primary/30 hover:bg-primary/20 transition-all">
+<span class="material-symbols-outlined">person_add</span>
+                    Add New Staff Member
+                </button>
+</div>
+<div class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-end justify-center sm:items-center p-0 sm:p-4" id="permissions-modal">
+<div class="bg-white dark:bg-slate-900 w-full max-w-md rounded-t-2xl sm:rounded-2xl shadow-2xl overflow-hidden animate-in slide-in-from-bottom duration-300">
+<div class="p-6 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
+<div>
+<h3 class="text-lg font-bold">Edit Permissions</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400">Managing permissions for Alex Johnson</p>
+</div>
+<button class="size-8 flex items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-slate-400">close</span>
+</button>
+</div>
+<div class="p-6 space-y-4">
+<label class="flex items-center justify-between p-3 rounded-xl border border-slate-100 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-slate-400">directions_car</span>
+<span class="font-medium">Manage Vehicles</span>
+</div>
+<input checked="" class="w-5 h-5 rounded border-slate-300 text-primary focus:ring-primary transition-colors" type="checkbox"/>
+</label>
+<label class="flex items-center justify-between p-3 rounded-xl border border-slate-100 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-slate-400">payments</span>
+<span class="font-medium">View Finance</span>
+</div>
+<input class="w-5 h-5 rounded border-slate-300 text-primary focus:ring-primary transition-colors" type="checkbox"/>
+</label>
+<label class="flex items-center justify-between p-3 rounded-xl border border-slate-100 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-slate-400">calendar_month</span>
+<span class="font-medium">Edit Bookings</span>
+</div>
+<input checked="" class="w-5 h-5 rounded border-slate-300 text-primary focus:ring-primary transition-colors" type="checkbox"/>
+</label>
+<label class="flex items-center justify-between p-3 rounded-xl border border-slate-100 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-slate-400">group</span>
+<span class="font-medium">Manage Staff</span>
+</div>
+<input class="w-5 h-5 rounded border-slate-300 text-primary focus:ring-primary transition-colors" type="checkbox"/>
+</label>
+</div>
+<div class="p-6 pt-2">
+<button class="w-full bg-primary text-white font-bold py-3 rounded-xl shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all">
+                Save Permissions
+            </button>
+</div>
+</div>
+</div></main>
+<nav class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 flex justify-around items-center px-4 py-2 safe-area-bottom">
+<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors py-1" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-medium uppercase tracking-wider">Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary py-1" href="#">
+<span class="material-symbols-outlined fill-1">group</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Staff</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors py-1" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="text-[10px] font-medium uppercase tracking-wider">Orders</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors py-1" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-medium uppercase tracking-wider">Settings</span>
+</a>
+</nav>
+</div>
+</body></html>

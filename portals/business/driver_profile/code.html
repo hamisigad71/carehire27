@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1c74e9",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#111821",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased">
+<div class="relative flex min-h-screen w-full flex-col max-w-md mx-auto bg-white dark:bg-slate-900 shadow-xl overflow-x-hidden">
+<header class="flex items-center p-4 justify-between sticky top-0 z-10 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-100 dark:border-slate-800">
+<button class="text-slate-900 dark:text-slate-100 flex size-10 items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h2 class="text-lg font-bold leading-tight tracking-tight flex-1 text-center pr-10">Driver Profile</h2>
+<button class="flex size-10 items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</header>
+<main class="flex-1 overflow-y-auto pb-20">
+<div class="flex p-6 flex-col items-center gap-6">
+<div class="relative">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-32 ring-4 ring-primary/10" data-alt="Professional male driver headshot portrait" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBrVhVZNnzzWmgTa1wy4AjRhZucFW3PWkA1-2CfIMuwN_XuD5kIu1QlJECJMlgiZWVesfo-OYYelDSgTsAMzkH4gPp41ihUiro9HJAiSZWtd4K0QrCDXHgVZMgvntzGSVKe0afJtGB_u5xNA5jzXMjgnM-ZW8mi7r3RpBVe5VjBHupkJfYL9XgmqNaJ1zG_vmi1PYslkvLxonoZZM9sBxuVP5XijyZ714fhI2APvO6-p7NiGfYwM8hveUz1e0VqgyigrV4JbH-msIvv");'>
+</div>
+<div class="absolute bottom-1 right-1 size-6 bg-green-500 border-4 border-white dark:border-slate-900 rounded-full"></div>
+</div>
+<div class="flex flex-col items-center gap-1 text-center">
+<h1 class="text-2xl font-bold tracking-tight">Marcus Henderson</h1>
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded-full bg-primary/10 text-primary text-xs font-semibold uppercase tracking-wider">Available</span>
+<span class="text-slate-500 dark:text-slate-400 text-sm">Senior Chauffeur</span>
+</div>
+</div>
+<div class="flex w-full gap-3">
+<button class="flex-1 flex items-center justify-center gap-2 rounded-xl h-12 bg-primary/10 text-primary hover:bg-primary/20 transition-all font-bold text-sm">
+<span class="material-symbols-outlined text-lg">edit</span>
+                        Edit Profile
+                    </button>
+<button class="flex-1 flex items-center justify-center gap-2 rounded-xl h-12 bg-primary text-white hover:opacity-90 transition-all font-bold text-sm shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-lg">chat_bubble</span>
+                        Contact
+                    </button>
+</div>
+</div>
+<section class="px-6 space-y-4">
+<h3 class="text-slate-900 dark:text-slate-100 text-sm font-bold uppercase tracking-widest">Driver Details</h3>
+<div class="space-y-3">
+<div class="flex items-center gap-4 bg-slate-50 dark:bg-slate-800/50 p-4 rounded-xl border border-slate-100 dark:border-slate-800">
+<div class="flex size-10 items-center justify-center rounded-lg bg-white dark:bg-slate-800 shadow-sm">
+<span class="material-symbols-outlined text-primary">phone</span>
+</div>
+<div class="flex flex-col">
+<span class="text-xs text-slate-500 dark:text-slate-400">Phone Number</span>
+<span class="text-sm font-semibold">+1 (555) 342-9012</span>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-slate-50 dark:bg-slate-800/50 p-4 rounded-xl border border-slate-100 dark:border-slate-800">
+<div class="flex size-10 items-center justify-center rounded-lg bg-white dark:bg-slate-800 shadow-sm">
+<span class="material-symbols-outlined text-primary">mail</span>
+</div>
+<div class="flex flex-col">
+<span class="text-xs text-slate-500 dark:text-slate-400">Email Address</span>
+<span class="text-sm font-semibold">m.henderson@chauffeur.co</span>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-slate-50 dark:bg-slate-800/50 p-4 rounded-xl border border-slate-100 dark:border-slate-800">
+<div class="flex size-10 items-center justify-center rounded-lg bg-white dark:bg-slate-800 shadow-sm">
+<span class="material-symbols-outlined text-primary">badge</span>
+</div>
+<div class="flex flex-col">
+<span class="text-xs text-slate-500 dark:text-slate-400">License Number</span>
+<span class="text-sm font-semibold">DL-4492-990-221</span>
+</div>
+</div>
+</div>
+</section>
+<section class="px-6 py-8 space-y-4">
+<div class="flex items-center justify-between">
+<h3 class="text-slate-900 dark:text-slate-100 text-sm font-bold uppercase tracking-widest">Assigned Bookings</h3>
+<button class="text-primary text-xs font-bold hover:underline">View All</button>
+</div>
+<div class="space-y-4">
+<div class="bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded-xl p-4 shadow-sm">
+<div class="flex justify-between items-start mb-3">
+<div>
+<p class="text-xs text-primary font-bold uppercase mb-1">Upcoming Trip</p>
+<h4 class="font-bold text-slate-900 dark:text-slate-100">JFK Airport Transfer</h4>
+</div>
+<span class="text-xs bg-slate-100 dark:bg-slate-700 px-2 py-1 rounded font-medium">Oct 24, 02:30 PM</span>
+</div>
+<div class="flex items-center gap-3 text-slate-500 dark:text-slate-400 text-sm">
+<span class="material-symbols-outlined text-base">directions_car</span>
+<span>Mercedes S-Class (K-7729)</span>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded-xl p-4 shadow-sm opacity-75">
+<div class="flex justify-between items-start mb-3">
+<div>
+<p class="text-xs text-slate-400 font-bold uppercase mb-1">Completed</p>
+<h4 class="font-bold text-slate-900 dark:text-slate-100">Downtown Business Plaza</h4>
+</div>
+<span class="text-xs bg-slate-100 dark:bg-slate-700 px-2 py-1 rounded font-medium">Oct 22, 09:00 AM</span>
+</div>
+<div class="flex items-center gap-3 text-slate-500 dark:text-slate-400 text-sm">
+<span class="material-symbols-outlined text-base">check_circle</span>
+<span>Trip successful - 5.0 Rating</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<nav class="fixed bottom-0 w-full max-w-md bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 px-4 py-2 flex justify-between items-center z-20">
+<a class="flex flex-col items-center gap-1 p-2 text-slate-400" href="#">
+<span class="material-symbols-outlined">directions_car</span>
+<span class="text-[10px] font-medium">Fleet</span>
+</a>
+<a class="flex flex-col items-center gap-1 p-2 text-primary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">group</span>
+<span class="text-[10px] font-bold">Drivers</span>
+</a>
+<a class="flex flex-col items-center gap-1 p-2 text-slate-400" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="text-[10px] font-medium">Bookings</span>
+</a>
+<a class="flex flex-col items-center gap-1 p-2 text-slate-400" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-medium">Settings</span>
+</a>
+</nav>
+</div>
+</body></html>

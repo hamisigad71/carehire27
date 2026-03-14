@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1c74e9",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#111821",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<title>Role Management - Car Hire Pro</title>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
+<div class="relative flex min-h-screen w-full flex-col bg-background-light dark:bg-background-dark overflow-x-hidden max-w-md mx-auto shadow-2xl">
+<!-- Header -->
+<header class="sticky top-0 z-10 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+<div class="flex items-center p-4 justify-between">
+<div class="flex items-center gap-3">
+<div class="text-slate-900 dark:text-slate-100 flex size-10 items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer">
+<span class="material-symbols-outlined">arrow_back</span>
+</div>
+<h2 class="text-lg font-bold tracking-tight">Role Management</h2>
+</div>
+<div class="flex items-center">
+<button class="flex size-10 items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined">search</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-1 overflow-y-auto pb-24">
+<!-- Summary Card -->
+<div class="p-4">
+<div class="bg-primary/10 dark:bg-primary/20 border border-primary/20 rounded-xl p-4 flex items-center justify-between">
+<div>
+<p class="text-sm font-medium text-primary">Total Staff</p>
+<h3 class="text-2xl font-bold text-slate-900 dark:text-slate-100">42 Members</h3>
+</div>
+<button class="bg-primary text-white px-4 py-2 rounded-lg font-semibold text-sm flex items-center gap-2 shadow-sm active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-sm">add</span>
+                        New Role
+                    </button>
+</div>
+</div>
+<!-- Role List Section -->
+<div class="px-4 py-2">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-sm font-bold uppercase tracking-wider text-slate-500">Active Roles</h3>
+<span class="text-xs bg-slate-200 dark:bg-slate-800 px-2 py-1 rounded-full font-medium">4 Total</span>
+</div>
+<div class="space-y-3">
+<!-- Administrator Role -->
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-4 flex items-center justify-between hover:border-primary transition-colors group">
+<div class="flex items-center gap-4">
+<div class="flex size-12 items-center justify-center rounded-lg bg-primary/10 text-primary">
+<span class="material-symbols-outlined">admin_panel_settings</span>
+</div>
+<div class="flex flex-col">
+<p class="text-base font-semibold leading-tight">Administrator</p>
+<p class="text-sm text-slate-500 dark:text-slate-400">12 staff members</p>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="p-2 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">settings_suggest</span>
+</button>
+<button class="p-2 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Manager Role -->
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-4 flex items-center justify-between hover:border-primary transition-colors">
+<div class="flex items-center gap-4">
+<div class="flex size-12 items-center justify-center rounded-lg bg-emerald-100 text-emerald-600 dark:bg-emerald-900/30 dark:text-emerald-400">
+<span class="material-symbols-outlined">badge</span>
+</div>
+<div class="flex flex-col">
+<p class="text-base font-semibold leading-tight">Manager</p>
+<p class="text-sm text-slate-500 dark:text-slate-400">8 staff members</p>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="p-2 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">settings_suggest</span>
+</button>
+<button class="p-2 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Fleet Supervisor Role -->
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-4 flex items-center justify-between hover:border-primary transition-colors">
+<div class="flex items-center gap-4">
+<div class="flex size-12 items-center justify-center rounded-lg bg-amber-100 text-amber-600 dark:bg-amber-900/30 dark:text-amber-400">
+<span class="material-symbols-outlined">local_shipping</span>
+</div>
+<div class="flex flex-col">
+<p class="text-base font-semibold leading-tight">Fleet Supervisor</p>
+<p class="text-sm text-slate-500 dark:text-slate-400">15 staff members</p>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="p-2 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">settings_suggest</span>
+</button>
+<button class="p-2 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Sales Agent Role -->
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-4 flex items-center justify-between hover:border-primary transition-colors">
+<div class="flex items-center gap-4">
+<div class="flex size-12 items-center justify-center rounded-lg bg-purple-100 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400">
+<span class="material-symbols-outlined">point_of_sale</span>
+</div>
+<div class="flex flex-col">
+<p class="text-base font-semibold leading-tight">Sales Agent</p>
+<p class="text-sm text-slate-500 dark:text-slate-400">7 staff members</p>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="p-2 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">settings_suggest</span>
+</button>
+<button class="p-2 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Permissions Info -->
+<div class="m-4 bg-slate-100 dark:bg-slate-800/50 rounded-xl p-4 flex items-start gap-3 border border-slate-200 dark:border-slate-800">
+<span class="material-symbols-outlined text-primary text-xl">info</span>
+<p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                    Permissions can be updated individually for each role. Changes will take effect immediately for all members assigned to the modified role.
+                </p>
+</div>
+</main>
+<!-- Bottom Navigation -->
+<nav class="fixed bottom-0 left-0 right-0 z-20 bg-white/90 dark:bg-background-dark/90 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 max-w-md mx-auto">
+<div class="flex justify-around items-center h-20 px-4">
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors group" href="#">
+<span class="material-symbols-outlined text-[24px]">dashboard</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Dashboard</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors group" href="#">
+<span class="material-symbols-outlined text-[24px]">directions_car</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Vehicles</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors group" href="#">
+<span class="material-symbols-outlined text-[24px]">calendar_month</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Bookings</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary group" href="#">
+<span class="material-symbols-outlined text-[24px] fill-current">group</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Customers</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors group" href="#">
+<span class="material-symbols-outlined text-[24px]">more_horiz</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">More</span>
+</a>
+</div>
+<!-- SafeArea Indicator (iOS style) -->
+<div class="h-6 w-full flex justify-center items-center pb-2">
+<div class="h-1.5 w-32 bg-slate-300 dark:bg-slate-700 rounded-full opacity-50"></div>
+</div>
+</nav>
+</div>
+</body></html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1c74e9",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#111821",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<title>Invoices | Car Rental Management</title>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Header Section -->
+<header class="flex items-center bg-white dark:bg-slate-900 px-4 py-4 justify-between border-b border-slate-200 dark:border-slate-800 sticky top-0 z-10">
+<div class="flex items-center gap-3">
+<div class="text-slate-900 dark:text-slate-100 flex size-10 shrink-0 items-center justify-center rounded-lg bg-slate-100 dark:bg-slate-800">
+<span class="material-symbols-outlined">menu</span>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-tight">Invoices</h2>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex size-10 items-center justify-center rounded-lg bg-primary text-white shadow-sm">
+<span class="material-symbols-outlined">add</span>
+</button>
+<button class="flex size-10 items-center justify-center rounded-lg bg-transparent text-slate-900 dark:text-slate-100">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</div>
+</header>
+<!-- Stats Overview (Quick Insights) -->
+<div class="grid grid-cols-3 gap-3 p-4 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
+<div class="flex flex-col">
+<p class="text-[10px] uppercase tracking-wider text-slate-500 font-bold">Total</p>
+<p class="text-lg font-bold text-primary">$24,500</p>
+</div>
+<div class="flex flex-col border-l border-slate-200 dark:border-slate-800 pl-3">
+<p class="text-[10px] uppercase tracking-wider text-slate-500 font-bold">Pending</p>
+<p class="text-lg font-bold text-amber-500">$3,200</p>
+</div>
+<div class="flex flex-col border-l border-slate-200 dark:border-slate-800 pl-3">
+<p class="text-[10px] uppercase tracking-wider text-slate-500 font-bold">Overdue</p>
+<p class="text-lg font-bold text-rose-500">$1,150</p>
+</div>
+</div>
+<!-- Search and Filter Section -->
+<div class="flex flex-col gap-3 p-4 bg-white dark:bg-slate-900">
+<label class="flex flex-col w-full">
+<div class="flex w-full items-stretch rounded-xl h-12 bg-slate-100 dark:bg-slate-800 overflow-hidden border border-transparent focus-within:border-primary transition-all">
+<div class="text-slate-500 flex items-center justify-center pl-4">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="w-full bg-transparent border-none focus:ring-0 text-slate-900 dark:text-slate-100 placeholder:text-slate-500 px-3 text-base" placeholder="Search ID, customer or vehicle"/>
+</div>
+</label>
+<div class="flex gap-2 overflow-x-auto pb-1 no-scrollbar">
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary px-5 text-white shadow-sm">
+<span class="text-sm font-semibold">All</span>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-slate-100 dark:bg-slate-800 px-5 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+<span class="text-sm font-medium">Paid</span>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-slate-100 dark:bg-slate-800 px-5 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+<span class="text-sm font-medium">Pending</span>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-slate-100 dark:bg-slate-800 px-5 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+<span class="text-sm font-medium">Overdue</span>
+</button>
+</div>
+</div>
+<!-- Invoice List Section -->
+<div class="flex flex-col gap-px bg-slate-200 dark:bg-slate-800 flex-1">
+<!-- Invoice Item 1 -->
+<div class="flex items-center gap-4 bg-white dark:bg-slate-900 px-4 py-4 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<div class="flex size-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+<span class="material-symbols-outlined">receipt_long</span>
+</div>
+<div class="flex flex-1 flex-col">
+<div class="flex items-center justify-between">
+<p class="text-slate-900 dark:text-slate-100 text-base font-bold leading-tight">INV-2023-892</p>
+<p class="text-slate-900 dark:text-slate-100 text-base font-bold">$1,240.00</p>
+</div>
+<div class="flex items-center justify-between mt-1">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Alexander Wright</p>
+<div class="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
+<span class="size-1.5 rounded-full bg-emerald-600 dark:bg-emerald-400"></span>
+<span class="text-[11px] font-bold uppercase tracking-wider">Paid</span>
+</div>
+</div>
+<p class="text-slate-400 text-xs mt-1">Oct 24, 2023 • Tesla Model 3</p>
+</div>
+</div>
+<!-- Invoice Item 2 -->
+<div class="flex items-center gap-4 bg-white dark:bg-slate-900 px-4 py-4 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<div class="flex size-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+<span class="material-symbols-outlined">receipt_long</span>
+</div>
+<div class="flex flex-1 flex-col">
+<div class="flex items-center justify-between">
+<p class="text-slate-900 dark:text-slate-100 text-base font-bold leading-tight">INV-2023-891</p>
+<p class="text-slate-900 dark:text-slate-100 text-base font-bold">$450.00</p>
+</div>
+<div class="flex items-center justify-between mt-1">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Sophia Martinez</p>
+<div class="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-amber-100 dark:bg-amber-500/10 text-amber-600 dark:text-amber-400">
+<span class="size-1.5 rounded-full bg-amber-600 dark:bg-amber-400"></span>
+<span class="text-[11px] font-bold uppercase tracking-wider">Pending</span>
+</div>
+</div>
+<p class="text-slate-400 text-xs mt-1">Oct 22, 2023 • Toyota Camry</p>
+</div>
+</div>
+<!-- Invoice Item 3 -->
+<div class="flex items-center gap-4 bg-white dark:bg-slate-900 px-4 py-4 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<div class="flex size-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+<span class="material-symbols-outlined">receipt_long</span>
+</div>
+<div class="flex flex-1 flex-col">
+<div class="flex items-center justify-between">
+<p class="text-slate-900 dark:text-slate-100 text-base font-bold leading-tight">INV-2023-889</p>
+<p class="text-slate-900 dark:text-slate-100 text-base font-bold">$2,100.00</p>
+</div>
+<div class="flex items-center justify-between mt-1">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Marcus Johnson</p>
+<div class="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-rose-100 dark:bg-rose-500/10 text-rose-600 dark:text-rose-400">
+<span class="size-1.5 rounded-full bg-rose-600 dark:bg-rose-400"></span>
+<span class="text-[11px] font-bold uppercase tracking-wider">Overdue</span>
+</div>
+</div>
+<p class="text-slate-400 text-xs mt-1">Oct 18, 2023 • BMW X5</p>
+</div>
+</div>
+<!-- Invoice Item 4 -->
+<div class="flex items-center gap-4 bg-white dark:bg-slate-900 px-4 py-4 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<div class="flex size-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+<span class="material-symbols-outlined">receipt_long</span>
+</div>
+<div class="flex flex-1 flex-col">
+<div class="flex items-center justify-between">
+<p class="text-slate-900 dark:text-slate-100 text-base font-bold leading-tight">INV-2023-885</p>
+<p class="text-slate-900 dark:text-slate-100 text-base font-bold">$780.00</p>
+</div>
+<div class="flex items-center justify-between mt-1">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Emily Chen</p>
+<div class="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
+<span class="size-1.5 rounded-full bg-emerald-600 dark:bg-emerald-400"></span>
+<span class="text-[11px] font-bold uppercase tracking-wider">Paid</span>
+</div>
+</div>
+<p class="text-slate-400 text-xs mt-1">Oct 15, 2023 • Honda Accord</p>
+</div>
+</div>
+<!-- Invoice Item 5 -->
+<div class="flex items-center gap-4 bg-white dark:bg-slate-900 px-4 py-4 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<div class="flex size-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+<span class="material-symbols-outlined">receipt_long</span>
+</div>
+<div class="flex flex-1 flex-col">
+<div class="flex items-center justify-between">
+<p class="text-slate-900 dark:text-slate-100 text-base font-bold leading-tight">INV-2023-880</p>
+<p class="text-slate-900 dark:text-slate-100 text-base font-bold">$1,450.00</p>
+</div>
+<div class="flex items-center justify-between mt-1">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">David Miller</p>
+<div class="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
+<span class="size-1.5 rounded-full bg-emerald-600 dark:bg-emerald-400"></span>
+<span class="text-[11px] font-bold uppercase tracking-wider">Paid</span>
+</div>
+</div>
+<p class="text-slate-400 text-xs mt-1">Oct 10, 2023 • Audi A4</p>
+</div>
+</div>
+</div>
+<!-- FAB Action Button -->
+<button class="fixed bottom-24 right-6 flex size-14 items-center justify-center rounded-full bg-primary text-white shadow-lg z-20">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+<!-- Bottom Navigation Bar -->
+<div class="sticky bottom-0 w-full bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 px-4 pb-6 pt-2 safe-area-bottom">
+<div class="flex gap-2 justify-around">
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined">home</span>
+</div>
+<p class="text-[10px] font-bold uppercase tracking-wider">Home</p>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined font-fill">description</span>
+</div>
+<p class="text-[10px] font-bold uppercase tracking-wider">Invoices</p>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined">directions_car</span>
+</div>
+<p class="text-[10px] font-bold uppercase tracking-wider">Fleet</p>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined">person</span>
+</div>
+<p class="text-[10px] font-bold uppercase tracking-wider">Clients</p>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined">settings</span>
+</div>
+<p class="text-[10px] font-bold uppercase tracking-wider">More</p>
+</a>
+</div>
+</div>
+</div>
+<style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .font-fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        @supports (padding-bottom: env(safe-area-inset-bottom)) {
+            .safe-area-bottom {
+                padding-bottom: calc(1.5rem + env(safe-area-inset-bottom));
+            }
+        }
+    </style>
+</body></html>

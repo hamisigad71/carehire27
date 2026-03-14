@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Transaction History - Car Hire Business</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1c74e9",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#111821",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark max-w-md mx-auto shadow-xl">
+<!-- Header Section -->
+<header class="sticky top-0 z-10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+<div class="flex items-center p-4 justify-between">
+<div class="flex items-center gap-4">
+<button class="flex size-10 items-center justify-center rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="text-xl font-bold tracking-tight">Financial History</h1>
+</div>
+<button class="flex size-10 items-center justify-center rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined">search</span>
+</button>
+</div>
+<!-- Category Tabs -->
+<div class="px-4">
+<div class="flex gap-6">
+<button class="flex flex-col items-center justify-center border-b-2 border-primary text-primary pb-3 pt-2">
+<span class="text-sm font-semibold">All</span>
+</button>
+<button class="flex flex-col items-center justify-center border-b-2 border-transparent text-slate-500 dark:text-slate-400 pb-3 pt-2 hover:text-primary transition-colors">
+<span class="text-sm font-semibold">Revenue</span>
+</button>
+<button class="flex flex-col items-center justify-center border-b-2 border-transparent text-slate-500 dark:text-slate-400 pb-3 pt-2 hover:text-primary transition-colors">
+<span class="text-sm font-semibold">Expenses</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-1 overflow-y-auto pb-24">
+<!-- Summary Card -->
+<div class="p-4">
+<div class="bg-primary p-6 rounded-xl text-white shadow-lg shadow-primary/20">
+<p class="text-sm opacity-80 mb-1">Total Balance</p>
+<h2 class="text-3xl font-bold">$12,450.00</h2>
+<div class="mt-4 flex gap-4 text-xs">
+<div class="flex items-center gap-1 bg-white/20 px-2 py-1 rounded-full">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span>+12.5% this month</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Date Group: Today -->
+<section>
+<div class="px-4 py-2 bg-slate-200/50 dark:bg-slate-800/50">
+<h3 class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Today</h3>
+</div>
+<div class="divide-y divide-slate-100 dark:divide-slate-800">
+<!-- Transaction 1: Revenue -->
+<div class="flex items-center gap-4 bg-white dark:bg-slate-900/50 px-4 py-4 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+<div class="flex size-12 shrink-0 items-center justify-center rounded-xl bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400">
+<span class="material-symbols-outlined">directions_car</span>
+</div>
+<div class="flex flex-1 flex-col">
+<p class="text-sm font-bold">Booking: Toyota Camry (KCH 123X)</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">10:30 AM • M-Pesa</p>
+</div>
+<div class="text-right">
+<p class="text-sm font-bold text-green-600 dark:text-green-400">+$450.00</p>
+</div>
+</div>
+<!-- Transaction 2: Expense -->
+<div class="flex items-center gap-4 bg-white dark:bg-slate-900/50 px-4 py-4 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+<div class="flex size-12 shrink-0 items-center justify-center rounded-xl bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400">
+<span class="material-symbols-outlined">local_gas_station</span>
+</div>
+<div class="flex flex-1 flex-col">
+<p class="text-sm font-bold">Fuel Refill - Ford Ranger</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">08:15 AM • Credit Card</p>
+</div>
+<div class="text-right">
+<p class="text-sm font-bold text-red-600 dark:text-red-400">-$85.50</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Date Group: Yesterday -->
+<section class="mt-2">
+<div class="px-4 py-2 bg-slate-200/50 dark:bg-slate-800/50">
+<h3 class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Yesterday</h3>
+</div>
+<div class="divide-y divide-slate-100 dark:divide-slate-800">
+<!-- Transaction 3: Expense -->
+<div class="flex items-center gap-4 bg-white dark:bg-slate-900/50 px-4 py-4 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+<div class="flex size-12 shrink-0 items-center justify-center rounded-xl bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400">
+<span class="material-symbols-outlined">build</span>
+</div>
+<div class="flex flex-1 flex-col">
+<p class="text-sm font-bold">Scheduled Maintenance (Brakes)</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">04:45 PM • Bank Transfer</p>
+</div>
+<div class="text-right">
+<p class="text-sm font-bold text-red-600 dark:text-red-400">-$320.00</p>
+</div>
+</div>
+<!-- Transaction 4: Revenue -->
+<div class="flex items-center gap-4 bg-white dark:bg-slate-900/50 px-4 py-4 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+<div class="flex size-12 shrink-0 items-center justify-center rounded-xl bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400">
+<span class="material-symbols-outlined">directions_car</span>
+</div>
+<div class="flex flex-1 flex-col">
+<p class="text-sm font-bold">Booking: Honda CR-V (KDJ 445Z)</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">11:20 AM • M-Pesa</p>
+</div>
+<div class="text-right">
+<p class="text-sm font-bold text-green-600 dark:text-green-400">+$600.00</p>
+</div>
+</div>
+<!-- Transaction 5: Revenue -->
+<div class="flex items-center gap-4 bg-white dark:bg-slate-900/50 px-4 py-4 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+<div class="flex size-12 shrink-0 items-center justify-center rounded-xl bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400">
+<span class="material-symbols-outlined">payments</span>
+</div>
+<div class="flex flex-1 flex-col">
+<p class="text-sm font-bold">Airport Pickup Surcharge</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">09:00 AM • Cash</p>
+</div>
+<div class="text-right">
+<p class="text-sm font-bold text-green-600 dark:text-green-400">+$45.00</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Date Group: Oct 22 -->
+<section class="mt-2">
+<div class="px-4 py-2 bg-slate-200/50 dark:bg-slate-800/50">
+<h3 class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Oct 22, 2023</h3>
+</div>
+<div class="divide-y divide-slate-100 dark:divide-slate-800">
+<!-- Transaction 6: Expense -->
+<div class="flex items-center gap-4 bg-white dark:bg-slate-900/50 px-4 py-4 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+<div class="flex size-12 shrink-0 items-center justify-center rounded-xl bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400">
+<span class="material-symbols-outlined">description</span>
+</div>
+<div class="flex flex-1 flex-col">
+<p class="text-sm font-bold">Insurance Renewal Premium</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">10:00 AM • Bank Transfer</p>
+</div>
+<div class="text-right">
+<p class="text-sm font-bold text-red-600 dark:text-red-400">-$1,250.00</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-md bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 px-6 py-3">
+<div class="flex items-center justify-between">
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-medium">Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">directions_car</span>
+<span class="text-[10px] font-medium">Vehicles</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">history</span>
+<span class="text-[10px] font-medium">History</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-medium">Profile</span>
+</a>
+</div>
+</nav>
+</div>
+</body></html>

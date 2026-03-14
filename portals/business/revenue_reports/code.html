@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1c74e9",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#111821",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-tab { border-bottom: 3px solid #1c74e9; color: #1c74e9; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
+<div class="relative flex h-screen w-full flex-col overflow-hidden max-w-md mx-auto bg-white dark:bg-background-dark shadow-2xl">
+<header class="flex items-center bg-white dark:bg-background-dark p-4 border-b border-slate-100 dark:border-slate-800 justify-between sticky top-0 z-10">
+<div class="flex items-center gap-3">
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-400">arrow_back</span>
+</button>
+<h1 class="text-lg font-bold tracking-tight">Revenue Reports</h1>
+</div>
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg text-primary">
+<span class="material-symbols-outlined">calendar_today</span>
+</button>
+</header>
+<main class="flex-1 overflow-y-auto pb-20">
+<div class="px-4 bg-white dark:bg-background-dark sticky top-0 z-10">
+<div class="flex border-b border-slate-100 dark:border-slate-800 gap-6">
+<button class="flex-1 py-4 text-sm font-semibold text-slate-500">7 Days</button>
+<button class="flex-1 py-4 text-sm font-semibold active-tab">30 Days</button>
+<button class="flex-1 py-4 text-sm font-semibold text-slate-500">90 Days</button>
+<button class="flex-1 py-4 text-sm font-semibold text-slate-500">Year</button>
+</div>
+</div>
+<div class="p-4 space-y-4">
+<div class="grid grid-cols-2 gap-4">
+<div class="flex flex-col gap-2 rounded-xl p-5 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 shadow-sm">
+<span class="text-slate-500 dark:text-slate-400 text-xs font-medium uppercase tracking-wider">Total Revenue</span>
+<p class="text-2xl font-bold tracking-tight">$42,500</p>
+<div class="flex items-center gap-1 text-emerald-600 dark:text-emerald-400 text-sm font-bold">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span>+12.5%</span>
+</div>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-5 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 shadow-sm">
+<span class="text-slate-500 dark:text-slate-400 text-xs font-medium uppercase tracking-wider">Avg. Booking</span>
+<p class="text-2xl font-bold tracking-tight">$125.50</p>
+<div class="flex items-center gap-1 text-emerald-600 dark:text-emerald-400 text-sm font-bold">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span>+3.2%</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-4 rounded-xl p-5 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-end">
+<div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Revenue Trends</p>
+<p class="text-3xl font-bold tracking-tight">$42,500</p>
+</div>
+<div class="text-right">
+<p class="text-emerald-600 dark:text-emerald-400 text-sm font-bold">+15% vs LY</p>
+<p class="text-slate-400 text-xs">Last 30 days</p>
+</div>
+</div>
+<div class="h-40 w-full relative mt-4">
+<svg class="w-full h-full overflow-visible" viewbox="0 0 400 100">
+<defs>
+<lineargradient id="chartGradient" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#1c74e9" stop-opacity="0.2"></stop>
+<stop offset="100%" stop-color="#1c74e9" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<path d="M0,80 Q50,70 80,40 T160,50 T240,20 T320,60 T400,30 V100 H0 Z" fill="url(#chartGradient)"></path>
+<path d="M0,80 Q50,70 80,40 T160,50 T240,20 T320,60 T400,30" fill="none" stroke="#1c74e9" stroke-linecap="round" stroke-width="3"></path>
+</svg>
+</div>
+<div class="flex justify-between px-1">
+<span class="text-[10px] font-bold text-slate-400 uppercase">1 May</span>
+<span class="text-[10px] font-bold text-slate-400 uppercase">10 May</span>
+<span class="text-[10px] font-bold text-slate-400 uppercase">20 May</span>
+<span class="text-[10px] font-bold text-slate-400 uppercase">30 May</span>
+</div>
+</div>
+<div class="flex flex-col gap-4 rounded-xl p-5 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 shadow-sm">
+<h3 class="font-bold text-base">Payment Methods</h3>
+<div class="flex items-center gap-8 py-2">
+<div class="relative size-32 shrink-0">
+<svg class="size-full -rotate-90" viewbox="0 0 36 36">
+<circle cx="18" cy="18" fill="transparent" r="15.9" stroke="#e2e8f0" stroke-width="4"></circle>
+<circle cx="18" cy="18" fill="transparent" r="15.9" stroke="#1c74e9" stroke-dasharray="60 100" stroke-width="4"></circle>
+<circle cx="18" cy="18" fill="transparent" r="15.9" stroke="#10b981" stroke-dasharray="25 100" stroke-dashoffset="-60" stroke-width="4"></circle>
+<circle cx="18" cy="18" fill="transparent" r="15.9" stroke="#f59e0b" stroke-dasharray="15 100" stroke-dashoffset="-85" stroke-width="4"></circle>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center flex-col">
+<span class="text-lg font-bold">100%</span>
+</div>
+</div>
+<div class="flex flex-col gap-3 flex-1">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="size-2 rounded-full bg-primary"></div>
+<span class="text-xs font-medium text-slate-600 dark:text-slate-400">M-Pesa</span>
+</div>
+<span class="text-xs font-bold">60%</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="size-2 rounded-full bg-emerald-500"></div>
+<span class="text-xs font-medium text-slate-600 dark:text-slate-400">Card</span>
+</div>
+<span class="text-xs font-bold">25%</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="size-2 rounded-full bg-amber-500"></div>
+<span class="text-xs font-medium text-slate-600 dark:text-slate-400">Cash</span>
+</div>
+<span class="text-xs font-bold">15%</span>
+</div>
+</div>
+</div>
+</div>
+<div class="rounded-xl p-5 bg-primary/10 border border-primary/20 flex items-center gap-4">
+<div class="size-10 rounded-full bg-primary flex items-center justify-center text-white shrink-0">
+<span class="material-symbols-outlined">insights</span>
+</div>
+<div>
+<h4 class="text-sm font-bold text-primary">Intelligence Tip</h4>
+<p class="text-xs text-primary/80 leading-relaxed">Bookings via M-Pesa have increased by 18% this month. Consider prioritizing this gateway.</p>
+</div>
+</div>
+</div>
+</main>
+<nav class="fixed bottom-0 left-0 right-0 max-w-md mx-auto flex items-center bg-white dark:bg-background-dark px-2 pb-4 pt-2 border-t border-slate-100 dark:border-slate-800 z-20">
+<a class="flex flex-1 flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">speed</span>
+<p class="text-[10px] font-bold uppercase tracking-tighter">Dashboard</p>
+</a>
+<a class="flex flex-1 flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">directions_car</span>
+<p class="text-[10px] font-bold uppercase tracking-tighter">Vehicles</p>
+</a>
+<a class="flex flex-1 flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<p class="text-[10px] font-bold uppercase tracking-tighter">Reports</p>
+</a>
+<a class="flex flex-1 flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">group</span>
+<p class="text-[10px] font-bold uppercase tracking-tighter">Customers</p>
+</a>
+<a class="flex flex-1 flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">more_horiz</span>
+<p class="text-[10px] font-bold uppercase tracking-tighter">More</p>
+</a>
+</nav>
+</div>
+</body></html>

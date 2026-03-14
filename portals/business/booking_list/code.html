@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1c74e9",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#111821",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<title>Booking List - Car Hire Management</title>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
+<div class="relative flex min-h-screen w-full flex-col max-w-md mx-auto bg-white dark:bg-slate-900 shadow-xl overflow-x-hidden">
+<!-- Header -->
+<div class="flex items-center bg-white dark:bg-slate-900 p-4 pb-2 justify-between sticky top-0 z-10 border-b border-slate-100 dark:border-slate-800">
+<div class="text-slate-900 dark:text-slate-100 flex size-12 shrink-0 items-center">
+<span class="material-symbols-outlined">menu</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Bookings</h2>
+<div class="flex w-12 items-center justify-end">
+<button class="flex cursor-pointer items-center justify-center rounded-lg h-12 bg-transparent text-slate-900 dark:text-slate-100 p-0">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</div>
+</div>
+<!-- Search Bar -->
+<div class="px-4 py-3">
+<label class="flex flex-col min-w-40 h-12 w-full">
+<div class="flex w-full flex-1 items-stretch rounded-xl h-full bg-slate-100 dark:bg-slate-800">
+<div class="text-slate-500 dark:text-slate-400 flex items-center justify-center pl-4">
+<span class="material-symbols-outlined text-xl">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 border-none bg-transparent focus:outline-0 focus:ring-0 h-full placeholder:text-slate-500 dark:placeholder:text-slate-400 px-4 pl-2 text-base font-normal" placeholder="Search customer or car..." value=""/>
+</div>
+</label>
+</div>
+<!-- Tabs -->
+<div class="pb-3">
+<div class="flex border-b border-slate-200 dark:border-slate-800 px-4 justify-between">
+<a class="flex flex-col items-center justify-center border-b-2 border-primary text-primary pb-3 pt-2 flex-1" href="#">
+<p class="text-sm font-bold">Active</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-2 border-transparent text-slate-500 dark:text-slate-400 pb-3 pt-2 flex-1" href="#">
+<p class="text-sm font-medium">Upcoming</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-2 border-transparent text-slate-500 dark:text-slate-400 pb-3 pt-2 flex-1" href="#">
+<p class="text-sm font-medium">Completed</p>
+</a>
+</div>
+</div>
+<!-- Booking Cards List -->
+<div class="flex flex-col gap-1 p-4 overflow-y-auto pb-24">
+<!-- Card 1 -->
+<div class="flex gap-4 bg-white dark:bg-slate-800 p-4 rounded-xl border border-slate-100 dark:border-slate-700 shadow-sm mb-3">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg w-16 h-16 shrink-0 bg-slate-200" data-alt="Red sedan car in a studio" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB0M_NNRn77yqbGpoqb-Tswfn8wtUC54Gx2iBMyNjV7mvtpUDXgXx-EwtuXagQ11xI6btYyHw1LIKJMBqJ5-tw6bthHjNKIJls7u7z2TK63cfDPryPqybaqc9CK8ccxJIkcSWcgMvdr1ai6NvadvHv9l5SFpccLDT6fBL6LaYWEHevytIFWSx2d0YyYiALNXiA7JtoEx4UECIVOwNtHkksFz1GHlRcF075PVddFcdkL8sUcp_-dY7LDeIYfvZQW506Lfft7aVNyFbJ9");'></div>
+<div class="flex flex-1 flex-col justify-center">
+<div class="flex justify-between items-start">
+<p class="text-slate-900 dark:text-slate-100 text-base font-bold">Johnathan Doe</p>
+<span class="px-2 py-0.5 rounded-full bg-green-100 text-green-700 text-[10px] font-bold uppercase tracking-wider">Active</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Toyota Camry • AB-1234</p>
+<div class="flex items-center gap-1 mt-1 text-slate-400 dark:text-slate-500">
+<span class="material-symbols-outlined text-sm">calendar_today</span>
+<p class="text-xs">Oct 12 - Oct 15, 2024</p>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="flex gap-4 bg-white dark:bg-slate-800 p-4 rounded-xl border border-slate-100 dark:border-slate-700 shadow-sm mb-3">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg w-16 h-16 shrink-0 bg-slate-200" data-alt="Blue compact car profile view" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAR2pN73vjKp52WoN1UidHq8Q_IkQvlYMZqzBrCz2PuWjqQYC9D4Q-asNd2okn-RWV7w0TC4Pi0FGYkzD3uEd3tSaMChaeGPJf8Dw9Sja3TUX3sM20w9u3Skqu6HDKx-8ONLZcqE6ln4OmVsF3e-m63AEtYyeO8cCs8lugdYlzg_CwrVL98oV54QDTH1nmDPixNQW9rGMNLzepwG0FTIu_iQ4jKGA-NvCT8HA7yEVrmZoSoG1-AhkoPLgzLCg1CgUYSSe_dYqdhG5PE");'></div>
+<div class="flex flex-1 flex-col justify-center">
+<div class="flex justify-between items-start">
+<p class="text-slate-900 dark:text-slate-100 text-base font-bold">Sarah Jenkins</p>
+<span class="px-2 py-0.5 rounded-full bg-primary/20 text-primary text-[10px] font-bold uppercase tracking-wider">Confirmed</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Honda Civic • XY-9876</p>
+<div class="flex items-center gap-1 mt-1 text-slate-400 dark:text-slate-500">
+<span class="material-symbols-outlined text-sm">calendar_today</span>
+<p class="text-xs">Oct 14 - Oct 20, 2024</p>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="flex gap-4 bg-white dark:bg-slate-800 p-4 rounded-xl border border-slate-100 dark:border-slate-700 shadow-sm mb-3 opacity-90">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg w-16 h-16 shrink-0 bg-slate-200" data-alt="Luxury sports car front view" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC6rQ6QLbNcnfjjaaJWHOMOm9JkCYLRCa9PltyxRpPTp37AnXsD-MUpD6gidALYHorkX5NlluHMbtn__f-VFpBz6xzAY5higjn0BmLAFbsfO2J1rIvanwrjgkcW6FAQVh7HGQmPt9T2ry36s-skUQNwPMiakfwviRPyfAvjLHW4tsnQW0JhKO_fXCQY7dq-i437w00jymj0ciTN1JRxOFTVqo7KjQmMbtGopalcv0Ua6IMSYeTjtGMtUMGQd9S-1IwWAgIhHYI_cdn0");'></div>
+<div class="flex flex-1 flex-col justify-center">
+<div class="flex justify-between items-start">
+<p class="text-slate-900 dark:text-slate-100 text-base font-bold">Michael Chen</p>
+<span class="px-2 py-0.5 rounded-full bg-amber-100 text-amber-700 text-[10px] font-bold uppercase tracking-wider">Pending</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Tesla Model 3 • EV-0001</p>
+<div class="flex items-center gap-1 mt-1 text-slate-400 dark:text-slate-500">
+<span class="material-symbols-outlined text-sm">calendar_today</span>
+<p class="text-xs">Oct 16 - Oct 18, 2024</p>
+</div>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="flex gap-4 bg-white dark:bg-slate-800 p-4 rounded-xl border border-slate-100 dark:border-slate-700 shadow-sm mb-3">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg w-16 h-16 shrink-0 bg-slate-200" data-alt="White SUV parked on road" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBimoEHwU9v2pbCxdjDS0GLQ8tmMBelPGGx8aSLWIyN2wrgOC23oFTgEJDuOJXoUOHmOiLIdopYjGkr7LVbXgk18AoYObc9HMQqWPAPEgUUbidYup2M7K4PH-QqpUD6CaZk1XLg1jO5kBxjLe_XQf1ws1IzOlFNPaFyfKu6hW3QwbpeC-YD8Ubejfj6befU2kq81c9OTzYg19xg9AzVUQNRNVX79caP685GagYpMyW-lv7YEfsrIWMBqHJaCM9E40eXFXdgyLz6ALhx");'></div>
+<div class="flex flex-1 flex-col justify-center">
+<div class="flex justify-between items-start">
+<p class="text-slate-900 dark:text-slate-100 text-base font-bold">Emma Wilson</p>
+<span class="px-2 py-0.5 rounded-full bg-green-100 text-green-700 text-[10px] font-bold uppercase tracking-wider">Active</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Ford Explorer • BK-4422</p>
+<div class="flex items-center gap-1 mt-1 text-slate-400 dark:text-slate-500">
+<span class="material-symbols-outlined text-sm">calendar_today</span>
+<p class="text-xs">Oct 10 - Oct 25, 2024</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Floating Action Button -->
+<button class="fixed bottom-24 right-6 w-14 h-14 bg-primary text-white rounded-full flex items-center justify-center shadow-lg hover:bg-primary/90 transition-colors z-20">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+<!-- Bottom Navigation Bar -->
+<div class="fixed bottom-0 left-0 right-0 max-w-md mx-auto flex gap-2 border-t border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 pb-6 pt-2 z-30">
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-500 dark:text-slate-400" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined">home</span>
+</div>
+<p class="text-xs font-medium leading-normal tracking-[0.015em]">Home</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-primary" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">calendar_month</span>
+</div>
+<p class="text-xs font-bold leading-normal tracking-[0.015em]">Bookings</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-500 dark:text-slate-400" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined">directions_car</span>
+</div>
+<p class="text-xs font-medium leading-normal tracking-[0.015em]">Fleet</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-500 dark:text-slate-400" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined">more_horiz</span>
+</div>
+<p class="text-xs font-medium leading-normal tracking-[0.015em]">More</p>
+</a>
+</div>
+</div>
+</body></html>

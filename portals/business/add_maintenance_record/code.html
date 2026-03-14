@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Add Maintenance Record</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1c74e9",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#111821",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
+<div class="flex flex-col min-h-screen max-w-2xl mx-auto bg-white dark:bg-background-dark shadow-xl min-h-screen">
+<!-- Header / TopAppBar -->
+<header class="sticky top-0 z-10 flex items-center bg-white dark:bg-background-dark border-b border-slate-200 dark:border-slate-800 p-4 justify-between">
+<button class="text-slate-900 dark:text-slate-100 flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+<h1 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-tight flex-1 text-center">Add Maintenance Record</h1>
+<div class="flex w-10 items-center justify-end">
+<button class="flex items-center justify-center rounded-full size-10 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</header>
+<main class="flex-1 overflow-y-auto p-4 space-y-6">
+<!-- Select Vehicle Section -->
+<div class="space-y-2">
+<label class="block text-sm font-semibold text-slate-700 dark:text-slate-300">Select Vehicle</label>
+<div class="relative">
+<select class="block w-full rounded-lg border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 focus:border-primary focus:ring-primary h-12 px-4 appearance-none">
+<option value="">Choose your vehicle</option>
+<option value="1">2022 Tesla Model 3 (Blue)</option>
+<option value="2">2019 Toyota Rav4 (Silver)</option>
+<option value="3">2015 Honda Civic (Black)</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-slate-500">
+<span class="material-symbols-outlined">expand_more</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Service Date -->
+<div class="space-y-2">
+<label class="block text-sm font-semibold text-slate-700 dark:text-slate-300">Service Date</label>
+<div class="relative">
+<input class="block w-full rounded-lg border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 focus:border-primary focus:ring-primary h-12 px-4" type="date"/>
+</div>
+</div>
+<!-- Service Type -->
+<div class="space-y-2">
+<label class="block text-sm font-semibold text-slate-700 dark:text-slate-300">Service Type</label>
+<div class="relative">
+<select class="block w-full rounded-lg border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 focus:border-primary focus:ring-primary h-12 px-4 appearance-none">
+<option value="">Select service</option>
+<option value="oil">Oil Change</option>
+<option value="tire">Tire Rotation</option>
+<option value="brake">Brake Repair</option>
+<option value="inspection">General Inspection</option>
+<option value="battery">Battery Replacement</option>
+<option value="other">Other</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-slate-500">
+<span class="material-symbols-outlined">expand_more</span>
+</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Cost -->
+<div class="space-y-2">
+<label class="block text-sm font-semibold text-slate-700 dark:text-slate-300">Cost ($)</label>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500">$</span>
+<input class="block w-full rounded-lg border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 focus:border-primary focus:ring-primary h-12 pl-8 pr-4" placeholder="0.00" step="0.01" type="number"/>
+</div>
+</div>
+<!-- Mileage -->
+<div class="space-y-2">
+<label class="block text-sm font-semibold text-slate-700 dark:text-slate-300">Mileage at Service</label>
+<div class="relative">
+<input class="block w-full rounded-lg border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 focus:border-primary focus:ring-primary h-12 px-4" placeholder="Current odometer" type="number"/>
+<span class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-500 text-sm">mi</span>
+</div>
+</div>
+</div>
+<!-- Service Provider -->
+<div class="space-y-2">
+<label class="block text-sm font-semibold text-slate-700 dark:text-slate-300">Service Provider / Garage Name</label>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 material-symbols-outlined text-[20px]">store</span>
+<input class="block w-full rounded-lg border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 focus:border-primary focus:ring-primary h-12 pl-12 pr-4" placeholder="e.g., Downtown Auto Repair" type="text"/>
+</div>
+</div>
+<!-- Notes -->
+<div class="space-y-2">
+<label class="block text-sm font-semibold text-slate-700 dark:text-slate-300">Notes / Description</label>
+<textarea class="block w-full rounded-lg border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 focus:border-primary focus:ring-primary p-4 resize-none" placeholder="Describe the service in detail..." rows="4"></textarea>
+</div>
+<!-- Attachments -->
+<div class="space-y-2">
+<label class="block text-sm font-semibold text-slate-700 dark:text-slate-300">Invoices &amp; Receipts</label>
+<div class="border-2 border-dashed border-slate-300 dark:border-slate-700 rounded-xl p-8 flex flex-col items-center justify-center space-y-2 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-4xl text-primary">cloud_upload</span>
+<p class="text-slate-600 dark:text-slate-400 font-medium">Click to upload or drag and drop</p>
+<p class="text-xs text-slate-500 dark:text-slate-500">PDF, JPG or PNG (max. 10MB)</p>
+</div>
+</div>
+</main>
+<!-- Footer / Action Buttons -->
+<footer class="p-4 bg-white dark:bg-background-dark border-t border-slate-200 dark:border-slate-800 flex flex-col gap-3">
+<button class="w-full h-14 bg-primary text-white font-bold rounded-xl shadow-lg shadow-primary/20 hover:bg-primary/90 active:scale-[0.98] transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">save</span>
+                Save Record
+            </button>
+<button class="w-full h-12 bg-transparent text-slate-600 dark:text-slate-400 font-semibold rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                Cancel
+            </button>
+</footer>
+</div>
+</body></html>
