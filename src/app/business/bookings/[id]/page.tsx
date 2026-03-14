@@ -17,6 +17,7 @@ import {
   List,
   ListItem,
   ListIcon,
+  Divider,
 } from "@chakra-ui/react";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { StatCard } from "@/components/ui/StatCard";
@@ -42,7 +43,7 @@ export default function BookingDetailsPage() {
   const tokens = useColorTokens();
 
   const booking = {
-    id: id || "BK-1001",
+    id: (Array.isArray(id) ? id[0] : id) || "BK-1001",
     customer: "John Doe",
     vehicle: "Tesla Model 3",
     license: "ABC-1234",

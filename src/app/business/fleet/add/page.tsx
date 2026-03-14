@@ -3,21 +3,22 @@
 import { 
   Box, Flex, VStack, SimpleGrid, FormControl, 
   FormLabel, Input, Select, Button, Text, Heading, 
-  Textarea, Icon, HStack
+  Textarea, Icon, HStack, useToast
 } from '@chakra-ui/react';
 import { PageHeader } from '@/components/ui/PageHeader';
 import { FiSave, FiX, FiCheckCircle, FiCalendar } from 'react-icons/fi';
 import { useColorTokens } from '@/hooks/useColorTokens';
-import { toaster } from '@/components/ui/toaster';
 
 export default function AddVehiclePage() {
   const tokens = useColorTokens();
+  const toast = useToast();
 
   const handleSave = () => {
-    toaster.create({
+    toast({
       title: 'Vehicle Added',
       description: "Successfully added new vehicle to the fleet inventory.",
-      type: 'success',
+      status: 'success',
+      duration: 2000,
     });
   };
 

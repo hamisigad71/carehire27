@@ -17,6 +17,7 @@ import {
   Text,
   useToast,
   Icon,
+  Badge,
 } from "@chakra-ui/react";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { FiSave, FiUserCheck, FiTruck, FiMapPin } from "react-icons/fi";
