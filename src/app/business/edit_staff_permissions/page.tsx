@@ -73,7 +73,7 @@ export default function EditStaffPermissionsPage() {
       />
 
       <SimpleGrid columns={[1, 1, 3]} spacing={10}>
-        <Box
+        <GridItem
           colSpan={[1, 1, 2]}
           bg={tokens.cardBg}
           p={8}
@@ -143,7 +143,7 @@ export default function EditStaffPermissionsPage() {
               </Button>
             </HStack>
           </Flex>
-        </Box>
+        </GridItem>
 
         <Box>
           <Box

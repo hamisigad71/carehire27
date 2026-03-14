@@ -15,6 +15,7 @@ import {
   GridItem,
   Avatar,
   Progress,
+  Divider,
 } from "@chakra-ui/react";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { StatCard } from "@/components/ui/StatCard";
