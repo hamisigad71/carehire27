@@ -289,7 +289,6 @@ export default function Home() {
                 setIsLoading(true);
                 router.push("/customer");
               }}
-              group
             >
               {/* Top accent bar */}
               <Box h="4px" bgGradient="linear(to-r, teal.400, teal.600)" />
