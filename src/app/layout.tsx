@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { DM_Sans } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
+import { MobileBottomNav } from "@/components/MobileBottomNav";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -26,6 +27,7 @@ export default function RootLayout({
       <body className={dmSans.className}>
         <Providers>
           {children}
+          <MobileBottomNav />
         </Providers>
       </body>
     </html>

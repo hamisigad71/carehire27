@@ -11,387 +11,975 @@ import {
   SimpleGrid,
   Container,
   Badge,
+  HStack,
+  Circle,
+  Grid,
+  Image,
   Divider,
   Spacer,
 } from "@chakra-ui/react";
-import { FiArrowRight, FiBriefcase, FiUser } from "react-icons/fi";
+import {
+  FiArrowRight,
+  FiBriefcase,
+  FiUser,
+  FiTruck,
+  FiShield,
+  FiStar,
+  FiTrendingUp,
+  FiCheckCircle,
+  FiZap,
+  FiAward,
+  FiBarChart2,
+  FiCalendar,
+  FiGift,
+  FiMapPin,
+  FiClock,
+} from "react-icons/fi";
 import { useRouter } from "next/navigation";
-import { useColorTokens } from "@/hooks/useColorTokens";
 import { useLoading } from "@/context/LoadingContext";
 import { useEffect } from "react";
 
+// ─── LIGHT TOKENS ─────────────────────────────────────────────────────────────
+const L = {
+  bg: "#f4f7f4",
+  card: "#ffffff",
+  cardBorder: "rgba(30,110,30,0.1)",
+  accent: "#1e6e1e",
+  accentLight: "#2d8c2d",
+  accentBright: "#3fa83f",
+  accentGlow: "rgba(30,110,30,0.07)",
+  accentGlow2: "rgba(30,110,30,0.13)",
+  text: "#111a11",
+  textSub: "#3a4d3a",
+  muted: "#6b7f6b",
+  subtle: "#9aaa9a",
+  border: "rgba(0,0,0,0.07)",
+  shadow: "0 2px 16px rgba(0,0,0,0.06)",
+  shadowMd: "0 8px 40px rgba(0,0,0,0.1)",
+  shadowLg: "0 20px 70px rgba(0,0,0,0.13)",
+  teal: "#0e7b7b",
+  tealBg: "rgba(14,123,123,0.08)",
+  tealGlow: "rgba(14,123,123,0.14)",
+  gold: "#b07d0a",
+  goldBg: "rgba(176,125,10,0.08)",
+};
+
+// ─── STYLES ───────────────────────────────────────────────────────────────────
+const Styles = () => (
+  <style>{`
+    @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+    *, *::before, *::after { box-sizing: border-box; }
+
+    @keyframes fadeUp    { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes fadeIn    { from { opacity:0; } to { opacity:1; } }
+    @keyframes floatY    { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-10px); } }
+    @keyframes floatY2   { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-7px); } }
+    @keyframes spinSlow  { to { transform:rotate(360deg); } }
+    @keyframes pulse     { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:.5; transform:scale(.9); } }
+    @keyframes shimmerIn { from { opacity:0; transform:scaleX(0.5); } to { opacity:1; transform:scaleX(1); } }
+    @keyframes ticker    { 0% { transform:translateX(0); } 100% { transform:translateX(-50%); } }
+    @keyframes countUp   { from { opacity:0; transform:scale(0.7); } to { opacity:1; transform:scale(1); } }
+    @keyframes borderGlow {
+      0%,100% { box-shadow: 0 0 0 0 transparent; }
+      50%      { box-shadow: 0 0 0 4px rgba(30,110,30,0.15); }
+    }
+
+    .fu   { animation: fadeUp  .65s ease both; }
+    .fu1  { animation: fadeUp  .65s .08s ease both; }
+    .fu2  { animation: fadeUp  .65s .16s ease both; }
+    .fu3  { animation: fadeUp  .65s .24s ease both; }
+    .fu4  { animation: fadeUp  .65s .32s ease both; }
+    .fu5  { animation: fadeUp  .65s .40s ease both; }
+    .fu6  { animation: fadeUp  .65s .48s ease both; }
+    .fi   { animation: fadeIn   .8s .3s ease both; }
+
+    .float1 { animation: floatY  5s ease-in-out infinite; }
+    .float2 { animation: floatY2 4s 1s ease-in-out infinite; }
+    .float3 { animation: floatY  6s 2s ease-in-out infinite; }
+    .spin   { animation: spinSlow 22s linear infinite; }
+    .pulse-dot { animation: pulse 2s ease-in-out infinite; }
+
+    /* portal cards */
+    .portal-card {
+      transition: transform .35s cubic-bezier(.25,.46,.45,.94), box-shadow .35s ease, border-color .25s ease;
+      cursor: pointer;
+    }
+    .portal-card:hover { transform: translateY(-12px) scale(1.01); }
+
+    .portal-card-biz:hover {
+      box-shadow: 0 32px 80px rgba(30,110,30,0.18) !important;
+      border-color: rgba(30,110,30,0.35) !important;
+    }
+    .portal-card-cust:hover {
+      box-shadow: 0 32px 80px rgba(14,123,123,0.18) !important;
+      border-color: rgba(14,123,123,0.35) !important;
+    }
+
+    .portal-card:hover .card-img { transform: scale(1.05); }
+    .card-img { transition: transform .5s ease; }
+
+    .feature-row { transition: transform .18s ease; }
+    .feature-row:hover { transform: translateX(4px); }
+
+    /* CTA buttons */
+    .btn-biz {
+      transition: all .22s cubic-bezier(.25,.46,.45,.94) !important;
+    }
+    .btn-biz:hover {
+      transform: translateY(-3px) !important;
+      box-shadow: 0 14px 36px rgba(30,110,30,0.36) !important;
+    }
+    .btn-cust {
+      transition: all .22s cubic-bezier(.25,.46,.45,.94) !important;
+    }
+    .btn-cust:hover {
+      transform: translateY(-3px) !important;
+      box-shadow: 0 14px 36px rgba(14,123,123,0.36) !important;
+    }
+
+    /* stat cards */
+    .stat-card { transition: transform .2s ease; }
+    .stat-card:hover { transform: translateY(-4px); }
+
+    /* trust items */
+    .trust-item { transition: transform .18s ease; }
+    .trust-item:hover { transform: scale(1.04); }
+
+    /* ticker */
+    .ticker-wrap { overflow:hidden; white-space:nowrap; }
+    .ticker-inner { display:inline-flex; animation: ticker 28s linear infinite; }
+
+    /* shimmer underline */
+    .underline-anim {
+      display: inline-block;
+      transform-origin: left;
+      animation: shimmerIn .4s .7s ease both;
+    }
+  `}</style>
+);
+
+// ─── TICKER ───────────────────────────────────────────────────────────────────
+const TICKER_ITEMS = [
+  "🚗 120+ Premium Vehicles",
+  "⭐ Rated 4.9 / 5 by 2,400+ customers",
+  "📍 12 Hubs across Nairobi",
+  "✈️ Free JKIA Airport Pickup",
+  "🏆 Kenya's #1 Car Hire Platform",
+  "🎁 10% OFF First Booking — DRIVE10",
+];
+
+function Ticker() {
+  const items = [...TICKER_ITEMS, ...TICKER_ITEMS];
+  return (
+    <Box bg={L.accent} py={2.5} overflow="hidden">
+      <div className="ticker-wrap">
+        <div className="ticker-inner">
+          {items.map((t, i) => (
+            <Text
+              key={i}
+              fontSize="11px"
+              fontWeight="700"
+              color="white"
+              letterSpacing="0.08em"
+              px={8}
+              display="inline-block"
+            >
+              {t}
+            </Text>
+          ))}
+        </div>
+      </div>
+    </Box>
+  );
+}
+
+// ─── HERO / INTRO ─────────────────────────────────────────────────────────────
+function HeroBadge() {
+  return (
+    <HStack className="fu" spacing={2} justify="center">
+      <Circle size="8px" bg={L.accentBright} className="pulse-dot" />
+      <Text
+        fontSize="11px"
+        fontWeight="700"
+        color={L.accentBright}
+        letterSpacing="0.14em"
+        textTransform="uppercase"
+      >
+        Welcome to DriveKE
+      </Text>
+    </HStack>
+  );
+}
+
+// ─── STATS ROW ────────────────────────────────────────────────────────────────
+const STATS = [
+  { n: "120+", l: "Premium Vehicles", icon: FiTruck, color: L.accentLight },
+  { n: "4,800+", l: "Happy Customers", icon: FiStar, color: L.gold },
+  { n: "12", l: "City Hubs", icon: FiMapPin, color: L.teal },
+  { n: "6 yrs", l: "Trusted Service", icon: FiAward, color: L.accentLight },
+];
+
+function StatsRow() {
+  return (
+    <SimpleGrid
+      columns={{ base: 2, md: 4 }}
+      spacing={4}
+      w="100%"
+      className="fu5"
+    >
+      {STATS.map((s, i) => (
+        <Box
+          key={i}
+          className="stat-card"
+          bg={L.card}
+          borderRadius="18px"
+          border="1px solid"
+          borderColor={L.cardBorder}
+          boxShadow={L.shadow}
+          p={4}
+          textAlign="center"
+        >
+          <Circle size="36px" bg={L.accentGlow} mx="auto" mb={2}>
+            <Icon as={s.icon} boxSize={4} color={s.color} />
+          </Circle>
+          <Text
+            fontFamily="'Syne', sans-serif"
+            fontSize="22px"
+            fontWeight="800"
+            color={L.text}
+            lineHeight="1"
+          >
+            {s.n}
+          </Text>
+          <Text fontSize="11px" fontWeight="500" color={L.muted} mt={0.5}>
+            {s.l}
+          </Text>
+        </Box>
+      ))}
+    </SimpleGrid>
+  );
+}
+
+// ─── BUSINESS CARD ────────────────────────────────────────────────────────────
+const BIZ_FEATURES = [
+  { icon: FiBarChart2, text: "Real-time fleet analytics & revenue tracking" },
+  { icon: FiTruck, text: "Full vehicle lifecycle management" },
+  { icon: FiCalendar, text: "Booking calendar with instant confirmations" },
+  { icon: FiShield, text: "Insurance & compliance monitoring" },
+  { icon: FiTrendingUp, text: "Performance reports & financial dashboard" },
+];
+
+function BusinessCard({ onClick }: { onClick: () => void }) {
+  return (
+    <Box
+      className="portal-card portal-card-biz"
+      bg={L.card}
+      borderRadius="28px"
+      border="1.5px solid"
+      borderColor={L.cardBorder}
+      boxShadow={L.shadowMd}
+      overflow="hidden"
+      onClick={onClick}
+    >
+      {/* Top accent */}
+      <Box
+        h="3px"
+        bg={`linear-gradient(90deg, ${L.accent}, ${L.accentBright}, #72b872)`}
+      />
+
+      {/* Image strip */}
+      <Box
+        h={{ base: "180px", md: "220px" }}
+        overflow="hidden"
+        position="relative"
+      >
+        <Image
+          className="card-img"
+          src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&h=400&fit=crop"
+          w="100%"
+          h="100%"
+          objectFit="cover"
+          style={{ filter: "brightness(0.82) contrast(1.08)" }}
+        />
+        <Box
+          position="absolute"
+          inset={0}
+          bg="linear-gradient(180deg, transparent 35%, rgba(255,255,255,0.9) 100%)"
+        />
+
+        {/* Floating badge */}
+        <Box
+          position="absolute"
+          top={4}
+          left={4}
+          bg="rgba(255,255,255,0.92)"
+          backdropFilter="blur(10px)"
+          borderRadius="full"
+          px={3}
+          py={1.5}
+          border="1px solid"
+          borderColor={L.cardBorder}
+        >
+          <HStack spacing={1.5}>
+            <Circle size="7px" bg={L.accentBright} />
+            <Text
+              fontSize="10px"
+              fontWeight="800"
+              color={L.accentLight}
+              letterSpacing="0.08em"
+              textTransform="uppercase"
+            >
+              Business
+            </Text>
+          </HStack>
+        </Box>
+
+        {/* Live metric */}
+        <Box
+          position="absolute"
+          top={4}
+          right={4}
+          bg="rgba(255,255,255,0.92)"
+          backdropFilter="blur(10px)"
+          borderRadius="14px"
+          px={3}
+          py={2}
+          border="1px solid"
+          borderColor={L.cardBorder}
+        >
+          <Text
+            fontSize="9px"
+            fontWeight="700"
+            color={L.muted}
+            textTransform="uppercase"
+            letterSpacing="0.07em"
+          >
+            Revenue MTD
+          </Text>
+          <Text
+            fontFamily="'Syne', sans-serif"
+            fontSize="15px"
+            fontWeight="800"
+            color={L.accentLight}
+          >
+            KSh 488K
+          </Text>
+        </Box>
+      </Box>
+
+      {/* Body */}
+      <Box px={{ base: 6, md: 7 }} pb={7} pt={2}>
+        {/* Icon + title */}
+        <HStack spacing={3} mb={3}>
+          <Circle
+            size="48px"
+            bg={L.accentGlow2}
+            border="1px solid"
+            borderColor={L.cardBorder}
+          >
+            <Icon as={FiBriefcase} boxSize={5} color={L.accentLight} />
+          </Circle>
+          <Box>
+            <Text
+              fontFamily="'Syne', sans-serif"
+              fontSize="20px"
+              fontWeight="800"
+              color={L.text}
+              letterSpacing="-0.02em"
+            >
+              Business Portal
+            </Text>
+            <Text fontSize="12px" color={L.muted}>
+              Fleet operators & managers
+            </Text>
+          </Box>
+        </HStack>
+
+        <Text fontSize="13px" color={L.muted} lineHeight="1.75" mb={5}>
+          Streamline your entire fleet operation. Manage vehicles, track
+          bookings, monitor revenue and compliance — all from one powerful
+          dashboard.
+        </Text>
+
+        {/* Feature list */}
+        <VStack spacing={2.5} align="stretch" mb={6}>
+          {BIZ_FEATURES.map((f, i) => (
+            <HStack key={i} className="feature-row" spacing={2.5}>
+              <Circle size="24px" bg={L.accentGlow2} flexShrink={0}>
+                <Icon as={f.icon} boxSize={3} color={L.accentLight} />
+              </Circle>
+              <Text fontSize="12px" fontWeight="500" color={L.textSub}>
+                {f.text}
+              </Text>
+            </HStack>
+          ))}
+        </VStack>
+
+        <Button
+          className="btn-biz"
+          w="100%"
+          h="52px"
+          bg={`linear-gradient(135deg, ${L.accent}, ${L.accentLight})`}
+          color="white"
+          borderRadius="16px"
+          fontWeight="700"
+          fontSize="14px"
+          rightIcon={<Icon as={FiArrowRight} boxSize={4} />}
+          boxShadow="0 4px 18px rgba(30,110,30,0.28)"
+          _hover={{ opacity: 1 }}
+        >
+          Access Dashboard
+        </Button>
+      </Box>
+    </Box>
+  );
+}
+
+// ─── CUSTOMER CARD ────────────────────────────────────────────────────────────
+const CUST_FEATURES = [
+  { icon: FiTruck, text: "Browse 120+ premium vehicles instantly" },
+  { icon: FiZap, text: "Book in under 60 seconds" },
+  { icon: FiGift, text: "Earn loyalty points on every rental" },
+  { icon: FiMapPin, text: "Free delivery to your hotel or office" },
+  { icon: FiClock, text: "Flexible pickup — any time, any location" },
+];
+
+function CustomerCard({ onClick }: { onClick: () => void }) {
+  return (
+    <Box
+      className="portal-card portal-card-cust"
+      bg={L.card}
+      borderRadius="28px"
+      border="1.5px solid"
+      borderColor={L.cardBorder}
+      boxShadow={L.shadowMd}
+      overflow="hidden"
+      onClick={onClick}
+    >
+      {/* Top accent */}
+      <Box h="3px" bg={`linear-gradient(90deg, ${L.teal}, #1aa0a0, #5dd0d0)`} />
+
+      {/* Image strip */}
+      <Box
+        h={{ base: "180px", md: "220px" }}
+        overflow="hidden"
+        position="relative"
+      >
+        <Image
+          className="card-img"
+          src="https://images.unsplash.com/photo-1619362280286-f1f8fd5032ed?w=800&h=400&fit=crop"
+          w="100%"
+          h="100%"
+          objectFit="cover"
+          objectPosition="center 60%"
+          style={{ filter: "brightness(0.84) contrast(1.06)" }}
+        />
+        <Box
+          position="absolute"
+          inset={0}
+          bg="linear-gradient(180deg, transparent 35%, rgba(255,255,255,0.9) 100%)"
+        />
+
+        {/* Badge */}
+        <Box
+          position="absolute"
+          top={4}
+          left={4}
+          bg="rgba(255,255,255,0.92)"
+          backdropFilter="blur(10px)"
+          borderRadius="full"
+          px={3}
+          py={1.5}
+          border="1px solid"
+          borderColor="rgba(14,123,123,0.15)"
+        >
+          <HStack spacing={1.5}>
+            <Circle size="7px" bg={L.teal} />
+            <Text
+              fontSize="10px"
+              fontWeight="800"
+              color={L.teal}
+              letterSpacing="0.08em"
+              textTransform="uppercase"
+            >
+              Customer
+            </Text>
+          </HStack>
+        </Box>
+
+        {/* Offer chip */}
+        <Box
+          position="absolute"
+          top={4}
+          right={4}
+          bg="rgba(255,255,255,0.92)"
+          backdropFilter="blur(10px)"
+          borderRadius="14px"
+          px={3}
+          py={2}
+          border="1px solid"
+          borderColor="rgba(14,123,123,0.15)"
+        >
+          <Text
+            fontSize="9px"
+            fontWeight="700"
+            color={L.muted}
+            textTransform="uppercase"
+            letterSpacing="0.07em"
+          >
+            New Users Get
+          </Text>
+          <Text
+            fontFamily="'Syne', sans-serif"
+            fontSize="15px"
+            fontWeight="800"
+            color={L.teal}
+          >
+            10% OFF
+          </Text>
+        </Box>
+      </Box>
+
+      {/* Body */}
+      <Box px={{ base: 6, md: 7 }} pb={7} pt={2}>
+        <HStack spacing={3} mb={3}>
+          <Circle
+            size="48px"
+            bg={L.tealBg}
+            border="1px solid"
+            borderColor="rgba(14,123,123,0.15)"
+          >
+            <Icon as={FiUser} boxSize={5} color={L.teal} />
+          </Circle>
+          <Box>
+            <Text
+              fontFamily="'Syne', sans-serif"
+              fontSize="20px"
+              fontWeight="800"
+              color={L.text}
+              letterSpacing="-0.02em"
+            >
+              Customer Portal
+            </Text>
+            <Text fontSize="12px" color={L.muted}>
+              Rent & manage your bookings
+            </Text>
+          </Box>
+        </HStack>
+
+        <Text fontSize="13px" color={L.muted} lineHeight="1.75" mb={5}>
+          Browse Kenya's finest fleet, book in seconds, and manage everything
+          from your rentals to loyalty points — all in one place.
+        </Text>
+
+        <VStack spacing={2.5} align="stretch" mb={6}>
+          {CUST_FEATURES.map((f, i) => (
+            <HStack key={i} className="feature-row" spacing={2.5}>
+              <Circle
+                size="24px"
+                bg={L.tealBg}
+                flexShrink={0}
+                border="1px solid"
+                borderColor="rgba(14,123,123,0.12)"
+              >
+                <Icon as={f.icon} boxSize={3} color={L.teal} />
+              </Circle>
+              <Text fontSize="12px" fontWeight="500" color={L.textSub}>
+                {f.text}
+              </Text>
+            </HStack>
+          ))}
+        </VStack>
+
+        <Button
+          className="btn-cust"
+          w="100%"
+          h="52px"
+          bg={`linear-gradient(135deg, ${L.teal}, #1aa0a0)`}
+          color="white"
+          borderRadius="16px"
+          fontWeight="700"
+          fontSize="14px"
+          rightIcon={<Icon as={FiArrowRight} boxSize={4} />}
+          boxShadow="0 4px 18px rgba(14,123,123,0.28)"
+          _hover={{ opacity: 1 }}
+        >
+          Enter Portal
+        </Button>
+      </Box>
+    </Box>
+  );
+}
+
+// ─── TRUST BAR ────────────────────────────────────────────────────────────────
+const TRUST = [
+  { icon: FiShield, text: "SSL Encrypted", sub: "Bank-grade security" },
+  { icon: FiCheckCircle, text: "Verified Business", sub: "Licensed & insured" },
+  { icon: FiClock, text: "24/7 Support", sub: "Always available" },
+  { icon: FiZap, text: "Instant Confirmation", sub: "Book in 60 seconds" },
+];
+
+function TrustBar() {
+  return (
+    <SimpleGrid
+      columns={{ base: 2, md: 4 }}
+      spacing={4}
+      w="100%"
+      className="fu6"
+    >
+      {TRUST.map((t, i) => (
+        <HStack
+          key={i}
+          className="trust-item"
+          spacing={3}
+          bg={L.card}
+          borderRadius="16px"
+          border="1px solid"
+          borderColor={L.cardBorder}
+          boxShadow={L.shadow}
+          px={4}
+          py={3.5}
+        >
+          <Circle size="34px" bg={L.accentGlow2} flexShrink={0}>
+            <Icon as={t.icon} boxSize={3.5} color={L.accentLight} />
+          </Circle>
+          <Box>
+            <Text fontSize="12px" fontWeight="700" color={L.text}>
+              {t.text}
+            </Text>
+            <Text fontSize="10px" color={L.muted}>
+              {t.sub}
+            </Text>
+          </Box>
+        </HStack>
+      ))}
+    </SimpleGrid>
+  );
+}
+
+// ─── FLEET PREVIEW STRIP ──────────────────────────────────────────────────────
+const FLEET_PREVIEW = [
+  {
+    name: "Mercedes GLE 450",
+    price: "KSh 12,000",
+    img: "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?w=400&h=260&fit=crop",
+  },
+  {
+    name: "Range Rover Sport",
+    price: "KSh 18,000",
+    img: "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=400&h=260&fit=crop",
+  },
+  {
+    name: "Toyota Prado 2024",
+    price: "KSh 8,500",
+    img: "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=400&h=260&fit=crop",
+  },
+  {
+    name: "VW Tiguan",
+    price: "KSh 7,800",
+    img: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=400&h=260&fit=crop",
+  },
+];
+
+function FleetPreview() {
+  return (
+    <Box className="fu5" w="100%">
+      <HStack justify="space-between" mb={4} px={1}>
+        <Box>
+          <Text
+            fontSize="11px"
+            fontWeight="700"
+            color={L.accentBright}
+            letterSpacing="0.12em"
+            textTransform="uppercase"
+            mb={0.5}
+          >
+            Featured Fleet
+          </Text>
+          <Text
+            fontFamily="'Syne', sans-serif"
+            fontSize="18px"
+            fontWeight="800"
+            color={L.text}
+            letterSpacing="-0.02em"
+          >
+            Explore what's waiting for you
+          </Text>
+        </Box>
+        <Text
+          fontSize="12px"
+          fontWeight="600"
+          color={L.accentLight}
+          cursor="pointer"
+          _hover={{ textDecoration: "underline" }}
+        >
+          View all 120+ →
+        </Text>
+      </HStack>
+
+      <SimpleGrid columns={{ base: 2, md: 4 }} spacing={4}>
+        {FLEET_PREVIEW.map((car, i) => (
+          <Box
+            key={i}
+            bg={L.card}
+            borderRadius="20px"
+            overflow="hidden"
+            border="1px solid"
+            borderColor={L.cardBorder}
+            boxShadow={L.shadow}
+            cursor="pointer"
+            transition="transform .25s ease, box-shadow .25s ease"
+            _hover={{ transform: "translateY(-5px)", boxShadow: L.shadowMd }}
+          >
+            <Box h="120px" overflow="hidden">
+              <Image
+                src={car.img}
+                w="100%"
+                h="100%"
+                objectFit="cover"
+                transition="transform .4s ease"
+                _groupHover={{ transform: "scale(1.06)" }}
+              />
+            </Box>
+            <Box px={3} py={3}>
+              <Text
+                fontSize="12px"
+                fontWeight="700"
+                color={L.text}
+                noOfLines={1}
+                mb={0.5}
+              >
+                {car.name}
+              </Text>
+              <Text fontSize="11px" fontWeight="800" color={L.accentLight}>
+                {car.price}
+              </Text>
+              <Text fontSize="10px" color={L.muted}>
+                per day
+              </Text>
+            </Box>
+          </Box>
+        ))}
+      </SimpleGrid>
+    </Box>
+  );
+}
+
+// ─── MAIN PAGE ────────────────────────────────────────────────────────────────
 export default function Home() {
   const router = useRouter();
-  const tokens = useColorTokens();
   const { setIsLoading } = useLoading();
 
-  // Add animation styles
-  useEffect(() => {
-    if (!document.getElementById("portal-animations")) {
-      const style = document.createElement("style");
-      style.id = "portal-animations";
-      style.textContent = `
-        @keyframes slideInUp {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        @keyframes float {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-8px); }
-        }
-        @keyframes gradientShift {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-        .portal-card {
-          animation: slideInUp 0.6s ease-out forwards;
-        }
-        .portal-card:nth-child(1) { animation-delay: 0.1s; }
-        .portal-card:nth-child(2) { animation-delay: 0.2s; }
-        .icon-float {
-          animation: float 3s ease-in-out infinite;
-        }
-        .gradient-bg {
-          background-size: 200% 200%;
-          animation: gradientShift 6s ease infinite;
-        }
-      `;
-      document.head.appendChild(style);
-    }
-  }, []);
+  const goTo = (path: string) => {
+    setIsLoading(true);
+    router.push(path);
+  };
 
   return (
-    <Box minH="100vh" bg={tokens.pageBg} position="relative" overflow="hidden">
-      {/* Animated background elements */}
-      <Box
-        position="absolute"
-        top={-200}
-        right={-100}
-        w="400px"
-        h="400px"
-        borderRadius="full"
-        bg="linear-gradient(135deg, rgba(74, 158, 74, 0.1) 0%, rgba(74, 158, 74, 0) 70%)"
-        filter="blur(40px)"
-        pointerEvents="none"
-      />
-      <Box
-        position="absolute"
-        bottom={-150}
-        left={-100}
-        w="350px"
-        h="350px"
-        borderRadius="full"
-        bg="linear-gradient(135deg, rgba(13, 56, 13, 0.08) 0%, rgba(13, 56, 13, 0) 70%)"
-        filter="blur(40px)"
-        pointerEvents="none"
-      />
+    <>
+      <Styles />
+      <Box minH="100vh" bg={L.bg} fontFamily="'DM Sans', sans-serif" pb={{ base: 20, md: 0 }}>
+        <Ticker />
 
-      <Container
-        maxW="container.xl"
-        position="relative"
-        py={{ base: 16, md: 24 }}
-      >
-        <VStack spacing={{ base: 12, md: 16 }}>
-          {/* Header Section */}
-          <VStack spacing={{ base: 4, md: 6 }} textAlign="center" w="full">
-            <VStack spacing={2}>
-              <Badge
-                colorScheme="green"
-                px={4}
-                py={1.5}
-                borderRadius="full"
-                fontSize="11px"
-                fontWeight="700"
-                textTransform="uppercase"
-                letterSpacing="0.08em"
-                bg="green.100"
-                color="green.800"
+        {/* Navbar minimal */}
+        <Box
+          bg={L.card}
+          borderBottom="1px solid"
+          borderColor={L.cardBorder}
+          px={{ base: 4, md: 10 }}
+          py={4}
+          boxShadow="0 1px 12px rgba(0,0,0,0.05)"
+        >
+          <Flex align="center" maxW="1200px" mx="auto">
+            <HStack spacing={2.5}>
+              <Box
+                w={9}
+                h={9}
+                bg={L.accent}
+                borderRadius="xl"
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
               >
-                Welcome to Elite CarHire
-              </Badge>
-
-              <Heading
-                fontSize={{ base: "28px", sm: "36px", md: "48px", lg: "56px" }}
-                fontWeight="900"
-                lineHeight="1.1"
+                <Text fontSize="lg">🚘</Text>
+              </Box>
+              <Text
+                fontFamily="'Syne', sans-serif"
+                fontWeight="800"
+                fontSize="18px"
+                color={L.text}
                 letterSpacing="-0.02em"
               >
-                Select Your
-                <br />
-                <Text
-                  as="span"
-                  bgGradient="linear(to-r, green.400, green.600)"
-                  bgClip="text"
-                >
-                  Portal Access
+                Drive
+                <Text as="span" color={L.accentLight}>
+                  KE
                 </Text>
-              </Heading>
+              </Text>
+            </HStack>
+            <Spacer />
+            <HStack spacing={3}>
+              <Box
+                px={3}
+                py={1.5}
+                borderRadius="full"
+                bg={L.accentGlow}
+                border="1px solid"
+                borderColor={L.cardBorder}
+              >
+                <HStack spacing={1.5}>
+                  <Circle
+                    size="7px"
+                    bg={L.accentBright}
+                    className="pulse-dot"
+                  />
+                  <Text fontSize="11px" fontWeight="700" color={L.accentLight}>
+                    All Systems Live
+                  </Text>
+                </HStack>
+              </Box>
+              <Text
+                fontSize="12px"
+                color={L.subtle}
+                display={{ base: "none", md: "block" }}
+              >
+                +254 800 123 456
+              </Text>
+            </HStack>
+          </Flex>
+        </Box>
+
+        <Container
+          maxW="1100px"
+          px={{ base: 4, md: 6 }}
+          py={{ base: 10, md: 16 }}
+        >
+          <VStack spacing={12} align="stretch">
+            {/* Header */}
+            <VStack spacing={5} textAlign="center">
+              <HeroBadge />
+
+              <Box className="fu1">
+                <Text
+                  fontFamily="'Syne', sans-serif"
+                  fontSize={{
+                    base: "38px",
+                    sm: "50px",
+                    md: "64px",
+                    lg: "74px",
+                  }}
+                  fontWeight="800"
+                  letterSpacing="-0.04em"
+                  lineHeight="0.95"
+                  color={L.text}
+                >
+                  Select Your
+                  <br />
+                  <Text as="span" color={L.accentLight} position="relative">
+                    Portal Access
+                    <Box
+                      className="underline-anim"
+                      position="absolute"
+                      bottom="-3px"
+                      left={0}
+                      right={0}
+                      h="4px"
+                      bg={L.accentLight}
+                      borderRadius="full"
+                    />
+                  </Text>
+                </Text>
+              </Box>
+
+              <Text
+                className="fu2"
+                color={L.muted}
+                fontSize={{ base: "14px", md: "16px" }}
+                maxW="560px"
+                mx="auto"
+                lineHeight="1.8"
+                fontWeight="300"
+              >
+                DriveKE connects fleet owners and customers on one seamless
+                platform. Choose your role to unlock your personalised
+                experience.
+              </Text>
             </VStack>
 
-            <Text
-              color={tokens.textMuted}
-              fontSize={{ base: "14px", md: "16px" }}
-              maxW="600px"
-              fontWeight="400"
-              lineHeight="1.8"
+            {/* Portal cards */}
+            <SimpleGrid
+              columns={{ base: 1, md: 2 }}
+              spacing={6}
+              className="fu3"
             >
-              Choose your role and unlock advanced tools for vehicle management,
-              fleet operations, or seamless rental bookings.
-            </Text>
-          </VStack>
+              <BusinessCard onClick={() => goTo("/business/dashboard")} />
+              <CustomerCard onClick={() => goTo("/customer")} />
+            </SimpleGrid>
 
-          {/* Portal Cards Grid */}
-          <SimpleGrid
-            columns={{ base: 1, md: 2 }}
-            spacing={{ base: 4, md: 6 }}
-            w="full"
-            maxW="900px"
-            mx="auto"
-          >
-            {/* Business Portal Card */}
-            <Box
-              className="portal-card"
-              bg={tokens.cardBg}
-              borderRadius="24px"
-              border="1px solid"
-              borderColor={tokens.border}
-              overflow="hidden"
-              transition="all 0.4s cubic-bezier(0.23, 1, 0.320, 1)"
-              cursor="pointer"
-              position="relative"
-              role="group"
-              _hover={{
-                borderColor: "green.500",
-                boxShadow: "0 20px 60px rgba(74, 158, 74, 0.15)",
-                transform: "translateY(-12px) scale(1.02)",
-              }}
-              onClick={() => {
-                setIsLoading(true);
-                router.push("/business/dashboard");
-              }}
-            >
-              {/* Top accent bar */}
-              <Box h="4px" bgGradient="linear(to-r, green.400, green.600)" />
+            {/* Stats */}
+            <StatsRow />
 
-              <VStack spacing={6} p={{ base: 6, md: 7 }} align="start" h="full">
-                {/* Icon Container */}
-                <Flex
-                  w={16}
-                  h={16}
-                  borderRadius="16px"
-                  bg="linear-gradient(135deg, rgba(74, 158, 74, 0.15) 0%, rgba(74, 158, 74, 0.05) 100%)"
-                  align="center"
-                  justify="center"
-                  className="icon-float"
-                  transition="all 0.3s"
-                  _groupHover={{
-                    bg: "linear-gradient(135deg, rgba(74, 158, 74, 0.25) 0%, rgba(74, 158, 74, 0.1) 100%)",
-                  }}
-                >
-                  <Icon as={FiBriefcase} boxSize={8} color="green.600" />
-                </Flex>
+            {/* Fleet preview */}
+            <FleetPreview />
 
-                {/* Content */}
-                <Box>
-                  <Heading
-                    fontSize={{ base: "20px", md: "24px" }}
-                    fontWeight="800"
-                    mb={2}
-                    letterSpacing="-0.01em"
+            {/* Trust bar */}
+            <TrustBar />
+
+            {/* Footer */}
+            <Box pt={2}>
+              <Divider borderColor={L.cardBorder} mb={6} />
+              <Flex
+                align="center"
+                justify="space-between"
+                flexWrap="wrap"
+                gap={3}
+              >
+                <HStack spacing={2}>
+                  <Box
+                    w={7}
+                    h={7}
+                    bg={L.accent}
+                    borderRadius="lg"
+                    display="flex"
+                    alignItems="center"
+                    justifyContent="center"
                   >
-                    Business Portal
-                  </Heading>
+                    <Text fontSize="sm">🚘</Text>
+                  </Box>
                   <Text
-                    fontSize={{ base: "13px", md: "14px" }}
-                    color={tokens.textMuted}
-                    lineHeight="1.6"
-                    mb={4}
-                  >
-                    Streamline fleet management, track vehicle operations,
-                    analyze bookings, and optimize revenue with powerful
-                    business analytics.
-                  </Text>
-
-                  {/* Features */}
-                  <VStack align="start" spacing={2} mb={4}>
-                    {[
-                      "Fleet Management",
-                      "Analytics Dashboard",
-                      "Revenue Tracking",
-                    ].map((feature) => (
-                      <Flex
-                        key={feature}
-                        align="center"
-                        fontSize="12px"
-                        color="gray.600"
-                      >
-                        <Box
-                          w={1.5}
-                          h={1.5}
-                          borderRadius="full"
-                          bg="green.500"
-                          mr={2}
-                        />
-                        {feature}
-                      </Flex>
-                    ))}
-                  </VStack>
-                </Box>
-
-                <Spacer />
-
-                {/* Button */}
-                <Button
-                  w="full"
-                  bg="linear-gradient(135deg, green.500 0%, green.600 100%)"
-                  color="white"
-                  fontWeight="700"
-                  borderRadius="12px"
-                  fontSize={{ base: "13px", md: "14px" }}
-                  py={6}
-                  rightIcon={<FiArrowRight />}
-                  transition="all 0.3s"
-                  _hover={{
-                    boxShadow: "0 10px 30px rgba(74, 158, 74, 0.3)",
-                    transform: "translateY(-2px)",
-                  }}
-                  _active={{ transform: "scale(0.98)" }}
-                >
-                  Access Dashboard
-                </Button>
-              </VStack>
-            </Box>
-
-            {/* Customer Portal Card */}
-            <Box
-              className="portal-card"
-              bg={tokens.cardBg}
-              borderRadius="24px"
-              border="1px solid"
-              borderColor={tokens.border}
-              overflow="hidden"
-              transition="all 0.4s cubic-bezier(0.23, 1, 0.320, 1)"
-              cursor="pointer"
-              position="relative"
-              _hover={{
-                borderColor: "teal.500",
-                boxShadow: "0 20px 60px rgba(15, 107, 107, 0.15)",
-                transform: "translateY(-12px) scale(1.02)",
-              }}
-              onClick={() => {
-                setIsLoading(true);
-                router.push("/customer");
-              }}
-            >
-              {/* Top accent bar */}
-              <Box h="4px" bgGradient="linear(to-r, teal.400, teal.600)" />
-
-              <VStack spacing={6} p={{ base: 6, md: 7 }} align="start" h="full">
-                {/* Icon Container */}
-                <Flex
-                  w={16}
-                  h={16}
-                  borderRadius="16px"
-                  bg="linear-gradient(135deg, rgba(15, 107, 107, 0.15) 0%, rgba(15, 107, 107, 0.05) 100%)"
-                  align="center"
-                  justify="center"
-                  className="icon-float"
-                  transition="all 0.3s"
-                  _groupHover={{
-                    bg: "linear-gradient(135deg, rgba(15, 107, 107, 0.25) 0%, rgba(15, 107, 107, 0.1) 100%)",
-                  }}
-                >
-                  <Icon as={FiUser} boxSize={8} color="teal.600" />
-                </Flex>
-
-                {/* Content */}
-                <Box>
-                  <Heading
-                    fontSize={{ base: "20px", md: "24px" }}
+                    fontFamily="'Syne', sans-serif"
+                    fontSize="14px"
                     fontWeight="800"
-                    mb={2}
-                    letterSpacing="-0.01em"
+                    color={L.text}
                   >
-                    Customer Portal
-                  </Heading>
-                  <Text
-                    fontSize={{ base: "13px", md: "14px" }}
-                    color={tokens.textMuted}
-                    lineHeight="1.6"
-                    mb={4}
-                  >
-                    Browse premium vehicles, secure instant bookings, manage
-                    your reservations, and track rental history with ease.
+                    Drive
+                    <Text as="span" color={L.accentLight}>
+                      KE
+                    </Text>
                   </Text>
-
-                  {/* Features */}
-                  <VStack align="start" spacing={2} mb={4}>
-                    {["Vehicle Browse", "Quick Booking", "Loyalty Program"].map(
-                      (feature) => (
-                        <Flex
-                          key={feature}
-                          align="center"
-                          fontSize="12px"
-                          color="gray.600"
-                        >
-                          <Box
-                            w={1.5}
-                            h={1.5}
-                            borderRadius="full"
-                            bg="teal.500"
-                            mr={2}
-                          />
-                          {feature}
-                        </Flex>
-                      ),
-                    )}
-                  </VStack>
-                </Box>
-
-                <Spacer />
-
-                {/* Button */}
-                <Button
-                  w="full"
-                  bg="linear-gradient(135deg, teal.500 0%, teal.600 100%)"
-                  color="white"
-                  fontWeight="700"
-                  borderRadius="12px"
-                  fontSize={{ base: "13px", md: "14px" }}
-                  py={6}
-                  rightIcon={<FiArrowRight />}
-                  transition="all 0.3s"
-                  _hover={{
-                    boxShadow: "0 10px 30px rgba(15, 107, 107, 0.3)",
-                    transform: "translateY(-2px)",
-                  }}
-                  _active={{ transform: "scale(0.98)" }}
-                >
-                  Enter Portal
-                </Button>
-              </VStack>
+                </HStack>
+                <Text fontSize="12px" color={L.subtle} textAlign="center">
+                  © {new Date().getFullYear()} DriveKE Ltd · Kenya's Premium Car
+                  Hire Platform
+                </Text>
+                <HStack spacing={4}>
+                  {["Privacy", "Terms", "Support"].map((l) => (
+                    <Text
+                      key={l}
+                      fontSize="12px"
+                      color={L.subtle}
+                      cursor="pointer"
+                      _hover={{ color: L.accentLight }}
+                      transition="color .2s ease"
+                    >
+                      {l}
+                    </Text>
+                  ))}
+                </HStack>
+              </Flex>
             </Box>
-          </SimpleGrid>
-
-          {/* Footer Info */}
-          <Divider my={4} opacity={0.3} />
-          <VStack spacing={2} textAlign="center">
-            <Text fontSize="12px" color={tokens.textMuted} fontWeight="500">
-              🚗 Elite CarHire Platform • Global Vehicle Rental Solutions
-            </Text>
-            <Text fontSize="11px" color={tokens.textMuted} opacity={0.7}>
-              Enterprise-grade security • Real-time tracking • 24/7 support
-            </Text>
           </VStack>
-        </VStack>
-      </Container>
-    </Box>
+        </Container>
+      </Box>
+    </>
   );
 }

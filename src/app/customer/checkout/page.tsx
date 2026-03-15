@@ -249,7 +249,11 @@ function StepTracker({ step, steps }: { step: number; steps: any[] }) {
                         alt={s.title}
                         boxSize="40px"
                         color={active ? L.accentLight : L.subtle}
-                        filter={active ? "drop-shadow(0 0 2px rgba(45,140,45,0.3))" : ""}
+                        filter={
+                          active
+                            ? "drop-shadow(0 0 2px rgba(45,140,45,0.3))"
+                            : ""
+                        }
                       />
                     </Box>
                   )}
