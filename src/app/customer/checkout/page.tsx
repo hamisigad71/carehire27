@@ -1,5 +1,6 @@
 "use client";
 
+import { Suspense } from "react";
 import {
   Box,
   Container,
@@ -423,7 +424,7 @@ function UploadZone({
 }
 
 // ─── MAIN PAGE ────────────────────────────────────────────────────────────────
-export default function CheckoutPage() {
+function CheckoutPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const serviceType = searchParams.get("type") || "rent";
@@ -1492,5 +1493,25 @@ export default function CheckoutPage() {
         </Container>
       </Box>
     </>
+  );
+}
+
+// ─── EXPORT WITH SUSPENSE ─────────────────────────────────────────────────────
+export default function CheckoutPage() {
+  return (
+    <Suspense
+      fallback={
+        <Center minH="100vh" bg="#f4f7f4">
+          <VStack spacing={4}>
+            <Spinner size="lg" color="#2d8c2d" thickness="3px" />
+            <Text color="#3a4d3a" fontSize="14px" fontWeight="600">
+              Loading checkout...
+            </Text>
+          </VStack>
+        </Center>
+      }
+    >
+      <CheckoutPageContent />
+    </Suspense>
   );
 }
