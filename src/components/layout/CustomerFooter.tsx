@@ -598,12 +598,19 @@ export const CustomerFooter = () => {
           {/* ── BOTTOM BAR ── */}
           <Divider borderColor={L.cardBorder} mb={6} />
 
-          <Flex align="center" justify="space-between" flexWrap="wrap" gap={4}>
+          <Flex 
+            align="center" 
+            justify={{ base: "flex-end", md: "space-between" }} 
+            flexWrap="wrap" 
+            gap={4}
+            pb={{ base: 20, md: 0 }}
+          >
             {/* Copyright */}
             <Text
               fontFamily="'DM Sans', sans-serif"
               fontSize="12px"
               color={L.subtle}
+              display={{ base: "none", md: "block" }}
             >
               © {new Date().getFullYear()} DriveKE Ltd. All rights reserved. ·
               Nairobi, Kenya
@@ -626,12 +633,13 @@ export const CustomerFooter = () => {
             </HStack>
 
             {/* ── CREATOR DROPDOWN ── */}
-            <Box position="relative">
+            <Box position="relative" w={{ base: "100%", md: "auto" }}>
               <Button
                 className="ft-creator-btn"
                 size="xs"
-                h="32px"
+                h={{ base: "36px", md: "32px" }}
                 px={4}
+                w={{ base: "100%", md: "auto" }}
                 bg={L.card}
                 color={L.muted}
                 border="1px solid"

@@ -239,9 +239,19 @@ function StatsRow() {
           p={4}
           textAlign="center"
         >
-          <Circle size="36px" bg={L.accentGlow} mx="auto" mb={2}>
-            <Icon as={s.icon} boxSize={4} color={s.color} />
+          <Circle
+            size={{ base: "44px", md: "36px" }}
+            bg={L.accentGlow}
+            mx="auto"
+            mb={2}
+          >
+            <Icon
+              as={s.icon}
+              boxSize={{ base: "5", md: "4" }}
+              color={s.color}
+            />
           </Circle>
+
           <Text
             fontFamily="'Syne', sans-serif"
             fontSize="22px"
@@ -778,7 +788,12 @@ export default function Home() {
   return (
     <>
       <Styles />
-      <Box minH="100vh" bg={L.bg} fontFamily="'DM Sans', sans-serif" pb={{ base: 20, md: 0 }}>
+      <Box
+        minH="100vh"
+        bg={L.bg}
+        fontFamily="'DM Sans', sans-serif"
+        pb={{ base: 20, md: 0 }}
+      >
         <Ticker />
 
         {/* Navbar minimal */}

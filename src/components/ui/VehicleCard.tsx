@@ -203,7 +203,7 @@ export const VehicleCard = ({
         {/* ── IMAGE ZONE ── */}
         <Box
           position="relative"
-          h={{ base: "240px", md: "200px" }}
+          h={{ base: "180px", md: "200px" }}
           overflow="hidden"
         >
           {/* Type badge */}
@@ -242,7 +242,7 @@ export const VehicleCard = ({
             w="100%"
             h="100%"
             objectFit="cover"
-            objectPosition="center 40%"
+            objectPosition="center 55%"
           />
 
           {/* Bottom gradient */}
@@ -306,11 +306,11 @@ export const VehicleCard = ({
 
         {/* ── BODY ── */}
         <VStack
-          px={{ base: 4, md: 5 }}
-          pt={4}
-          pb={5}
+          px={{ base: 3.5, md: 5 }}
+          pt={{ base: 2.5, md: 4 }}
+          pb={{ base: 3, md: 5 }}
           align="stretch"
-          spacing={4}
+          spacing={{ base: 2, md: 4 }}
         >
           {/* Title row */}
           <Box>
@@ -379,12 +379,14 @@ export const VehicleCard = ({
             )}
           </HStack>
 
-          {/* Stat blocks */}
-          <HStack spacing={2}>
+          {/* Stat blocks - Compressed on mobile */}
+          <Grid templateColumns={{ base: "1fr 1fr", md: "1fr 1fr 1fr" }} gap={2}>
             <StatBlock label="Year" value={String(year)} />
-            <StatBlock label="Seats" value={`${seats} pax`} />
-            <StatBlock label="Gearbox" value={transmission} />
-          </HStack>
+            <StatBlock label="Seats" value={`${seats}`} />
+            <Box display={{ base: "none", md: "block" }}>
+              <StatBlock label="Gearbox" value={transmission} />
+            </Box>
+          </Grid>
 
           {/* Divider */}
           <Box h="1px" bg="rgba(200,200,200,0.3)" />

@@ -445,8 +445,8 @@ export const CustomerNavbar = () => {
             <Box
               display={{ base: "flex", lg: "none" }}
               className="nav-icon-btn"
-              w="36px"
-              h="36px"
+              w={{ base: "44px", lg: "36px" }}
+              h={{ base: "44px", lg: "36px" }}
               borderRadius="10px"
               border="1px solid"
               borderColor={L.border}
@@ -455,7 +455,7 @@ export const CustomerNavbar = () => {
               cursor="pointer"
               onClick={() => setMenuOpen(true)}
             >
-              <Icon as={FiMenu} boxSize={4.5} color={L.text} />
+              <Icon as={FiMenu} boxSize={{ base: 5.5, lg: 4.5 }} color={L.text} />
             </Box>
           </Flex>
         </Container>

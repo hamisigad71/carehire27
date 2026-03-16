@@ -243,7 +243,7 @@ const ACTIVE_BOOKING = {
 
 const FLEET: FleetCar[] = [
   {
-    name: "Mercedes GLE 450",
+    name: "Mercedes-Benz C Class",
     category: "SUV · Luxury",
     price: 12000,
     seats: 5,
@@ -252,7 +252,7 @@ const FLEET: FleetCar[] = [
     available: true,
     rating: 4.9,
     reviews: 34,
-    img: "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?w=700&h=440&fit=crop",
+    img: "https://i.pinimg.com/1200x/52/0d/b4/520db4a7e25e34b1e9739d4abe8eab59.jpg",
     badge: "Popular",
   },
   {
@@ -265,7 +265,7 @@ const FLEET: FleetCar[] = [
     available: true,
     rating: 4.7,
     reviews: 56,
-    img: "https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?w=700&h=440&fit=crop",
+    img: "https://i.pinimg.com/1200x/07/2e/1e/072e1e249a82a3e60e725dd056f65ad7.jpg",
     badge: "Best Value",
   },
   {
@@ -278,7 +278,7 @@ const FLEET: FleetCar[] = [
     available: false,
     rating: 5.0,
     reviews: 21,
-    img: "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=700&h=440&fit=crop",
+    img: "https://i.pinimg.com/1200x/34/fa/4f/34fa4fea50de089ab2a0bbb5781ae62c.jpg",
     badge: "Premium",
   },
   {
@@ -291,7 +291,7 @@ const FLEET: FleetCar[] = [
     available: true,
     rating: 4.6,
     reviews: 43,
-    img: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=700&h=440&fit=crop",
+    img: "https://i.pinimg.com/736x/ef/58/c2/ef58c227f3dbbe4d2390ea6345abf261.jpg",
     badge: null,
   },
 ];

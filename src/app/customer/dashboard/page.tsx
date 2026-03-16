@@ -61,8 +61,6 @@ import {
   FiX,
 } from "react-icons/fi";
 import { useRouter } from "next/navigation";
-import { DriveGreenAdCard } from "@/components/DriveGreenAdCard";
-import { MobileBottomNav } from "@/components/customer/MobileBottomNav";
 
 // ─── TOKENS ───────────────────────────────────────────────────────────────────
 const L = {
@@ -477,7 +475,7 @@ export default function CustomerDashboard() {
   return (
     <>
       <Styles />
-      <Box minH="100vh" bg={L.bg} pb={{ base: "80px", md: "0" }}>
+      <Box minH="100vh" bg={L.bg}>
         {/* ── ALERT ─────────────────────────────────────────────────────── */}
         {showAlert && (
           <Box px={{ base: 4, lg: 6 }} pt={4}>
@@ -501,8 +499,8 @@ export default function CustomerDashboard() {
                     <Text as="span" fontWeight="700" color={L.gold}>
                       Upcoming:{" "}
                     </Text>
-                    Scheduled maintenance on your active rental — drop vehicle
-                    at any branch on Mar 16 for complimentary service check.
+                    Scheduled maintenance on your active rental — drop vehicle at
+                    any branch on Mar 16 for complimentary service check.
                   </Text>
                 </HStack>
                 <Button
@@ -655,9 +653,242 @@ export default function CustomerDashboard() {
               ))}
             </SimpleGrid>
 
-            {/* ── DRIVE GREEN AD CARD ───────────────────────────────────── */}
+            {/* ── ACTIVE RENTAL ─────────────────────────────────────────── */}
             <Box className="fu4">
-              <DriveGreenAdCard discount="10%" promoCode="DRIVE10" />
+              <Flex align="center" justify="space-between" mb={4} gap={3}>
+                <Box>
+                  <Text fontSize="15px" fontWeight="800" color={L.text}>
+                    Active Rental
+                  </Text>
+                  <Text fontSize="12px" color={L.muted} mt={0.5}>
+                    Your current rental in progress
+                  </Text>
+                </Box>
+                <Box
+                  px={3}
+                  py={1.5}
+                  bg={L.accentGlow2}
+                  borderRadius="10px"
+                  border="1px solid"
+                  borderColor={L.borderMid}
+                >
+                  <HStack spacing={1.5}>
+                    <Box
+                      w="6px"
+                      h="6px"
+                      borderRadius="full"
+                      bg={L.accentLight}
+                    />
+                    <Text
+                      fontSize="11px"
+                      fontWeight="700"
+                      color={L.accentLight}
+                    >
+                      Live
+                    </Text>
+                  </HStack>
+                </Box>
+              </Flex>
+
+              <Box
+                className="active-rental-card"
+                borderRadius="20px"
+                overflow="hidden"
+                border="1px solid"
+                borderColor={L.borderMid}
+                boxShadow="0 8px 32px rgba(30,110,30,0.12)"
+                bg="linear-gradient(135deg, #1e6e1e 0%, #2d8c2d 55%, #3a9c3a 100%)"
+              >
+                <Grid
+                  templateColumns={{ base: "1fr", md: "1fr 1fr" }}
+                  minH="260px"
+                >
+                  {/* left */}
+                  <Box
+                    p={{ base: 6, md: 8 }}
+                    display="flex"
+                    flexDir="column"
+                    justifyContent="space-between"
+                  >
+                    {/* subtle grid overlay */}
+                    <Box
+                      position="absolute"
+                      inset={0}
+                      opacity={0.05}
+                      pointerEvents="none"
+                      bgImage="linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)"
+                      bgSize="40px 40px"
+                    />
+                    <Box position="relative" zIndex={1}>
+                      <HStack mb={4} spacing={2.5}>
+                        <Box
+                          px={2.5}
+                          py={1}
+                          bg="rgba(255,255,255,0.18)"
+                          borderRadius="8px"
+                          border="1px solid rgba(255,255,255,0.22)"
+                        >
+                          <HStack spacing={1.5}>
+                            <Box
+                              w="6px"
+                              h="6px"
+                              borderRadius="full"
+                              bg="rgba(120,255,120,0.9)"
+                            />
+                            <Text
+                              fontSize="10px"
+                              fontWeight="700"
+                              color="white"
+                              textTransform="uppercase"
+                              letterSpacing=".1em"
+                            >
+                              Active Rental
+                            </Text>
+                          </HStack>
+                        </Box>
+                        <Text
+                          fontSize="11px"
+                          color="rgba(255,255,255,0.55)"
+                          fontFamily="monospace"
+                        >
+                          {ACTIVE_BOOKING.ref}
+                        </Text>
+                      </HStack>
+
+                      <Heading
+                        fontSize={{ base: "sm", sm: "lg", md: "2xl" }}
+                        fontWeight="800"
+                        color="white"
+                        letterSpacing="-0.02em"
+                        mb={1}
+                        noOfLines={2}
+                      >
+                        {ACTIVE_BOOKING.car}
+                      </Heading>
+                      <Text
+                        fontSize="13px"
+                        color="rgba(255,255,255,0.65)"
+                        mb={5}
+                      >
+                        {ACTIVE_BOOKING.plate} · {ACTIVE_BOOKING.pickupLocation}
+                      </Text>
+
+                      <Grid templateColumns="1fr 1fr" gap={3}>
+                        {[
+                          { l: "Pick-up", v: ACTIVE_BOOKING.pickupDate },
+                          { l: "Return", v: ACTIVE_BOOKING.returnDate },
+                          { l: "Duration", v: `${ACTIVE_BOOKING.days} days` },
+                          {
+                            l: "Daily Rate",
+                            v: `KSh ${ACTIVE_BOOKING.dailyRate.toLocaleString()}`,
+                          },
+                        ].map((item) => (
+                          <Box key={item.l}>
+                            <Text
+                              fontSize="10px"
+                              color="rgba(255,255,255,0.5)"
+                              textTransform="uppercase"
+                              letterSpacing=".08em"
+                              fontWeight="600"
+                              mb={0.5}
+                            >
+                              {item.l}
+                            </Text>
+                            <Text
+                              fontSize="13px"
+                              fontWeight="700"
+                              color="white"
+                            >
+                              {item.v}
+                            </Text>
+                          </Box>
+                        ))}
+                      </Grid>
+                    </Box>
+
+                    <HStack mt={5} spacing={{ base: 1.5, sm: 3 }} position="relative" zIndex={1} w="100%" flex={1}>
+                      <Button
+                        size="sm"
+                        h={{ base: "32px", sm: "36px" }}
+                        px={{ base: 2.5, sm: 4 }}
+                        bg="rgba(255,255,255,0.15)"
+                        color="white"
+                        borderRadius="12px"
+                        fontWeight="700"
+                        fontSize={{ base: "10px", sm: "12px" }}
+                        border="1px solid rgba(255,255,255,0.22)"
+                        _hover={{ bg: "rgba(255,255,255,0.22)" }}
+                        leftIcon={<Icon as={FiMapPin} boxSize={{ base: 3, sm: 3.5 }} />}
+                        flex={1}
+                        minW="0"
+                      >
+                        Track Car
+                      </Button>
+                      <Button
+                        size="sm"
+                        h={{ base: "32px", sm: "36px" }}
+                        px={{ base: 2.5, sm: 4 }}
+                        bg="rgba(255,255,255,0.95)"
+                        color={L.accent}
+                        borderRadius="12px"
+                        fontWeight="700"
+                        fontSize={{ base: "10px", sm: "12px" }}
+                        _hover={{ bg: "white", transform: "translateY(-1px)" }}
+                        transition="all .2s"
+                        leftIcon={<Icon as={FiCalendar} boxSize={{ base: 3, sm: 3.5 }} />}
+                        flex={1}
+                        minW="0"
+                      >
+                        Extend Rental
+                      </Button>
+                    </HStack>
+                  </Box>
+
+                  {/* right — image */}
+                  <Box overflow="hidden" position="relative" minH="200px">
+                    <Image
+                      src={ACTIVE_BOOKING.img}
+                      w="100%"
+                      h="100%"
+                      objectFit="cover"
+                      style={{ filter: "brightness(0.7) saturate(0.9)" }}
+                    />
+                    <Box
+                      position="absolute"
+                      inset={0}
+                      bg="linear-gradient(135deg, rgba(30,110,30,0.3) 0%, transparent 60%)"
+                    />
+                    <Box
+                      position="absolute"
+                      bottom={4}
+                      right={4}
+                      bg="rgba(0,0,0,0.55)"
+                      backdropFilter="blur(10px)"
+                      borderRadius="14px"
+                      px={4}
+                      py={3}
+                      border="1px solid rgba(255,255,255,0.12)"
+                    >
+                      <Text
+                        fontSize="10px"
+                        color="rgba(255,255,255,0.6)"
+                        textTransform="uppercase"
+                        letterSpacing=".08em"
+                      >
+                        Total
+                      </Text>
+                      <Text
+                        fontSize="20px"
+                        fontWeight="800"
+                        color="white"
+                        lineHeight="1.1"
+                      >
+                        KSh {ACTIVE_BOOKING.total.toLocaleString()}
+                      </Text>
+                    </Box>
+                  </Box>
+                </Grid>
+              </Box>
             </Box>
 
             {/* ── FLEET + SIDEBAR ───────────────────────────────────────── */}
@@ -694,7 +925,7 @@ export default function CustomerDashboard() {
                     </HStack>
                   </Flex>
 
-                  <SimpleGrid columns={{ base: 1, md: 2, xl: 4 }} spacing={4}>
+                  <SimpleGrid columns={{ base: 1, sm: 2, lg: 4 }} spacing={4}>
                     {filtered.map((car) => (
                       <Box
                         key={car.name}
@@ -1457,8 +1688,6 @@ export default function CustomerDashboard() {
           </ModalContent>
         </Modal>
       </Box>
-
-      <MobileBottomNav />
     </>
   );
 }

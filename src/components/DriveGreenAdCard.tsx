@@ -1,19 +1,8 @@
 "use client";
 
-import {
-  Box,
-  Flex,
-  HStack,
-  VStack,
-  Text,
-  Button,
-  Image,
-  Badge,
-  Card,
-  CardBody,
-  Grid,
-  Heading,
-} from "@chakra-ui/react";
+import { Box, Flex, HStack, VStack, Text, Button, Image, Badge, Card, CardBody, Grid, Heading, Icon } from "@chakra-ui/react";
+import { FaApple } from "react-icons/fa";
+import { SiGoogleplay } from "react-icons/si";
 
 // ─── COLOR TOKENS ─────────────────────────────────────────────────────────────
 const L = {
@@ -228,6 +217,7 @@ export function DriveGreenAdCard({
                   flex={1}
                   _hover={{ bg: L.accentLight, transform: "translateY(-2px)" }}
                   transition="all 0.2s"
+                  leftIcon={<Icon as={FaApple} boxSize={{ base: "14px", sm: "16px" }} />}
                 >
                   App Store
                 </Button>
@@ -245,6 +235,7 @@ export function DriveGreenAdCard({
                   flex={1}
                   _hover={{ bg: L.accentGlow, transform: "translateY(-2px)" }}
                   transition="all 0.2s"
+                  leftIcon={<Icon as={SiGoogleplay} boxSize={{ base: "14px", sm: "16px" }} />}
                 >
                   Google Play
                 </Button>
