@@ -18,22 +18,16 @@ import {
 import {
   FiMenu,
   FiUser,
-  FiSearch,
-  FiTruck,
-  FiMapPin,
   FiLogOut,
   FiX,
-  FiChevronDown,
-  FiBell,
-  FiStar,
-  FiGift,
   FiHome,
   FiCalendar,
+  FiMapPin,
   FiTag,
-  FiHelpCircle,
-  FiSettings,
-  FiShield,
+  FiBell,
+  FiSun,
 } from "react-icons/fi";
+import { FaCar } from "react-icons/fa";
 import { useRouter, usePathname } from "next/navigation";
 
 // ─── LIGHT TOKENS ─────────────────────────────────────────────────────────────
@@ -166,26 +160,21 @@ const Styles = () => (
 // ─── NAV LINKS ────────────────────────────────────────────────────────────────
 const NAV_LINKS = [
   { label: "Home", href: "/customer", icon: FiHome },
-  { label: "Browse Fleet", href: "/customer/fleet", icon: FiTruck },
-  { label: "My Bookings", href: "/customer/bookings", icon: FiCalendar },
-  { label: "Offers", href: "/customer/offers", icon: FiTag },
   { label: "Locations", href: "/customer/locations", icon: FiMapPin },
+  { label: "Offers", href: "/customer/offers", icon: FiTag },
+  { label: "Vehicle", href: "/customer/fleet", icon: FaCar },
+  { label: "Bookings", href: "/customer/bookings", icon: FiCalendar },
+  { label: "Profile", href: "/customer/profile", icon: FiUser },
 ];
 
-const MOBILE_EXTRAS = [
-  { label: "Loyalty Points", href: "/customer/loyalty", icon: FiStar },
-  { label: "Refer a Friend", href: "/customer/refer", icon: FiGift },
-  { label: "Help & Support", href: "/customer/support", icon: FiHelpCircle },
-  { label: "Settings", href: "/customer/settings", icon: FiSettings },
-];
+const MOBILE_EXTRAS = [];
 
 // ─── NAVBAR ───────────────────────────────────────────────────────────────────
 export const CustomerNavbar = () => {
   const router = useRouter();
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
-  const [searchOpen, setSearchOpen] = useState(false);
-  const [notificationVisible, setNotificationVisible] = useState(true);
+  const [notifications, setNotifications] = useState(true);
 
   const go = (href: string) => {
     router.push(href);
@@ -209,44 +198,6 @@ export const CustomerNavbar = () => {
         boxShadow={L.shadow}
         fontFamily="'DM Sans', sans-serif"
       >
-        {/* ── Top announcement strip ── */}
-        {notificationVisible && (
-          <Box bg={L.accent} py={1.5} textAlign="center" position="relative">
-            <Text
-              fontSize="11px"
-              fontWeight="700"
-              color="rgba(255,255,255,0.9)"
-              letterSpacing="0.05em"
-            >
-              🎉 New users get{" "}
-              <Text as="span" color="white" textDecoration="underline">
-                10% OFF
-              </Text>{" "}
-              their first booking — Use code{" "}
-              <Text as="span" fontWeight="800" color="white">
-                DRIVE10
-              </Text>
-            </Text>
-            <Box
-              position="absolute"
-              right={4}
-              top="50%"
-              transform="translateY(-50%)"
-              display="flex"
-              alignItems="center"
-              justifyContent="center"
-              w="24px"
-              h="24px"
-              cursor="pointer"
-              borderRadius="full"
-              _hover={{ bg: "rgba(255,255,255,0.15)" }}
-              transition="background .2s ease"
-              onClick={() => setNotificationVisible(false)}
-            >
-              <Icon as={FiX} color="white" boxSize={4} />
-            </Box>
-          </Box>
-        )}
 
         <Container maxW="1280px" px={{ base: 4, md: 6 }}>
           <Flex align="center" h="68px" gap={6}>
@@ -297,149 +248,92 @@ export const CustomerNavbar = () => {
 
             <Spacer />
 
-            {/* Search bar — desktop */}
-            {searchOpen ? (
-              <Flex
-                display={{ base: "none", md: "flex" }}
-                w="260px"
-                style={{ animation: "slideDown .25s ease both" }}
-              >
-                <input
-                  className="search-input"
-                  autoFocus
-                  placeholder="Search cars, locations…"
-                />
-                <button
-                  className="search-btn"
-                  onClick={() => setSearchOpen(false)}
-                >
-                  <svg
-                    width="14"
-                    height="14"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="white"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <circle cx="11" cy="11" r="8" />
-                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
-                  </svg>
-                </button>
-              </Flex>
-            ) : (
+            {/* Right side buttons - Desktop */}
+            <HStack spacing={2} display={{ base: "none", lg: "flex" }}>
+              {/* Notification button */}
               <Box
-                position="relative"
                 className="nav-icon-btn"
-                display={{ base: "none", md: "flex" }}
-                w="36px"
-                h="36px"
+                w="40px"
+                h="40px"
                 borderRadius="10px"
                 border="1px solid"
                 borderColor={L.border}
+                display="flex"
                 alignItems="center"
                 justifyContent="center"
-                onClick={() => setSearchOpen(true)}
+                cursor="pointer"
+                position="relative"
+                _hover={{ bg: L.accentGlow, borderColor: L.cardBorder }}
               >
-                <Icon as={FiSearch} boxSize={4} color={L.muted} />
+                <Icon as={FiBell} boxSize={5} color={L.muted} />
+                {notifications && (
+                  <Box
+                    position="absolute"
+                    top="2px"
+                    right="2px"
+                    w="8px"
+                    h="8px"
+                    bg="#e05252"
+                    borderRadius="50%"
+                    border="1.5px solid white"
+                  />
+                )}
               </Box>
-            )}
 
-            {/* Notifications */}
-            <Box
-              position="relative"
-              className="nav-icon-btn"
-              display={{ base: "none", md: "flex" }}
-              w="36px"
-              h="36px"
-              borderRadius="10px"
-              border="1px solid"
-              borderColor={L.border}
-              alignItems="center"
-              justifyContent="center"
-              cursor="pointer"
-            >
-              <Icon as={FiBell} boxSize={4} color={L.muted} />
-              <div className="notif-dot" />
-            </Box>
-
-            {/* Loyalty points pill */}
-            <HStack
-              spacing={1.5}
-              display={{ base: "none", xl: "flex" }}
-              bg={L.accentGlow}
-              border="1px solid"
-              borderColor={L.cardBorder}
-              borderRadius="full"
-              px={3}
-              py={1.5}
-              cursor="pointer"
-              onClick={() => go("/customer/loyalty")}
-              _hover={{ bg: L.accentGlow2 }}
-              transition="all .2s ease"
-            >
-              <Icon as={FiStar} color={L.accentLight} boxSize={3.5} />
-              <Text fontSize="12px" fontWeight="700" color={L.accentLight}>
-                2,450 pts
-              </Text>
-            </HStack>
-
-            {/* Profile avatar */}
-            <HStack
-              spacing={2}
-              display={{ base: "none", md: "flex" }}
-              cursor="pointer"
-              p={1.5}
-              borderRadius="12px"
-              border="1px solid"
-              borderColor={L.border}
-              _hover={{ bg: L.accentGlow, borderColor: L.cardBorder }}
-              transition="all .2s ease"
-              onClick={() => go("/customer/profile")}
-            >
-              <Circle
-                size="28px"
-                bg={`linear-gradient(135deg, ${L.accent}, ${L.accentLight})`}
+              {/* Light mode button */}
+              <Box
+                className="nav-icon-btn"
+                w="40px"
+                h="40px"
+                borderRadius="10px"
+                border="1px solid"
+                borderColor={L.border}
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+                cursor="pointer"
+                _hover={{ bg: L.accentGlow, borderColor: L.cardBorder }}
               >
-                <Text fontSize="11px" fontWeight="800" color="white">
-                  JK
-                </Text>
-              </Circle>
-              <Text
-                fontSize="13px"
+                <Icon as={FiSun} boxSize={5} color={L.muted} />
+              </Box>
+
+              {/* Profile button */}
+              <Box
+                className="nav-icon-btn"
+                w="40px"
+                h="40px"
+                borderRadius="10px"
+                border="1px solid"
+                borderColor={L.border}
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+                cursor="pointer"
+                _hover={{ bg: L.accentGlow, borderColor: L.cardBorder }}
+                onClick={() => go("/customer/profile")}
+              >
+                <Icon as={FiUser} boxSize={5} color={isActive("/customer/profile") ? L.accentLight : L.muted} />
+              </Box>
+
+              {/* Sign out button */}
+              <Button
+                size="sm"
+                h="40px"
+                px={4}
+                bg="transparent"
+                color={L.red}
+                border="1px solid"
+                borderColor={L.red}
+                borderRadius="10px"
                 fontWeight="600"
-                color={L.text}
-                display={{ base: "none", lg: "block" }}
+                fontSize="13px"
+                _hover={{ bg: L.redBg, borderColor: L.red }}
+                leftIcon={<Icon as={FiLogOut} boxSize={5} />}
+                onClick={() => router.push("/auth")}
               >
-                James
-              </Text>
-              <Icon
-                as={FiChevronDown}
-                boxSize={3}
-                color={L.subtle}
-                display={{ base: "none", lg: "block" }}
-              />
+                Sign Out
+              </Button>
             </HStack>
-
-            {/* Rent Now CTA */}
-            <Button
-              className="nav-btn-primary"
-              display={{ base: "none", md: "flex" }}
-              size="sm"
-              h="38px"
-              px={5}
-              bg={L.accent}
-              color="white"
-              borderRadius="12px"
-              fontWeight="700"
-              fontSize="13px"
-              boxShadow="0 4px 14px rgba(30,110,30,0.28)"
-              _hover={{ bg: L.accentLight }}
-              onClick={() => go("/customer/fleet")}
-            >
-              + Book Now
-            </Button>
 
             {/* Mobile hamburger */}
             <Box
@@ -616,79 +510,8 @@ export const CustomerNavbar = () => {
               </VStack>
             </Box>
 
-            <Divider borderColor={L.border} />
-
-            {/* Extra links */}
-            <Box px={4} py={4}>
-              <Text
-                fontSize="10px"
-                fontWeight="700"
-                color={L.subtle}
-                textTransform="uppercase"
-                letterSpacing="0.1em"
-                px={2}
-                mb={2}
-              >
-                More
-              </Text>
-              <VStack spacing={1} align="stretch">
-                {MOBILE_EXTRAS.map((link) => (
-                  <Flex
-                    key={link.href}
-                    className="mobile-link"
-                    align="center"
-                    gap={3}
-                    px={3}
-                    py={3}
-                    borderRadius="14px"
-                    onClick={() => go(link.href)}
-                  >
-                    <Circle size="34px" bg={L.pageBg}>
-                      <Icon as={link.icon} boxSize={4} color={L.muted} />
-                    </Circle>
-                    <Text fontSize="14px" fontWeight="600" color={L.text}>
-                      {link.label}
-                    </Text>
-                  </Flex>
-                ))}
-              </VStack>
-            </Box>
-
-            <Divider borderColor={L.border} />
-
             {/* CTA + Sign out */}
             <Box px={4} py={5}>
-              <Button
-                w="100%"
-                h="48px"
-                bg={L.accent}
-                color="white"
-                borderRadius="14px"
-                fontWeight="700"
-                fontSize="14px"
-                mb={3}
-                boxShadow="0 4px 16px rgba(30,110,30,0.28)"
-                _hover={{ bg: L.accentLight }}
-                onClick={() => go("/customer/fleet")}
-              >
-                🚗 Book a Car Now
-              </Button>
-              <Button
-                w="100%"
-                h="44px"
-                variant="outline"
-                borderColor={L.cardBorder}
-                color={L.muted}
-                borderRadius="14px"
-                fontWeight="600"
-                fontSize="13px"
-                mb={2}
-                _hover={{ bg: L.accentGlow, borderColor: L.cardBorder }}
-                leftIcon={<Icon as={FiShield} boxSize={3.5} />}
-                onClick={() => go("/customer/support")}
-              >
-                Help & Support
-              </Button>
               <Button
                 w="100%"
                 h="44px"

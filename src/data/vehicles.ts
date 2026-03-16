@@ -555,7 +555,7 @@ const BUSINESS_VEHICLES: Vehicle[] = [
     price: 480,
     status: "Available",
     image:
-      "https://i.pinimg.com/736x/2b/f0/70/2bf070960859b7224a8f6dafc68d29fa.jpg ",
+      " https://i.pinimg.com/1200x/2b/f2/5e/2bf25e33f3c1108363a4c96fbac8ad6a.jpg ",
     images: [
       "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&q=80&w=1200",
       "https://images.unsplash.com/photo-1493195671595-30a332807d4e?auto=format&fit=crop&q=80&w=1200",
@@ -572,13 +572,13 @@ const BUSINESS_VEHICLES: Vehicle[] = [
   },
   {
     id: "V-1017",
-    name: "Honda Accord",
+    name: " Honda Accord",
     type: "Business", // ❌ was Mid-Range → Business
     license: "MID-002",
     price: 95,
     status: "Available",
     image:
-      " https://i.pinimg.com/1200x/2b/f2/5e/2bf25e33f3c1108363a4c96fbac8ad6a.jpg",
+      "https://i.pinimg.com/736x/2b/f0/70/2bf070960859b7224a8f6dafc68d29fa.jpg ",
     images: [
       "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&q=80&w=1200",
       "https://images.unsplash.com/photo-1493195671595-30a332807d4e?auto=format&fit=crop&q=80&w=1200",

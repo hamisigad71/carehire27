@@ -118,6 +118,14 @@ const Styles = () => (
     .fu5 { animation: fadeUp .5s .35s ease both; }
     .fu6 { animation: fadeUp .5s .42s ease both; }
 
+    .hide-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
     .kpi-card {
       transition: transform .28s cubic-bezier(.22,1,.36,1), box-shadow .28s ease;
     }
@@ -681,13 +689,22 @@ export default function CustomerDashboard() {
                         Hand-picked vehicles ready for your next trip
                       </Text>
                     </Box>
-                    <HStack spacing={1.5}>
+                    <HStack
+                      spacing={1.5}
+                      overflowX="auto"
+                      className="hide-scrollbar"
+                      pb={1}
+                    >
                       {categories.map((c) => (
                         <Box
                           key={c}
                           className={`filter-btn${filter === c ? " active" : ""}`}
                           onClick={() => setFilter(c)}
-                          style={{ cursor: "pointer" }}
+                          style={{
+                            cursor: "pointer",
+                            flexShrink: 0,
+                            whiteSpace: "nowrap",
+                          }}
                         >
                           {c}
                         </Box>
@@ -695,7 +712,14 @@ export default function CustomerDashboard() {
                     </HStack>
                   </Flex>
 
-                  <SimpleGrid columns={{ base: 1, md: 2, xl: 4 }} spacing={4}>
+                  <SimpleGrid
+                    columns={{ base: 1, md: 2, xl: 4 }}
+                    spacing={{ base: 4, md: 4 }}
+                    w="100%"
+                    maxH={{ base: "800px", md: "none" }}
+                    overflowY={{ base: "auto", md: "visible" }}
+                    pr={{ base: 2, md: 0 }}
+                  >
                     {filtered.map((car) => (
                       <Box
                         key={car.name}

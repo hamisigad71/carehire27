@@ -380,7 +380,10 @@ export const VehicleCard = ({
           </HStack>
 
           {/* Stat blocks - Compressed on mobile */}
-          <Grid templateColumns={{ base: "1fr 1fr", md: "1fr 1fr 1fr" }} gap={2}>
+          <Grid
+            templateColumns={{ base: "1fr 1fr", md: "1fr 1fr 1fr" }}
+            gap={2}
+          >
             <StatBlock label="Year" value={String(year)} />
             <StatBlock label="Seats" value={`${seats}`} />
             <Box display={{ base: "none", md: "block" }}>
@@ -428,8 +431,9 @@ export const VehicleCard = ({
           </Flex>
 
           {/* CTA Buttons */}
-          <HStack spacing={2.5} pt={0.5}>
+          <HStack spacing={{ base: 1.5, md: 2.5 }} pt={0.5} w="100%">
             <Button
+              display={{ base: "none", md: "flex" }}
               flex={1}
               h={{ base: "42px", md: "46px" }}
               variant="ghost"
@@ -459,12 +463,13 @@ export const VehicleCard = ({
 
             <Button
               className="v-btn-primary"
-              flex={2}
+              flex={1}
+              w="100%"
               h={{ base: "42px", md: "46px" }}
               bg="linear-gradient(135deg, #2d7d2d, #4a9e4a)"
               color="white"
               borderRadius="14px"
-              fontSize="13px"
+              fontSize={{ base: "12px", md: "13px" }}
               fontWeight="700"
               rightIcon={<Icon as={FiArrowRight} boxSize={3.5} />}
               onClick={() =>

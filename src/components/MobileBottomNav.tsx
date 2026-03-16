@@ -9,6 +9,7 @@ import {
   FiTruck,
   FiUsers,
   FiSettings,
+  FiBarChart2,
 } from "react-icons/fi";
 import { useLoading } from "@/context/LoadingContext";
 
@@ -35,9 +36,9 @@ const CUSTOMER_NAV_ITEMS = [
 
 // ─── BUSINESS PORTAL NAV ──────────────────────────────────────────────────────
 const BUSINESS_NAV_ITEMS = [
-  { label: "Home", path: "/business/dashboard", icon: FiHome },
+  { label: "Dashboard", path: "/business/dashboard", icon: FiBarChart2 },
   { label: "Fleet", path: "/business/fleet", icon: FiTruck },
-  { label: "Customers", path: "/business/customers", icon: FiUsers },
+  { label: "Bookings", path: "/business/bookings", icon: FiCalendar },
   { label: "Settings", path: "/business/settings", icon: FiSettings },
 ];
 

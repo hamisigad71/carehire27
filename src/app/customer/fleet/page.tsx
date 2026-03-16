@@ -1099,17 +1099,17 @@ function FilterBar({
       </Flex>
 
       {/* ✅ Updated pills: Sports / Mid-Range / Electric removed */}
-      <Flex gap={2} overflowX="auto" className="no-scrollbar" pb={1}>
+      <Flex gap={{ base: 1.5, md: 2 }} overflowX="auto" className="hide-scrollbar" pb={2} mr={{ base: -4, md: 0 }} ml={{ base: -4, md: 0 }} px={{ base: 4, md: 0 }}>
         {CATEGORIES.map((cat) => {
           const active = selectedCategory === cat;
           return (
             <Box
               key={cat}
               className={`cat-pill${active ? " active" : ""}`}
-              px={4}
+              px={{ base: 3, md: 4 }}
               py={2}
               borderRadius="full"
-              fontSize="12px"
+              fontSize={{ base: "11px", md: "12px" }}
               fontWeight="700"
               bg={active ? L.accent : L.inputBg}
               color={active ? "white" : L.muted}
@@ -1117,7 +1117,7 @@ function FilterBar({
               borderColor={active ? L.accent : L.border}
               boxShadow={active ? "0 4px 14px rgba(30,110,30,0.28)" : "none"}
               onClick={() => setSelectedCategory(cat)}
-              style={{ cursor: "pointer", flexShrink: 0 }}
+              style={{ cursor: "pointer", flexShrink: 0, whiteSpace: "nowrap" }}
             >
               {cat}
             </Box>

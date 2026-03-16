@@ -639,7 +639,7 @@ export const CustomerFooter = () => {
                 size="xs"
                 h={{ base: "36px", md: "32px" }}
                 px={4}
-                w={{ base: "100%", md: "auto" }}
+                w="auto"
                 bg={L.card}
                 color={L.muted}
                 border="1px solid"
@@ -688,14 +688,13 @@ export const CustomerFooter = () => {
                   <VStack spacing={4} align="stretch">
                     {/* Avatar + name */}
                     <HStack spacing={3}>
-                      <Circle
-                        size="44px"
-                        bg={`linear-gradient(135deg, ${L.accent}, ${L.accentLight})`}
-                      >
-                        <Text fontSize="16px" fontWeight="800" color="white">
-                          DG
-                        </Text>
-                      </Circle>
+                      <Image
+                        src="/profile-avatar.jpg"
+                        alt="Daysman Gad"
+                        boxSize="44px"
+                        borderRadius="full"
+                        objectFit="cover"
+                      />
                       <Box>
                         <Text
                           fontFamily="'Syne', sans-serif"
