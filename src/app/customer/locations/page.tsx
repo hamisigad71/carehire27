@@ -24,25 +24,8 @@ import {
   extendTheme,
   ChakraProvider,
 } from "@chakra-ui/react";
-import {
-  FiMapPin,
-  FiPhone,
-  FiClock,
-  FiNavigation,
-  FiSearch,
-  FiArrowRight,
-  FiCoffee,
-  FiWifi,
-  FiShield,
-  FiCheckCircle,
-  FiGlobe,
-  FiStar,
-  FiTruck,
-  FiUsers,
-  FiChevronRight,
-  FiAward,
-  FiZap,
-} from "react-icons/fi";
+import { FiMapPin, FiPhone, FiClock, FiNavigation, FiSearch, FiArrowRight, FiCoffee, FiWifi, FiShield, FiCheckCircle, FiGlobe, FiStar, FiUsers, FiChevronRight, FiAward, FiZap } from "react-icons/fi";
+import { FaCar } from "react-icons/fa";
 
 // ─── THEME ────────────────────────────────────────────────────────────────────
 const theme = extendTheme({
@@ -216,7 +199,7 @@ const SERVICES = [
     color: T.blue,
   },
   {
-    icon: FiTruck,
+    icon: FaCar,
     title: "Door-to-Door",
     desc: "We deliver your rental to your hotel, office, or event.",
     color: "#d946a8",

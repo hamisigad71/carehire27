@@ -68,6 +68,8 @@ const Styles = () => (
     @keyframes spinSlow  { from { transform:rotate(0deg); } to { transform:rotate(360deg); } }
     @keyframes slideIn   { from { opacity:0; transform:translateX(20px); } to { opacity:1; transform:translateX(0); } }
     @keyframes slideInL  { from { opacity:0; transform:translateX(-20px); } to { opacity:1; transform:translateX(0); } }
+    @keyframes pulse     { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
+    @keyframes shimmer   { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
 
     .fu   { animation: fadeUp  .65s ease both; }
     .fu1  { animation: fadeUp  .65s .08s ease both; }
@@ -82,28 +84,103 @@ const Styles = () => (
 
     .float { animation: floatY 5s ease-in-out infinite; }
     .spin  { animation: spinSlow 20s linear infinite; }
+    .pulse { animation: pulse 2s ease-in-out infinite; }
 
     .panel-switch { transition: all .45s cubic-bezier(.25,.46,.45,.94); }
 
-    .input-field { transition: all .2s ease !important; }
+    .input-field { 
+      transition: all .25s cubic-bezier(.4,.0,.2,1) !important;
+      background-color: var(--chakra-colors-chakra-body-bg) !important;
+    }
+    .input-field:focus { 
+      transform: translateY(-2px) !important;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08) !important;
+    }
 
     .btn-main {
-      transition: all .25s cubic-bezier(.25,.46,.45,.94) !important;
+      transition: all .3s cubic-bezier(.25,.46,.45,.94) !important;
       position: relative;
       overflow: hidden;
+      font-weight: 700 !important;
+      letter-spacing: -0.01em;
+      box-shadow: 0 4px 12px rgba(0, 168, 85, 0.2) !important;
     }
-    .btn-main:hover { transform: translateY(-3px) !important; }
-    .btn-main:active { transform: translateY(0) !important; }
+    .btn-main:hover { 
+      transform: translateY(-4px) !important;
+      box-shadow: 0 12px 24px rgba(0, 168, 85, 0.3) !important;
+    }
+    .btn-main:active { transform: translateY(-1px) !important; }
 
-    .btn-google { transition: all .2s ease !important; }
-    .btn-google:hover { transform: translateY(-2px) !important; }
+    .btn-google { 
+      transition: all .3s ease !important;
+      position: relative;
+      background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7)) !important;
+      border: 1.5px solid rgba(0, 0, 0, 0.08) !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06) !important;
+      font-weight: 700 !important;
+    }
+    .btn-google:hover { 
+      transform: translateY(-3px) !important;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1) !important;
+      background: linear-gradient(135deg, rgba(255,255,255,1), rgba(255,255,255,0.85)) !important;
+    }
 
     .strength-bar { transition: width .4s ease, background .4s ease; }
-    .feature-card { transition: transform .2s ease; }
-    .feature-card:hover { transform: translateY(-4px); }
-    .tab-pill { transition: all .25s ease; cursor: pointer; }
+    .feature-card { 
+      transition: transform .2s ease, box-shadow .2s ease;
+      padding: 12px;
+      border-radius: 12px;
+      background: rgba(0, 168, 85, 0.03);
+      border: 1px solid rgba(0, 168, 85, 0.1);
+    }
+    .feature-card:hover { 
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 168, 85, 0.1);
+    }
+    
+    .tab-pill { 
+      transition: all .3s cubic-bezier(.25,.46,.45,.94);
+      cursor: pointer;
+    }
 
     .divider-line { transition: background-color .2s ease; }
+
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.1), transparent);
+      margin: 20px 0;
+    }
+
+    .trust-badge {
+      padding: 8px 12px;
+      border-radius: 10px;
+      background: rgba(0, 168, 85, 0.08);
+      border: 1px solid rgba(0, 168, 85, 0.15);
+      font-weight: 600;
+      font-size: 12px;
+      transition: all .2s ease;
+    }
+    .trust-badge:hover {
+      background: rgba(0, 168, 85, 0.12);
+      border-color: rgba(0, 168, 85, 0.25);
+      transform: translateY(-1px);
+    }
+
+    .car-showcase {
+      border-radius: 16px;
+      overflow: hidden;
+      background: linear-gradient(135deg, rgba(0, 168, 85, 0.1), rgba(0, 168, 85, 0.05));
+      border: 1px solid rgba(0, 168, 85, 0.15);
+    }
+
+    .counter-badge {
+      background: linear-gradient(135deg, #00a855, #2d8c2d);
+      color: white;
+      padding: 8px 14px;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 12px;
+    }
   `}</style>
 );
 
@@ -141,37 +218,75 @@ function PortalSelector({ isOpen, onClose, tokens }: any) {
     <Modal isOpen={isOpen} onClose={onClose} isCentered size="md">
       <ModalOverlay backdropFilter="blur(4px)" bg="rgba(0,0,0,0.45)" />
       <ModalContent
-        bg="#ffffff" border="1px solid" borderColor="rgba(30,110,30,0.1)"
-        borderRadius="20px" overflow="hidden" mx={4}
+        bg="#ffffff"
+        border="1px solid"
+        borderColor="rgba(30,110,30,0.1)"
+        borderRadius="20px"
+        overflow="hidden"
+        mx={4}
         boxShadow="0 24px 64px rgba(0,0,0,0.18)"
       >
         <Box h="4px" bg="linear-gradient(90deg, #1e6e1e, #2d8c2d, #52b852)" />
 
-        <ModalHeader bg="#eef3ee" borderBottom="1px solid" borderColor="rgba(0,0,0,0.07)" px={7} py={5}>
-          <Text fontSize="20px" fontWeight="800" color="#111a11" letterSpacing="-0.02em">
+        <ModalHeader
+          bg="#eef3ee"
+          borderBottom="1px solid"
+          borderColor="rgba(0,0,0,0.07)"
+          px={7}
+          py={5}
+        >
+          <Text
+            fontSize="20px"
+            fontWeight="800"
+            color="#111a11"
+            letterSpacing="-0.02em"
+          >
             Select your portal
           </Text>
-          <Text fontSize="13px" color="#6b7f6b" mt={1}>Choose where you'd like to go</Text>
+          <Text fontSize="13px" color="#6b7f6b" mt={1}>
+            Choose where you'd like to go
+          </Text>
         </ModalHeader>
-        <ModalCloseButton top={4} right={5} color="#9aaa9a" borderRadius="8px"
-          _hover={{ bg: "rgba(30,110,30,0.08)", color: "#111a11" }} />
+        <ModalCloseButton
+          top={4}
+          right={5}
+          color="#9aaa9a"
+          borderRadius="8px"
+          _hover={{ bg: "rgba(30,110,30,0.08)", color: "#111a11" }}
+        />
 
         <ModalBody px={5} py="20px 20px 26px 20px">
           <VStack spacing={3} align="stretch">
-
             {/* Business Portal */}
             <Box
-              as="button" w="100%" textAlign="left" p={5} borderRadius="16px"
-              bg="#ffffff" border="1px solid" borderColor="rgba(0,0,0,0.07)"
-              cursor="pointer" transition="all 0.2s ease"
+              as="button"
+              w="100%"
+              textAlign="left"
+              p={5}
+              borderRadius="16px"
+              bg="#ffffff"
+              border="1px solid"
+              borderColor="rgba(0,0,0,0.07)"
+              cursor="pointer"
+              transition="all 0.2s ease"
               onClick={() => handlePortalSelect("business")}
               _hover={{ borderColor: "#2d8c2d", bg: "rgba(30,110,30,0.05)" }}
             >
               <HStack spacing={3.5} mb={2.5} align="center">
-                <Box w="44px" h="44px" borderRadius="12px" flexShrink={0}
-                  bg="rgba(30,110,30,0.1)" border="1px solid" borderColor="rgba(30,110,30,0.18)"
-                  display="flex" alignItems="center" justifyContent="center"
-                  fontSize="22px" lineHeight="1">
+                <Box
+                  w="44px"
+                  h="44px"
+                  borderRadius="12px"
+                  flexShrink={0}
+                  bg="rgba(30,110,30,0.1)"
+                  border="1px solid"
+                  borderColor="rgba(30,110,30,0.18)"
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="center"
+                  fontSize="22px"
+                  lineHeight="1"
+                >
                   💼
                 </Box>
                 <Text flex={1} fontSize="15px" fontWeight="800" color="#111a11">
@@ -179,14 +294,29 @@ function PortalSelector({ isOpen, onClose, tokens }: any) {
                 </Text>
                 <Icon as={FiChevronRight} boxSize={4} color="#9aaa9a" />
               </HStack>
-              <Text fontSize="13px" color="#6b7f6b" pl="58px" lineHeight="1.55" mb={3}>
+              <Text
+                fontSize="13px"
+                color="#6b7f6b"
+                pl="58px"
+                lineHeight="1.55"
+                mb={3}
+              >
                 Manage fleet, bookings, and revenue
               </Text>
               <HStack spacing={1.5} pl="58px" flexWrap="wrap">
-                {["Fleet", "Bookings", "Revenue"].map(tag => (
-                  <Box key={tag} px={2.25} py={0.5} borderRadius="6px"
-                    bg="rgba(30,110,30,0.1)" border="1px solid" borderColor="rgba(30,110,30,0.18)">
-                    <Text fontSize="11px" fontWeight="700" color="#2d8c2d">{tag}</Text>
+                {["Fleet", "Bookings", "Revenue"].map((tag) => (
+                  <Box
+                    key={tag}
+                    px={2.25}
+                    py={0.5}
+                    borderRadius="6px"
+                    bg="rgba(30,110,30,0.1)"
+                    border="1px solid"
+                    borderColor="rgba(30,110,30,0.18)"
+                  >
+                    <Text fontSize="11px" fontWeight="700" color="#2d8c2d">
+                      {tag}
+                    </Text>
                   </Box>
                 ))}
               </HStack>
@@ -194,17 +324,34 @@ function PortalSelector({ isOpen, onClose, tokens }: any) {
 
             {/* Customer Portal */}
             <Box
-              as="button" w="100%" textAlign="left" p={5} borderRadius="16px"
-              bg="#ffffff" border="1px solid" borderColor="rgba(0,0,0,0.07)"
-              cursor="pointer" transition="all 0.2s ease"
+              as="button"
+              w="100%"
+              textAlign="left"
+              p={5}
+              borderRadius="16px"
+              bg="#ffffff"
+              border="1px solid"
+              borderColor="rgba(0,0,0,0.07)"
+              cursor="pointer"
+              transition="all 0.2s ease"
               onClick={() => handlePortalSelect("customer")}
               _hover={{ borderColor: "#1a56a0", bg: "rgba(26,86,160,0.05)" }}
             >
               <HStack spacing={3.5} mb={2.5} align="center">
-                <Box w="44px" h="44px" borderRadius="12px" flexShrink={0}
-                  bg="rgba(26,86,160,0.08)" border="1px solid" borderColor="rgba(26,86,160,0.18)"
-                  display="flex" alignItems="center" justifyContent="center"
-                  fontSize="22px" lineHeight="1">
+                <Box
+                  w="44px"
+                  h="44px"
+                  borderRadius="12px"
+                  flexShrink={0}
+                  bg="rgba(26,86,160,0.08)"
+                  border="1px solid"
+                  borderColor="rgba(26,86,160,0.18)"
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="center"
+                  fontSize="22px"
+                  lineHeight="1"
+                >
                   🚗
                 </Box>
                 <Text flex={1} fontSize="15px" fontWeight="800" color="#111a11">
@@ -212,19 +359,33 @@ function PortalSelector({ isOpen, onClose, tokens }: any) {
                 </Text>
                 <Icon as={FiChevronRight} boxSize={4} color="#9aaa9a" />
               </HStack>
-              <Text fontSize="13px" color="#6b7f6b" pl="58px" lineHeight="1.55" mb={3}>
+              <Text
+                fontSize="13px"
+                color="#6b7f6b"
+                pl="58px"
+                lineHeight="1.55"
+                mb={3}
+              >
                 Book vehicles and manage your rentals
               </Text>
               <HStack spacing={1.5} pl="58px" flexWrap="wrap">
-                {["Browse", "Book", "Track"].map(tag => (
-                  <Box key={tag} px={2.25} py={0.5} borderRadius="6px"
-                    bg="rgba(26,86,160,0.08)" border="1px solid" borderColor="rgba(26,86,160,0.18)">
-                    <Text fontSize="11px" fontWeight="700" color="#1a56a0">{tag}</Text>
+                {["Browse", "Book", "Track"].map((tag) => (
+                  <Box
+                    key={tag}
+                    px={2.25}
+                    py={0.5}
+                    borderRadius="6px"
+                    bg="rgba(26,86,160,0.08)"
+                    border="1px solid"
+                    borderColor="rgba(26,86,160,0.18)"
+                  >
+                    <Text fontSize="11px" fontWeight="700" color="#1a56a0">
+                      {tag}
+                    </Text>
                   </Box>
                 ))}
               </HStack>
             </Box>
-
           </VStack>
         </ModalBody>
       </ModalContent>
@@ -233,14 +394,50 @@ function PortalSelector({ isOpen, onClose, tokens }: any) {
 }
 function LeftPanel({ mode, tokens }: any) {
   const isLogin = mode === "login";
+  const [currentCarIndex, setCurrentCarIndex] = useState(0);
+
+  const cars = [
+    {
+      name: "Toyota Voxy",
+      price: "KSh 8,500/day",
+      image:
+        "https://i.pinimg.com/1200x/b7/ed/78/b7ed78a5554c98859572aa20ba4473f9.jpg",
+      badge: "Popular",
+    },
+    {
+      name: "Subaru Outback",
+      price: "KSh 7,200/day",
+      image:
+        "https://i.pinimg.com/1200x/e9/5f/3e/e95f3e6e6e8e8e8e8e8e8e8e8e8e8e.jpg",
+      badge: "Premium",
+    },
+    {
+      name: "Honda Civic",
+      price: "KSh 4,500/day",
+      image:
+        "https://i.pinimg.com/1200x/72/8a/0a/728a0a0a0a0a0a0a0a0a0a0a0a0a0a.jpg",
+      badge: "Economy",
+    },
+  ];
+
+  const whyDriveKE = [
+    { icon: "🔒", text: "100% Insured", color: "rgba(0, 168, 85, 0.1)" },
+    { icon: "⚡", text: "5-min Booking", color: "rgba(26, 86, 160, 0.1)" },
+    { icon: "🌍", text: "Nationwide", color: "rgba(255, 107, 53, 0.1)" },
+  ];
+
   const features = [
-    { icon: FiZap, text: "Instant booking confirmation" },
-    { icon: FiShield, text: "Zero deposit for Gold members" },
-    { icon: FiStar, text: "Earn loyalty points every trip" },
+    { icon: FiZap, text: "Instant confirmation" },
+    { icon: FiShield, text: "Zero deposit Gold members" },
+    { icon: FiStar, text: "Earn points every trip" },
   ];
 
   const isDark = tokens.pageBg === "#0a0f0d";
   const gradColor = isDark ? "#00cc66" : "#00a855";
+
+  const nextCar = () => setCurrentCarIndex((prev) => (prev + 1) % cars.length);
+  const prevCar = () =>
+    setCurrentCarIndex((prev) => (prev - 1 + cars.length) % cars.length);
 
   return (
     <Box
@@ -248,49 +445,51 @@ function LeftPanel({ mode, tokens }: any) {
       overflow="hidden"
       bg={
         isDark
-          ? "linear-gradient(160deg, #0d380d 0%, #154a15 40%, #1e6e1e 100%)"
-          : "linear-gradient(160deg, #e6fffa 0%, #d4eee9 40%, #c2e8de 100%)"
+          ? "linear-gradient(160deg, #0d380d 0%, #154a15 30%, #1e6e1e 60%, #0d380d 100%)"
+          : "linear-gradient(160deg, #dffaf5 0%, #c2e8de 25%, #d4eee9 60%, #e6f2f0 100%)"
       }
       display={{ base: "none", lg: "flex" }}
       flexDir="column"
       justifyContent="space-between"
-      p={{ lg: 10, xl: 14 }}
+      p={{ lg: 8, xl: 12 }}
       minH="100vh"
     >
-      {/* Grid pattern */}
+      {/* Multi-layered background decorations */}
       <Box
         position="absolute"
         inset={0}
-        opacity={isDark ? 0.06 : 0.04}
+        opacity={isDark ? 0.05 : 0.03}
         bgImage={`linear-gradient(${isDark ? "rgba(0,255,136,1)" : "rgba(0,168,85,1)"} 1px, transparent 1px), linear-gradient(90deg, ${isDark ? "rgba(0,255,136,1)" : "rgba(0,168,85,1)"} 1px, transparent 1px)`}
         bgSize="48px 48px"
       />
 
-      {/* Orbs */}
+      {/* Animated orbs for depth */}
       <Box
         position="absolute"
-        top="-100px"
-        right="-80px"
+        top="-120px"
+        right="-100px"
+        w="450px"
+        h="450px"
+        bg={
+          isDark
+            ? "radial-gradient(circle, rgba(0,255,136,0.2) 0%, transparent 70%)"
+            : "radial-gradient(circle, rgba(0,168,85,0.15) 0%, transparent 70%)"
+        }
+        className="float"
+        filter="blur(60px)"
+      />
+      <Box
+        position="absolute"
+        bottom="-100px"
+        left="-80px"
         w="400px"
         h="400px"
         bg={
           isDark
-            ? "radial-gradient(circle, rgba(0,255,136,0.25) 0%, transparent 70%)"
-            : "radial-gradient(circle, rgba(0,168,85,0.2) 0%, transparent 70%)"
+            ? "radial-gradient(circle, rgba(45,140,45,0.15) 0%, transparent 70%)"
+            : "radial-gradient(circle, rgba(0,168,85,0.12) 0%, transparent 70%)"
         }
-        className="float"
-      />
-      <Box
-        position="absolute"
-        bottom="-80px"
-        left="-60px"
-        w="350px"
-        h="350px"
-        bg={
-          isDark
-            ? "radial-gradient(circle, rgba(0,255,136,0.15) 0%, transparent 70%)"
-            : "radial-gradient(circle, rgba(0,168,85,0.15) 0%, transparent 70%)"
-        }
+        filter="blur(80px)"
       />
 
       {/* Logo */}
@@ -320,8 +519,9 @@ function LeftPanel({ mode, tokens }: any) {
         </Text>
       </HStack>
 
-      {/* Main copy */}
-      <VStack align="start" spacing={8} position="relative" zIndex={2}>
+      {/* Main content */}
+      <VStack align="start" spacing={7} position="relative" zIndex={2}>
+        {/* Hero section */}
         <Box>
           <Badge
             bg={isDark ? "rgba(0,255,136,0.15)" : "rgba(0,168,85,0.15)"}
@@ -331,123 +531,275 @@ function LeftPanel({ mode, tokens }: any) {
             py={1}
             fontSize="11px"
             fontWeight="700"
-            mb={5}
+            mb={4}
             border={`1px solid ${isDark ? "rgba(0,255,136,0.3)" : "rgba(0,168,85,0.3)"}`}
           >
-            {isLogin ? "👋 Welcome back" : "🚀 Join DriveKE today"}
+            {isLogin ? "👋 Welcome back" : "🚀 Join Kenya's #1 Car Hire"}
           </Badge>
           <Heading
-            fontSize={{ lg: "36px", xl: "46px" }}
+            fontSize={{ lg: "40px", xl: "52px" }}
             color={isDark ? "white" : "#0a0f0d"}
             fontWeight="800"
             lineHeight="1.1"
             letterSpacing="-0.03em"
-            mb={4}
+            mb={3}
           >
-            {isLogin
-              ? "Your next\nadventure\nawaits."
-              : "Premium rides.\nLoyalty\nrewards."}
+            {isLogin ? "Drive your adventure" : "Premium Kenya\nFleet"}
           </Heading>
           <Text
-            color={isDark ? "rgba(255,255,255,0.6)" : "rgba(10,15,13,0.6)"}
-            fontSize="15px"
-            lineHeight="1.8"
-            fontWeight="300"
-            maxW="340px"
+            color={isDark ? "rgba(255,255,255,0.7)" : "rgba(10,15,13,0.65)"}
+            fontSize="14px"
+            lineHeight="1.7"
+            fontWeight="400"
+            maxW="360px"
           >
             {isLogin
-              ? "Sign in to access your bookings, loyalty points, and exclusive member deals."
-              : "Create your account and unlock access to Kenya's finest fleet with member-only pricing."}
+              ? "Access your bookings, loyalty rewards, and exclusive member perks."
+              : "Trusted by 15,000+ drivers. Zero deposits for members. Island-wide delivery available."}
           </Text>
         </Box>
 
-        {/* Feature list */}
-        <VStack align="start" spacing={4}>
-          {features.map((f, i) => (
-            <HStack key={i} spacing={3} className="feature-card">
+        {/* Car showcase gallery */}
+        <Box w="100%" className="fu2">
+          <Text
+            fontSize="12px"
+            fontWeight="700"
+            color={tokens.textMuted}
+            textTransform="uppercase"
+            letterSpacing="0.08em"
+            mb={3}
+          >
+            Featured Fleet
+          </Text>
+
+          <Box
+            position="relative"
+            borderRadius="18px"
+            overflow="hidden"
+            border={`1.5px solid ${isDark ? "rgba(0,255,136,0.2)" : "rgba(0,168,85,0.15)"}`}
+            bg={isDark ? "rgba(0,0,0,0.3)" : "rgba(255,255,255,0.4)"}
+            boxShadow={
+              isDark
+                ? "0 16px 40px rgba(0,0,0,0.3)"
+                : "0 8px 24px rgba(0,0,0,0.08)"
+            }
+            backdropFilter="blur(10px)"
+          >
+            {/* Car image */}
+            <Box h="240px" bg={isDark ? "#000" : "#f5f5f5"} position="relative">
+              <Image
+                src={cars[currentCarIndex].image}
+                w="100%"
+                h="100%"
+                objectFit="cover"
+                style={{
+                  filter: isDark ? "brightness(0.8)" : "brightness(1)",
+                }}
+              />
               <Box
-                w="36px"
-                h="36px"
+                position="absolute"
+                top={3}
+                right={3}
+                bg={gradColor}
+                color="white"
+                px={2.5}
+                py={1}
+                borderRadius="8px"
+                fontSize="11px"
+                fontWeight="700"
+              >
+                {cars[currentCarIndex].badge}
+              </Box>
+            </Box>
+
+            {/* Car details */}
+            <Box
+              bg={isDark ? "rgba(0,0,0,0.5)" : "rgba(255,255,255,0.6)"}
+              backdropFilter="blur(8px)"
+              px={4}
+              py={3.5}
+              borderTop={`1px solid ${isDark ? "rgba(0,255,136,0.1)" : "rgba(0,168,85,0.1)"}`}
+            >
+              <HStack justify="space-between" align="center">
+                <Box>
+                  <Text
+                    fontSize="15px"
+                    color={isDark ? "white" : "#0a0f0d"}
+                    fontWeight="800"
+                  >
+                    {cars[currentCarIndex].name}
+                  </Text>
+                  <Text
+                    fontSize="12px"
+                    color={tokens.textMuted}
+                    fontWeight="600"
+                  >
+                    {cars[currentCarIndex].price}
+                  </Text>
+                </Box>
+                <HStack spacing={1}>
+                  {[1, 2, 3, 4, 5].map((s) => (
+                    <Icon
+                      key={s}
+                      as={FiStar}
+                      color="#f6c90e"
+                      boxSize={3}
+                      fill="#f6c90e"
+                    />
+                  ))}
+                </HStack>
+              </HStack>
+
+              {/* Navigation */}
+              <HStack spacing={2} mt={3}>
+                <Button
+                  size="sm"
+                  bg={isDark ? "rgba(0,255,136,0.1)" : "rgba(0,168,85,0.1)"}
+                  border={`1px solid ${isDark ? "rgba(0,255,136,0.2)" : "rgba(0,168,85,0.2)"}`}
+                  color={gradColor}
+                  borderRadius="8px"
+                  onClick={prevCar}
+                  _hover={{
+                    bg: isDark ? "rgba(0,255,136,0.2)" : "rgba(0,168,85,0.2)",
+                  }}
+                >
+                  <Icon as={FiChevronLeft} boxSize={4} />
+                </Button>
+                <HStack spacing={1} flex={1} justify="center">
+                  {cars.map((_, idx) => (
+                    <Box
+                      key={idx}
+                      w="6px"
+                      h="6px"
+                      borderRadius="full"
+                      bg={
+                        idx === currentCarIndex
+                          ? gradColor
+                          : isDark
+                            ? "rgba(0,255,136,0.2)"
+                            : "rgba(0,168,85,0.2)"
+                      }
+                      cursor="pointer"
+                      onClick={() => setCurrentCarIndex(idx)}
+                      transition="all .3s ease"
+                    />
+                  ))}
+                </HStack>
+                <Button
+                  size="sm"
+                  bg={isDark ? "rgba(0,255,136,0.1)" : "rgba(0,168,85,0.1)"}
+                  border={`1px solid ${isDark ? "rgba(0,255,136,0.2)" : "rgba(0,168,85,0.2)"}`}
+                  color={gradColor}
+                  borderRadius="8px"
+                  onClick={nextCar}
+                  _hover={{
+                    bg: isDark ? "rgba(0,255,136,0.2)" : "rgba(0,168,85,0.2)",
+                  }}
+                >
+                  <Icon as={FiChevronRight} boxSize={4} />
+                </Button>
+              </HStack>
+            </Box>
+          </Box>
+
+          {/* Available counter */}
+          <HStack spacing={2} mt={3} justify="space-between">
+            <Text fontSize="12px" color={tokens.textMuted} fontWeight="600">
+              2,847 VEHICLES AVAILABLE
+            </Text>
+            <HStack spacing={1} className="pulse">
+              <Box w="8px" h="8px" borderRadius="full" bg={gradColor} />
+              <Text fontSize="11px" color={gradColor} fontWeight="700">
+                Live
+              </Text>
+            </HStack>
+          </HStack>
+        </Box>
+
+        {/* Why DriveKE section */}
+        <Box w="100%" className="fu3">
+          <Text
+            fontSize="12px"
+            fontWeight="700"
+            color={tokens.textMuted}
+            textTransform="uppercase"
+            letterSpacing="0.08em"
+            mb={3}
+          >
+            Why DriveKE
+          </Text>
+          <Grid templateColumns="1fr 1fr 1fr" gap={2}>
+            {whyDriveKE.map((item, idx) => (
+              <Box
+                key={idx}
+                bg={isDark ? "rgba(0,0,0,0.3)" : item.color}
+                border={`1px solid ${isDark ? "rgba(0,255,136,0.1)" : "rgba(0,168,85,0.1)"}`}
+                borderRadius="12px"
+                p={2.5}
+                textAlign="center"
+                transition="all .2s ease"
+                cursor="pointer"
+                _hover={{
+                  transform: "translateY(-2px)",
+                  borderColor: isDark
+                    ? "rgba(0,255,136,0.3)"
+                    : "rgba(0,168,85,0.3)",
+                }}
+              >
+                <Text fontSize="24px" mb={1}>
+                  {item.icon}
+                </Text>
+                <Text
+                  fontSize="11px"
+                  fontWeight="700"
+                  color={isDark ? "rgba(255,255,255,0.9)" : "#0a0f0d"}
+                >
+                  {item.text}
+                </Text>
+              </Box>
+            ))}
+          </Grid>
+        </Box>
+
+        {/* Feature list */}
+        <VStack align="start" spacing={2} w="100%" className="fu4">
+          {features.map((f, i) => (
+            <HStack key={i} spacing={3} className="feature-card" w="100%">
+              <Box
+                w="32px"
+                h="32px"
                 bg={isDark ? "rgba(0,255,136,0.1)" : "rgba(0,168,85,0.1)"}
                 borderRadius="50%"
                 border={`1px solid ${isDark ? "rgba(0,255,136,0.2)" : "rgba(0,168,85,0.2)"}`}
                 display="flex"
                 alignItems="center"
                 justifyContent="center"
+                flexShrink={0}
               >
-                <Icon as={f.icon} color={gradColor} boxSize={4} />
+                <Icon as={f.icon} color={gradColor} boxSize={3.5} />
               </Box>
               <Text
-                fontSize="14px"
-                color={isDark ? "rgba(255,255,255,0.8)" : "rgba(10,15,13,0.8)"}
-                fontWeight="500"
+                fontSize="13px"
+                color={isDark ? "rgba(255,255,255,0.8)" : "rgba(10,15,13,0.75)"}
+                fontWeight="600"
+                lineHeight="1.5"
               >
                 {f.text}
               </Text>
             </HStack>
           ))}
         </VStack>
-
-        {/* Car image */}
-        <Box
-          borderRadius="2xl"
-          overflow="hidden"
-          border={`1px solid ${isDark ? "rgba(0,255,136,0.2)" : "rgba(0,168,85,0.15)"}`}
-          boxShadow={
-            isDark
-              ? "0 24px 60px rgba(0,0,0,0.4)"
-              : "0 8px 24px rgba(0,0,0,0.08)"
-          }
-          w="100%"
-          className="fi"
-        >
-          <Image
-            src="https://images.unsplash.com/photo-1619362280286-f1f8fd5032ed?w=800&h=400&fit=crop"
-            w="100%"
-            h="200px"
-            objectFit="cover"
-            style={{ filter: isDark ? "brightness(0.85)" : "brightness(1)" }}
-          />
-          <Box
-            bg={isDark ? "rgba(0,255,136,0.05)" : "rgba(0,168,85,0.05)"}
-            px={5}
-            py={4}
-            borderTop={`1px solid ${isDark ? "rgba(0,255,136,0.1)" : "rgba(0,168,85,0.1)"}`}
-          >
-            <HStack justify="space-between">
-              <Box>
-                <Text fontSize="11px" color={tokens.textMuted} fontWeight="600">
-                  FLEET AVERAGE
-                </Text>
-                <Text
-                  fontSize="15px"
-                  color={isDark ? "white" : "#0a0f0d"}
-                  fontWeight="700"
-                >
-                  KSh 6,500 / day
-                </Text>
-              </Box>
-              <HStack spacing={1}>
-                {[1, 2, 3, 4, 5].map((s) => (
-                  <Icon key={s} as={FiStar} color="#f6c90e" boxSize={3} />
-                ))}
-                <Text fontSize="12px" color={tokens.textMuted} ml={1}>
-                  4.9
-                </Text>
-              </HStack>
-            </HStack>
-          </Box>
-        </Box>
       </VStack>
 
       {/* Bottom */}
       <Text
-        fontSize="12px"
+        fontSize="11px"
         color={tokens.textSubtle}
         position="relative"
         zIndex={2}
+        fontWeight="600"
       >
-        © 2025 DriveKE · Premium Car Hire across Kenya
+        © 2025 DriveKE · Trusted across Kenya
       </Text>
     </Box>
   );
@@ -477,7 +829,7 @@ function LoginForm({ onSwitch, tokens }: any) {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-      onOpen(); // Open portal selector after validation
+      onOpen();
     }, 1000);
   };
 
@@ -485,44 +837,45 @@ function LoginForm({ onSwitch, tokens }: any) {
     <>
       <VStack spacing={6} align="stretch" className="si">
         {/* Header */}
-        <Box mb={2}>
+        <Box mb={1}>
           <Heading
-            fontSize={{ base: "26px", md: "32px" }}
+            fontSize={{ base: "28px", md: "32px" }}
             fontWeight="800"
             letterSpacing="-0.03em"
-            mb={1.5}
+            mb={2}
             color={tokens.textPrimary}
           >
-            Sign in to your account
+            Welcome back
           </Heading>
-          <Text fontSize="14px" color={tokens.textMuted}>
+          <Text fontSize="14px" color={tokens.textMuted} fontWeight="500">
             Don't have an account?{" "}
             <Text
               as="span"
-              color={tokens.accent}
-              fontWeight="600"
+              color="#00a855"
+              fontWeight="700"
               cursor="pointer"
               onClick={onSwitch}
               _hover={{ textDecoration: "underline" }}
             >
-              Create one free →
+              Create one →
             </Text>
           </Text>
         </Box>
 
-        {/* Google */}
+        {/* Google button */}
         <Button
           className="btn-google"
-          h="52px"
-          bg={tokens.cardBg2}
-          border="1px solid"
-          borderColor={tokens.border}
-          borderRadius="16px"
-          fontWeight="600"
-          fontSize="14px"
-          color={tokens.textPrimary}
-          leftIcon={<FcGoogle size={20} />}
-          _hover={{ bg: tokens.cardBg }}
+          h="56px"
+          bg="white"
+          border="1.5px solid"
+          borderColor="rgba(0, 0, 0, 0.08)"
+          borderRadius="14px"
+          fontWeight="700"
+          fontSize="15px"
+          color="#0a0f0d"
+          leftIcon={<FcGoogle size={22} />}
+          _hover={{ bg: "rgba(0, 0, 0, 0.02)" }}
+          _active={{ bg: "rgba(0, 0, 0, 0.04)" }}
         >
           Continue with Google
         </Button>
@@ -530,8 +883,8 @@ function LoginForm({ onSwitch, tokens }: any) {
         {/* Divider */}
         <HStack spacing={3}>
           <Box flex={1} h="1px" bg={tokens.border} className="divider-line" />
-          <Text fontSize="12px" color={tokens.textSubtle} fontWeight="500">
-            or sign in with email
+          <Text fontSize="12px" color={tokens.textSubtle} fontWeight="600">
+            or continue with email
           </Text>
           <Box flex={1} h="1px" bg={tokens.border} className="divider-line" />
         </HStack>
@@ -544,38 +897,43 @@ function LoginForm({ onSwitch, tokens }: any) {
             color={tokens.textMuted}
             textTransform="uppercase"
             letterSpacing="0.08em"
-            mb={2}
+            mb={2.5}
           >
             Email Address
           </FormLabel>
           <InputGroup>
-            <InputLeftElement h="52px" pl={1}>
-              <Icon as={FiMail} color={tokens.textSubtle} boxSize={4} />
+            <InputLeftElement h="56px" pl={4}>
+              <Icon as={FiMail} color={tokens.textSubtle} boxSize={5} />
             </InputLeftElement>
             <Input
               className="input-field"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="you@example.com"
-              h="52px"
+              h="56px"
               bg={tokens.cardBg2}
-              border="1px solid"
+              border="1.5px solid"
               borderColor={tokens.border}
-              borderRadius="14px"
+              borderRadius="12px"
               fontSize="15px"
               color={tokens.textPrimary}
+              pl={12}
               _placeholder={{ color: tokens.textSubtle }}
-              _focus={{ outline: "none", borderColor: tokens.accent }}
+              _focus={{
+                outline: "none",
+                borderColor: "#00a855",
+                boxShadow: "0 0 0 3px rgba(0, 168, 85, 0.08)",
+              }}
             />
           </InputGroup>
-          <FormErrorMessage fontSize="12px" color={tokens.danger}>
+          <FormErrorMessage fontSize="12px" color="#dc2626" mt={1.5}>
             {errors.email}
           </FormErrorMessage>
         </FormControl>
 
         {/* Password */}
         <FormControl isInvalid={!!errors.pw}>
-          <HStack justify="space-between" mb={2}>
+          <HStack justify="space-between" mb={2.5} align="center">
             <FormLabel
               fontSize="12px"
               fontWeight="700"
@@ -588,17 +946,17 @@ function LoginForm({ onSwitch, tokens }: any) {
             </FormLabel>
             <Text
               fontSize="12px"
-              color={tokens.accent}
-              fontWeight="600"
+              color="#00a855"
+              fontWeight="700"
               cursor="pointer"
               _hover={{ textDecoration: "underline" }}
             >
-              Forgot password?
+              Forgot?
             </Text>
           </HStack>
           <InputGroup>
-            <InputLeftElement h="52px" pl={1}>
-              <Icon as={FiLock} color={tokens.textSubtle} boxSize={4} />
+            <InputLeftElement h="56px" pl={4}>
+              <Icon as={FiLock} color={tokens.textSubtle} boxSize={5} />
             </InputLeftElement>
             <Input
               className="input-field"
@@ -606,76 +964,90 @@ function LoginForm({ onSwitch, tokens }: any) {
               value={pw}
               onChange={(e) => setPw(e.target.value)}
               placeholder="••••••••"
-              h="52px"
+              h="56px"
               bg={tokens.cardBg2}
-              border="1px solid"
+              border="1.5px solid"
               borderColor={tokens.border}
-              borderRadius="14px"
+              borderRadius="12px"
               fontSize="15px"
               color={tokens.textPrimary}
+              pl={12}
               _placeholder={{ color: tokens.textSubtle }}
-              _focus={{ outline: "none", borderColor: tokens.accent }}
+              _focus={{
+                outline: "none",
+                borderColor: "#00a855",
+                boxShadow: "0 0 0 3px rgba(0, 168, 85, 0.08)",
+              }}
             />
             <InputRightElement
-              h="52px"
-              pr={2}
+              h="56px"
+              pr={4}
               cursor="pointer"
               onClick={() => setShowPw(!showPw)}
             >
               <Icon
                 as={showPw ? FiEyeOff : FiEye}
                 color={tokens.textSubtle}
-                boxSize={4}
+                boxSize={5}
               />
             </InputRightElement>
           </InputGroup>
-          <FormErrorMessage fontSize="12px" color={tokens.danger}>
+          <FormErrorMessage fontSize="12px" color="#dc2626" mt={1.5}>
             {errors.pw}
           </FormErrorMessage>
         </FormControl>
 
         {/* Remember me */}
         <HStack>
-          <Checkbox size="md" colorScheme="green" borderColor={tokens.border}>
-            <Text fontSize="13px" color={tokens.textMuted}>
-              Remember me for 30 days
+          <Checkbox
+            size="md"
+            colorScheme="green"
+            borderColor={tokens.border}
+            borderRadius="6px"
+          >
+            <Text fontSize="13px" color={tokens.textMuted} fontWeight="500">
+              Keep me signed in for 30 days
             </Text>
           </Checkbox>
         </HStack>
 
-        {/* Submit */}
+        {/* Submit button */}
         <Button
           className="btn-main"
-          h="54px"
-          bg={tokens.accent}
-          color={tokens.accent === "#00a855" ? "#ffffff" : "#0a0f0d"}
-          borderRadius="16px"
-          fontWeight="700"
+          h="56px"
+          w="100%"
+          bg="#00a855"
+          color="white"
+          borderRadius="12px"
+          fontWeight="800"
           fontSize="15px"
           rightIcon={<Icon as={FiArrowRight} />}
           isLoading={loading}
           loadingText="Signing in…"
-          _hover={{ opacity: 0.9 }}
+          _hover={{ opacity: 0.95 }}
           onClick={handleSubmit}
         >
           Sign In
         </Button>
 
-        {/* Trust row */}
-        <HStack justify="center" spacing={5} pt={1} flexWrap="wrap">
-          {[
-            { icon: FiShield, text: "SSL Secured" },
-            { icon: FiCheck, text: "No hidden fees" },
-            { icon: FiStar, text: "Rated 4.9/5" },
-          ].map(({ icon, text }) => (
-            <HStack key={text} spacing={1.5}>
-              <Icon as={icon} color={tokens.accent} boxSize={3} />
-              <Text fontSize="11px" color={tokens.textSubtle} fontWeight="500">
-                {text}
-              </Text>
-            </HStack>
-          ))}
-        </HStack>
+        {/* Trust badges */}
+        <VStack spacing={2.5} w="100%" pt={2}>
+          <Box w="100%" h="1px" bg={tokens.border} />
+          <HStack justify="space-around" w="100%" spacing={2}>
+            {[
+              { icon: FiShield, text: "SSL Secured" },
+              { icon: FiCheck, text: "No hidden fees" },
+              { icon: FiStar, text: "Rated 4.9/5" },
+            ].map(({ icon, text }) => (
+              <HStack key={text} spacing={1.5} className="trust-badge">
+                <Icon as={icon} color="#00a855" boxSize={4} />
+                <Text fontSize="12px" color={tokens.textMuted} fontWeight="600">
+                  {text}
+                </Text>
+              </HStack>
+            ))}
+          </HStack>
+        </VStack>
       </VStack>
       <PortalSelector isOpen={isOpen} onClose={onClose} tokens={tokens} />
     </>
@@ -736,7 +1108,7 @@ function SignupForm({ onSwitch, tokens }: any) {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-      onOpen(); // Open portal selector after validation
+      onOpen();
     }, 1000);
   };
 
@@ -751,7 +1123,7 @@ function SignupForm({ onSwitch, tokens }: any) {
               cursor="pointer"
               onClick={() => setStep(1)}
               w="fit-content"
-              _hover={{ color: tokens.accent }}
+              _hover={{ color: "#00a855" }}
               transition="color .2s"
             >
               <Icon as={FiChevronLeft} boxSize={4} color={tokens.textMuted} />
@@ -761,20 +1133,20 @@ function SignupForm({ onSwitch, tokens }: any) {
             </HStack>
           )}
           <Heading
-            fontSize={{ base: "24px", md: "30px" }}
+            fontSize={{ base: "26px", md: "30px" }}
             fontWeight="800"
             letterSpacing="-0.03em"
-            mb={1.5}
+            mb={2}
             color={tokens.textPrimary}
           >
-            {step === 1 ? "Create your account" : "Set your password"}
+            {step === 1 ? "Create account" : "Set password"}
           </Heading>
-          <Text fontSize="14px" color={tokens.textMuted}>
+          <Text fontSize="14px" color={tokens.textMuted} fontWeight="500">
             Already have an account?{" "}
             <Text
               as="span"
-              color={tokens.accent}
-              fontWeight="600"
+              color="#00a855"
+              fontWeight="700"
               cursor="pointer"
               onClick={onSwitch}
               _hover={{ textDecoration: "underline" }}
@@ -785,42 +1157,46 @@ function SignupForm({ onSwitch, tokens }: any) {
         </Box>
 
         {/* Step indicator */}
-        <HStack spacing={2}>
-          {[1, 2].map((s) => (
-            <Box
-              key={s}
-              flex={1}
-              h="3px"
-              borderRadius="full"
-              bg={s <= step ? tokens.accent : tokens.border}
-              transition="background .4s ease"
-            />
-          ))}
-        </HStack>
-        <Text
-          fontSize="11px"
-          color={tokens.textSubtle}
-          fontWeight="600"
-          mt={-2}
-        >
-          STEP {step} OF 2
-        </Text>
+        <Box>
+          <HStack spacing={2} mb={2}>
+            {[1, 2].map((s) => (
+              <Box
+                key={s}
+                flex={1}
+                h="3px"
+                borderRadius="full"
+                bg={s <= step ? "#00a855" : tokens.border}
+                transition="background .4s ease"
+              />
+            ))}
+          </HStack>
+          <Text
+            fontSize="11px"
+            color={tokens.textSubtle}
+            fontWeight="700"
+            textTransform="uppercase"
+            letterSpacing="0.08em"
+          >
+            Step {step} of 2
+          </Text>
+        </Box>
 
         {step === 1 ? (
           <>
             {/* Google */}
             <Button
               className="btn-google"
-              h="50px"
-              bg={tokens.cardBg2}
-              border="1px solid"
-              borderColor={tokens.border}
-              borderRadius="14px"
-              fontWeight="600"
-              fontSize="14px"
-              color={tokens.textPrimary}
-              leftIcon={<FcGoogle size={18} />}
-              _hover={{ bg: tokens.cardBg }}
+              h="56px"
+              bg="white"
+              border="1.5px solid"
+              borderColor="rgba(0, 0, 0, 0.08)"
+              borderRadius="12px"
+              fontWeight="700"
+              fontSize="15px"
+              color="#0a0f0d"
+              leftIcon={<FcGoogle size={22} />}
+              _hover={{ bg: "rgba(0, 0, 0, 0.02)" }}
+              _active={{ bg: "rgba(0, 0, 0, 0.04)" }}
             >
               Continue with Google
             </Button>
@@ -832,8 +1208,8 @@ function SignupForm({ onSwitch, tokens }: any) {
                 bg={tokens.border}
                 className="divider-line"
               />
-              <Text fontSize="11px" color={tokens.textSubtle}>
-                or fill in your details
+              <Text fontSize="11px" color={tokens.textSubtle} fontWeight="600">
+                or fill your details
               </Text>
               <Box
                 flex={1}
@@ -852,31 +1228,35 @@ function SignupForm({ onSwitch, tokens }: any) {
                   color={tokens.textMuted}
                   textTransform="uppercase"
                   letterSpacing="0.08em"
-                  mb={1.5}
+                  mb={2}
                 >
                   First Name
                 </FormLabel>
                 <InputGroup>
-                  <InputLeftElement h="50px" pl={1}>
-                    <Icon as={FiUser} color={tokens.textSubtle} boxSize={4} />
+                  <InputLeftElement h="50px" pl={4}>
+                    <Icon as={FiUser} color={tokens.textSubtle} boxSize={4.5} />
                   </InputLeftElement>
                   <Input
                     className="input-field"
                     h="50px"
                     bg={tokens.cardBg2}
-                    border="1px solid"
+                    border="1.5px solid"
                     borderColor={tokens.border}
-                    borderRadius="13px"
+                    borderRadius="11px"
                     fontSize="14px"
                     color={tokens.textPrimary}
                     placeholder="James"
                     _placeholder={{ color: tokens.textSubtle }}
-                    _focus={{ outline: "none", borderColor: tokens.accent }}
+                    _focus={{
+                      outline: "none",
+                      borderColor: "#00a855",
+                      boxShadow: "0 0 0 3px rgba(0, 168, 85, 0.08)",
+                    }}
                     value={form.firstName}
                     onChange={(e) => set("firstName", e.target.value)}
                   />
                 </InputGroup>
-                <FormErrorMessage fontSize="11px" color={tokens.danger}>
+                <FormErrorMessage fontSize="11px" color="#dc2626">
                   {errors.firstName}
                 </FormErrorMessage>
               </FormControl>
@@ -888,7 +1268,7 @@ function SignupForm({ onSwitch, tokens }: any) {
                   color={tokens.textMuted}
                   textTransform="uppercase"
                   letterSpacing="0.08em"
-                  mb={1.5}
+                  mb={2}
                 >
                   Last Name
                 </FormLabel>
@@ -896,18 +1276,22 @@ function SignupForm({ onSwitch, tokens }: any) {
                   className="input-field"
                   h="50px"
                   bg={tokens.cardBg2}
-                  border="1px solid"
+                  border="1.5px solid"
                   borderColor={tokens.border}
-                  borderRadius="13px"
+                  borderRadius="11px"
                   fontSize="14px"
                   color={tokens.textPrimary}
                   placeholder="Kariuki"
                   _placeholder={{ color: tokens.textSubtle }}
-                  _focus={{ outline: "none", borderColor: tokens.accent }}
+                  _focus={{
+                    outline: "none",
+                    borderColor: "#00a855",
+                    boxShadow: "0 0 0 3px rgba(0, 168, 85, 0.08)",
+                  }}
                   value={form.lastName}
                   onChange={(e) => set("lastName", e.target.value)}
                 />
-                <FormErrorMessage fontSize="11px" color={tokens.danger}>
+                <FormErrorMessage fontSize="11px" color="#dc2626">
                   {errors.lastName}
                 </FormErrorMessage>
               </FormControl>
@@ -921,31 +1305,35 @@ function SignupForm({ onSwitch, tokens }: any) {
                 color={tokens.textMuted}
                 textTransform="uppercase"
                 letterSpacing="0.08em"
-                mb={1.5}
+                mb={2}
               >
                 Email Address
               </FormLabel>
               <InputGroup>
-                <InputLeftElement h="50px" pl={1}>
-                  <Icon as={FiMail} color={tokens.textSubtle} boxSize={4} />
+                <InputLeftElement h="50px" pl={4}>
+                  <Icon as={FiMail} color={tokens.textSubtle} boxSize={4.5} />
                 </InputLeftElement>
                 <Input
                   className="input-field"
                   h="50px"
                   bg={tokens.cardBg2}
-                  border="1px solid"
+                  border="1.5px solid"
                   borderColor={tokens.border}
-                  borderRadius="13px"
+                  borderRadius="11px"
                   fontSize="14px"
                   color={tokens.textPrimary}
                   placeholder="james@email.com"
                   _placeholder={{ color: tokens.textSubtle }}
-                  _focus={{ outline: "none", borderColor: tokens.accent }}
+                  _focus={{
+                    outline: "none",
+                    borderColor: "#00a855",
+                    boxShadow: "0 0 0 3px rgba(0, 168, 85, 0.08)",
+                  }}
                   value={form.email}
                   onChange={(e) => set("email", e.target.value)}
                 />
               </InputGroup>
-              <FormErrorMessage fontSize="11px" color={tokens.danger}>
+              <FormErrorMessage fontSize="11px" color="#dc2626">
                 {errors.email}
               </FormErrorMessage>
             </FormControl>
@@ -958,31 +1346,35 @@ function SignupForm({ onSwitch, tokens }: any) {
                 color={tokens.textMuted}
                 textTransform="uppercase"
                 letterSpacing="0.08em"
-                mb={1.5}
+                mb={2}
               >
                 Phone Number
               </FormLabel>
               <InputGroup>
-                <InputLeftElement h="50px" pl={1}>
-                  <Icon as={FiPhone} color={tokens.textSubtle} boxSize={4} />
+                <InputLeftElement h="50px" pl={4}>
+                  <Icon as={FiPhone} color={tokens.textSubtle} boxSize={4.5} />
                 </InputLeftElement>
                 <Input
                   className="input-field"
                   h="50px"
                   bg={tokens.cardBg2}
-                  border="1px solid"
+                  border="1.5px solid"
                   borderColor={tokens.border}
-                  borderRadius="13px"
+                  borderRadius="11px"
                   fontSize="14px"
                   color={tokens.textPrimary}
                   placeholder="+254 712 345 678"
                   _placeholder={{ color: tokens.textSubtle }}
-                  _focus={{ outline: "none", borderColor: tokens.accent }}
+                  _focus={{
+                    outline: "none",
+                    borderColor: "#00a855",
+                    boxShadow: "0 0 0 3px rgba(0, 168, 85, 0.08)",
+                  }}
                   value={form.phone}
                   onChange={(e) => set("phone", e.target.value)}
                 />
               </InputGroup>
-              <FormErrorMessage fontSize="11px" color={tokens.danger}>
+              <FormErrorMessage fontSize="11px" color="#dc2626">
                 {errors.phone}
               </FormErrorMessage>
             </FormControl>
@@ -990,13 +1382,14 @@ function SignupForm({ onSwitch, tokens }: any) {
             <Button
               className="btn-main"
               h="52px"
-              bg={tokens.accent}
-              color={tokens.accent === "#00a855" ? "#ffffff" : "#0a0f0d"}
-              borderRadius="15px"
-              fontWeight="700"
+              w="100%"
+              bg="#00a855"
+              color="white"
+              borderRadius="11px"
+              fontWeight="800"
               fontSize="15px"
               rightIcon={<Icon as={FiArrowRight} />}
-              _hover={{ opacity: 0.9 }}
+              _hover={{ opacity: 0.95 }}
               onClick={handleNext}
             >
               Continue
@@ -1012,44 +1405,48 @@ function SignupForm({ onSwitch, tokens }: any) {
                 color={tokens.textMuted}
                 textTransform="uppercase"
                 letterSpacing="0.08em"
-                mb={1.5}
+                mb={2}
               >
                 Password
               </FormLabel>
               <InputGroup>
-                <InputLeftElement h="50px" pl={1}>
-                  <Icon as={FiLock} color={tokens.textSubtle} boxSize={4} />
+                <InputLeftElement h="50px" pl={4}>
+                  <Icon as={FiLock} color={tokens.textSubtle} boxSize={4.5} />
                 </InputLeftElement>
                 <Input
                   className="input-field"
                   type={showPw ? "text" : "password"}
                   h="50px"
                   bg={tokens.cardBg2}
-                  border="1px solid"
+                  border="1.5px solid"
                   borderColor={tokens.border}
-                  borderRadius="13px"
+                  borderRadius="11px"
                   fontSize="14px"
                   color={tokens.textPrimary}
                   placeholder="Min. 8 characters"
                   _placeholder={{ color: tokens.textSubtle }}
-                  _focus={{ outline: "none", borderColor: tokens.accent }}
+                  _focus={{
+                    outline: "none",
+                    borderColor: "#00a855",
+                    boxShadow: "0 0 0 3px rgba(0, 168, 85, 0.08)",
+                  }}
                   value={form.password}
                   onChange={(e) => set("password", e.target.value)}
                 />
                 <InputRightElement
                   h="50px"
-                  pr={2}
+                  pr={4}
                   cursor="pointer"
                   onClick={() => setShowPw(!showPw)}
                 >
                   <Icon
                     as={showPw ? FiEyeOff : FiEye}
                     color={tokens.textSubtle}
-                    boxSize={4}
+                    boxSize={4.5}
                   />
                 </InputRightElement>
               </InputGroup>
-              <FormErrorMessage fontSize="11px" color={tokens.danger}>
+              <FormErrorMessage fontSize="11px" color="#dc2626">
                 {errors.password}
               </FormErrorMessage>
 
@@ -1070,7 +1467,7 @@ function SignupForm({ onSwitch, tokens }: any) {
                       />
                     ))}
                   </HStack>
-                  <Text fontSize="11px" color={strength.color} fontWeight="600">
+                  <Text fontSize="11px" color={strength.color} fontWeight="700">
                     {strength.label} password
                   </Text>
                 </Box>
@@ -1085,52 +1482,56 @@ function SignupForm({ onSwitch, tokens }: any) {
                 color={tokens.textMuted}
                 textTransform="uppercase"
                 letterSpacing="0.08em"
-                mb={1.5}
+                mb={2}
               >
                 Confirm Password
               </FormLabel>
               <InputGroup>
-                <InputLeftElement h="50px" pl={1}>
-                  <Icon as={FiLock} color={tokens.textSubtle} boxSize={4} />
+                <InputLeftElement h="50px" pl={4}>
+                  <Icon as={FiLock} color={tokens.textSubtle} boxSize={4.5} />
                 </InputLeftElement>
                 <Input
                   className="input-field"
                   type={showConf ? "text" : "password"}
                   h="50px"
                   bg={tokens.cardBg2}
-                  border="1px solid"
+                  border="1.5px solid"
                   borderColor={tokens.border}
-                  borderRadius="13px"
+                  borderRadius="11px"
                   fontSize="14px"
                   color={tokens.textPrimary}
                   placeholder="Re-enter password"
                   _placeholder={{ color: tokens.textSubtle }}
-                  _focus={{ outline: "none", borderColor: tokens.accent }}
+                  _focus={{
+                    outline: "none",
+                    borderColor: "#00a855",
+                    boxShadow: "0 0 0 3px rgba(0, 168, 85, 0.08)",
+                  }}
                   value={form.confirm}
                   onChange={(e) => set("confirm", e.target.value)}
                 />
                 <InputRightElement
                   h="50px"
-                  pr={2}
+                  pr={4}
                   cursor="pointer"
                   onClick={() => setShowConf(!showConf)}
                 >
                   <Icon
                     as={showConf ? FiEyeOff : FiEye}
                     color={tokens.textSubtle}
-                    boxSize={4}
+                    boxSize={4.5}
                   />
                 </InputRightElement>
               </InputGroup>
               {form.confirm && form.confirm === form.password && (
                 <HStack mt={1.5} spacing={1.5}>
-                  <Icon as={FiCheck} color={tokens.accent} boxSize={3} />
-                  <Text fontSize="11px" color={tokens.accent} fontWeight="600">
+                  <Icon as={FiCheck} color="#00a855" boxSize={4} />
+                  <Text fontSize="11px" color="#00a855" fontWeight="700">
                     Passwords match
                   </Text>
                 </HStack>
               )}
-              <FormErrorMessage fontSize="11px" color={tokens.danger}>
+              <FormErrorMessage fontSize="11px" color="#dc2626">
                 {errors.confirm}
               </FormErrorMessage>
             </FormControl>
@@ -1143,19 +1544,23 @@ function SignupForm({ onSwitch, tokens }: any) {
                 color={tokens.textMuted}
                 textTransform="uppercase"
                 letterSpacing="0.08em"
-                mb={1.5}
+                mb={2}
               >
                 ID / Licence Type
               </FormLabel>
               <Select
                 h="50px"
                 bg={tokens.cardBg2}
-                border="1px solid"
+                border="1.5px solid"
                 borderColor={tokens.border}
-                borderRadius="13px"
+                borderRadius="11px"
                 fontSize="14px"
                 color={form.idType ? tokens.textPrimary : tokens.textSubtle}
-                _focus={{ borderColor: tokens.accent, outline: "none" }}
+                _focus={{
+                  borderColor: "#00a855",
+                  outline: "none",
+                  boxShadow: "0 0 0 3px rgba(0, 168, 85, 0.08)",
+                }}
                 onChange={(e) => set("idType", e.target.value)}
               >
                 <option value="" disabled selected>
@@ -1173,21 +1578,37 @@ function SignupForm({ onSwitch, tokens }: any) {
                 size="md"
                 colorScheme="green"
                 borderColor={tokens.border}
+                borderRadius="6px"
                 isChecked={form.agree}
                 onChange={(e) => set("agree", e.target.checked)}
               >
-                <Text fontSize="13px" color={tokens.textMuted} lineHeight="1.6">
+                <Text
+                  fontSize="13px"
+                  color={tokens.textMuted}
+                  lineHeight="1.6"
+                  fontWeight="500"
+                >
                   I agree to DriveKE's{" "}
-                  <Text as="span" color={tokens.accent} cursor="pointer">
-                    Terms of Service
+                  <Text
+                    as="span"
+                    color="#00a855"
+                    fontWeight="700"
+                    cursor="pointer"
+                  >
+                    Terms
                   </Text>{" "}
                   and{" "}
-                  <Text as="span" color={tokens.accent} cursor="pointer">
+                  <Text
+                    as="span"
+                    color="#00a855"
+                    fontWeight="700"
+                    cursor="pointer"
+                  >
                     Privacy Policy
                   </Text>
                 </Text>
               </Checkbox>
-              <FormErrorMessage fontSize="11px" color={tokens.danger}>
+              <FormErrorMessage fontSize="11px" color="#dc2626">
                 {errors.agree}
               </FormErrorMessage>
             </FormControl>
@@ -1195,39 +1616,43 @@ function SignupForm({ onSwitch, tokens }: any) {
             <Button
               className="btn-main"
               h="52px"
-              bg={tokens.accent}
-              color={tokens.accent === "#00a855" ? "#ffffff" : "#0a0f0d"}
-              borderRadius="15px"
-              fontWeight="700"
+              w="100%"
+              bg="#00a855"
+              color="white"
+              borderRadius="11px"
+              fontWeight="800"
               fontSize="15px"
               rightIcon={<Icon as={FiCheck} />}
               isLoading={loading}
               loadingText="Creating account…"
-              _hover={{ opacity: 0.9 }}
+              _hover={{ opacity: 0.95 }}
               onClick={handleSubmit}
             >
               Create Account
             </Button>
 
-            {/* Trust */}
-            <HStack justify="center" spacing={4} pt={1} flexWrap="wrap">
-              {[
-                { icon: FiShield, text: "Your data is safe" },
-                { icon: FiCheck, text: "Free to join" },
-                { icon: FiZap, text: "Instant access" },
-              ].map(({ icon, text }) => (
-                <HStack key={text} spacing={1.5}>
-                  <Icon as={icon} color={tokens.accent} boxSize={3} />
-                  <Text
-                    fontSize="11px"
-                    color={tokens.textSubtle}
-                    fontWeight="500"
-                  >
-                    {text}
-                  </Text>
-                </HStack>
-              ))}
-            </HStack>
+            {/* Trust badges */}
+            <VStack spacing={2.5} w="100%" pt={2}>
+              <Box w="100%" h="1px" bg={tokens.border} />
+              <HStack justify="space-around" w="100%" spacing={2}>
+                {[
+                  { icon: FiShield, text: "Your data safe" },
+                  { icon: FiCheck, text: "Free to join" },
+                  { icon: FiZap, text: "Instant access" },
+                ].map(({ icon, text }) => (
+                  <HStack key={text} spacing={1.5} className="trust-badge">
+                    <Icon as={icon} color="#00a855" boxSize={4} />
+                    <Text
+                      fontSize="12px"
+                      color={tokens.textMuted}
+                      fontWeight="600"
+                    >
+                      {text}
+                    </Text>
+                  </HStack>
+                ))}
+              </HStack>
+            </VStack>
           </>
         )}
       </VStack>
@@ -1262,14 +1687,14 @@ export default function AuthPage() {
           bg={tokens.cardBg}
           border="1px solid"
           borderColor={tokens.border}
-          color={tokens.accent}
+          color="#00a855"
           _hover={{ bg: tokens.cardBg2 }}
         >
           {colorMode === "light" ? <FiMoon size={20} /> : <FiSun size={20} />}
         </Button>
       </Box>
 
-      <Grid templateColumns={{ base: "1fr", lg: "480px 1fr" }} minH="100vh">
+      <Grid templateColumns={{ base: "1fr", lg: "520px 1fr" }} minH="100vh">
         {/* Left decorative panel — desktop only */}
         <LeftPanel mode={mode} tokens={tokens} />
 
@@ -1279,15 +1704,15 @@ export default function AuthPage() {
           justify="center"
           align="center"
           bg={tokens.pageBg}
-          px={{ base: 5, sm: 8, md: 12, lg: 10, xl: 16 }}
-          py={{ base: 8, lg: 12 }}
+          px={{ base: 6, sm: 8, md: 10, lg: 8, xl: 12 }}
+          py={{ base: 6, md: 8, lg: 8 }}
           minH="100vh"
         >
-          <Box w="100%" maxW={{ base: "100%", sm: "440px", lg: "420px" }}>
+          <Box w="100%" maxW={{ base: "100%", sm: "500px", lg: "460px" }}>
             {/* Mobile theme toggle */}
             <HStack
               justify="flex-end"
-              mb={3}
+              mb={4}
               display={{ base: "flex", md: "none" }}
             >
               <Button
@@ -1298,7 +1723,7 @@ export default function AuthPage() {
                 bg={tokens.cardBg2}
                 border="1px solid"
                 borderColor={tokens.border}
-                color={tokens.accent}
+                color="#00a855"
                 _hover={{ bg: tokens.cardBg }}
               >
                 {colorMode === "light" ? (
@@ -1311,14 +1736,14 @@ export default function AuthPage() {
 
             {/* Mobile tabs */}
             <HStack
-              spacing={1}
+              spacing={2}
               bg={tokens.cardBg2}
-              p={1}
-              borderRadius="16px"
-              border="1px solid"
+              p={1.5}
+              borderRadius="14px"
+              border="1.5px solid"
               borderColor={tokens.border}
               display={{ base: "flex", lg: "none" }}
-              mb={2}
+              mb={4}
             >
               {["login", "signup"].map((m) => (
                 <Box
@@ -1326,21 +1751,17 @@ export default function AuthPage() {
                   flex={1}
                   textAlign="center"
                   py={2.5}
-                  borderRadius="13px"
+                  px={2}
+                  borderRadius="12px"
                   className="tab-pill"
-                  bg={mode === m ? tokens.accent : "transparent"}
+                  bg={mode === m ? "#00a855" : "transparent"}
                   onClick={() => setMode(m)}
+                  transition="all .3s cubic-bezier(.25,.46,.45,.94)"
                 >
                   <Text
                     fontSize="13px"
-                    fontWeight="700"
-                    color={
-                      mode === m
-                        ? tokens.accent === "#00a855"
-                          ? "white"
-                          : "#0a0f0d"
-                        : tokens.textMuted
-                    }
+                    fontWeight="800"
+                    color={mode === m ? "white" : tokens.textMuted}
                   >
                     {m === "login" ? "Sign In" : "Sign Up"}
                   </Text>
@@ -1351,36 +1772,60 @@ export default function AuthPage() {
             {/* Form card */}
             <Box
               bg={tokens.cardBg}
-              borderRadius={{ base: "24px", md: "32px" }}
-              border="1px solid"
+              borderRadius={{ base: "20px", md: "24px" }}
+              border="1.5px solid"
               borderColor={tokens.border}
-              p={{ base: 6, sm: 8, md: 10 }}
-              boxShadow={tokens.shadow}
+              p={{ base: 6, sm: 7, md: 8 }}
+              boxShadow={`0 12px 32px ${tokens.pageBg === "#ffffff" ? "rgba(0,0,0,0.08)" : "rgba(0,0,0,0.24)"}`}
+              position="relative"
+              overflow="hidden"
             >
-              {mode === "login" ? (
-                <LoginForm onSwitch={() => setMode("signup")} tokens={tokens} />
-              ) : (
-                <SignupForm onSwitch={() => setMode("login")} tokens={tokens} />
-              )}
+              {/* Subtle background accent */}
+              <Box
+                position="absolute"
+                top={-40}
+                right={-40}
+                w="200px"
+                h="200px"
+                bg="radial-gradient(circle, rgba(0, 168, 85, 0.05), transparent 70%)"
+                borderRadius="full"
+                pointerEvents="none"
+              />
+
+              <Box position="relative" zIndex={1}>
+                {mode === "login" ? (
+                  <LoginForm
+                    onSwitch={() => setMode("signup")}
+                    tokens={tokens}
+                  />
+                ) : (
+                  <SignupForm
+                    onSwitch={() => setMode("login")}
+                    tokens={tokens}
+                  />
+                )}
+              </Box>
             </Box>
 
             {/* Bottom note */}
             <Text
               textAlign="center"
-              fontSize="12px"
+              fontSize="11px"
               color={tokens.textSubtle}
-              mt={6}
+              mt={5}
               px={4}
+              lineHeight="1.6"
+              fontWeight="500"
             >
               By continuing, you agree to our{" "}
-              <Text as="span" color={tokens.accent} cursor="pointer">
+              <Text as="span" color="#00a855" cursor="pointer" fontWeight="700">
                 Terms
               </Text>{" "}
               and{" "}
-              <Text as="span" color={tokens.accent} cursor="pointer">
+              <Text as="span" color="#00a855" cursor="pointer" fontWeight="700">
                 Privacy Policy
               </Text>
-              . DriveKE is registered in Kenya.
+              . DriveKE operates across Kenya.
             </Text>
           </Box>
         </Flex>

@@ -22,18 +22,7 @@ import {
 import { PageHeader } from "@/components/ui/PageHeader";
 import { StatCard } from "@/components/ui/StatCard";
 import { StatusBadge } from "@/components/ui/StatusBadge";
-import {
-  FiCalendar,
-  FiClock,
-  FiDollarSign,
-  FiEdit,
-  FiCheckCircle,
-  FiMapPin,
-  FiTruck,
-  FiUser,
-  FiInfo,
-  FiFileText,
-} from "react-icons/fi";
+import { FiCalendar, FiClock, FiDollarSign, FiEdit, FiCheckCircle, FiMapPin, FiUser, FiInfo, FiFileText } from "react-icons/fi";
 import { useColorTokens } from "@/hooks/useColorTokens";
 import { formatCurrency, formatDate } from "@/utils/format";
 import { useParams } from "next/navigation";
@@ -247,7 +236,7 @@ export default function BookingDetailsPage() {
                   justifyContent="center"
                   mr={3}
                 >
-                  <Icon as={FiTruck} color={tokens.accent} />
+                  <Icon as={FaCar} color={tokens.accent} />
                 </Box>
                 <Box>
                   <Text
@@ -335,3 +324,4 @@ export default function BookingDetailsPage() {
 }
 
 import { FiShield } from "react-icons/fi";
+import { FaCar } from "react-icons/fa";

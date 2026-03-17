@@ -5,10 +5,7 @@ import {
   Box, Container, Heading, Text, VStack, Button, Icon, SimpleGrid, 
   Flex, Image, Badge, HStack, Grid, GridItem, Divider, Spinner, Center
 } from '@chakra-ui/react';
-import { 
-  FiClock, FiCheckCircle, FiChevronRight, FiMapPin, FiCalendar, 
-  FiDollarSign, FiInbox, FiTruck, FiArrowRight 
-} from 'react-icons/fi';
+import { FiClock, FiCheckCircle, FiChevronRight, FiMapPin, FiCalendar, FiDollarSign, FiInbox, FiArrowRight } from "react-icons/fi";
 import { useColorTokens } from '@/hooks/useColorTokens';
 import { formatCurrency } from '@/utils/format';
 import { StatusBadge } from '@/components/ui/StatusBadge';

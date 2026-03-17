@@ -18,23 +18,8 @@ import {
   Divider,
   Spacer,
 } from "@chakra-ui/react";
-import {
-  FiArrowRight,
-  FiBriefcase,
-  FiUser,
-  FiTruck,
-  FiShield,
-  FiStar,
-  FiTrendingUp,
-  FiCheckCircle,
-  FiZap,
-  FiAward,
-  FiBarChart2,
-  FiCalendar,
-  FiGift,
-  FiMapPin,
-  FiClock,
-} from "react-icons/fi";
+import { FiArrowRight, FiBriefcase, FiUser, FiShield, FiStar, FiTrendingUp, FiCheckCircle, FiZap, FiAward, FiBarChart2, FiCalendar, FiGift, FiMapPin, FiClock } from "react-icons/fi";
+import { FaCar } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 import { useLoading } from "@/context/LoadingContext";
 import { useEffect } from "react";
@@ -213,7 +198,7 @@ function HeroBadge() {
 
 // ─── STATS ROW ────────────────────────────────────────────────────────────────
 const STATS = [
-  { n: "120+", l: "Premium Vehicles", icon: FiTruck, color: L.accentLight },
+  { n: "120+", l: "Premium Vehicles", icon: FaCar, color: L.accentLight },
   { n: "4,800+", l: "Happy Customers", icon: FiStar, color: L.gold },
   { n: "12", l: "City Hubs", icon: FiMapPin, color: L.teal },
   { n: "6 yrs", l: "Trusted Service", icon: FiAward, color: L.accentLight },
@@ -273,7 +258,7 @@ function StatsRow() {
 // ─── BUSINESS CARD ────────────────────────────────────────────────────────────
 const BIZ_FEATURES = [
   { icon: FiBarChart2, text: "Real-time fleet analytics & revenue tracking" },
-  { icon: FiTruck, text: "Full vehicle lifecycle management" },
+  { icon: FaCar, text: "Full vehicle lifecycle management" },
   { icon: FiCalendar, text: "Booking calendar with instant confirmations" },
   { icon: FiShield, text: "Insurance & compliance monitoring" },
   { icon: FiTrendingUp, text: "Performance reports & financial dashboard" },
@@ -447,7 +432,7 @@ function BusinessCard({ onClick }: { onClick: () => void }) {
 
 // ─── CUSTOMER CARD ────────────────────────────────────────────────────────────
 const CUST_FEATURES = [
-  { icon: FiTruck, text: "Browse 120+ premium vehicles instantly" },
+  { icon: FaCar, text: "Browse 120+ premium vehicles instantly" },
   { icon: FiZap, text: "Book in under 60 seconds" },
   { icon: FiGift, text: "Earn loyalty points on every rental" },
   { icon: FiMapPin, text: "Free delivery to your hotel or office" },
@@ -477,7 +462,7 @@ function CustomerCard({ onClick }: { onClick: () => void }) {
       >
         <Image
           className="card-img"
-          src="https://images.unsplash.com/photo-1619362280286-f1f8fd5032ed?w=800&h=400&fit=crop"
+          src="https://i.pinimg.com/736x/d4/81/03/d48103accdbde80fb39aba5f5e9554bb.jpg"
           w="100%"
           h="100%"
           objectFit="cover"
@@ -672,22 +657,22 @@ const FLEET_PREVIEW = [
   {
     name: "Mercedes GLE 450",
     price: "KSh 12,000",
-    img: "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?w=400&h=260&fit=crop",
+    img: "https://i.pinimg.com/1200x/3e/b6/f0/3eb6f096b3fc7054b11b7b7847d5cedb.jpg",
   },
   {
     name: "Range Rover Sport",
     price: "KSh 18,000",
-    img: "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=400&h=260&fit=crop",
+    img: "https://i.pinimg.com/736x/34/fa/4f/34fa4fea50de089ab2a0bbb5781ae62c.jpg",
   },
   {
     name: "Toyota Prado 2024",
     price: "KSh 8,500",
-    img: "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=400&h=260&fit=crop",
+    img: "https://i.pinimg.com/736x/c4/f5/1b/c4f51b497cfd0ee9243a845058dda64c.jpg",
   },
   {
     name: "VW Tiguan",
-    price: "KSh 7,800",
-    img: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=400&h=260&fit=crop",
+    price: "KSh 17,800",
+    img: "https://i.pinimg.com/1200x/a8/bf/9d/a8bf9d0fd60233b1715a8bc9d0fcc1a6.jpg",
   },
 ];
 
@@ -926,8 +911,8 @@ export default function Home() {
               spacing={6}
               className="fu3"
             >
-              <BusinessCard onClick={() => goTo("/business/dashboard")} />
-              <CustomerCard onClick={() => goTo("/customer")} />
+              <BusinessCard onClick={() => goTo("/auth")} />
+              <CustomerCard onClick={() => goTo("/auth")} />
             </SimpleGrid>
 
             {/* Stats */}

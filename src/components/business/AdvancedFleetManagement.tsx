@@ -45,28 +45,10 @@ import {
   Image,
   Grid,
 } from "@chakra-ui/react";
-import {
-  FiSearch,
-  FiFilter,
-  FiMoreVertical,
-  FiEdit,
-  FiTrash2,
-  FiTruck,
-  FiCalendar,
-  FiAlertTriangle,
-  FiDownload,
-  FiPlus,
-  FiChevronDown,
-  FiShield,
-  FiActivity,
-  FiCheckCircle,
-  FiClock,
-  FiAlertCircle,
-  FiEye,
-  FiX,
-} from "react-icons/fi";
+import { FiSearch, FiFilter, FiMoreVertical, FiEdit, FiTrash2, FiCalendar, FiAlertTriangle, FiDownload, FiPlus, FiChevronDown, FiShield, FiActivity, FiCheckCircle, FiClock, FiAlertCircle, FiEye, FiX } from "react-icons/fi";
 import { useBusinessContext, Vehicle } from "@/context/BusinessContext";
 import { useColorTokens } from "@/hooks/useColorTokens";
+import { FaCar } from "react-icons/fa";
 
 // ─── LIGHT TOKENS ─────────────────────────────────────────────────────────────
 const L = {
@@ -182,7 +164,7 @@ function StatCards({ vehicles }: { vehicles: Vehicle[] }) {
     {
       label: "Total Fleet",
       value: total,
-      icon: FiTruck,
+      icon: FaCar,
       accent: L.accentLight,
       bg: L.accentGlow2,
     },
@@ -283,7 +265,7 @@ function EmptyState({ onClear }: { onClear: () => void }) {
   return (
     <Flex direction="column" align="center" justify="center" py={16} gap={3}>
       <Circle size="64px" bg={L.accentGlow}>
-        <Icon as={FiTruck} boxSize={7} color={L.accentLight} />
+        <Icon as={FaCar} boxSize={7} color={L.accentLight} />
       </Circle>
       <Text fontSize="16px" fontWeight="700" color={L.text}>
         No vehicles found
@@ -509,7 +491,7 @@ export const AdvancedFleetManagement = () => {
             <Box>
               <HStack spacing={3} mb={1}>
                 <Circle size="40px" bg={L.accentGlow2}>
-                  <Icon as={FiTruck} boxSize={5} color={L.accentLight} />
+                  <Icon as={FaCar} boxSize={5} color={L.accentLight} />
                 </Circle>
                 <Heading
                   fontSize={{ base: "22px", md: "28px" }}
@@ -835,7 +817,7 @@ export const AdvancedFleetManagement = () => {
                               flexShrink={0}
                             >
                               <Icon
-                                as={FiTruck}
+                                as={FaCar}
                                 boxSize={4}
                                 color={L.accentLight}
                               />

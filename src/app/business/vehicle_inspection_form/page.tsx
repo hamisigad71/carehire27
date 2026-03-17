@@ -25,27 +25,10 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import { PageHeader } from "@/components/ui/PageHeader";
-import {
-  FiCheckSquare,
-  FiCamera,
-  FiAlertCircle,
-  FiSave,
-  FiTruck,
-  FiUser,
-  FiCalendar,
-  FiCheck,
-  FiX,
-  FiMinus,
-  FiUpload,
-  FiFileText,
-  FiShield,
-  FiInfo,
-  FiArrowRight,
-  FiCheckCircle,
-  FiImage,
-} from "react-icons/fi";
+import { FiCheckSquare, FiCamera, FiAlertCircle, FiSave, FiUser, FiCalendar, FiCheck, FiX, FiMinus, FiUpload, FiFileText, FiShield, FiInfo, FiArrowRight, FiCheckCircle, FiImage } from "react-icons/fi";
 import { useColorTokens } from "@/hooks/useColorTokens";
 import { useState } from "react";
+import { FaCar } from "react-icons/fa";
 
 // ─── LIGHT TOKENS ─────────────────────────────────────────────────────────────
 const L = {
@@ -645,7 +628,7 @@ export default function VehicleInspectionPage() {
   const [sections, setSections] = useState<Section[]>([
     {
       title: "Exterior Condition",
-      icon: FiTruck,
+      icon: FaCar,
       color: L.accentLight,
       items: initItems([
         "Body Panels & Paint",
@@ -746,7 +729,7 @@ export default function VehicleInspectionPage() {
               {/* ── SECTION 1: Vehicle & Inspector ── */}
               <SectionCard
                 title="Vehicle & Inspector"
-                icon={FiTruck}
+                icon={FaCar}
                 accent={L.accentLight}
                 step={1}
               >

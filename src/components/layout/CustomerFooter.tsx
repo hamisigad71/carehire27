@@ -18,28 +18,8 @@ import {
   Grid,
   Image,
 } from "@chakra-ui/react";
-import {
-  FiInstagram,
-  FiTwitter,
-  FiFacebook,
-  FiMail,
-  FiPhone,
-  FiMapPin,
-  FiTruck,
-  FiShield,
-  FiStar,
-  FiAward,
-  FiChevronDown,
-  FiChevronUp,
-  FiCode,
-  FiHeart,
-  FiLinkedin,
-  FiYoutube,
-  FiArrowRight,
-  FiClock,
-  FiCheckCircle,
-  FiGlobe,
-} from "react-icons/fi";
+import { FiInstagram, FiTwitter, FiFacebook, FiMail, FiPhone, FiMapPin, FiShield, FiStar, FiAward, FiChevronDown, FiChevronUp, FiCode, FiHeart, FiLinkedin, FiYoutube, FiArrowRight, FiClock, FiCheckCircle, FiGlobe } from "react-icons/fi";
+import { FaCar } from "react-icons/fa";
 
 // ─── LIGHT TOKENS ─────────────────────────────────────────────────────────────
 const L = {
@@ -185,7 +165,7 @@ const NAV = [
 ];
 
 const STATS = [
-  { label: "Active Vehicles", value: "120+", icon: FiTruck },
+  { label: "Active Vehicles", value: "120+", icon: FaCar },
   { label: "Cities Covered", value: "12", icon: FiGlobe },
   { label: "Happy Customers", value: "4,800+", icon: FiStar },
   { label: "Years of Trust", value: "6", icon: FiAward },

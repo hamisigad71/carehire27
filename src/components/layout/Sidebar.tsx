@@ -11,33 +11,11 @@ import {
   CloseButton,
   useDisclosure,
 } from "@chakra-ui/react";
-import {
-  FiHome,
-  FiTruck,
-  FiCalendar,
-  FiUsers,
-  FiSettings,
-  FiBarChart2,
-  FiDollarSign,
-  FiLogOut,
-  FiMenu,
-  FiChevronLeft,
-  FiChevronRight,
-  FiTool,
-  FiActivity,
-  FiCheckCircle,
-  FiPlus,
-  FiTrendingUp,
-  FiUserCheck,
-  FiShield,
-  FiFileText,
-  FiPackage,
-  FiGlobe,
-  FiLock,
-} from "react-icons/fi";
+import { FiHome, FiCalendar, FiUsers, FiSettings, FiBarChart2, FiDollarSign, FiLogOut, FiMenu, FiChevronLeft, FiChevronRight, FiTool, FiActivity, FiCheckCircle, FiPlus, FiTrendingUp, FiUserCheck, FiShield, FiFileText, FiPackage, FiGlobe, FiLock } from "react-icons/fi";
 import { usePathname, useRouter } from "next/navigation";
 import { useColorTokens } from "@/hooks/useColorTokens";
 import { useState } from "react";
+import { FaCar } from "react-icons/fa";
 
 const navGroups = [
   {
@@ -59,7 +37,7 @@ const navGroups = [
   {
     title: "Fleet & Ops",
     items: [
-      { label: "Inventory", icon: FiTruck, href: "/business/fleet" },
+      { label: "Inventory", icon: FaCar, href: "/business/fleet" },
       {
         label: "Add Vehicle",
         icon: FiPlus,

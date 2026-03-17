@@ -8,15 +8,11 @@ import {
   Flex, Image, Circle, Divider, Stat, StatLabel,
   StatNumber, StatHelpText, Spacer,
 } from "@chakra-ui/react";
-import {
-  FiTrendingUp, FiTruck, FiUsers, FiCalendar,
-  FiAlertCircle, FiCheckCircle, FiClock, FiDollarSign,
-  FiArrowUp, FiArrowDown, FiMoreHorizontal, FiActivity,
-  FiMapPin, FiStar, FiShield, FiBarChart2, FiEye,
-} from "react-icons/fi";
+import { FiTrendingUp, FiUsers, FiCalendar, FiAlertCircle, FiCheckCircle, FiClock, FiDollarSign, FiArrowUp, FiArrowDown, FiMoreHorizontal, FiActivity, FiMapPin, FiStar, FiShield, FiBarChart2, FiEye } from "react-icons/fi";
 import { useBusinessContext } from "@/context/BusinessContext";
 import { businessApi } from "@/api/business";
 import { useColorTokens } from "@/hooks/useColorTokens";
+import { FaCar } from "react-icons/fa";
 
 // ─── LIGHT MODE TOKENS ────────────────────────────────────────────────────────
 const L = {
@@ -414,7 +410,7 @@ export const EnhancedDashboard = () => {
     {
       label: "Available Vehicles",
       value: metrics.availableVehicles,
-      icon: FiTruck,
+      icon: FaCar,
       accent: L.accentLight,
       accentBg: L.accentGlow2,
       trend: `of ${metrics.totalVehicles} total`,

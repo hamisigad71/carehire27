@@ -18,15 +18,9 @@ import {
   HStack,
 } from "@chakra-ui/react";
 import { PageHeader } from "@/components/ui/PageHeader";
-import {
-  FiPlus,
-  FiCalendar,
-  FiUser,
-  FiTruck,
-  FiShield,
-  FiSave,
-} from "react-icons/fi";
+import { FiPlus, FiCalendar, FiUser, FiShield, FiSave } from "react-icons/fi";
 import { useColorTokens } from "@/hooks/useColorTokens";
+import { FaCar } from "react-icons/fa";
 
 export default function CreateBookingPage() {
   const tokens = useColorTokens();
@@ -181,7 +175,7 @@ export default function CreateBookingPage() {
                 borderColor={tokens.border}
               >
                 <HStack mb={2}>
-                  <Icon as={FiTruck} color={tokens.accent} />
+                  <Icon as={FaCar} color={tokens.accent} />
                   <Text fontWeight="600" fontSize="14px">
                     Home Delivery
                   </Text>

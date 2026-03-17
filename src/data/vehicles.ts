@@ -1,4 +1,5 @@
 import { Vehicle } from "@/types";
+import { FaCar } from "react-icons/fa";
 
 // =============================================================================
 // ─── VEHICLE DATA — SECTIONED BY CATEGORY ────────────────────────────────────
@@ -735,7 +736,7 @@ const SAFARI_VEHICLES: Vehicle[] = [
       "Kenya's most trusted safari vehicle. The Land Cruiser is built for rough terrain, long distances, and unforgettable game drives. Features a pop-up roof for wildlife viewing.",
     features: [
       { icon: "FiUsers", label: "7 Seats" },
-      { icon: "FiTruck", label: "Pop-up Roof" },
+      { icon: "FaCar", label: "Pop-up Roof" },
       { icon: "FiActivity", label: "4WD Off-road" },
       { icon: "FiPackage", label: "Cooler Box Incl." },
     ],
@@ -806,7 +807,7 @@ const SAFARI_VEHICLES: Vehicle[] = [
     features: [
       { icon: "FiUsers", label: "7 Seats" },
       { icon: "FiActivity", label: "4WD" },
-      { icon: "FiTruck", label: "Bull Bar" },
+      { icon: "FaCar", label: "Bull Bar" },
       { icon: "FiPackage", label: "Extended Tank" },
     ],
     specifications: [

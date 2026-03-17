@@ -18,21 +18,11 @@ import {
 import { PageHeader } from "@/components/ui/PageHeader";
 import { StatCard } from "@/components/ui/StatCard";
 import { StatusBadge } from "@/components/ui/StatusBadge";
-import {
-  FiTruck,
-  FiSettings,
-  FiCalendar,
-  FiMapPin,
-  FiInfo,
-  FiActivity,
-  FiArrowRight,
-  FiEdit,
-  FiTrash2,
-  FiDollarSign,
-} from "react-icons/fi";
+import { FiSettings, FiCalendar, FiMapPin, FiInfo, FiActivity, FiArrowRight, FiEdit, FiTrash2, FiDollarSign } from "react-icons/fi";
 import { useColorTokens } from "@/hooks/useColorTokens";
 import { formatCurrency, formatDate } from "@/utils/format";
 import { useParams } from "next/navigation";
+import { FaCar } from "react-icons/fa";
 
 export default function VehicleDetailsPage() {
   const { id } = useParams();
@@ -293,7 +283,7 @@ export default function VehicleDetailsPage() {
                 bg="whiteAlpha.200"
                 borderRadius="full"
               />
-              <Icon as={FiTruck} boxSize={8} mb={4} />
+              <Icon as={FaCar} boxSize={8} mb={4} />
               <Text fontSize="16px" fontWeight="700" mb={1}>
                 Available for Rent
               </Text>

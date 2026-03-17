@@ -26,20 +26,7 @@ import {
   extendTheme,
   ChakraProvider,
 } from "@chakra-ui/react";
-import {
-  FiPercent,
-  FiZap,
-  FiTruck,
-  FiGift,
-  FiClock,
-  FiCheckCircle,
-  FiArrowRight,
-  FiShield,
-  FiStar,
-  FiAward,
-  FiCopy,
-  FiCheck,
-} from "react-icons/fi";
+import { FiPercent, FiZap, FiGift, FiClock, FiCheckCircle, FiArrowRight, FiShield, FiStar, FiAward, FiCopy, FiCheck } from "react-icons/fi";
 
 // ─── FONTS & ANIMATIONS ───────────────────────────────────────────────────────
 const Styles = ({ isDark = false }) => {

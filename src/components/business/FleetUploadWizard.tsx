@@ -39,26 +39,9 @@ import {
 import { useRouter } from "next/navigation";
 import { useColorTokens } from "@/hooks/useColorTokens";
 import { useState, useRef } from "react";
-import {
-  FiUpload,
-  FiCheck,
-  FiAlertCircle,
-  FiDownload,
-  FiPlus,
-  FiTruck,
-  FiTrash2,
-  FiArrowRight,
-  FiInfo,
-  FiCheckCircle,
-  FiFile,
-  FiX,
-  FiStar,
-  FiShield,
-  FiCalendar,
-  FiUsers,
-  FiZap,
-} from "react-icons/fi";
+import { FiUpload, FiCheck, FiAlertCircle, FiDownload, FiPlus, FiTrash2, FiArrowRight, FiInfo, FiCheckCircle, FiFile, FiX, FiStar, FiShield, FiCalendar, FiUsers, FiZap } from "react-icons/fi";
 import { PageHeader } from "@/components/ui/PageHeader";
+import { FaCar } from "react-icons/fa";
 
 // ─── LIGHT TOKENS ─────────────────────────────────────────────────────────────
 const L = {
@@ -285,7 +268,7 @@ function FSelect({ children, ...props }: any) {
 // ─── STATS ROW ────────────────────────────────────────────────────────────────
 function StatsRow({ count }: { count: number }) {
   const stats = [
-    { label: "Added", value: count, color: L.accentLight, icon: FiTruck },
+    { label: "Added", value: count, color: L.accentLight, icon: FaCar },
     { label: "Fuel Mix", value: "Auto", color: L.blue, icon: FiZap },
     {
       label: "Avg Rate",
@@ -988,7 +971,7 @@ function VehicleTable({
                     <HStack spacing={2.5}>
                       <Circle size="34px" bg={L.accentGlow}>
                         <Icon
-                          as={FiTruck}
+                          as={FaCar}
                           boxSize={3.5}
                           color={L.accentLight}
                         />
