@@ -198,7 +198,6 @@ export const CustomerNavbar = () => {
         boxShadow={L.shadow}
         fontFamily="'DM Sans', sans-serif"
       >
-
         <Container maxW="1280px" px={{ base: 4, md: 6 }}>
           <Flex align="center" h="68px" gap={6}>
             {/* Logo */}
@@ -312,7 +311,13 @@ export const CustomerNavbar = () => {
                 _hover={{ bg: L.accentGlow, borderColor: L.cardBorder }}
                 onClick={() => go("/customer/profile")}
               >
-                <Icon as={FiUser} boxSize={5} color={isActive("/customer/profile") ? L.accentLight : L.muted} />
+                <Icon
+                  as={FiUser}
+                  boxSize={5}
+                  color={
+                    isActive("/customer/profile") ? L.accentLight : L.muted
+                  }
+                />
               </Box>
 
               {/* Sign out button */}
@@ -342,14 +347,19 @@ export const CustomerNavbar = () => {
               w={{ base: "44px", lg: "36px" }}
               h={{ base: "44px", lg: "36px" }}
               borderRadius="10px"
-              border="1px solid"
-              borderColor={L.border}
+              border="1.5px solid"
+              borderColor="#ffffff"
+              bg={L.accentGlow}
               alignItems="center"
               justifyContent="center"
               cursor="pointer"
               onClick={() => setMenuOpen(true)}
             >
-              <Icon as={FiMenu} boxSize={{ base: 5.5, lg: 4.5 }} color={L.text} />
+              <Icon
+                as={FiMenu}
+                boxSize={{ base: 7, lg: 5.5 }}
+                color={L.accent}
+              />
             </Box>
           </Flex>
         </Container>

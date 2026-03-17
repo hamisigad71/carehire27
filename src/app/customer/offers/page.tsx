@@ -1082,7 +1082,7 @@ function LoyaltySection({ T }: { T: TokenType }) {
                     borderColor={T.cardBorder}
                     mr={4}
                   >
-                    <Icon as={b.icon} color={b.color} boxSize={4.5} />
+                    <Icon as={b.icon} color={b.color} boxSize={5} />
                   </Circle>
                   <Box flex={1}>
                     <Text fontWeight="700" fontSize="15px">
@@ -1170,56 +1170,79 @@ function LoyaltySection({ T }: { T: TokenType }) {
             </Box>
 
             {/* Tier cards */}
-            <SimpleGrid columns={3} spacing={3} mt={6}>
+            <SimpleGrid columns={{ base: 1, sm: 2, lg: 3 }} spacing={4} mt={6}>
               {TIERS.map((tier) => (
                 <Box
                   key={tier.name}
-                  p={4}
+                  p={6}
                   bg={T.cardLight}
-                  borderRadius="20px"
+                  borderRadius="24px"
                   border="1px solid"
                   borderColor={T.cardBorder}
                   position="relative"
                   overflow="hidden"
+                  transition="all 0.3s ease"
+                  _hover={{
+                    transform: "translateY(-4px)",
+                    boxShadow: "0 8px 24px rgba(0,0,0,0.08)",
+                  }}
                 >
+                  {/* Top accent bar */}
                   <Box
                     position="absolute"
                     top={0}
                     left={0}
                     right={0}
-                    h="2px"
+                    h="3px"
                     bg={tier.color}
-                    opacity={0.7}
+                    opacity={0.8}
                   />
+
+                  {/* Icon */}
                   <Circle
-                    size="32px"
+                    size="48px"
                     bg={`${tier.color}22`}
-                    mb={2}
-                    border="1px solid"
+                    mb={4}
+                    border="2px solid"
                     borderColor={`${tier.color}44`}
                   >
-                    <Icon as={FiAward} color={tier.color} boxSize={3.5} />
+                    <Icon as={FiAward} color={tier.color} boxSize={5} />
                   </Circle>
+
+                  {/* Tier name */}
                   <Text
                     fontWeight="800"
-                    fontSize="13px"
+                    fontSize="16px"
                     color={tier.color}
-                    mb={0.5}
+                    mb={1}
                   >
                     {tier.name}
                   </Text>
-                  <Text fontSize="10px" color={T.subtle} mb={2}>
+
+                  {/* Points range */}
+                  <Text
+                    fontSize="11px"
+                    color={T.subtle}
+                    mb={5}
+                    fontWeight="600"
+                  >
                     {tier.pts} pts
                   </Text>
-                  <VStack align="start" spacing={1}>
+
+                  {/* Divider */}
+                  <Divider mb={5} borderColor={T.cardBorder} />
+
+                  {/* Perks list */}
+                  <VStack align="start" spacing={2.5}>
                     {tier.perks.map((p) => (
-                      <HStack key={p} spacing={1.5}>
+                      <HStack key={p} spacing={2.5} w="100%">
                         <Icon
                           as={FiCheckCircle}
-                          color={T.accentBright}
-                          boxSize={2.5}
+                          color={tier.color}
+                          boxSize={4}
+                          flexShrink={0}
                         />
-                        <Text fontSize="10px" color={T.muted}>
+                        <Text fontSize="12px" color={T.text} fontWeight="500">
                           {p}
                         </Text>
                       </HStack>

@@ -1,13 +1,8 @@
 "use client";
 
 import { HStack, Box, Icon, VStack, Text, Flex } from "@chakra-ui/react";
-import {
-  FiHome,
-  FiCalendar,
-  FiTruck,
-  FiHelpCircle,
-  FiUser,
-} from "react-icons/fi";
+import { FiHome, FiCalendar, FiHelpCircle, FiUser } from "react-icons/fi";
+import { FaCar } from "react-icons/fa";
 import { useRouter, usePathname } from "next/navigation";
 
 // ─── COLOR TOKENS ─────────────────────────────────────────────────────────────
@@ -29,7 +24,7 @@ interface NavItem {
 const NAV_ITEMS: NavItem[] = [
   { icon: FiHome, label: "Dashboard", href: "/customer" },
   { icon: FiCalendar, label: "Bookings", href: "/customer/bookings" },
-  { icon: FiTruck, label: "Vehicles", href: "/customer/vehicles" },
+  { icon: FaCar, label: "Fleet", href: "/customer/fleet" },
   { icon: FiHelpCircle, label: "Support", href: "/customer/support" },
   { icon: FiUser, label: "Profile", href: "/customer/profile" },
 ];
