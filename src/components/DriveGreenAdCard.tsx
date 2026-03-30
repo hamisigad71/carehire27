@@ -25,8 +25,6 @@ const L = {
 // ─── STYLES ───────────────────────────────────────────────────────────────────
 const Styles = () => (
   <style>{`
-    @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap');
-
     @keyframes cardFadeUp {
       from { opacity: 0; transform: translateY(20px); }
       to   { opacity: 1; transform: translateY(0); }

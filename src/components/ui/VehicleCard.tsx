@@ -31,8 +31,6 @@ import { useRouter } from "next/navigation";
 // ─── INLINE STYLES ────────────────────────────────────────────────────────────
 // Drop this once in your global CSS / layout if preferred
 const cardStyles = `
-  @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&display=swap');
-
   .v-card {
     transition: transform 0.32s cubic-bezier(.25,.46,.45,.94),
                 box-shadow 0.32s ease,
@@ -323,7 +321,6 @@ export const VehicleCard = ({
                 noOfLines={1}
                 flex={1}
                 mr={2}
-                fontFamily="'Syne', sans-serif"
               >
                 {name}
               </Text>
@@ -403,7 +400,6 @@ export const VehicleCard = ({
                 color="green.600"
                 letterSpacing="-0.03em"
                 lineHeight="1"
-                fontFamily="'Syne', sans-serif"
               >
                 {formatCurrency(price)}
               </Text>

@@ -3,10 +3,11 @@ import { DM_Sans } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
 import { MobileBottomNav } from "@/components/MobileBottomNav";
+import { ChatWidget } from "@/components/ChatWidget";
 
 const dmSans = DM_Sans({
-  subsets: ["latin"],
   variable: "--font-dm-sans",
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
@@ -24,10 +25,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={dmSans.className}>
+      <body className={dmSans.variable}>
         <Providers>
           {children}
           <MobileBottomNav />
+          <ChatWidget position="bottom-right" />
         </Providers>
       </body>
     </html>
