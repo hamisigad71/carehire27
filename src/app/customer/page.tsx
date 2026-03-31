@@ -1014,6 +1014,7 @@ export default function CustomerDashboard() {
           </VStack>
         </Container>
 
+
         <MobileBottomNav />
       </Box>
     </>

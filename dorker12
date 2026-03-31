@@ -1,0 +1,1 @@
+docker run --pull=always -it --rm --name n8n-atom -p 5888:5888 -v ~/.n8n:/home/node/.n8n atom8n/n8n:fork

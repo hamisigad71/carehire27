@@ -74,28 +74,11 @@ export default function CustomerChat() {
     setIsTyping(true);
 
     try {
-      const webhookUrl = process.env.NEXT_PUBLIC_N8N_WEBHOOK_URL;
-      if (!webhookUrl) {
-        // Fallback demo response if no webhook is configured
-        setTimeout(() => {
-          setMessages((prev) => [
-            ...prev,
-            {
-              id: (Date.now() + 1).toString(),
-              text: "I'm a placeholder assistant. Please configure the N8N_WEBHOOK_URL to connect to the live chatbot.",
-              sender: "agent",
-              timestamp: new Date(),
-            },
-          ]);
-          setIsTyping(false);
-        }, 1500);
-        return;
-      }
 
-      const response = await fetch(webhookUrl, {
+      const response = await fetch("/api/chatbot", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: newUserMsg.text }),
+        body: JSON.stringify({ message: newUserMsg.text, sessionId: "customer-session-1" }),
       });
 
       if (!response.ok) throw new Error("Network response was not ok");
@@ -106,7 +89,7 @@ export default function CustomerChat() {
         ...prev,
         {
           id: Date.now().toString(),
-          text: data.reply || "Message received by support.",
+          text: data.response || "Message received by support.",
           sender: "agent",
           timestamp: new Date(),
         },

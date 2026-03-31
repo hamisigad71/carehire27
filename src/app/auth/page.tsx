@@ -103,11 +103,11 @@ const Styles = () => (
       overflow: hidden;
       font-weight: 700 !important;
       letter-spacing: -0.01em;
-      box-shadow: 0 4px 12px rgba(0, 168, 85, 0.2) !important;
+      box-shadow: 0 4px 12px rgba(30, 110, 30, 0.2) !important;
     }
     .btn-main:hover { 
       transform: translateY(-4px) !important;
-      box-shadow: 0 12px 24px rgba(0, 168, 85, 0.3) !important;
+      box-shadow: 0 12px 24px rgba(30, 110, 30, 0.3) !important;
     }
     .btn-main:active { transform: translateY(-1px) !important; }
 
@@ -130,12 +130,12 @@ const Styles = () => (
       transition: transform .2s ease, box-shadow .2s ease;
       padding: 12px;
       border-radius: 12px;
-      background: rgba(0, 168, 85, 0.03);
-      border: 1px solid rgba(0, 168, 85, 0.1);
+      background: rgba(30, 110, 30, 0.03);
+      border: 1px solid rgba(30, 110, 30, 0.1);
     }
     .feature-card:hover { 
       transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0, 168, 85, 0.1);
+      box-shadow: 0 4px 12px rgba(30, 110, 30, 0.1);
     }
     
     .tab-pill { 
@@ -154,27 +154,27 @@ const Styles = () => (
     .trust-badge {
       padding: 8px 12px;
       border-radius: 10px;
-      background: rgba(0, 168, 85, 0.08);
-      border: 1px solid rgba(0, 168, 85, 0.15);
+      background: rgba(30, 110, 30, 0.08);
+      border: 1px solid rgba(30, 110, 30, 0.15);
       font-weight: 600;
       font-size: 12px;
       transition: all .2s ease;
     }
     .trust-badge:hover {
-      background: rgba(0, 168, 85, 0.12);
-      border-color: rgba(0, 168, 85, 0.25);
+      background: rgba(30, 110, 30, 0.12);
+      border-color: rgba(30, 110, 30, 0.25);
       transform: translateY(-1px);
     }
 
     .car-showcase {
       border-radius: 16px;
       overflow: hidden;
-      background: linear-gradient(135deg, rgba(0, 168, 85, 0.1), rgba(0, 168, 85, 0.05));
-      border: 1px solid rgba(0, 168, 85, 0.15);
+      background: linear-gradient(135deg, rgba(30, 110, 30, 0.1), rgba(30, 110, 30, 0.05));
+      border: 1px solid rgba(30, 110, 30, 0.15);
     }
 
     .counter-badge {
-      background: linear-gradient(135deg, #00a855, #2d8c2d);
+      background: linear-gradient(135deg, #1e6e1e, #2d8c2d);
       color: white;
       padding: 8px 14px;
       border-radius: 20px;
@@ -421,7 +421,7 @@ function LeftPanel({ mode, tokens }: any) {
   ];
 
   const whyDriveKE = [
-    { icon: "🔒", text: "100% Insured", color: "rgba(0, 168, 85, 0.1)" },
+    { icon: "🔒", text: "100% Insured", color: "rgba(30, 110, 30, 0.1)" },
     { icon: "⚡", text: "5-min Booking", color: "rgba(26, 86, 160, 0.1)" },
     { icon: "🌍", text: "Nationwide", color: "rgba(255, 107, 53, 0.1)" },
   ];
@@ -433,7 +433,7 @@ function LeftPanel({ mode, tokens }: any) {
   ];
 
   const isDark = tokens.pageBg === "#0a0f0d";
-  const gradColor = isDark ? "#00cc66" : "#00a855";
+  const gradColor = isDark ? "#2d8c2d" : "#1e6e1e";
 
   const nextCar = () => setCurrentCarIndex((prev) => (prev + 1) % cars.length);
   const prevCar = () =>
@@ -459,7 +459,7 @@ function LeftPanel({ mode, tokens }: any) {
         position="absolute"
         inset={0}
         opacity={isDark ? 0.05 : 0.03}
-        bgImage={`linear-gradient(${isDark ? "rgba(0,255,136,1)" : "rgba(0,168,85,1)"} 1px, transparent 1px), linear-gradient(90deg, ${isDark ? "rgba(0,255,136,1)" : "rgba(0,168,85,1)"} 1px, transparent 1px)`}
+        bgImage={`linear-gradient(${isDark ? "rgba(45,140,45,1)" : "rgba(30,110,30,1)"} 1px, transparent 1px), linear-gradient(90deg, ${isDark ? "rgba(45,140,45,1)" : "rgba(30,110,30,1)"} 1px, transparent 1px)`}
         bgSize="48px 48px"
       />
 
@@ -472,8 +472,8 @@ function LeftPanel({ mode, tokens }: any) {
         h="450px"
         bg={
           isDark
-            ? "radial-gradient(circle, rgba(0,255,136,0.2) 0%, transparent 70%)"
-            : "radial-gradient(circle, rgba(0,168,85,0.15) 0%, transparent 70%)"
+            ? "radial-gradient(circle, rgba(45,140,45,0.2) 0%, transparent 70%)"
+            : "radial-gradient(circle, rgba(30,110,30,0.15) 0%, transparent 70%)"
         }
         className="float"
         filter="blur(60px)"
@@ -487,7 +487,7 @@ function LeftPanel({ mode, tokens }: any) {
         bg={
           isDark
             ? "radial-gradient(circle, rgba(45,140,45,0.15) 0%, transparent 70%)"
-            : "radial-gradient(circle, rgba(0,168,85,0.12) 0%, transparent 70%)"
+            : "radial-gradient(circle, rgba(30,110,30,0.12) 0%, transparent 70%)"
         }
         filter="blur(80px)"
       />
@@ -497,9 +497,9 @@ function LeftPanel({ mode, tokens }: any) {
         <Box
           w={10}
           h={10}
-          bg={isDark ? "rgba(0,255,136,0.15)" : "rgba(0,168,85,0.15)"}
+          bg={isDark ? "rgba(45,140,45,0.15)" : "rgba(30,110,30,0.15)"}
           borderRadius="xl"
-          border={`1px solid ${isDark ? "rgba(0,255,136,0.3)" : "rgba(0,168,85,0.3)"}`}
+          border={`1px solid ${isDark ? "rgba(45,140,45,0.3)" : "rgba(30,110,30,0.3)"}`}
           display="flex"
           alignItems="center"
           justifyContent="center"
@@ -524,7 +524,7 @@ function LeftPanel({ mode, tokens }: any) {
         {/* Hero section */}
         <Box>
           <Badge
-            bg={isDark ? "rgba(0,255,136,0.15)" : "rgba(0,168,85,0.15)"}
+            bg={isDark ? "rgba(45,140,45,0.15)" : "rgba(30,110,30,0.15)"}
             color={gradColor}
             borderRadius="full"
             px={3}
@@ -532,7 +532,7 @@ function LeftPanel({ mode, tokens }: any) {
             fontSize="11px"
             fontWeight="700"
             mb={4}
-            border={`1px solid ${isDark ? "rgba(0,255,136,0.3)" : "rgba(0,168,85,0.3)"}`}
+            border={`1px solid ${isDark ? "rgba(45,140,45,0.3)" : "rgba(30,110,30,0.3)"}`}
           >
             {isLogin ? "👋 Welcome back" : "🚀 Join Kenya's #1 Car Hire"}
           </Badge>
@@ -576,7 +576,7 @@ function LeftPanel({ mode, tokens }: any) {
             position="relative"
             borderRadius="18px"
             overflow="hidden"
-            border={`1.5px solid ${isDark ? "rgba(0,255,136,0.2)" : "rgba(0,168,85,0.15)"}`}
+            border={`1.5px solid ${isDark ? "rgba(45,140,45,0.2)" : "rgba(30,110,30,0.15)"}`}
             bg={isDark ? "rgba(0,0,0,0.3)" : "rgba(255,255,255,0.4)"}
             boxShadow={
               isDark
@@ -618,7 +618,7 @@ function LeftPanel({ mode, tokens }: any) {
               backdropFilter="blur(8px)"
               px={4}
               py={3.5}
-              borderTop={`1px solid ${isDark ? "rgba(0,255,136,0.1)" : "rgba(0,168,85,0.1)"}`}
+              borderTop={`1px solid ${isDark ? "rgba(45,140,45,0.1)" : "rgba(30,110,30,0.1)"}`}
             >
               <HStack justify="space-between" align="center">
                 <Box>
@@ -654,13 +654,13 @@ function LeftPanel({ mode, tokens }: any) {
               <HStack spacing={2} mt={3}>
                 <Button
                   size="sm"
-                  bg={isDark ? "rgba(0,255,136,0.1)" : "rgba(0,168,85,0.1)"}
-                  border={`1px solid ${isDark ? "rgba(0,255,136,0.2)" : "rgba(0,168,85,0.2)"}`}
+                  bg={isDark ? "rgba(45,140,45,0.1)" : "rgba(30,110,30,0.1)"}
+                  border={`1px solid ${isDark ? "rgba(45,140,45,0.2)" : "rgba(30,110,30,0.2)"}`}
                   color={gradColor}
                   borderRadius="8px"
                   onClick={prevCar}
                   _hover={{
-                    bg: isDark ? "rgba(0,255,136,0.2)" : "rgba(0,168,85,0.2)",
+                    bg: isDark ? "rgba(45,140,45,0.2)" : "rgba(30,110,30,0.2)",
                   }}
                 >
                   <Icon as={FiChevronLeft} boxSize={4} />
@@ -676,8 +676,8 @@ function LeftPanel({ mode, tokens }: any) {
                         idx === currentCarIndex
                           ? gradColor
                           : isDark
-                            ? "rgba(0,255,136,0.2)"
-                            : "rgba(0,168,85,0.2)"
+                            ? "rgba(45,140,45,0.2)"
+                            : "rgba(30,110,30,0.2)"
                       }
                       cursor="pointer"
                       onClick={() => setCurrentCarIndex(idx)}
@@ -687,13 +687,13 @@ function LeftPanel({ mode, tokens }: any) {
                 </HStack>
                 <Button
                   size="sm"
-                  bg={isDark ? "rgba(0,255,136,0.1)" : "rgba(0,168,85,0.1)"}
-                  border={`1px solid ${isDark ? "rgba(0,255,136,0.2)" : "rgba(0,168,85,0.2)"}`}
+                  bg={isDark ? "rgba(45,140,45,0.1)" : "rgba(30,110,30,0.1)"}
+                  border={`1px solid ${isDark ? "rgba(45,140,45,0.2)" : "rgba(30,110,30,0.2)"}`}
                   color={gradColor}
                   borderRadius="8px"
                   onClick={nextCar}
                   _hover={{
-                    bg: isDark ? "rgba(0,255,136,0.2)" : "rgba(0,168,85,0.2)",
+                    bg: isDark ? "rgba(45,140,45,0.2)" : "rgba(30,110,30,0.2)",
                   }}
                 >
                   <Icon as={FiChevronRight} boxSize={4} />
@@ -733,7 +733,7 @@ function LeftPanel({ mode, tokens }: any) {
               <Box
                 key={idx}
                 bg={isDark ? "rgba(0,0,0,0.3)" : item.color}
-                border={`1px solid ${isDark ? "rgba(0,255,136,0.1)" : "rgba(0,168,85,0.1)"}`}
+                border={`1px solid ${isDark ? "rgba(45,140,45,0.1)" : "rgba(30,110,30,0.1)"}`}
                 borderRadius="12px"
                 p={2.5}
                 textAlign="center"
@@ -742,8 +742,8 @@ function LeftPanel({ mode, tokens }: any) {
                 _hover={{
                   transform: "translateY(-2px)",
                   borderColor: isDark
-                    ? "rgba(0,255,136,0.3)"
-                    : "rgba(0,168,85,0.3)",
+                    ? "rgba(45,140,45,0.3)"
+                    : "rgba(30,110,30,0.3)",
                 }}
               >
                 <Text fontSize="24px" mb={1}>
@@ -768,9 +768,9 @@ function LeftPanel({ mode, tokens }: any) {
               <Box
                 w="32px"
                 h="32px"
-                bg={isDark ? "rgba(0,255,136,0.1)" : "rgba(0,168,85,0.1)"}
+                bg={isDark ? "rgba(45,140,45,0.1)" : "rgba(30,110,30,0.1)"}
                 borderRadius="50%"
-                border={`1px solid ${isDark ? "rgba(0,255,136,0.2)" : "rgba(0,168,85,0.2)"}`}
+                border={`1px solid ${isDark ? "rgba(45,140,45,0.2)" : "rgba(30,110,30,0.2)"}`}
                 display="flex"
                 alignItems="center"
                 justifyContent="center"
@@ -851,7 +851,7 @@ function LoginForm({ onSwitch, tokens }: any) {
             Don't have an account?{" "}
             <Text
               as="span"
-              color="#00a855"
+              color="#1e6e1e"
               fontWeight="700"
               cursor="pointer"
               onClick={onSwitch}
@@ -921,8 +921,8 @@ function LoginForm({ onSwitch, tokens }: any) {
               _placeholder={{ color: tokens.textSubtle }}
               _focus={{
                 outline: "none",
-                borderColor: "#00a855",
-                boxShadow: "0 0 0 3px rgba(0, 168, 85, 0.08)",
+                borderColor: "#1e6e1e",
+                boxShadow: "0 0 0 3px rgba(30, 110, 30, 0.08)",
               }}
             />
           </InputGroup>
@@ -946,7 +946,7 @@ function LoginForm({ onSwitch, tokens }: any) {
             </FormLabel>
             <Text
               fontSize="12px"
-              color="#00a855"
+              color="#1e6e1e"
               fontWeight="700"
               cursor="pointer"
               _hover={{ textDecoration: "underline" }}
@@ -975,8 +975,8 @@ function LoginForm({ onSwitch, tokens }: any) {
               _placeholder={{ color: tokens.textSubtle }}
               _focus={{
                 outline: "none",
-                borderColor: "#00a855",
-                boxShadow: "0 0 0 3px rgba(0, 168, 85, 0.08)",
+                borderColor: "#1e6e1e",
+                boxShadow: "0 0 0 3px rgba(30, 110, 30, 0.08)",
               }}
             />
             <InputRightElement
@@ -1016,7 +1016,7 @@ function LoginForm({ onSwitch, tokens }: any) {
           className="btn-main"
           h="56px"
           w="100%"
-          bg="#00a855"
+          bg="#1e6e1e"
           color="white"
           borderRadius="12px"
           fontWeight="800"
@@ -1040,7 +1040,7 @@ function LoginForm({ onSwitch, tokens }: any) {
               { icon: FiStar, text: "Rated 4.9/5" },
             ].map(({ icon, text }) => (
               <HStack key={text} spacing={1.5} className="trust-badge">
-                <Icon as={icon} color="#00a855" boxSize={4} />
+                <Icon as={icon} color="#1e6e1e" boxSize={4} />
                 <Text fontSize="12px" color={tokens.textMuted} fontWeight="600">
                   {text}
                 </Text>
@@ -1123,7 +1123,7 @@ function SignupForm({ onSwitch, tokens }: any) {
               cursor="pointer"
               onClick={() => setStep(1)}
               w="fit-content"
-              _hover={{ color: "#00a855" }}
+              _hover={{ color: "#1e6e1e" }}
               transition="color .2s"
             >
               <Icon as={FiChevronLeft} boxSize={4} color={tokens.textMuted} />
@@ -1145,7 +1145,7 @@ function SignupForm({ onSwitch, tokens }: any) {
             Already have an account?{" "}
             <Text
               as="span"
-              color="#00a855"
+              color="#1e6e1e"
               fontWeight="700"
               cursor="pointer"
               onClick={onSwitch}
@@ -1165,7 +1165,7 @@ function SignupForm({ onSwitch, tokens }: any) {
                 flex={1}
                 h="3px"
                 borderRadius="full"
-                bg={s <= step ? "#00a855" : tokens.border}
+                bg={s <= step ? "#1e6e1e" : tokens.border}
                 transition="background .4s ease"
               />
             ))}
@@ -1249,8 +1249,8 @@ function SignupForm({ onSwitch, tokens }: any) {
                     _placeholder={{ color: tokens.textSubtle }}
                     _focus={{
                       outline: "none",
-                      borderColor: "#00a855",
-                      boxShadow: "0 0 0 3px rgba(0, 168, 85, 0.08)",
+                      borderColor: "#1e6e1e",
+                      boxShadow: "0 0 0 3px rgba(30, 110, 30, 0.08)",
                     }}
                     value={form.firstName}
                     onChange={(e) => set("firstName", e.target.value)}
@@ -1285,8 +1285,8 @@ function SignupForm({ onSwitch, tokens }: any) {
                   _placeholder={{ color: tokens.textSubtle }}
                   _focus={{
                     outline: "none",
-                    borderColor: "#00a855",
-                    boxShadow: "0 0 0 3px rgba(0, 168, 85, 0.08)",
+                    borderColor: "#1e6e1e",
+                    boxShadow: "0 0 0 3px rgba(30, 110, 30, 0.08)",
                   }}
                   value={form.lastName}
                   onChange={(e) => set("lastName", e.target.value)}
@@ -1326,8 +1326,8 @@ function SignupForm({ onSwitch, tokens }: any) {
                   _placeholder={{ color: tokens.textSubtle }}
                   _focus={{
                     outline: "none",
-                    borderColor: "#00a855",
-                    boxShadow: "0 0 0 3px rgba(0, 168, 85, 0.08)",
+                    borderColor: "#1e6e1e",
+                    boxShadow: "0 0 0 3px rgba(30, 110, 30, 0.08)",
                   }}
                   value={form.email}
                   onChange={(e) => set("email", e.target.value)}
@@ -1367,8 +1367,8 @@ function SignupForm({ onSwitch, tokens }: any) {
                   _placeholder={{ color: tokens.textSubtle }}
                   _focus={{
                     outline: "none",
-                    borderColor: "#00a855",
-                    boxShadow: "0 0 0 3px rgba(0, 168, 85, 0.08)",
+                    borderColor: "#1e6e1e",
+                    boxShadow: "0 0 0 3px rgba(30, 110, 30, 0.08)",
                   }}
                   value={form.phone}
                   onChange={(e) => set("phone", e.target.value)}
@@ -1383,7 +1383,7 @@ function SignupForm({ onSwitch, tokens }: any) {
               className="btn-main"
               h="52px"
               w="100%"
-              bg="#00a855"
+              bg="#1e6e1e"
               color="white"
               borderRadius="11px"
               fontWeight="800"
@@ -1427,8 +1427,8 @@ function SignupForm({ onSwitch, tokens }: any) {
                   _placeholder={{ color: tokens.textSubtle }}
                   _focus={{
                     outline: "none",
-                    borderColor: "#00a855",
-                    boxShadow: "0 0 0 3px rgba(0, 168, 85, 0.08)",
+                    borderColor: "#1e6e1e",
+                    boxShadow: "0 0 0 3px rgba(30, 110, 30, 0.08)",
                   }}
                   value={form.password}
                   onChange={(e) => set("password", e.target.value)}
@@ -1504,8 +1504,8 @@ function SignupForm({ onSwitch, tokens }: any) {
                   _placeholder={{ color: tokens.textSubtle }}
                   _focus={{
                     outline: "none",
-                    borderColor: "#00a855",
-                    boxShadow: "0 0 0 3px rgba(0, 168, 85, 0.08)",
+                    borderColor: "#1e6e1e",
+                    boxShadow: "0 0 0 3px rgba(30, 110, 30, 0.08)",
                   }}
                   value={form.confirm}
                   onChange={(e) => set("confirm", e.target.value)}
@@ -1525,8 +1525,8 @@ function SignupForm({ onSwitch, tokens }: any) {
               </InputGroup>
               {form.confirm && form.confirm === form.password && (
                 <HStack mt={1.5} spacing={1.5}>
-                  <Icon as={FiCheck} color="#00a855" boxSize={4} />
-                  <Text fontSize="11px" color="#00a855" fontWeight="700">
+                  <Icon as={FiCheck} color="#1e6e1e" boxSize={4} />
+                  <Text fontSize="11px" color="#1e6e1e" fontWeight="700">
                     Passwords match
                   </Text>
                 </HStack>
@@ -1557,9 +1557,9 @@ function SignupForm({ onSwitch, tokens }: any) {
                 fontSize="14px"
                 color={form.idType ? tokens.textPrimary : tokens.textSubtle}
                 _focus={{
-                  borderColor: "#00a855",
+                  borderColor: "#1e6e1e",
                   outline: "none",
-                  boxShadow: "0 0 0 3px rgba(0, 168, 85, 0.08)",
+                  boxShadow: "0 0 0 3px rgba(30, 110, 30, 0.08)",
                 }}
                 onChange={(e) => set("idType", e.target.value)}
               >
@@ -1591,7 +1591,7 @@ function SignupForm({ onSwitch, tokens }: any) {
                   I agree to DriveKE's{" "}
                   <Text
                     as="span"
-                    color="#00a855"
+                    color="#1e6e1e"
                     fontWeight="700"
                     cursor="pointer"
                   >
@@ -1600,7 +1600,7 @@ function SignupForm({ onSwitch, tokens }: any) {
                   and{" "}
                   <Text
                     as="span"
-                    color="#00a855"
+                    color="#1e6e1e"
                     fontWeight="700"
                     cursor="pointer"
                   >
@@ -1617,7 +1617,7 @@ function SignupForm({ onSwitch, tokens }: any) {
               className="btn-main"
               h="52px"
               w="100%"
-              bg="#00a855"
+              bg="#1e6e1e"
               color="white"
               borderRadius="11px"
               fontWeight="800"
@@ -1641,7 +1641,7 @@ function SignupForm({ onSwitch, tokens }: any) {
                   { icon: FiZap, text: "Instant access" },
                 ].map(({ icon, text }) => (
                   <HStack key={text} spacing={1.5} className="trust-badge">
-                    <Icon as={icon} color="#00a855" boxSize={4} />
+                    <Icon as={icon} color="#1e6e1e" boxSize={4} />
                     <Text
                       fontSize="12px"
                       color={tokens.textMuted}
@@ -1687,7 +1687,7 @@ export default function AuthPage() {
           bg={tokens.cardBg}
           border="1px solid"
           borderColor={tokens.border}
-          color="#00a855"
+          color="#1e6e1e"
           _hover={{ bg: tokens.cardBg2 }}
         >
           {colorMode === "light" ? <FiMoon size={20} /> : <FiSun size={20} />}
@@ -1723,7 +1723,7 @@ export default function AuthPage() {
                 bg={tokens.cardBg2}
                 border="1px solid"
                 borderColor={tokens.border}
-                color="#00a855"
+                color="#1e6e1e"
                 _hover={{ bg: tokens.cardBg }}
               >
                 {colorMode === "light" ? (
@@ -1754,7 +1754,7 @@ export default function AuthPage() {
                   px={2}
                   borderRadius="12px"
                   className="tab-pill"
-                  bg={mode === m ? "#00a855" : "transparent"}
+                  bg={mode === m ? "#1e6e1e" : "transparent"}
                   onClick={() => setMode(m)}
                   transition="all .3s cubic-bezier(.25,.46,.45,.94)"
                 >
@@ -1787,7 +1787,7 @@ export default function AuthPage() {
                 right={-40}
                 w="200px"
                 h="200px"
-                bg="radial-gradient(circle, rgba(0, 168, 85, 0.05), transparent 70%)"
+                bg="radial-gradient(circle, rgba(30, 110, 30, 0.05), transparent 70%)"
                 borderRadius="full"
                 pointerEvents="none"
               />
@@ -1818,11 +1818,11 @@ export default function AuthPage() {
               fontWeight="500"
             >
               By continuing, you agree to our{" "}
-              <Text as="span" color="#00a855" cursor="pointer" fontWeight="700">
+              <Text as="span" color="#1e6e1e" cursor="pointer" fontWeight="700">
                 Terms
               </Text>{" "}
               and{" "}
-              <Text as="span" color="#00a855" cursor="pointer" fontWeight="700">
+              <Text as="span" color="#1e6e1e" cursor="pointer" fontWeight="700">
                 Privacy Policy
               </Text>
               . DriveKE operates across Kenya.

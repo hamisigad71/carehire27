@@ -274,7 +274,6 @@ function BusinessCard({ onClick }: { onClick: () => void }) {
       borderColor={L.cardBorder}
       boxShadow={L.shadowMd}
       overflow="hidden"
-      onClick={onClick}
     >
       {/* Top accent */}
       <Box
@@ -422,6 +421,7 @@ function BusinessCard({ onClick }: { onClick: () => void }) {
           rightIcon={<Icon as={FiArrowRight} boxSize={4} />}
           boxShadow="0 4px 18px rgba(30,110,30,0.28)"
           _hover={{ opacity: 1 }}
+          onClick={onClick}
         >
           Access Dashboard
         </Button>
@@ -449,7 +449,6 @@ function CustomerCard({ onClick }: { onClick: () => void }) {
       borderColor={L.cardBorder}
       boxShadow={L.shadowMd}
       overflow="hidden"
-      onClick={onClick}
     >
       {/* Top accent */}
       <Box h="3px" bg={`linear-gradient(90deg, ${L.teal}, #1aa0a0, #5dd0d0)`} />
@@ -598,6 +597,7 @@ function CustomerCard({ onClick }: { onClick: () => void }) {
           rightIcon={<Icon as={FiArrowRight} boxSize={4} />}
           boxShadow="0 4px 18px rgba(14,123,123,0.28)"
           _hover={{ opacity: 1 }}
+          onClick={onClick}
         >
           Enter Portal
         </Button>
@@ -877,6 +877,7 @@ export default function Home() {
                   <Text as="span" color={L.accentLight} position="relative">
                     Portal Access
                     <Box
+                      as="span"
                       className="underline-anim"
                       position="absolute"
                       bottom="-3px"

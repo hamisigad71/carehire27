@@ -73,23 +73,40 @@ export async function POST(
       );
     }
 
-    const n8nData = await n8nResponse.json();
+    const textData = await n8nResponse.text();
+    let n8nData;
+
+    try {
+      n8nData = JSON.parse(textData);
+      console.log("[N8N RAW RESPONSE]:", textData);
+    } catch (e) {
+      console.log("n8n didn't return JSON. It returned:", textData);
+      return NextResponse.json({
+        success: true,
+        response: `⚠️ **n8n Test Mode Warning:**\n\nWe connected successfully, but n8n didn't send a valid AI response back.\n\nThis almost always happens because you clicked "Listen for test event" from *inside* the Webhook node's settings panel, which only runs that single node.\n\nPlease close the Webhook settings panel so you can see your entire workflow, and click the **"Test Workflow"** button at the bottom of the screen instead!`,
+        sessionId,
+      });
+    }
+
+    // n8n might return an array if using 'allIncomingItems' or wrapping expressions.
+    const dataObj = Array.isArray(n8nData) ? n8nData[0] : n8nData;
 
     return NextResponse.json({
       success: true,
       response:
-        n8nData.finalResponse ||
+        dataObj?.finalResponse ||
+        dataObj?.output ||
         "Thank you for your inquiry. Our team will contact you soon.",
       sessionId,
       extractedData: {
-        name: n8nData.extractedName,
-        phone: n8nData.extractedPhone,
-        vehicleType: n8nData.extractedVehicleType,
-        rentalPeriod: n8nData.extractedRentalPeriod,
-        budget: n8nData.extractedBudget,
-        location: n8nData.extractedLocation,
+        name: dataObj?.extractedName,
+        phone: dataObj?.extractedPhone,
+        vehicleType: dataObj?.extractedVehicleType,
+        rentalPeriod: dataObj?.extractedRentalPeriod,
+        budget: dataObj?.extractedBudget,
+        location: dataObj?.extractedLocation,
       },
-      isHotLead: n8nData.isHotLead,
+      isHotLead: dataObj?.isHotLead,
     });
   } catch (error) {
     console.error("Chatbot API error:", error);
