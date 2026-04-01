@@ -95,7 +95,7 @@ export default function CustomerProfilePage() {
                       {/* Avatar */}
                       <Box position="relative">
                         <Box borderRadius="26px" overflow="hidden" w="84px" h="84px" border="3px solid" borderColor={L.borderMid} boxShadow={L.shadowGreen}>
-                          <Avatar size="full" name="John Doe" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" borderRadius="0" />
+                          <Avatar size="full" name="John Doe" src="https://i.pinimg.com/736x/ec/24/1b/ec241b8218d6fa02be5e76dea9d0e3ce.jpg" borderRadius="0" />
                         </Box>
                         <IconButton aria-label="Change photo" icon={<Icon as={FiCamera} boxSize={3} />}
                           position="absolute" bottom="-5px" right="-5px" w="26px" h="26px" minW="26px" size="xs"
