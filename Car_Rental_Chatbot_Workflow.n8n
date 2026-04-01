@@ -213,7 +213,7 @@
               "value": "={{ $json.leadSection ? ($json.leadSection.match(/Phone: ([^\\n]+)/)?.[1]?.trim() || 'Not Provided') : '' }}"
             },
             {
-              "name": "extractedPropertyType",
+              "name": "extractedVehicleType",
               "value": "={{ $json.leadSection ? ($json.leadSection.match(/Property Type: ([^\\n]+)/)?.[1]?.trim() || 'Not Provided') : '' }}"
             },
             {
