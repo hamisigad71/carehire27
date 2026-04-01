@@ -131,7 +131,7 @@
     {
       "parameters": {
         "notice": "",
-        "modelName": "models/gemini-2.5-flash",
+        "modelName": "=models/gemini-2.5-flash",
         "options": {}
       },
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
@@ -144,11 +144,12 @@
       "name": "Google Gemini Chat Model1",
       "credentials": {
         "googlePalmApi": {
-          "id": "GrrP6rBOqvz7zLoa",
-          "name": "Google Gemini(PaLM) Api account 2"
+          "id": "vOX5BMgGvMfDnLet",
+          "name": "Google Gemini(PaLM) Api account 7"
         }
       },
-      "disabled": false
+      "disabled": false,
+      "issues": {}
     },
     {
       "parameters": {

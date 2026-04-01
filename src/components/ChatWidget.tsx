@@ -17,6 +17,7 @@ import {
   FiMessageCircle,
   FiX,
   FiMinimize2,
+  FiMaximize2,
   FiZap,
   FiClock,
 } from "react-icons/fi";
@@ -203,6 +204,8 @@ export const ChatWidget = ({
 }: ChatWidgetProps) => {
   const [isOpen, setIsOpen]       = useState(false);
   const [closing, setClosing]     = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
+  const toggleExpand = () => setIsExpanded(!isExpanded);
   const [messages, setMessages]   = useState<Message[]>([
     { id: "init", type: "bot", content: initialMessage, timestamp: new Date() },
   ]);
@@ -235,7 +238,7 @@ export const ChatWidget = ({
 
   const closeChat = () => {
     setClosing(true);
-    setTimeout(() => { setIsOpen(false); setClosing(false); }, 260);
+    setTimeout(() => { setIsOpen(false); setClosing(false); setIsExpanded(false); }, 260);
   };
 
   const sendMessage = async (text?: string) => {
@@ -280,7 +283,7 @@ export const ChatWidget = ({
     }
   };
 
-  const posX = position === "bottom-right" ? { right: "20px" } : { left: "20px" };
+  const posX = position === "bottom-right" ? { right: { base: "16px", sm: "20px" } } : { left: { base: "16px", sm: "20px" } };
 
   return (
     <>
@@ -369,11 +372,13 @@ export const ChatWidget = ({
           className={`cw-window${closing ? " closing" : ""}`}
           position="fixed"
           bottom={{ base: "100px", md: "20px" }}
-          {...posX}
+          left={{ base: "16px", sm: position === "bottom-left" ? "20px" : "auto" }}
+          right={{ base: "16px", sm: position === "bottom-right" ? "20px" : "auto" }}
           zIndex={9999}
-          w={{ base: "calc(100vw - 32px)", sm: "370px" }}
-          h={{ base: "calc(100vh - 96px)", sm: "580px" }}
-          maxH="580px"
+          w={{ base: "auto", sm: isExpanded ? "450px" : "370px" }}
+          h={{ base: "calc(100dvh - 120px)", sm: isExpanded ? "calc(100vh - 40px)" : "580px" }}
+          maxH={isExpanded ? "900px" : "580px"}
+          transition="width 0.3s cubic-bezier(0.22,1,0.36,1), height 0.3s cubic-bezier(0.22,1,0.36,1), max-height 0.3s ease"
           bg={L.card}
           borderRadius="22px"
           boxShadow={L.shadowMd}
@@ -435,9 +440,9 @@ export const ChatWidget = ({
                   cursor="pointer"
                   _hover={{ bg: "rgba(255,255,255,0.3)" }}
                   sx={{ transition: "background .15s ease" }}
-                  onClick={closeChat}
+                  onClick={toggleExpand}
                 >
-                  <Icon as={FiMinimize2} boxSize={4} color="white" />
+                  <Icon as={isExpanded ? FiMinimize2 : FiMaximize2} boxSize={4} color="white" />
                 </Box>
                 <Box
                   w="36px" h="36px" borderRadius="10px"
