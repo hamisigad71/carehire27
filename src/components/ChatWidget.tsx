@@ -290,7 +290,7 @@ export const ChatWidget = ({
       {!isOpen && (
         <Box
           position="fixed"
-          bottom="20px"
+          bottom={{ base: "100px", md: "20px" }}
           {...posX}
           zIndex={9998}
           cursor="pointer"
@@ -368,7 +368,7 @@ export const ChatWidget = ({
         <Box
           className={`cw-window${closing ? " closing" : ""}`}
           position="fixed"
-          bottom="20px"
+          bottom={{ base: "100px", md: "20px" }}
           {...posX}
           zIndex={9999}
           w={{ base: "calc(100vw - 32px)", sm: "370px" }}

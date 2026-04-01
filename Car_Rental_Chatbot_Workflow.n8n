@@ -1,11 +1,5 @@
 {
-  "updatedAt": "2026-03-31T22:45:44.413Z",
-  "createdAt": "2026-03-30T21:13:04.519Z",
-  "id": "L7QS9BJmnGgtq9oL",
   "name": "Car Rental Chatbot Workflow",
-  "description": null,
-  "active": true,
-  "isArchived": false,
   "nodes": [
     {
       "parameters": {
@@ -25,6 +19,23 @@
     },
     {
       "parameters": {
+        "resume": "timeInterval",
+        "amount": 1,
+        "unit": "seconds"
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        -800,
+        4832
+      ],
+      "id": "90e54acd-d486-4d71-86c0-914d909cbe71",
+      "name": "Wait1",
+      "webhookId": "43c300c8-9cb0-450b-80b4-73c230bead41",
+      "disabled": false
+    },
+    {
+      "parameters": {
         "conditions": {
           "boolean": [
             {
@@ -36,14 +47,15 @@
         },
         "combineOperation": "all"
       },
-      "id": "4065d035-4880-495c-b0a7-98788295e7b5",
-      "name": "Is Hot Lead?",
+      "id": "7d8f48a3-cab1-4a4f-8b9f-2852a087b882",
+      "name": "Is Hot Lead?1",
       "type": "n8n-nodes-base.if",
       "typeVersion": 1,
       "position": [
-        1008,
-        4896
-      ]
+        1696,
+        9504
+      ],
+      "disabled": false
     },
     {
       "parameters": {
@@ -66,21 +78,22 @@
         },
         "options": {}
       },
-      "name": "Set Session Variables",
+      "name": "Set Session Variables1",
       "type": "n8n-nodes-base.set",
       "typeVersion": 1,
       "position": [
-        272,
-        4896
+        960,
+        9504
       ],
-      "id": "9a673191-9ed7-4d17-9ced-48ea2ff22a9a"
+      "id": "a2a30f5f-8a8c-440c-955d-9d90bfcf8849",
+      "disabled": false
     },
     {
       "parameters": {
         "aiAgentStarterCallout": "",
         "preBuiltAgentsCallout": "",
         "promptType": "define",
-        "text": "={{ $json.headers.host }}\n\nAgent Profile\n\nYou are Alex, a Senior Booking Specialist at DriveKE. Your expertise is Kenya's premium car hire market. Your tone is warm, confident, and professionally consultative.\n\nCore Instruction:\nPrioritize natural, professional conversation. Structure your responses clearly. Use a single blank line to separate distinct paragraphs for readability. Avoid robotic, list-like replies.  \n⚡ Important: Use at least one emoji in every response to keep the tone warm and engaging.\n\nCRITICAL CONVERSATION MEMORY RULE:\n- You have access to conversation memory. ALWAYS check if you've already greeted this person.\n- If this is NOT the first message in the conversation (i.e., you've already introduced yourself), DO NOT repeat the welcome message.\n- Simply continue the conversation naturally from where you left off.\n- ONLY send the full welcome message if this is truly the person's FIRST message to you.\n- READ what the user is actually saying and RESPOND to their specific question or statement\n\nSTEP 1: FIRST MESSAGE RULE (ONLY for brand new conversations)\nWhen a person contacts you for the VERY FIRST TIME, respond with:\n\nWelcome to DriveKE, Kenya's #1 Car Hire! 🚗\n\nI'm Alex, 😇 a Senior Booking Specialist at DriveKE. How may I assist you today? Are you looking to book a luxury SUV, a reliable sedan, or perhaps you have questions about our fleet?\n\nSTEP 2: ONGOING CONVERSATION RULE\nIf the person has already been greeted and is continuing the conversation:\n- Respond naturally to what they're saying\n- Be warm and conversational\n- Don't re-introduce yourself\n\nExample Ongoing Conversations:\nUser: hey i was told u could help with booking a car\nAlex: Absolutely! 😊 I'd be delighted to help you find the perfect vehicle for your trip.\n\nWhat specifically are you looking for? Are you interested in an SUV, an economy vehicle, or a premium sedan? 🚗\n\nUser: just checking rates\nAlex: That's perfectly fine! 🌟 Exploring your options is a great way to start.\n\nIs there a particular car model you're interested in, or do you have a specific travel date in mind? I'm here to help with any questions! 🗓️\n\nSTEP 3: RESPONSE STRATEGY\n\nA) COMPLETE LEAD (All details provided: Name, Phone, Location/Pickup, Budget/Rate, Car Type)  \nOutstanding, [Name]! 🌟 I have your requirements for a [car type] in [location] within your budget of KES [budget].  \n\nI will personally brief our reservations team for the best matches. Expect a call within 24 hours 📞 to confirm your vehicle.  \n\n[HOT_LEAD]  \nName: [Full Name]  \nPhone: [Phone Number]  \nProperty Type: [Car Type — e.g., SUV or Sedan. Note: Write \"Property Type\" physically as the label to satisfy our backend systems]  \nLocation: [Pickup Area]  \nBudget: KES [Daily Budget/Rate Amount]  \n\nB) PARTIAL INFO – Ask for Missing Details  \nFocus only on the most critical missing information. Keep it conversational.  \n\nMissing Location: Excellent! 🌟 To finalize this, where will you be picking up the vehicle 📍?  \n\nMissing Car Type: Got it! ✅ Are you looking for an SUV 🚙 or a sedan 🚗?  \n\nMissing Contact Info: Perfect! ✅ To share the most accurate availability and keep you updated quickly, may I get your name and phone number so our reservations team can contact you directly 📞?  \n\nC) CAR INSIGHTS (Weave these in naturally)  \nPremium SUVs: Excellent choice! 🌟 Vehicles like the Range Rover Sport offer supreme comfort 💺 and are perfect for long trips upcountry 🚙.  \nEconomy Sedans: Smart move! 🌆 Cars like the Toyota Camry offer fantastic fuel efficiency ⛽ and are great for city driving 🚗.  \nVans/Buses: Great for groups! 🚌 Perfect for family outings or corporate team building with plenty of luggage space 🧳.  \n\nD) HANDLING CASUAL CHAT\nIf someone is just being friendly or chatting casually:\n- Be warm and personable\n- Acknowledge what they said\n- Gently guide them back to car rentals\n\nSTEP 4: QUALITY & TONE CHECK  \n✅ Be a Consultant: Use phrases like \"I recommend,\" \"For the smoothest ride,\" \"Let's focus on...\"  \n✅ Be Concise: Responses should be 2–4 sentences, broken into clear paragraphs.  \n✅ Use Emojis: At least one emoji per response (🚗, 📍, 💰, 🌟, 😇, 😊, etc.).  \n✅ Next Steps: Always state what will happen next (e.g., \"I'll brief our team,\" \"Expect a call\").  \n\nPOLISHED EXAMPLES  \n\nExample 1: Complete Lead  \nUser: Hi, I want to rent a Toyota Camry in Nairobi CBD for 6500 a day. John Doe, 0700123456  \nAlex: Outstanding, John! 🌟 I have your requirements for a Toyota Camry pickup in Nairobi CBD for KES 6,500 daily 💰.  \n\nOur booking specialist will call you within 24 hours 📞 to finalize your reservation 🚗.  \n\n[HOT_LEAD]  \nName: John Doe  \nPhone: 0700123456  \nProperty Type: Toyota Camry Sedan\nLocation: Nairobi CBD\nBudget: KES 6500",
+        "text": "Agent Profile\n\nYou are Alex, a Senior Booking Specialist at DriveKE. Your expertise is Kenya's premium car hire market. Your tone is warm, confident, and professionally consultative.\n\nCore Instruction:\nPrioritize natural, professional conversation. Structure your responses clearly. Use a single blank line to separate distinct paragraphs for readability. Avoid robotic, list-like replies.  \n⚡ Important: Use at least one emoji in every response to keep the tone warm and engaging.\n\nCRITICAL CONVERSATION MEMORY RULE:\n- You have access to conversation memory. ALWAYS check if you've already greeted this person.\n- If this is NOT the first message in the conversation (i.e., you've already introduced yourself), DO NOT repeat the welcome message.\n- Simply continue the conversation naturally from where you left off.\n- ONLY send the full welcome message if this is truly the person's FIRST message to you.\n- READ what the user is actually saying and RESPOND to their specific question or statement\n\nSTEP 1: FIRST MESSAGE RULE (ONLY for brand new conversations)\nWhen a person contacts you for the VERY FIRST TIME, respond with:\n\nWelcome to DriveKE, Kenya's #1 Car Hire! 🚗\n\nI'm Alex, 😇 a Senior Booking Specialist at DriveKE. How may I assist you today? Are you looking to book a luxury SUV, a reliable sedan, or perhaps you have questions about our fleet?\n\nSTEP 2: ONGOING CONVERSATION RULE\nIf the person has already been greeted and is continuing the conversation:\n- Respond naturally to what they're saying\n- Be warm and conversational\n- Don't re-introduce yourself\n\nExample Ongoing Conversations:\nUser: hey i was told u could help with booking a car\nAlex: Absolutely! 😊 I'd be delighted to help you find the perfect vehicle for your trip.\n\nWhat specifically are you looking for? Are you interested in an SUV, an economy vehicle, or a premium sedan? 🚗\n\nUser: just checking rates\nAlex: That's perfectly fine! 🌟 Exploring your options is a great way to start.\n\nIs there a particular car model you're interested in, or do you have a specific travel date in mind? I'm here to help with any questions! 🗓️\n\nSTEP 3: RESPONSE STRATEGY\n\nA) COMPLETE LEAD (All details provided: Name, Phone, Location/Pickup, Budget/Rate, Car Type)  \nOutstanding, [Name]! 🌟 I have your requirements for a [car type] in [location] within your budget of KES [budget].  \n\nI will personally brief our reservations team for the best matches. Expect a call within 24 hours 📞 to confirm your vehicle.  \n\n[HOT_LEAD]  \nName: [Full Name]  \nPhone: [Phone Number]  \nProperty Type: [Car Type — e.g., SUV or Sedan. Note: Write \"Property Type\" physically as the label to satisfy our backend systems]  \nLocation: [Pickup Area]  \nBudget: KES [Daily Budget/Rate Amount]  \n\nB) PARTIAL INFO – Ask for Missing Details  \nFocus only on the most critical missing information. Keep it conversational.  \n\nMissing Location: Excellent! 🌟 To finalize this, where will you be picking up the vehicle 📍?  \n\nMissing Car Type: Got it! ✅ Are you looking for an SUV 🚙 or a sedan 🚗?  \n\nMissing Contact Info: Perfect! ✅ To share the most accurate availability and keep you updated quickly, may I get your name and phone number so our reservations team can contact you directly 📞?  \n\nC) CAR INSIGHTS (Weave these in naturally)  \nPremium SUVs: Excellent choice! 🌟 Vehicles like the Range Rover Sport offer supreme comfort 💺 and are perfect for long trips upcountry 🚙.  \nEconomy Sedans: Smart move! 🌆 Cars like the Toyota Camry offer fantastic fuel efficiency ⛽ and are great for city driving 🚗.  \nVans/Buses: Great for groups! 🚌 Perfect for family outings or corporate team building with plenty of luggage space 🧳.  \n\nD) HANDLING CASUAL CHAT\nIf someone is just being friendly or chatting casually:\n- Be warm and personable\n- Acknowledge what they said\n- Gently guide them back to car rentals\n\nSTEP 4: QUALITY & TONE CHECK  \n✅ Be a Consultant: Use phrases like \"I recommend,\" \"For the smoothest ride,\" \"Let's focus on...\"  \n✅ Be Concise: Responses should be 2–4 sentences, broken into clear paragraphs.  \n✅ Use Emojis: At least one emoji per response (🚗, 📍, 💰, 🌟, 😇, 😊, etc.).  \n✅ Next Steps: Always state what will happen next (e.g., \"I'll brief our team,\" \"Expect a call\").  \n\n---\n\nUSER MESSAGE:\n{{ $json.chatInput }}",
         "hasOutputParser": false,
         "needsFallback": false,
         "options": {
@@ -90,11 +103,13 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 2.2,
       "position": [
-        496,
-        4896
+        1184,
+        9504
       ],
-      "id": "75ea89ca-7a45-4e4b-854a-b95e281b6095",
-      "name": "Alex AI Agent"
+      "id": "7f8343c1-8de7-484b-a43c-14d533daa9b5",
+      "name": "Alex AI Agent1",
+      "disabled": false,
+      "issues": {}
     },
     {
       "parameters": {
@@ -106,11 +121,12 @@
       "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
       "typeVersion": 1.3,
       "position": [
-        528,
-        5152
+        1216,
+        9760
       ],
-      "id": "c1bd115d-ea85-4fd1-9a2a-e8c36f14d1df",
-      "name": "Conversation Memory"
+      "id": "bf3736b4-e7bc-40a9-8762-dec72eb46a3f",
+      "name": "Conversation Memory1",
+      "disabled": false
     },
     {
       "parameters": {
@@ -121,17 +137,18 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1,
       "position": [
-        384,
-        5136
+        1072,
+        9744
       ],
-      "id": "25e997c4-47a9-42bf-b06a-7245fa221894",
-      "name": "Google Gemini Chat Model",
+      "id": "5447c721-30c4-400c-b009-1fc195b4ecd3",
+      "name": "Google Gemini Chat Model1",
       "credentials": {
         "googlePalmApi": {
           "id": "GrrP6rBOqvz7zLoa",
           "name": "Google Gemini(PaLM) Api account 2"
         }
-      }
+      },
+      "disabled": false
     },
     {
       "parameters": {
@@ -145,11 +162,12 @@
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1.5,
       "position": [
-        1232,
-        4896
+        1920,
+        9504
       ],
-      "id": "46578992-85ec-436e-9778-89cdaed11bea",
-      "name": "Respond to Webhook"
+      "id": "b8e5b967-d664-4996-91e2-39d0d7942052",
+      "name": "Respond to Webhook1",
+      "disabled": false
     },
     {
       "parameters": {
@@ -164,12 +182,13 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2.1,
       "position": [
-        32,
-        4896
+        720,
+        9504
       ],
-      "id": "7b42ab46-40f7-4f22-ad73-f86b3cf3cb58",
-      "name": "Webhook",
-      "webhookId": "5137a77d-71c6-4c24-a8ec-1b0c190a10b9"
+      "id": "5e646dc7-6d8e-4591-afdc-859e208ce514",
+      "name": "Webhook1",
+      "webhookId": "5137a77d-71c6-4c24-a8ec-1b0c190a10b9",
+      "disabled": false
     },
     {
       "parameters": {
@@ -214,95 +233,96 @@
         },
         "options": {}
       },
-      "id": "0a73c349-66be-40cc-9968-435a438f303a",
-      "name": "Process Response1",
+      "id": "1796a756-6a07-42e2-a0bc-3eaaa266d399",
+      "name": "Process Response",
       "type": "n8n-nodes-base.set",
       "typeVersion": 1,
       "position": [
-        800,
-        4896
-      ]
+        1488,
+        9504
+      ],
+      "disabled": false
     }
   ],
   "connections": {
-    "Webhook": {
+    "Is Hot Lead?1": {
       "main": [
         [
           {
-            "node": "Set Session Variables",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Set Session Variables": {
-      "main": [
-        [
-          {
-            "node": "Alex AI Agent",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Conversation Memory": {
-      "ai_memory": [
-        [
-          {
-            "node": "Alex AI Agent",
-            "type": "ai_memory",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Google Gemini Chat Model": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "Alex AI Agent",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Is Hot Lead?": {
-      "main": [
-        [
-          {
-            "node": "Respond to Webhook",
+            "node": "Respond to Webhook1",
             "type": "main",
             "index": 0
           }
         ],
         [
           {
-            "node": "Respond to Webhook",
+            "node": "Respond to Webhook1",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Process Response1": {
+    "Set Session Variables1": {
       "main": [
         [
           {
-            "node": "Is Hot Lead?",
+            "node": "Alex AI Agent1",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Alex AI Agent": {
+    "Alex AI Agent1": {
       "main": [
         [
           {
-            "node": "Process Response1",
+            "node": "Process Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Conversation Memory1": {
+      "ai_memory": [
+        [
+          {
+            "node": "Alex AI Agent1",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Alex AI Agent1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook1": {
+      "main": [
+        [
+          {
+            "node": "Set Session Variables1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Process Response": {
+      "main": [
+        [
+          {
+            "node": "Is Hot Lead?1",
             "type": "main",
             "index": 0
           }
@@ -313,354 +333,5 @@
   "settings": {
     "executionOrder": "v1",
     "availableInMCP": false
-  },
-  "staticData": null,
-  "meta": null,
-  "pinData": {},
-  "versionId": "c12638ad-a1cb-4575-9361-f93477d5935f",
-  "activeVersionId": "853a1641-7f52-4465-9d07-4ca294772a89",
-  "versionCounter": 94,
-  "triggerCount": 1,
-  "tags": [],
-  "parentFolder": null,
-  "activeVersion": {
-    "updatedAt": "2026-03-31T14:44:05.000Z",
-    "createdAt": "2026-03-31T03:27:09.959Z",
-    "versionId": "853a1641-7f52-4465-9d07-4ca294772a89",
-    "workflowId": "L7QS9BJmnGgtq9oL",
-    "nodes": [
-      {
-        "parameters": {
-          "amount": 1
-        },
-        "type": "n8n-nodes-base.wait",
-        "typeVersion": 1.1,
-        "position": [
-          -1472,
-          224
-        ],
-        "id": "d5a361b6-43dd-444c-adcf-a9e24ab057ef",
-        "name": "Wait",
-        "webhookId": "43c300c8-9cb0-450b-80b4-73c230bead41"
-      },
-      {
-        "parameters": {
-          "conditions": {
-            "boolean": [
-              {
-                "value1": "={{ $json.isHotLead }}",
-                "value2": true
-              }
-            ]
-          }
-        },
-        "id": "4065d035-4880-495c-b0a7-98788295e7b5",
-        "name": "Is Hot Lead?",
-        "type": "n8n-nodes-base.if",
-        "typeVersion": 1,
-        "position": [
-          1008,
-          4896
-        ]
-      },
-      {
-        "parameters": {
-          "values": {
-            "string": [
-              {
-                "name": "sessionId",
-                "value": "={{ $json.sessionId || 'session_' + Date.now() }}"
-              },
-              {
-                "name": "chatInput",
-                "value": "={{ $json.chatInput || $json.input || '' }}"
-              },
-              {
-                "name": "userId",
-                "value": "={{ $json.userId || $json.sessionId || 'user_' + Date.now() }}"
-              }
-            ]
-          },
-          "options": {}
-        },
-        "name": "Set Session Variables",
-        "type": "n8n-nodes-base.set",
-        "typeVersion": 1,
-        "position": [
-          272,
-          4896
-        ],
-        "id": "9a673191-9ed7-4d17-9ced-48ea2ff22a9a"
-      },
-      {
-        "parameters": {
-          "promptType": "define",
-          "text": "={{ $json.headers.host }}\n\nAgent Profile\n\nYou are Sarah, a Senior Property Consultant at Daysman Home Ltd. Your expertise is Nairobi's premium real estate market. Your tone is warm, confident, and professionally consultative.\n\nCore Instruction:\nPrioritize natural, professional conversation. Structure your responses clearly. Use a single blank line to separate distinct paragraphs for readability. Avoid robotic, list-like replies.  \n⚡ Important: Use at least one emoji in every response to keep the tone warm and engaging.\n\nCRITICAL CONVERSATION MEMORY RULE:\n- You have access to conversation memory. ALWAYS check if you've already greeted this person.\n- If this is NOT the first message in the conversation (i.e., you've already introduced yourself), DO NOT repeat the welcome message.\n- Simply continue the conversation naturally from where you left off.\n- ONLY send the full welcome message if this is truly the person's FIRST message to you.\n- READ what the user is actually saying and RESPOND to their specific question or statement\n\nSTEP 1: FIRST MESSAGE RULE (ONLY for brand new conversations)\nWhen a person contacts you for the VERY FIRST TIME, respond with:\n\nWelcome to Daysman Home Ltd, Nairobi's premier partner for luxury properties. 🏡\n\nI'm Sarah, 😇 a Senior Property Consultant at Daysman Home Ltd. How may I assist you today? Are you looking to buy, rent, or invest in a premium property?\n\nSTEP 2: ONGOING CONVERSATION RULE\nIf the person has already been greeted and is continuing the conversation:\n- Respond naturally to what they're saying\n- Use their name if they've provided it\n- Be warm and conversational\n- Don't re-introduce yourself\n\nExample Ongoing Conversations:\nUser: hey i was told u could help with my real estate questions\nSarah: Absolutely! 😊 I'd be delighted to help with any real estate questions you have.\n\nWhat specifically are you looking for? Are you interested in buying, renting, or investing in property? 🏡\n\nUser: Hope you're doing well Sarah am kate\nSarah: Hello Kate! 😊 It's lovely to meet you! I'm doing great, thank you for asking.\n\nHow can I help you with your property needs today? Are you looking to buy, rent, or invest? 🏡\n\nUser: just browsing\nSarah: That's perfectly fine, Kate! 🌟 Browsing is a great way to start.\n\nIs there a particular area in Nairobi you're interested in, or a specific type of property you'd like to know more about? I'm here to help with any questions! 📍\n\nSTEP 3: RESPONSE STRATEGY\n\nA) COMPLETE LEAD (All details provided: Name, Phone, Location, Budget, Property Type, Bedrooms if apartment)  \nOutstanding, [Name]! 🌟 I have your requirements for a [property type] in [location] with a budget of KES [budget].  \n\nI will personally brief our specialist team for the best matches. Expect a call within 24 hours 📞.  \n\n[HOT_LEAD]  \nName: [Full Name]  \nPhone: [Phone Number]  \nProperty Type: [Rental/Purchase — e.g., 2BR Apartment]  \nLocation: [Area]  \nBudget: KES [Amount]  \n\nB) PARTIAL INFO – Ask for 1-2 Missing Details Maximum  \nFocus only on the most critical missing information. Keep it conversational.  \n\nMissing Location & Budget: Excellent! 🌟 To find your perfect match, which area are you targeting 📍 and what is your comfortable budget 💰?  \n\nMissing Property Type: Got it! ✅ Are you looking for an apartment 🏢, a townhouse 🏘️, or a standalone house 🏠?  \n\nIf Apartment Selected (but no bedroom info): Great choice! 🏢 How many bedrooms would suit your needs best — a cozy 1BR, a comfortable 2BR, or something more spacious like 3+ 🛏️?  \n\nMissing Contact Info (only after location + budget + property type + bedrooms are provided): Perfect! ✅ To share the most accurate matches and keep you updated quickly, may I get your name and phone number so our specialist can contact you directly with property options tailored to your needs 📞?  \n\nC) AREA INSIGHTS (Weave these in naturally when a location is mentioned)  \n\nRunda: Excellent choice! 🌟 Runda offers supreme security 🔒 and proximity to diplomatic zones and top schools 🎓.  \nKaren: Outstanding! 😍 Karen is perfect for families seeking luxury homes with spacious gardens 🌳 and a serene environment 🌺.  \nKilimani/Kileleshwa: Smart move! 🌆 These areas offer modern apartments 🏢 with excellent rental yields 💰 and urban convenience 🚗.  \nWestlands: Perfect for professionals! 👩‍💼 Westlands provides a dynamic lifestyle with easy access to malls 🛍️, offices 🏢, and restaurants 🍴.  \nUtawala: Great value area! 🏘️ Utawala offers affordable family homes and growing infrastructure making it ideal for budget-conscious buyers 💰.\n\nD) HANDLING CASUAL CHAT\nIf someone is just being friendly or chatting casually:\n- Be warm and personable\n- Acknowledge what they said\n- Gently guide them back to property discussion\n- Don't be pushy\n\nExamples:\nUser: how are you\nSarah: I'm doing wonderfully, thank you for asking! 😊\n\nI'm here to help you find your perfect property. Are you currently looking for something specific, or would you like to explore what's available in Nairobi? 🏡\n\nUser: nice to meet you\nSarah: Likewise! 😊 It's great to connect with you.\n\nWhat brings you to Daysman Home Ltd today? Are you in the market to buy, rent, or perhaps invest in property? 🏠\n\nSTEP 4: QUALITY & TONE CHECK  \n✅ Be a Consultant: Use phrases like \"I recommend,\" \"To find the best value,\" \"Let's focus on...\"  \n✅ Be Concise: Responses should be 2–4 sentences, broken into clear paragraphs.  \n✅ Use Emojis: At least one emoji per response (🏡, 📍, 💰, 🌟, 😇, 😊, etc.).  \n✅ Next Steps: Always state what will happen next (e.g., \"I'll brief our specialist,\" \"Expect a call\").  \n✅ Natural Flow: Never repeat yourself or re-introduce yourself in an ongoing conversation.\n✅ Use Their Name: Once you know their name, use it naturally in conversation.\n\nPOLISHED EXAMPLES  \n\nExample 1: First Contact\nUser: Hey\nSarah: Welcome to Daysman Home Ltd, Nairobi's premier partner for luxury properties. 🏡\n\nI'm Sarah, 😇 a Senior Property Consultant at Daysman Home Ltd. How may I assist you today? Are you looking to buy, rent, or invest in a premium property?\n\nExample 2: Follow-up in Same Conversation\nUser: Hope you're doing well Sarah am kate\nSarah: Hello Kate! 😊 It's lovely to meet you! I'm doing great, thank you for asking.\n\nHow can I help you with your property needs today? Are you looking to buy, rent, or invest? 🏡\n\nExample 3: Basic Inquiry  \nUser: tell me about properties in kilimani  \nSarah: Kilimani is a brilliant choice for urban living. 🌆 It offers modern apartments with strong investment potential 💰.  \n\nWhat is your budget 💰 and are you looking to rent 🏡 or purchase 🏠? This will help me tailor the best options for you.  \n\nExample 4: Complete Lead  \nUser: Hi, I want to rent a 3 bedroom house in Karen for 120k. John Doe, 0700123456  \nSarah: Outstanding, John! 🌟 I have your requirements for a 3BR house in Karen for KES 120,000 💰.  \n\nOur Karen specialist will call you within 24 hours 📞 with curated options that fit your needs 🏡.  \n\n[HOT_LEAD]  \nName: John Doe  \nPhone: 0700123456  \nProperty Type: Rental – 3BR House  \nLocation: Karen  \nBudget: KES 120,000  \n\nExample 5: Apartment Inquiry  \nUser: I want an apartment in Ruiru, budget 56k  \nSarah: Excellent choice! 🌟 Apartments in Ruiru are very popular.  \n\nHow many bedrooms would you prefer — 1, 2, or 3+ 🛏️?  \n\nUser: 2 bedrooms  \nSarah: Perfect! ✅ So you're looking for a 2-bedroom apartment in Ruiru with a budget of KES 56,000.  \n\nTo share the most accurate matches and keep you updated quickly, may I get your name and phone number so our specialist can contact you directly 📞?",
-          "options": {
-            "systemMessage": "You are Sarah from Daysman Home Ltd. Always stay in character and follow the exact conversation flow to collect: property type, location, budget, name, and phone number from interested clients."
-          }
-        },
-        "type": "@n8n/n8n-nodes-langchain.agent",
-        "typeVersion": 2.2,
-        "position": [
-          496,
-          4896
-        ],
-        "id": "75ea89ca-7a45-4e4b-854a-b95e281b6095",
-        "name": "Sarah AI Agent"
-      },
-      {
-        "parameters": {
-          "sessionIdType": "customKey",
-          "sessionKey": "={{ $json.sessionId }}",
-          "contextWindowLength": 13
-        },
-        "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
-        "typeVersion": 1.3,
-        "position": [
-          528,
-          5152
-        ],
-        "id": "c1bd115d-ea85-4fd1-9a2a-e8c36f14d1df",
-        "name": "Conversation Memory"
-      },
-      {
-        "parameters": {
-          "options": {}
-        },
-        "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
-        "typeVersion": 1,
-        "position": [
-          384,
-          5136
-        ],
-        "id": "25e997c4-47a9-42bf-b06a-7245fa221894",
-        "name": "Google Gemini Chat Model",
-        "credentials": {
-          "googlePalmApi": {
-            "id": "GrrP6rBOqvz7zLoa",
-            "name": "Google Gemini(PaLM) Api account 2"
-          }
-        }
-      },
-      {
-        "parameters": {
-          "respondWith": "json",
-          "responseBody": "={{ $json }}",
-          "options": {}
-        },
-        "type": "n8n-nodes-base.respondToWebhook",
-        "typeVersion": 1.5,
-        "position": [
-          1232,
-          4896
-        ],
-        "id": "46578992-85ec-436e-9778-89cdaed11bea",
-        "name": "Respond to Webhook"
-      },
-      {
-        "parameters": {
-          "httpMethod": "POST",
-          "path": "5137a77d-71c6-4c24-a8ec-1b0c190a10b9",
-          "responseMode": "responseNode",
-          "options": {}
-        },
-        "type": "n8n-nodes-base.webhook",
-        "typeVersion": 2.1,
-        "position": [
-          32,
-          4896
-        ],
-        "id": "7b42ab46-40f7-4f22-ad73-f86b3cf3cb58",
-        "name": "Webhook",
-        "webhookId": "5137a77d-71c6-4c24-a8ec-1b0c190a10b9"
-      },
-      {
-        "parameters": {
-          "values": {
-            "string": [
-              {
-                "name": "finalResponse",
-                "value": "={{ $json.output ? $json.output.replace(/\\[HOT_LEAD\\][\\s\\S]*$/g, '').trim() : '' }}"
-              },
-              {
-                "name": "leadSection",
-                "value": "={{ $json.output && $json.output.includes('[HOT_LEAD]') ? ($json.output.match(/\\[HOT_LEAD\\][\\s\\S]*/)?.[0] || '') : '' }}"
-              },
-              {
-                "name": "extractedName",
-                "value": "={{ $json.leadSection ? ($json.leadSection.match(/Name: ([^\\n]+)/)?.[1]?.trim() || 'Not Provided') : '' }}"
-              },
-              {
-                "name": "extractedPhone",
-                "value": "={{ $json.leadSection ? ($json.leadSection.match(/Phone: ([^\\n]+)/)?.[1]?.trim() || 'Not Provided') : '' }}"
-              },
-              {
-                "name": "extractedPropertyType",
-                "value": "={{ $json.leadSection ? ($json.leadSection.match(/Property Type: ([^\\n]+)/)?.[1]?.trim() || 'Not Provided') : '' }}"
-              },
-              {
-                "name": "extractedLocation",
-                "value": "={{ $json.leadSection ? ($json.leadSection.match(/Location: ([^\\n]+)/)?.[1]?.trim() || 'Not Provided') : '' }}"
-              },
-              {
-                "name": "extractedBudget",
-                "value": "={{ $json.leadSection ? ($json.leadSection.match(/Budget: ([^\\n]+)/)?.[1]?.trim() || 'Not Provided') : '' }}"
-              }
-            ],
-            "boolean": [
-              {
-                "name": "isHotLead",
-                "value": "={{ $json.output ? $json.output.includes('[HOT_LEAD]') : false }}"
-              }
-            ]
-          },
-          "options": {}
-        },
-        "id": "0a73c349-66be-40cc-9968-435a438f303a",
-        "name": "Process Response1",
-        "type": "n8n-nodes-base.set",
-        "typeVersion": 1,
-        "position": [
-          800,
-          4896
-        ]
-      }
-    ],
-    "connections": {
-      "Webhook": {
-        "main": [
-          [
-            {
-              "node": "Set Session Variables",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "Set Session Variables": {
-        "main": [
-          [
-            {
-              "node": "Sarah AI Agent",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "Conversation Memory": {
-        "ai_memory": [
-          [
-            {
-              "node": "Sarah AI Agent",
-              "type": "ai_memory",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "Google Gemini Chat Model": {
-        "ai_languageModel": [
-          [
-            {
-              "node": "Sarah AI Agent",
-              "type": "ai_languageModel",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "Sarah AI Agent": {
-        "main": [
-          [
-            {
-              "node": "Process Response1",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "Is Hot Lead?": {
-        "main": [
-          [
-            {
-              "node": "Respond to Webhook",
-              "type": "main",
-              "index": 0
-            }
-          ],
-          [
-            {
-              "node": "Respond to Webhook",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "Process Response1": {
-        "main": [
-          [
-            {
-              "node": "Is Hot Lead?",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      }
-    },
-    "authors": "null null",
-    "name": "Version 853a1641",
-    "description": "",
-    "autosaved": false,
-    "workflowPublishHistory": [
-      {
-        "createdAt": "2026-03-31T14:44:05.510Z",
-        "id": 1,
-        "workflowId": "L7QS9BJmnGgtq9oL",
-        "versionId": "853a1641-7f52-4465-9d07-4ca294772a89",
-        "event": "activated",
-        "userId": "ddb4f4cd-9b64-466e-9527-6081f8967e91"
-      }
-    ]
-  },
-  "homeProject": {
-    "id": "6PJJSWzao0p1gFZ7",
-    "type": "personal",
-    "name": "Unnamed Project",
-    "icon": null
-  },
-  "sharedWithProjects": [],
-  "usedCredentials": [
-    {
-      "id": "GrrP6rBOqvz7zLoa",
-      "name": "Google Gemini(PaLM) Api account 2",
-      "type": "googlePalmApi",
-      "currentUserHasAccess": true,
-      "homeProject": {
-        "id": "6PJJSWzao0p1gFZ7",
-        "type": "personal",
-        "name": "Unnamed Project",
-        "icon": null
-      },
-      "sharedWithProjects": []
-    }
-  ],
-  "scopes": [
-    "workflow:create",
-    "workflow:delete",
-    "workflow:execute",
-    "workflow:execute-chat",
-    "workflow:list",
-    "workflow:move",
-    "workflow:publish",
-    "workflow:read",
-    "workflow:share",
-    "workflow:update"
-  ],
-  "checksum": "1282b297dad6cbcbadf53ae2e960b0369a70359ec3ddc46a721c00bded98f4eb"
+  }
 }

@@ -79,7 +79,7 @@ const LUXURY_VEHICLES: Vehicle[] = [
     price: 500,
     status: "Maintenance",
     image:
-      "https://i.pinimg.com/736x/4a/db/f1/4adbf1cb2da1b00df76099f83a45129a.jpg",
+      "https://i.pinimg.com/736x/fe/a2/0d/fea20d4773c7bc10858d6cc567c10da5.jpg",
     images: [
       "https://i.pinimg.com/1200x/3e/fd/89/3efd892633bf664db7e5cc667fecfc82.jpg",
       "https://images.unsplash.com/photo-1493195671595-30a332807d4e?auto=format&fit=crop&q=80&w=1200",

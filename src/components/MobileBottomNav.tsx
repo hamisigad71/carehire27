@@ -65,17 +65,17 @@ export function MobileBottomNav() {
     <Box
       display={{ base: "block", md: "none" }}
       position="fixed"
-      bottom={0}
-      left={0}
-      right={0}
+      bottom="20px"
+      left="16px"
+      right="16px"
       bg={L.card}
-      borderTop="1px solid"
+      border="1px solid"
+      borderRadius="full"
       borderColor={L.cardBorder}
-      boxShadow="0 -4px 20px rgba(30,110,30,0.12)"
+      boxShadow="0 8px 32px rgba(30,110,30,0.18)"
       zIndex={50}
-      pb="env(safe-area-inset-bottom)"
     >
-      <Flex justify="space-around" align="center" h="64px">
+      <Flex justify="space-around" align="center" h="64px" px={2}>
         {navItems.map((item) => {
           const active = isActive(item.path);
           return (

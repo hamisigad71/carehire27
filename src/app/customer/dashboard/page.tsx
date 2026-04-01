@@ -1121,7 +1121,7 @@ export default function CustomerDashboard() {
                                 _hover={{ bg: L.accentGlow3 }}
                                 onClick={() => handleBook(car)}
                               >
-                                Book Now
+                                Rent now
                               </Button>
                             </VStack>
                           </Flex>

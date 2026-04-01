@@ -45,7 +45,7 @@ export const PromoOffers = ({ offers = [] }: PromoOffersProps) => {
       image:
         "https://i.pinimg.com/1200x/2b/f2/5e/2bf25e33f3c1108363a4c96fbac8ad6a.jpg",
       badge: "LIMITED TIME DEALS",
-      cta: "BOOK NOW",
+      cta: "Rent now",
       promoCode: "PREMIUM40",
       ctaLink: "/customer/fleet",
     },
